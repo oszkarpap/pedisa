@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_perfusor"
+        android:orderInCategory="100"
+        android:title="@string/perfusor_calc"
+        app:showAsAction="never" />
+
+
+    <item
+        android:id="@+id/menu_medication"
+        android:orderInCategory="100"
+        android:title="@string/medication"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_parameters"
+        android:orderInCategory="100"
+        android:title="@string/parameters"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_log_out"
+        android:orderInCategory="100"
+        android:title="@string/log_out"
+        app:showAsAction="never" />
+
+
+</menu>

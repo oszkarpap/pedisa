@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="hu.oszkarpap.dev.android.omsz.omszapp001">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher_foreground"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".nav_view_activity.Acticity02"
+            android:label="A 02" />
+        <activity
+            android:name=".nav_view_activity.Avtivity03"
+            android:label="A 03" />
+        <activity
+            android:name=".SignupActivity"
+            android:label="Regisztráció" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="Bejelenttkezés"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ResetPasswordActivity"
+            android:label="Új jelszó"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LoginMainActivity"
+            android:label="Irányító menű"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".BottomActivity"
+            android:label="@string/title_activity_bottom" />
+        <activity android:name=".PerfusorActivity" />
+        <activity android:name=".MedActivity"></activity>
+    </application>
+
+</manifest>

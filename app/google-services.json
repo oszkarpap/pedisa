@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "305196235429",
+    "firebase_url": "https://omszapp-674c1.firebaseio.com",
+    "project_id": "omszapp-674c1",
+    "storage_bucket": "omszapp-674c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305196235429:android:3e8fdec262ded06f",
+        "android_client_info": {
+          "package_name": "hu.oszkarpap.dev.android.omsz.omszapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305196235429-e9dq80p5u10m5939b9t541s25nc5fncu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hu.oszkarpap.dev.android.omsz.omszapp",
+            "certificate_hash": "cbd8703149d1f18f531fad7b8baee24c9f9205b4"
+          }
+        },
+        {
+          "client_id": "305196235429-s0j4dml3fjdjq4aav6nbp6uda4i3035i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcIftuf6vyTZ8M84VntEjwgFDrngBUo-w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305196235429-s0j4dml3fjdjq4aav6nbp6uda4i3035i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305196235429:android:676cc441078cfc19",
+        "android_client_info": {
+          "package_name": "hu.oszkarpap.dev.android.omsz.omszapp001"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305196235429-ndojeqepmnpvi2p1h6qji1rtas1oejie.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "hu.oszkarpap.dev.android.omsz.omszapp001",
+            "certificate_hash": "551cbd4f0e5bb93da03664c214fc3364487b0c2a"
+          }
+        },
+        {
+          "client_id": "305196235429-s0j4dml3fjdjq4aav6nbp6uda4i3035i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcIftuf6vyTZ8M84VntEjwgFDrngBUo-w"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305196235429-s0j4dml3fjdjq4aav6nbp6uda4i3035i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
