@@ -19,9 +19,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.medication.MedActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.Acticity02;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.Avtivity03;
+import hu.oszkarpap.dev.android.omsz.omszapp001.perfusor.PerfusorActivity;
 
 
 public class MainActivity extends AppCompatActivity
