@@ -28,11 +28,7 @@
             android:name=".LoginActivity"
             android:label="Bejelenttkezés"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ResetPasswordActivity"
@@ -46,7 +42,14 @@
             android:name=".BottomActivity"
             android:label="@string/title_activity_bottom" />
         <activity android:name=".PerfusorActivity" />
-        <activity android:name=".MedActivity"></activity>
+        <activity android:name=".medication.MedActivity"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
