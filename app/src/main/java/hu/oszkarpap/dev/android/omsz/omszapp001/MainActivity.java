@@ -21,7 +21,6 @@ import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.medication.MedActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.medication.MedWithSearchBarActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.AbcdeActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.Acticity02;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.Avtivity03;
@@ -277,7 +276,7 @@ public class MainActivity extends AppCompatActivity
                             startActivity(intent);
                             break;
                         case (99):
-                            intent = new Intent(MainActivity.this, MedWithSearchBarActivity.class);
+                            intent = new Intent(MainActivity.this, MedActivity.class);
                             startActivity(intent);
                             break;
 

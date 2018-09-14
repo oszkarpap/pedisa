@@ -52,14 +52,9 @@
         <activity
             android:name=".nav_view_activity.AbcdeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".medication.MedWithSearchBarActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
-        </activity>
         <activity android:name=".medication.MedActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+
             ></activity>
     </application>
 
