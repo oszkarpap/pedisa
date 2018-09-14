@@ -46,12 +46,21 @@
             android:name=".BottomActivity"
             android:label="@string/parameters" />
         <activity
-            android:name=".medication.MedActivity"
-            android:label="@string/medication" />
-        <activity
             android:name=".perfusor.PerfusorActivity"
             android:label="@string/title_activity_perfusor"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".nav_view_activity.AbcdeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".medication.MedWithSearchBarActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity android:name=".medication.MedActivity"
+            ></activity>
     </application>
 
 </manifest>

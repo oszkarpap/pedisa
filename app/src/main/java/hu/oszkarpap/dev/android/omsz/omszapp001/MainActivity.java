@@ -21,6 +21,8 @@ import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.medication.MedActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.medication.MedWithSearchBarActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.AbcdeActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.Acticity02;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.Avtivity03;
 import hu.oszkarpap.dev.android.omsz.omszapp001.perfusor.PerfusorActivity;
@@ -123,7 +125,7 @@ public class MainActivity extends AppCompatActivity
         MenuModel menuModel = new MenuModel("Egyéb", true, true, 0); //Menu of Android Tutorial. No sub menus
         headerList.add(menuModel);
         List<MenuModel> childModelsList = new ArrayList<>();
-        MenuModel childModel = new MenuModel("Prehospitális vizsgálat sorrendje", false, false, 2);
+        MenuModel childModel = new MenuModel("Prehospitális vizsgálat sorrendje", false, false, 11);
         childModelsList.add(childModel);
 
 
@@ -151,7 +153,7 @@ public class MainActivity extends AppCompatActivity
         menuModel = new MenuModel("Airway", true, true, 0); //Menu of Java Tutorials
         headerList.add(menuModel);
         // List<MenuModel> childModelsList = new ArrayList<>();
-        childModel = new MenuModel("Egyszerű Légút", false, false, 2);
+        childModel = new MenuModel("Egyszerű Légút", false, false, 99);
         childModelsList.add(childModel);
 
         childModel = new MenuModel("Sürgősségi intubáció", false, false, 3);
@@ -270,12 +272,12 @@ public class MainActivity extends AppCompatActivity
                             intent = new Intent(MainActivity.this, Acticity02.class);
                             startActivity(intent);
                             break;
-                        case (6):
-                            intent = new Intent(MainActivity.this, Avtivity03.class);
+                        case (11):
+                            intent = new Intent(MainActivity.this, AbcdeActivity.class);
                             startActivity(intent);
                             break;
-                        case (7):
-                            intent = new Intent(MainActivity.this, Acticity02.class);
+                        case (99):
+                            intent = new Intent(MainActivity.this, MedWithSearchBarActivity.class);
                             startActivity(intent);
                             break;
 
