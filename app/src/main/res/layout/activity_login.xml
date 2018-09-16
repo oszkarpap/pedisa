@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:hint="@string/hint_password"
-                android:inputType="textPassword"
+                android:inputType="numberPassword"
                 android:textColor="@android:color/white"
                 android:textColorHint="@android:color/white" />
         </android.support.design.widget.TextInputLayout>
@@ -57,35 +57,45 @@
 
         <Button
             android:id="@+id/btn_login"
+            android:text="@string/btn_login"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@color/colorAccent"
-            android:text="@string/btn_login"
-            android:textColor="@android:color/black" />
+            android:layout_marginTop="20dp"
+
+            android:textAllCaps="false"
+            android:textStyle="normal"
+            android:textSize="20sp"
+            android:textColor="@color/colorAccent" />
+
 
         <Button
             android:id="@+id/btn_reset_password"
+            android:text="@string/btn_forgot_password"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@null"
-            android:text="@string/btn_forgot_password"
+            android:layout_marginTop="20dp"
+
             android:textAllCaps="false"
+            android:textStyle="normal"
+            android:textSize="20sp"
             android:textColor="@color/colorAccent" />
 
         <!-- Link to Login Screen -->
 
         <Button
             android:id="@+id/btn_signup"
+            android:text="@string/btn_link_to_register"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@null"
-            android:text="@string/btn_link_to_register"
+            android:layout_marginTop="20dp"
+
             android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            android:textStyle="normal"
+            android:textSize="20sp"
+            android:textColor="@color/colorAccent"/>
     </LinearLayout>
 
     <ProgressBar
@@ -93,6 +103,6 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_gravity="center|bottom"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:visibility="gone" />
 </android.support.design.widget.CoordinatorLayout>

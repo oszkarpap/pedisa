@@ -2,9 +2,12 @@ package hu.oszkarpap.dev.android.omsz.omszapp001;
 
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.util.Pair;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -14,6 +17,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
+
+import com.alespero.expandablecardview.ExpandableCardView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +36,10 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.perfusor.PerfusorActivity;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    /////
+    private Context mContext;
+    private String a = "Prehospitális vizsgálat sorrendje";
+
 
     ExpandableListAdapter expandableListAdapter;
     ExpandableListView expandableListView;
@@ -38,12 +48,19 @@ public class MainActivity extends AppCompatActivity
     private Intent intent;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.bounce,0);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        /////
+        mContext = getApplicationContext();
+
 
 
         expandableListView = findViewById(R.id.expandableListView);
@@ -67,6 +84,7 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+            overridePendingTransition(R.anim.fade_out,0);
         }
     }
 
@@ -121,10 +139,10 @@ public class MainActivity extends AppCompatActivity
 
     private void prepareMenuData() {
 
-        MenuModel menuModel = new MenuModel("Egyéb", true, true, 0); //Menu of Android Tutorial. No sub menus
+        MenuModel menuModel = new MenuModel("Protokollok", true, true, 1); //Menu of Android Tutorial. No sub menus
         headerList.add(menuModel);
         List<MenuModel> childModelsList = new ArrayList<>();
-        MenuModel childModel = new MenuModel("Prehospitális vizsgálat sorrendje", false, false, 11);
+        MenuModel childModel = new MenuModel(a, false, false, 11);
         childModelsList.add(childModel);
 
 
@@ -133,10 +151,10 @@ public class MainActivity extends AppCompatActivity
             childList.put(menuModel, childModelsList);
         }
 
-        menuModel = new MenuModel("Reanimáció", true, true, 0); //Menu of Android Tutorial. No sub menus
+        menuModel = new MenuModel("Reanimáció", true, true, 2); //Menu of Android Tutorial. No sub menus
         headerList.add(menuModel);
         childModelsList = new ArrayList<>();
-        childModel = new MenuModel("MRT ERC ALS", false, false, 2);
+        childModel = new MenuModel("MRT ERC ALS", false, false, 21);
         childModelsList.add(childModel);
 
 
@@ -149,13 +167,14 @@ public class MainActivity extends AppCompatActivity
         //   childList.put(menuModel, null);
         // }
 
-        menuModel = new MenuModel("Airway", true, true, 0); //Menu of Java Tutorials
+        menuModel = new MenuModel("Airway", true, true, 3); //Menu of Java Tutorials
         headerList.add(menuModel);
-        // List<MenuModel> childModelsList = new ArrayList<>();
-        childModel = new MenuModel("Egyszerű Légút", false, false, 99);
+        childModelsList = new ArrayList<>();
+        childModel = new MenuModel("Egyszerű Légút", false, false, 31);
         childModelsList.add(childModel);
-
-        childModel = new MenuModel("Sürgősségi intubáció", false, false, 3);
+        childModel = new MenuModel("RSI", false, false, 32);
+        childModelsList.add(childModel);
+        childModel = new MenuModel("Sürgősségi intubáció", false, false, 33);
         childModelsList.add(childModel);
 
         if (menuModel.hasChildren) {
@@ -164,21 +183,21 @@ public class MainActivity extends AppCompatActivity
         }
 
         childModelsList = new ArrayList<>();
-        menuModel = new MenuModel("Breathing", true, true, 0); //Menu of Python Tutorials
+        menuModel = new MenuModel("Breathing", true, true, 4); //Menu of Python Tutorials
         headerList.add(menuModel);
-        childModel = new MenuModel("Oxigén terápia", false, false, 6);
+        childModel = new MenuModel("Oxigén terápia", false, false, 41);
         childModelsList.add(childModel);
 
-        childModel = new MenuModel("Akut asztmás roham", false, false, 7);
+        childModel = new MenuModel("Akut asztmás roham", false, false, 42);
         childModelsList.add(childModel);
 
-        childModel = new MenuModel("Noninvazív lélegeztetés", false, false, 7);
+        childModel = new MenuModel("Noninvazív lélegeztetés", false, false, 43);
         childModelsList.add(childModel);
 
-        childModel = new MenuModel("COPD", false, false, 7);
+        childModel = new MenuModel("COPD", false, false, 44);
         childModelsList.add(childModel);
 
-        childModel = new MenuModel("Kapnográfia, kapnometria", false, false, 7);
+        childModel = new MenuModel("Kapnográfia, kapnometria", false, false, 45);
         childModelsList.add(childModel);
 
 
@@ -187,13 +206,13 @@ public class MainActivity extends AppCompatActivity
         }
 
         childModelsList = new ArrayList<>();
-        menuModel = new MenuModel("Circulation", true, true, 0); //Menu of Python Tutorials
+        menuModel = new MenuModel("Circulation", true, true, 5); //Menu of Python Tutorials
         headerList.add(menuModel);
-        childModel = new MenuModel("Akut Coronária Szindróma", false, false, 6);
+        childModel = new MenuModel("Akut Coronária Szindróma", false, false, 51);
         childModelsList.add(childModel);
-        childModel = new MenuModel("Akut Balszívfél elégtelenség", false, false, 6);
+        childModel = new MenuModel("Akut Balszívfél elégtelenség", false, false, 52);
         childModelsList.add(childModel);
-        childModel = new MenuModel("Cardioverzió", false, false, 6);
+        childModel = new MenuModel("Cardioverzió", false, false, 53);
         childModelsList.add(childModel);
 
         if (menuModel.hasChildren) {
@@ -201,13 +220,13 @@ public class MainActivity extends AppCompatActivity
         }
 
         childModelsList = new ArrayList<>();
-        menuModel = new MenuModel("Disability", true, true, 0); //Menu of Python Tutorials
+        menuModel = new MenuModel("Disability", true, true, 6); //Menu of Python Tutorials
         headerList.add(menuModel);
-        childModel = new MenuModel("Görcsroham", false, false, 6);
+        childModel = new MenuModel("Görcsroham", false, false, 61);
         childModelsList.add(childModel);
-        childModel = new MenuModel("Sepszis", false, false, 6);
+        childModel = new MenuModel("Sepszis", false, false, 62);
         childModelsList.add(childModel);
-        childModel = new MenuModel("Folyadékterápia és keringéstámogatás", false, false, 6);
+        childModel = new MenuModel("Folyadékterápia és keringéstámogatás", false, false, 63);
         childModelsList.add(childModel);
 
         if (menuModel.hasChildren) {
@@ -215,9 +234,9 @@ public class MainActivity extends AppCompatActivity
         }
 
         childModelsList = new ArrayList<>();
-        menuModel = new MenuModel("Exposure", true, true, 0); //Menu of Python Tutorials
+        menuModel = new MenuModel("Exposure", true, true, 7); //Menu of Python Tutorials
         headerList.add(menuModel);
-        childModel = new MenuModel("Rögzítések", false, false, 6);
+        childModel = new MenuModel("Rögzítések", false, false, 71);
         childModelsList.add(childModel);
 
         if (menuModel.hasChildren) {
@@ -259,15 +278,27 @@ public class MainActivity extends AppCompatActivity
                     Intent intent;
                     switch (a) {
 
-                        case (2):
+                        case (44):
                             intent = new Intent(MainActivity.this, Acticity02.class);
                             startActivity(intent);
                             break;
-                        case (3):
+                        case (32):
                             intent = new Intent(MainActivity.this, Avtivity03.class);
+
+
+
+
                             startActivity(intent);
+
+
+//                            ActivityOptions options =
+  //                                  ActivityOptions.makeCustomAnimation(MainActivity.this, R.anim.unzoom_in,R.anim.unzoom_in);
+    //                        MainActivity.this.startActivity(intent, options.toBundle());
+                          //  startActivity(intent);
+
+
                             break;
-                        case (4):
+                        case (41):
                             intent = new Intent(MainActivity.this, Acticity02.class);
                             startActivity(intent);
                             break;
@@ -275,7 +306,7 @@ public class MainActivity extends AppCompatActivity
                             intent = new Intent(MainActivity.this, AbcdeActivity.class);
                             startActivity(intent);
                             break;
-                        case (99):
+                        case (21):
                             intent = new Intent(MainActivity.this, MedActivity.class);
                             startActivity(intent);
                             break;
@@ -290,6 +321,8 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
+
+
 }
 
 

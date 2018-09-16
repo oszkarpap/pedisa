@@ -20,6 +20,11 @@
             android:layout_height="match_parent"
             android:layout_alignParentTop="true" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/omsz_logo"/>
+
     </RelativeLayout>
 
 
@@ -46,6 +51,7 @@
             <ExpandableListView
 
                 android:id="@+id/expandableListView"
+                android:transitionName="@string/aaaa"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

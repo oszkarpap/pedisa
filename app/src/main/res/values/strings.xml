@@ -46,6 +46,12 @@
     <string name="settings">beállítások</string>
     <string name="perfusor_calc">Perfúzor kalkulátor</string>
 
+
+
+    <string name="aaaa">transitionTitleNav</string>
+
+
+
     <string name="action_sign_in_short">Regisztráció</string>
     <string name="email">Email</string>
     <string name="minimum_password">Legalább 6 karakter legyen, így túl rövid</string>
@@ -60,19 +66,19 @@
     <string name="hint_email">E-mail</string>
     <string name="hint_password">jelszó</string>
     <string name="hint_name">Teljes név</string>
-    <string name="btn_login">BEJELENTKEZÉS</string>
-    <string name="btn_link_to_register">REGISZTRÁCIÓ</string>
+    <string name="btn_login">Bejelentkezés</string>
+    <string name="btn_link_to_register"> Regisztráció </string>
     <string name="btn_link_to_login">Már regisztráltam, bejelentkezés</string>
     <string name="title_activity_reset_password">Új jelszó</string>
     <string name="btn_forgot_password">Elfelejtettem a jelszavam</string>
-    <string name="btn_reset_password">Ój jelszó</string>
-    <string name="btn_back"><![CDATA[<< Back]]></string>
+    <string name="btn_reset_password">Új jelszó küldése </string>
+    <string name="btn_back"><![CDATA[<< Vissza]]></string>
     <string name="hint_new_email">Új e-mail</string>
     <string name="btn_change">CSERE</string>
     <string name="btn_send">ELTÁVOLÍTÁS</string>
     <string name="btn_sign_out">KIJELENTKEZÉS</string>
     <string name="lbl_forgot_password">Elfelejtett jelszó?</string>
-    <string name="forgot_password_msg">Nézze meg az e-mail címét</string>
+    <string name="forgot_password_msg">Adja meg az e-mail címét</string>
     <string name="prompt_password">gyors jelszó</string>
     <string name="btn_remove">eltávolítás</string>
     <string name="title_activity_bottom">BottomActivity</string>

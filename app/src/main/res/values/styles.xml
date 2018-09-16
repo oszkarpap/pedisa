@@ -11,6 +11,9 @@
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:textColor">@color/bg_color</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:shape">rectangle</item>
 
     </style>
 
@@ -22,6 +25,20 @@
     <style name="Theme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
+
+    </style>
+
+    <style name="MyCollapsingToolbar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowContentTransitions">true</item>
+
+
+
+    </style>
+
+    <style name="LoginStyle" parent="Base.TextAppearance.AppCompat">
 
 
     </style>

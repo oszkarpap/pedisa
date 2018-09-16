@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -9,13 +10,17 @@
         android:layout_width="match_parent"
         android:fitsSystemWindows="true">
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/ctl"
+            android:id="@+id/collapsingTollbar"
+            app:collapsedTitleTextAppearance="@style/MyCollapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:contentScrim="@color/colorPrimary"
             android:fitsSystemWindows="true"
-            app:title="My Flight">
+            app:titleEnabled="true"
+            android:transitionName="@string/aaaa"
+            app:expandedTitleTextAppearance="@style/MyCollapsingToolbar"
+            app:title="Prehospitális vizsgálat sorrendje">
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -50,18 +55,27 @@
             android:clipChildren="false"
             tools:context="com.alessandrosperotti.expandablecardviewexample.MainActivity"
             android:background="#FAFAFA">
-
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:id="@+id/mobile_phone"
+                app:expandOnClick="true"
+                app:title="Mobiltelefonszám"
+                app:inner_view="@layout/moblie_phone"></com.alespero.expandablecardview.ExpandableCardView>
 
             <com.alespero.expandablecardview.ExpandableCardView
                 android:id="@+id/profile"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:title="Passengers"
-                app:icon="@drawable/ic_adult_avatar_24dp"
                 app:inner_view="@layout/passengers"
                 app:expandOnClick="true" />
 
@@ -69,12 +83,11 @@
                 android:id="@+id/location"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:title="Location"
-                app:icon="@drawable/ic_menu_camera"
                 app:inner_view="@layout/location"
                 app:expandOnClick="true"/>
 
@@ -82,12 +95,11 @@
                 android:id="@+id/dates"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:title="Calendar"
-                app:icon="@drawable/ic_home_black_24dp"
                 app:inner_view="@layout/dates"
                 app:expandOnClick="true"
                 app:animationDuration="900"/>
