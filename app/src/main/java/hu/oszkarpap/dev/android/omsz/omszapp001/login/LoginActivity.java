@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Jelszó!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

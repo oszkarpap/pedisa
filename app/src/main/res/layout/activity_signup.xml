@@ -42,8 +42,12 @@
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/etPasswordLayout"
+            app:passwordToggleDrawable="@drawable/ic_password_visibility_selector"
 
+            app:passwordToggleTint="@color/colorAccent"
+            app:passwordToggleEnabled="true">
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
@@ -56,8 +60,34 @@
                 android:maxLines="1"
                 android:singleLine="true"
                 android:textColor="@android:color/white" />
-
         </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etRepasswordLayout"
+            app:passwordToggleDrawable="@drawable/ic_password_visibility_selector"
+
+            app:passwordToggleTint="@color/colorAccent"
+            app:passwordToggleEnabled="true">
+            <EditText
+                android:id="@+id/repassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusableInTouchMode="true"
+                android:hint="@string/repassword"
+                android:imeActionId="@+id/login"
+                android:imeOptions="actionUnspecified"
+                android:inputType="numberPassword"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@android:color/white" />
+        </android.support.design.widget.TextInputLayout>
+
+
+
+
+
 
         <Button
             android:id="@+id/sign_up_button"

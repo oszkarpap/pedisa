@@ -96,5 +96,6 @@
     <string name="toolbar_title">Contacts</string>
     <string name="action_search">Search</string>
     <string name="search_hint">Type name…</string>
+    <string name="repassword">jelszó ismét</string>
 
 </resources>

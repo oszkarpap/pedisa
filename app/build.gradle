@@ -18,6 +18,10 @@ android {
         }
     }
 
+    ext{
+        supportLibraryVersion = '23.4.0'
+    }
+
     sourceSets {
         main {
             assets.srcDirs = ['src/main/assets', 'src/main/assets/']
