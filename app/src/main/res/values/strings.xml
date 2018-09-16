@@ -54,7 +54,7 @@
 
     <string name="action_sign_in_short">Regisztráció</string>
     <string name="email">Email</string>
-    <string name="minimum_password">Legalább 6 karakter legyen, így túl rövid</string>
+    <string name="minimum_password">Minimum 6 karakter!</string>
     <string name="auth_failed">Sikertelen azonosítás</string>
     <string name="change_email">E-mail csere</string>
     <string name="change_password">jelszó csere</string>
