@@ -28,8 +28,13 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
     @Override
     public void onBindViewHolder(MedicationViewHolder holder, int position) {
         holder.txtMedName.setText(dataList.get(position).getMedName());
-        holder.txtMedEmail.setText(dataList.get(position).getMedEmail());
-        holder.txtMedPhone.setText(dataList.get(position).getMedPhone());
+        holder.txtmedAgent.setText(dataList.get(position).getMedAgent());
+        holder.txtMedPack.setText(dataList.get(position).getMedPack());
+        holder.txtMedIndication.setText(dataList.get(position).getMedIndication());
+        holder.txtMedContra.setText(dataList.get(position).getMedContra());
+        holder.txtMedAdultDose.setText(dataList.get(position).getMedAdultDose());
+        holder.txtMedChildDose.setText(dataList.get(position).getMedChildDose());
+
     }
 
     @Override
@@ -39,13 +44,17 @@ public class MedicationAdapter extends RecyclerView.Adapter<MedicationAdapter.Me
 
     class MedicationViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtMedName, txtMedEmail, txtMedPhone;
+        TextView txtMedName, txtmedAgent, txtMedPack, txtMedIndication, txtMedContra, txtMedAdultDose, txtMedChildDose;
 
         MedicationViewHolder(View itemView) {
             super(itemView);
             txtMedName = (TextView) itemView.findViewById(R.id.txt_med_name);
-            txtMedEmail = (TextView) itemView.findViewById(R.id.txt_med_email);
-            txtMedPhone = (TextView) itemView.findViewById(R.id.txt_med_phone);
+            txtmedAgent = (TextView) itemView.findViewById(R.id.txt_med_agent);
+            txtMedPack = (TextView) itemView.findViewById(R.id.txt_med_pack);
+            txtMedIndication = (TextView) itemView.findViewById(R.id.txt_med_indication);
+            txtMedContra = (TextView) itemView.findViewById(R.id.txt_med_contra);
+            txtMedAdultDose = (TextView) itemView.findViewById(R.id.txt_med_adult_dose);
+            txtMedChildDose = (TextView) itemView.findViewById(R.id.txt_med_child_dose);
         }
     }
 }

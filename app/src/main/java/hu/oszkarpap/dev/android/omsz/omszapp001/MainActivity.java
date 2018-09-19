@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.util.Pair;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,9 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.TextView;
 
-import com.alespero.expandablecardview.ExpandableCardView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -31,6 +27,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.medication.MedActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.AbcdeActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.Acticity02;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.Avtivity03;
+import hu.oszkarpap.dev.android.omsz.omszapp001.parameters.BottomActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.perfusor.PerfusorActivity;
 
 

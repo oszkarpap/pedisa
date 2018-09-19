@@ -1,8 +1,6 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.perfusor;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -25,7 +23,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-import hu.oszkarpap.dev.android.omsz.omszapp001.BottomActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.parameters.BottomActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.MainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;

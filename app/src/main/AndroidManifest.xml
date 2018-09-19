@@ -43,8 +43,20 @@
             android:label="Rendszermenű"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".BottomActivity"
+            android:name=".parameters.BottomActivity"
             android:label="@string/parameters"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".parameters.AdultActivity"
+            android:label="Felnőtt paraméterek"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".parameters.ChildActivity"
+            android:label="Gyermek paraméterek"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".parameters.BabyActivity"
+            android:label="Csecsemő paraméterek"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".perfusor.PerfusorActivity"
@@ -55,12 +67,14 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".medication.MedActivity"
+            android:label="Rendszeresített gyógyszerek"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
-        <activity android:name=".nav_view_activity.AbcdeProtokollActivity"></activity>
+        <activity android:name=".nav_view_activity.AbcdeProtokollActivity" />
+        <activity android:name=".tryActivity"></activity>
     </application>
 
 </manifest>
