@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- segítség szükségességének megítélése, sz.e. segélykocsi hívása"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- 360°-os hozzáférhetőség biztosítása"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- a ruházat eltávolítása/levágása a vizsgálathoz"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- oxigénterápia, egyszerű légúti segédeszközök előkészítése, behelyezése"/>
+   <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- monitorozás (amennyiben a kimentés nem akadályozza)"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- indokolt esetben - és kompetencia birtokában - vénabiztosítás"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

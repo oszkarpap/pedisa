@@ -20,6 +20,7 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.alespero.expandablecardview.ExpandableCardView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,13 +47,14 @@ public class MainActivity extends AppCompatActivity
     List<MenuModel> headerList = new ArrayList<>();
     HashMap<MenuModel, List<MenuModel>> childList = new HashMap<>();
     private Intent intent;
-
+    private FirebaseAuth auth;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         overridePendingTransition(R.anim.bounce,0);
+        auth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -92,6 +94,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
         return true;
     }
 
@@ -115,9 +118,13 @@ public class MainActivity extends AppCompatActivity
             intent = new Intent(MainActivity.this,PerfusorActivity.class);
             startActivity(intent);
         }
-        if (id == R.id.menu_log_out) {
+        if (id == R.id.menu_settings) {
             intent = new Intent(MainActivity.this,LoginMainActivity.class);
             startActivity(intent);
+        }
+        if (id == R.id.menu_log_out) {
+            auth.signOut();
+            finish();
         }
 
 

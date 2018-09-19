@@ -18,7 +18,7 @@ android {
         }
     }
 
-    ext{
+    ext {
         supportLibraryVersion = '23.4.0'
     }
 

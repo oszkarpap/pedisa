@@ -1,5 +1,6 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.perfusor;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -22,15 +23,25 @@ import android.content.res.Resources.Theme;
 
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
+import hu.oszkarpap.dev.android.omsz.omszapp001.BottomActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.MainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.medication.MedActivity;
 
 public class PerfusorActivity extends AppCompatActivity {
+
+
+    private FirebaseAuth auth;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfusor);
-
+        auth = FirebaseAuth.getInstance();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -60,14 +71,7 @@ public class PerfusorActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
     }
 
@@ -75,21 +79,44 @@ public class PerfusorActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_perfusor, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
+        menu.getItem(4).setTitle("Főablak");
+
         return true;
+
+
+
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected (MenuItem item){
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        if (id == R.id.menu_medication) {
+            intent = new Intent(PerfusorActivity.this, MedActivity.class);
+            startActivity(intent);
         }
+        if (id == R.id.menu_parameters) {
+            intent = new Intent(PerfusorActivity.this, BottomActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.menu_perfusor) {
+            intent = new Intent(PerfusorActivity.this, PerfusorActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.menu_settings) {
+            intent = new Intent(PerfusorActivity.this, LoginMainActivity.class);
+            startActivity(intent);
+        }
+        if (id== R.id.menu_log_out) {
+            intent = new Intent(PerfusorActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+
 
         return super.onOptionsItemSelected(item);
     }

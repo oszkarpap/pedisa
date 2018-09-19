@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Egyéb vizsgálatok:"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- Testhömérséklet megitélése tapintással (súlyos hipotermia-magas láz kizárása)"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- Egyéb célzott vizsgálatok: "
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- 12-es EKG"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- Szívhang"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- A has vizsgálata tapintással"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_green"
+        android:text="- Ödéma, anasarca felismerése"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_green"
+        android:text="- Sérülés keresése olyan betegnél, akit nem sérültként vizsgálunk"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_green"
+        android:text="- Körülmények vizsgálata"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_green"
+        android:text="- Anamnézis felvétele (SAMPLE) "/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- Hömérsékelt mérése műszerrel "/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_orange"
+        android:text="ABCD problémák elhárítása esetén, ha elég idő áll rendelkezésre, vagy út közben:"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_orange"
+        android:text="- A hát vizsgálata egyedül penetráló trauma, ill. annak gyanúja esetén szükséges"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_orange"
+        android:text="-További sérülések, például disztális végtag-törések, sebek felismerése"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_red"
+        android:text="(12 elvezetéses EKG készítése súlyos sérült esetén az időveszteség és a következmények hiánya miatt
+nem indokolt)"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- kihülés elleni védelem biztosítása"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- kihülés elleni védelem biztosítása"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- kihülés elleni védelem biztosítása"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

@@ -1,110 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
-        android:layout_height="252dp"
         android:layout_width="match_parent"
+        android:layout_height="252dp"
         android:fitsSystemWindows="true">
+
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsingTollbar"
-            app:collapsedTitleTextAppearance="@style/MyCollapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="@color/colorPrimary"
             android:fitsSystemWindows="true"
-            app:titleEnabled="true"
             android:transitionName="@string/aaaa"
+            app:collapsedTitleTextAppearance="@style/MyCollapsingToolbar"
+            app:contentScrim="@color/colorPrimary"
             app:expandedTitleTextAppearance="@style/MyCollapsingToolbar"
-            app:title="Prehospitális vizsgálat sorrendje">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:title="Prehospitális vizsgálat sorrendje"
+            app:titleEnabled="true">
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@mipmap/abcde"
-                app:layout_collapseMode="parallax"
-                app:layout_collapseParallaxMultiplier="0.7"
                 android:adjustViewBounds="true"
                 android:fitsSystemWindows="true"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                android:src="@mipmap/abcde"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7" />
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_height="?attr/actionBarSize"
                 android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
                 android:theme="@style/AppTheme"
-                app:layout_collapseMode="pin"/>
+                app:layout_collapseMode="pin" />
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:paddingBottom="20dp"
-            android:orientation="vertical"
+            android:background="#FAFAFA"
             android:clipChildren="false"
-            tools:context="com.alessandrosperotti.expandablecardviewexample.MainActivity"
-            android:background="#FAFAFA">
+            android:orientation="vertical"
+
+
+            android:paddingBottom="20dp"
+            tools:context="com.alessandrosperotti.expandablecardviewexample.MainActivity">
+
             <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/abcde_hatter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:id="@+id/mobile_phone"
                 app:expandOnClick="true"
-                app:title="Mobiltelefonszám"
-                app:inner_view="@layout/moblie_phone"></com.alespero.expandablecardview.ExpandableCardView>
+                app:inner_view="@layout/abcde_hatter"
+                app:title="Háttér" />
 
             <com.alespero.expandablecardview.ExpandableCardView
-                android:id="@+id/profile"
+                android:id="@+id/abcde_cel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:title="Passengers"
-                app:inner_view="@layout/passengers"
-                app:expandOnClick="true" />
-
-            <com.alespero.expandablecardview.ExpandableCardView
-                android:id="@+id/location"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:title="Location"
-                app:inner_view="@layout/location"
-                app:expandOnClick="true"/>
-
-            <com.alespero.expandablecardview.ExpandableCardView
-                android:id="@+id/dates"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:title="Calendar"
-                app:inner_view="@layout/dates"
                 app:expandOnClick="true"
-                app:animationDuration="900"/>
+                app:inner_view="@layout/abcde_cel"
+                app:title="Cél" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/abcde_elso_benyomas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/abcde_elso_benyomas"
+                app:title="Első benyomás" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/abcde_resuscitativ"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/abcde_resuscitativ"
+                app:title="Resuscitativ" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/abcde_kritikus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/abcde_kritikus"
+                app:title="Kritikus állapotú beteg ABCDE vizsgálata" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/abcde_legfontosabb_par_tev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/abcde_legofntosabb_par_tev"
+                app:title="Legfontosabb párhuzamos tevékenységek" />
+
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/abcde_a_vizsgalat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/abcde_a_vizsgalat"
+                app:title="Airway " />
+
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/abcde_b_vizsgalat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/abcde_b_vizsgalat"
+                app:title="Breathing " />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/abcde_c_vizsgalat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/abcde_c_vizsgalat"
+                app:title="Circulation " />
+
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/abcde_d_vizsgalat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/abcde_d_vizsgalat"
+                app:title="Disability " />
+
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/abcde_e_vizsgalat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/abcde_e_vizsgalat"
+                app:title="Exposure / Environmental " />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/abcde_egyertelmuen_abcde_stabil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/abcde_egyertelmuen_abcde_stabil"
+                app:title="Egyértelműen ABCDE stabil " />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/abcde_a_kiegeszites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/abcde_a_kiegeszites"
+                app:title="Kiegészítés " />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/abcde_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/abcde_guideline"
+                app:title="Guideline " />
+
 
         </LinearLayout>
+
 
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

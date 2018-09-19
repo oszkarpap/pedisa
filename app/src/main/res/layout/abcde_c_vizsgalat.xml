@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_green"
+        android:text="Vizsgálat elemei:"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_green"
+        android:text="1. Bőrszín, hömérséklet, nedvesség"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_green"
+        android:text="2. Pulzus"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_green"
+        android:text="3. CRT"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_green"
+        android:text="- A bőr vizsgálata megtekintéssel és tapintással (sápadt, márványozott, hűvös - meleg, száraz - verejtékes)"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_green"
+        android:text="- Perifériás pulzus tapintása, tapintható-e"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_red"
+        android:text="Hiányában azonnal ellenőrizni kell a centrális pulzust!"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_green"
+        android:text="- Frekvencia (6 sec x 10, kvalitása, ritmusos-e)"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_red"
+        android:text="- Kapilláris újratelődési idő, 5 sec nyomás a körömágyon vagy szegycsonton (2 sec fölött kóros)"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- Indokolt esetben - és kompentencia birtokában - vénabiztosítás a korai gyógyszer és folyadékterápia végett"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- EKG monitor (4 eres monitor, öntapadós elektrodákkal a vállra és csípőkre)"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- Vérnyomásmérés (mérési intervallum 2 min-re állítása)"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- Vérnyomásmérés (mérési intervallum 2 min-re állítása)"/>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_orange"
+        android:text="- Jelentős külső vérzés felismerése és és csillapítása, ha még nem történt meg"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_orange"
+        android:text="- Hosszú csöves csontok töréseinek felismerése"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_orange"
+        android:text="- Medence megítélése (mechanizmus, külsérelmi nyomok, aszimetria )"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_red"
+        android:text="- A has itt megtapintható, de az üregi vérzés negatív tapintási lelet mellett sem zárható ki"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- Külső vérzés csillapítása direkt nyomással, nyomókötéssel"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- Femurtörés esetén azonnali és folyamatos manuális húzás (sz.sz. analgézia után)"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- a sérült csomagolásához sz.e. medencerögzítő, illetve húzósín, továbbá buborékfólia, lapáthordágy előkészítése"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- a sérült csomagolásához sz.e. medencerögzítő, illetve húzósín, továbbá buborékfólia, lapáthordágy előkészítése"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- a sérült csomagolásához sz.e. medencerögzítő, illetve húzósín, továbbá buborékfólia, lapáthordágy előkészítése"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_blue"
+        android:text="- a sérült csomagolásához sz.e. medencerögzítő, illetve húzósín, továbbá buborékfólia, lapáthordágy előkészítése"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

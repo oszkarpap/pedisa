@@ -25,14 +25,6 @@
 
         android:iconTintMode="screen"
         android:title="Csecsemő" />
-    <item
-        android:id="@+id/medicine"
-        android:checked="true"
-        app:showAsAction="withText"
-
-        android:icon="@drawable/ic_injection_24dp"
-        android:iconTintMode="screen"
-        android:title="Gyógyszerek" />
 
 
 </menu>

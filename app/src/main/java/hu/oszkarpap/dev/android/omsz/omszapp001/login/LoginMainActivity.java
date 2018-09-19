@@ -4,6 +4,7 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -22,7 +23,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 public class LoginMainActivity extends AppCompatActivity {
 
     private Button btnChangeEmail, btnChangePassword, btnSendResetEmail, btnRemoveUser,
-            changeEmail, changePassword, sendEmail, remove, signOut;
+            changeEmail, changePassword, sendEmail, remove;
 
     private EditText oldEmail, newEmail, password, newPassword;
     private ProgressBar progressBar;
@@ -65,7 +66,7 @@ public class LoginMainActivity extends AppCompatActivity {
         changePassword = (Button) findViewById(R.id.changePass);
         sendEmail = (Button) findViewById(R.id.send);
         remove = (Button) findViewById(R.id.remove);
-        signOut = (Button) findViewById(R.id.sign_out);
+
 
         oldEmail = (EditText) findViewById(R.id.old_email);
         newEmail = (EditText) findViewById(R.id.new_email);
@@ -112,7 +113,7 @@ public class LoginMainActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(LoginMainActivity.this, "E-mail cím megújítva!", Toast.LENGTH_LONG).show();
-                                        signOut();
+
                                         progressBar.setVisibility(View.GONE);
                                     } else {
                                         Toast.makeText(LoginMainActivity.this, "Sikertlen e-mail újítás!", Toast.LENGTH_LONG).show();
@@ -156,7 +157,7 @@ public class LoginMainActivity extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
                                             Toast.makeText(LoginMainActivity.this, "Jelszó megújítva!", Toast.LENGTH_SHORT).show();
-                                            signOut();
+
                                             progressBar.setVisibility(View.GONE);
                                         } else {
                                             Toast.makeText(LoginMainActivity.this, "Sikertelen jelszó újítás!", Toast.LENGTH_SHORT).show();
@@ -215,7 +216,10 @@ public class LoginMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
+
+
                 if (user != null) {
+
                     user.delete()
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -235,19 +239,11 @@ public class LoginMainActivity extends AppCompatActivity {
             }
         });
 
-        signOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signOut();
-            }
-        });
+
 
     }
 
-    //sign out method
-    public void signOut() {
-        auth.signOut();
-    }
+
 
     @Override
     protected void onResume() {

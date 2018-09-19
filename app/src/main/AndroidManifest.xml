@@ -44,7 +44,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".BottomActivity"
-            android:label="@string/parameters" />
+            android:label="@string/parameters"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".perfusor.PerfusorActivity"
             android:label="@string/title_activity_perfusor"
@@ -52,15 +53,14 @@
         <activity
             android:name=".nav_view_activity.AbcdeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".medication.MedActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-
-            >
+        <activity
+            android:name=".medication.MedActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
-
         </activity>
+        <activity android:name=".nav_view_activity.AbcdeProtokollActivity"></activity>
     </application>
 
 </manifest>

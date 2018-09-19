@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Amennyiben egy beteg kiérkezésünkkor járóképes és egész mondatokban, értelmesen képes kommunikálni,
+valószínűsíthetjük az ABCD stabilitást, tehát azt, hogy a légutak, a légzés, a keringés és az idegrendszer az adott
+pillanatban megfelelően működik ahhoz, hogy azonnali beavatkozás nélkül folytathassuk a helyszíni
+tájékozódást."
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- Beteg vizsgálatával párhuzamosan végezhetjük a célzott anamnézis felvételt."
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- Stabil betegeknél követhető az ellátó által megszokott,
+egyéni séma is, feltéve, hogy a vizsgálat szisztematikus és alapos, tehát semmilyen fontos részlet nem kerüli el
+az ellátó figyelmét."
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- Stabil betegeknél követhető az ellátó által megszokott,
+egyéni séma is, feltéve, hogy a vizsgálat szisztematikus és alapos, tehát semmilyen fontos részlet nem kerüli el
+az ellátó figyelmét."
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- Stabil betegeknél követhető az ellátó által megszokott,
+egyéni séma is, feltéve, hogy a vizsgálat szisztematikus és alapos, tehát semmilyen fontos részlet nem kerüli el
+az ellátó figyelmét."
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- Stabil betegeknél követhető az ellátó által megszokott,
+egyéni séma is, feltéve, hogy a vizsgálat szisztematikus és alapos, tehát semmilyen fontos részlet nem kerüli el
+az ellátó figyelmét."
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

@@ -43,13 +43,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="list_med">rendszeresített gyógyszerek</string>
-    <string name="settings">beállítások</string>
+    <string name="settings">Beállítások</string>
     <string name="perfusor_calc">Perfúzor kalkulátor</string>
 
 
-
     <string name="aaaa">transitionTitleNav</string>
-
 
 
     <string name="action_sign_in_short">Regisztráció</string>
@@ -97,5 +95,9 @@
     <string name="action_search">Search</string>
     <string name="search_hint">Type name…</string>
     <string name="repassword">jelszó ismét</string>
+
+    <string name="title_activity_abcde_fullscreen">AbcdeFullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>

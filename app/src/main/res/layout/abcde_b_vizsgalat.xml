@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Légutak vizsgálata 2 elemből áll:"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- Légúti hangok hallgatása szabad füllel"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="(erölködő/frusztrán légzőmozgás, horkoló, szörcsölő, stridor)"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text=" Fenyegetettségre utal: légúti égés, allergia gyanú, hanyatt fekvő eszméletlen"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Sz.e. azonnali beavatkozás az egyszerű légút-biztosítás eszközeivel"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Párhuzamos tevékenységek: "
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="-Manuális légút-biztosítás,"
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- Szívó előkészítése, használata"
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- Egyszerű légút-biztosító eszközök előkészítése/behelyezése"
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- Sz.e. stabil oldalfekvő helyzet"
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Mellkas megtekintése, áttapintása"
+        android:textColor="@color/text_orange"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_orange"
+        android:text="- Mozgás, kitérés megtekintése, lehetőleg a sérült lába felől"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_orange"
+        android:text="- Csontos crepitatio bordatörésre utal, gyakran töb borda is érintett"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_orange"
+        android:text="- Subcutan emphysema a PTX egyértelmű jele"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_red"
+        android:text="- Kritikus és hemodinamikailag instabil esetben a mellkas detenzionálás kötelező (intravénás kanül tűjével, majd thoracostómiával)"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textStyle="italic"
+        android:textColor="@color/text_red"
+        android:text="- Kritikus és hemodinamikailag instabil esetben a mellkas detenzionálás kötelező (intravénás kanül tűjével, majd thoracostómiával)"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>
