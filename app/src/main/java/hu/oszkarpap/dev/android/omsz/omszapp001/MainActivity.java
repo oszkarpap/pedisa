@@ -27,8 +27,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.medication.MedActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.AbcdeActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.Acticity02;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.Avtivity03;
-import hu.oszkarpap.dev.android.omsz.omszapp001.parameters.BottomActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.perfusor.PerfusorActivity;
+
 
 
 public class MainActivity extends AppCompatActivity
@@ -108,7 +107,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         }
         if (id == R.id.menu_parameters) {
-            intent = new Intent(MainActivity.this,BottomActivity.class);
+            intent = new Intent(MainActivity.this,ParametersActivity.class);
             startActivity(intent);
         }
         if (id == R.id.menu_perfusor) {

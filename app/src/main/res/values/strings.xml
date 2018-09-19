@@ -1,17 +1,16 @@
 <resources>
 
 
-    <string name="country_prompt">Choose a country</string>
+    <string name="medication_prompt">Válasszon készítményt</string>
 
-    <string-array name="country_arrays">
-        <item>Malaysia</item>
-        <item>United States</item>
-        <item>Indonesia</item>
-        <item>France</item>
-        <item>Italy</item>
-        <item>Singapore</item>
-        <item>New Zealand</item>
-        <item>India</item>
+    <string-array name="med_arrays">
+        <item>Tonogén</item>
+        <item>Noradrenalin</item>
+        <item>Dopamin</item>
+        <item>NitroPohl</item>
+        <item>Propofol</item>
+        <item>Cordarone</item>
+
     </string-array>
 
 

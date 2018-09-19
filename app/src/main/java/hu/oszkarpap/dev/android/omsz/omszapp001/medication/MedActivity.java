@@ -13,11 +13,13 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 
-import hu.oszkarpap.dev.android.omsz.omszapp001.parameters.BottomActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.MainActivity;
+
+import hu.oszkarpap.dev.android.omsz.omszapp001.ParametersActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.PerfusorActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.perfusor.PerfusorActivity;
+
 
 public class MedActivity extends AppCompatActivity {
 
@@ -94,7 +96,7 @@ public class MedActivity extends AppCompatActivity {
             startActivity(intent);
         }
         if (id == R.id.menu_parameters) {
-            intent = new Intent(MedActivity.this, BottomActivity.class);
+            intent = new Intent(MedActivity.this, ParametersActivity.class);
             startActivity(intent);
         }
         if (id == R.id.menu_perfusor) {

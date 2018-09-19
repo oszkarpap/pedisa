@@ -43,24 +43,8 @@
             android:label="Rendszermenű"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".parameters.BottomActivity"
-            android:label="@string/parameters"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".parameters.AdultActivity"
-            android:label="Felnőtt paraméterek"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".parameters.ChildActivity"
-            android:label="Gyermek paraméterek"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".parameters.BabyActivity"
-            android:label="Csecsemő paraméterek"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".perfusor.PerfusorActivity"
-            android:label="@string/title_activity_perfusor"
+            android:name=".PerfusorActivity"
+            android:label="Perfusor kalkulátor"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".nav_view_activity.AbcdeActivity"
@@ -74,7 +58,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".nav_view_activity.AbcdeProtokollActivity" />
-        <activity android:name=".tryActivity"></activity>
+        <activity android:name=".tryActivity" />
+        <activity android:name=".ParametersActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="Paraméterek"/>
     </application>
 
 </manifest>
