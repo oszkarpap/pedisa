@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A laringoscop mérete: "
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/rsi_laring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Laringoscop mérete"
+            android:inputType="numberDecimal"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Az alternatív laringoscop mérete: "
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/rsi_altLaring"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Alternativ méret"
+            android:inputType="numberDecimal"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Az ET tubus mérte "
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/rsi_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="ET mérete"
+            android:inputType="numberDecimal"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A bougie mérete: "
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/rsi_bugie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Bugie mérete"
+            android:inputType="numberDecimal"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Az alternatív ET mérete:"
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/rsi_altet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="alternativ ET mérete"
+            android:inputType="numberDecimal"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Az LMA mérete:"
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/rsi_lma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="LMA mérete"
+            android:inputType="numberDecimal"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A beteg testsúlya:"
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/rsi_midazolam_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Testsúly"
+            android:inputType="numberDecimal"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/rsi_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/text_blue"
+            android:text="Ketamin felezett dózisban?"
+            android:checked="false"/>
+
+        <Button
+            android:id="@+id/rsi_midazolam_btn"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calc"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="80dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/rsi_midazolam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Midazolam Adagja:  "
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/rsi_midazolam_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/rsi_midazolam_mg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" mg"
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/rsi_ket_dose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ketamin dózisa: "
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/rsi_ketamin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/rsi_ketamin_mg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" mg"
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/rsi_eto_dose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Etomidate dózisa: "
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/rsi_etomidate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/rsi_etomidate_mg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" mg"
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/rsi_szukci_dose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Szukcinilkolin dózisa: "
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/rsi_szukc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/rsi_szukc_mg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" mg"
+            android:textColor="@color/text_blue"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

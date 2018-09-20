@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Az RSI során a preoxigenizáció létfontosságú minden megtartott keringésű betegnél, mert:"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- tartalékot képez az indukált apnoe idejére, ezáltal"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- késlelteti az ETI (különösen a nehéz intubálás) során a hipoxémia kialakulását"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="A preoxigenizációt úgy végezzük, hogy a fent részletezett pozícióban szorosan a beteg arcára
+illeszkedő, oxigénforráshoz csatlakoztatott rezervoárral ellátott oxigénmaszkot alkalmazunk,
+nagy, legalább 12 l/min áramlással. A tökéletesen átjárható légút létfontosságú, ennek
+biztosítására a preoxigenizáció során légúti segédeszközöket (nazofaringeális és orofaringeális
+tubus, manuális áll-előemelés) alkalmazhatunk szükség szerint. Szükség esetén végezzünk
+körültekintő orr- és szájgarat leszívást"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- Ha a beteg spontán légzési tevékenysége nem elég hatékony a jó oxigenizáció
+eléréséhez, asszisztált maszkos-ballonos lélegeztetést alkalmazzunk 2 személyes
+technikával (ekkor a nazofaringeális és orofaringeális eszközök használata kötelező).
+Ebben az esetben crash ETI válik szükségessé."
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Folyadékpótlás:"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="A tananyagban részletezett ellenjavallatok hiányában az indukciót MEGELŐZŐEN 5 ml/kg
+krisztalloid infúzió adása szükséges gyors bólusban; szükség szerint ismételhető."
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Vazoaktív támogatás:"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Folyadékterápia ellenére hipotenzív betegek indukció előtt vazoaktív támogatásra
+szorulhatnak."
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                                                               "
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                                                               "
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                                                               "
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                                                               "
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                                                               "
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                                                               "
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+</LinearLayout>

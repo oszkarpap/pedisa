@@ -50,6 +50,10 @@
             android:name=".nav_view_activity.AbcdeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".nav_view_activity.RsiActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="RSI"/>
+        <activity
             android:name=".medication.MedActivity"
             android:label="Rendszeresített gyógyszerek"
             android:theme="@style/AppTheme.NoActionBar">
@@ -58,7 +62,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".nav_view_activity.AbcdeProtokollActivity" />
-        <activity android:name=".tryActivity" />
         <activity android:name=".ParametersActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:label="Paraméterek"/>

@@ -200,7 +200,7 @@
         android:padding="10dp"
         android:textStyle="italic"
         android:textColor="@color/text_blue"
-        android:text="- a sérült csomagolásához sz.e. medencerögzítő, illetve húzósín, továbbá buborékfólia, lapáthordágy előkészítése"/>
+        android:text="                                                                                                                 "/>
 
 
     <TextView
@@ -210,7 +210,7 @@
         android:padding="10dp"
         android:textStyle="italic"
         android:textColor="@color/text_blue"
-        android:text="- a sérült csomagolásához sz.e. medencerögzítő, illetve húzósín, továbbá buborékfólia, lapáthordágy előkészítése"/>
+        android:text="                                                                                                                 "/>
 
 
     <TextView
@@ -220,7 +220,7 @@
         android:padding="10dp"
         android:textStyle="italic"
         android:textColor="@color/text_blue"
-        android:text="- a sérült csomagolásához sz.e. medencerögzítő, illetve húzósín, továbbá buborékfólia, lapáthordágy előkészítése"/>
+        android:text="                                                                                                                 "/>
 
 
     <TextView

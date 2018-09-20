@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Minden olyan esetben, ahol megtartott keringésű, de nem egyértelműen ABCD stabil!"
-        android:textColor="@color/text_red"
+        android:text="Csekklista olvasása szigorú rend szerint:"
+        android:textColor="@color/text_green"
         android:textSize="15sp"
         android:textStyle="italic" />
 
@@ -17,8 +17,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Kulcselemek:"
-        android:textColor="@color/text_red"
+        android:text="A csekklista olvasása során az intubáló ellátó legalább fél kézzel tartja a beteg állát, fogja az
+oxigénmaszkot. Eközben meggyőződik arról, hogy a rezervoáros oxigénmaszk szorosan
+illeszkedik és a zsákja a légzés ütemében telődik, illetve ürül."
+        android:textColor="@color/text_green"
         android:textSize="15sp"
         android:textStyle="italic" />
 
@@ -26,7 +28,54 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Az első ABCDE vizsgálat mindig eszköz nélküli vizsgálat, a vizsgálatot a mev (általa felügyelt/oktatott) végezze"
+        android:text="A csekklista használatának céljai:"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- ellenőrzi, hogy minden szükséges felszerelés rendelkezésre áll és működőképes"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- biztosítja, hogy a beteg megfelelő pozícióban van az intubáláshoz"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- csökkenti a sikertelen ETI kockázatát"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- minden lépés olyan sorrendben történik, amilyen sorrendben az adott felszerelés
+felhasználásra kerül, így egyetlen eszköz sem marad ki"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+                                                           "
         android:textColor="@color/text_green"
         android:textSize="15sp"
         android:textStyle="italic" />
@@ -36,25 +85,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Vizsgálat során párhuzamos tevékenységek zajlanak (mev által delegálva)"
-        android:textColor="@color/text_blue"
-        android:textSize="15sp"
-        android:textStyle="italic" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="- minden KAB-nél történjen mielőbb 100% oxigén adása, nem visszalégző, rezervoáros maszkon át, nagy áramlással"
-        android:textColor="@color/text_red"
-        android:textSize="15sp"
-        android:textStyle="italic" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="- az eszközös vizsgálat nem késleltetheti/módosíthatja az eszköz nélküli vizsgálatot"
+        android:text="
+                                                           "
         android:textColor="@color/text_green"
         android:textSize="15sp"
         android:textStyle="italic" />
@@ -64,22 +96,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="                                                                                                        "
+        android:text="
+                                                           "
         android:textColor="@color/text_green"
         android:textSize="15sp"
         android:textStyle="italic" />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="                                                                                                         "
-        android:textColor="@color/text_green"
-        android:textSize="15sp"
-        android:textStyle="italic" />
-
-
 
 
 </LinearLayout>

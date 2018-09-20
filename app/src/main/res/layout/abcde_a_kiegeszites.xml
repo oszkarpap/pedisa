@@ -57,8 +57,7 @@ ismétlődik."
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text=" -Állapotváltozáskor, beavatkozás, vagy betegmozgatás után a szisztematikus vizsgálat az elejéről
-ismétlődik."
+        android:text="                                                                                                                 "
         android:textColor="@color/text_green"
         android:textSize="15sp"
         android:textStyle="italic" />
@@ -68,8 +67,7 @@ ismétlődik."
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text=" -Állapotváltozáskor, beavatkozás, vagy betegmozgatás után a szisztematikus vizsgálat az elejéről
-ismétlődik."
+        android:text="                                                                                                              "
         android:textColor="@color/text_green"
         android:textSize="15sp"
         android:textStyle="italic" />

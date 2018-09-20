@@ -1,41 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Légutak vizsgálata 2 elemből áll:"
+        android:text="Az egyszerű eszközökkel végzett légútbiztosítás meg kell, hogy előzzön minden RSI-t!"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Az RSI erős indikációi:"
         android:textColor="@color/text_green"
         android:textSize="15sp"
         android:textStyle="italic" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="- Légúti hangok hallgatása szabad füllel"
-        android:textColor="@color/text_green"
-        android:textSize="15sp"
-        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="(erölködő/frusztrán légzőmozgás, horkoló, szörcsölő, stridor)"
-        android:textColor="@color/text_green"
+        android:text="1. Elzáródott, vagy fenyegetett, egyszerű eszközökkel nem biztosítható légút"
+        android:textColor="@color/text_red"
         android:textSize="15sp"
         android:textStyle="italic" />
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text=" Fenyegetettségre utal: légúti égés, allergia gyanú, hanyatt fekvő eszméletlen"
+        android:text="2. Igazolt kritikus oxigenizációs zavar, súlyos heveny légzési elégtelenség"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="(Egyéni mérlegelés, gondos kockázat-előny elemzés és telefonos konzultáció mellett az
+intubáció egyéb indikációi is felállíthatók)"
         android:textColor="@color/text_red"
         android:textSize="15sp"
         android:textStyle="italic" />
@@ -44,16 +57,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Sz.e. azonnali beavatkozás az egyszerű légút-biztosítás eszközeivel"
-        android:textColor="@color/text_red"
+        android:text="A kockázat-előny elemzés legfontosabb elemei:"
+        android:textColor="@color/text_blue"
         android:textSize="15sp"
         android:textStyle="italic" />
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Párhuzamos tevékenységek: "
+        android:text="- a beteg anatómiai sajátosságainak értékelése a várhatóan nehéz ETI szempontjából (lásd
+függelék)"
         android:textColor="@color/text_blue"
         android:textSize="15sp"
         android:textStyle="italic" />
@@ -62,7 +77,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="-Manuális légút-biztosítás,"
+        android:text="- a személyi és tárgyi feltételek figyelembe vétele"
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- a kórfolyamat jellegének és dinamikájának értékelése"
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- a kórházba érkezés idejének becslése"
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- a szukcinilkolin ellenjavallatai (lásd később)"
         android:textColor="@color/text_blue"
         android:textSize="15sp"
         android:textStyle="italic" />
@@ -71,7 +116,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Szívó előkészítése, használata"
+        android:text="                                                           "
         android:textColor="@color/text_blue"
         android:textSize="15sp"
         android:textStyle="italic" />
@@ -80,78 +125,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Egyszerű légút-biztosító eszközök előkészítése/behelyezése"
+        android:text="                                                              "
         android:textColor="@color/text_blue"
         android:textSize="15sp"
         android:textStyle="italic" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="- Sz.e. stabil oldalfekvő helyzet"
-        android:textColor="@color/text_blue"
-        android:textSize="15sp"
-        android:textStyle="italic" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="Mellkas megtekintése, áttapintása"
-        android:textColor="@color/text_orange"
-        android:textSize="15sp"
-        android:textStyle="italic" />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:padding="10dp"
-        android:textStyle="italic"
-        android:textColor="@color/text_orange"
-        android:text="- Mozgás, kitérés megtekintése, lehetőleg a sérült lába felől"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:padding="10dp"
-        android:textStyle="italic"
-        android:textColor="@color/text_orange"
-        android:text="- Csontos crepitatio bordatörésre utal, gyakran töb borda is érintett"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:padding="10dp"
-        android:textStyle="italic"
-        android:textColor="@color/text_orange"
-        android:text="- Subcutan emphysema a PTX egyértelmű jele"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:padding="10dp"
-        android:textStyle="italic"
-        android:textColor="@color/text_red"
-        android:text="- Kritikus és hemodinamikailag instabil esetben a mellkas detenzionálás kötelező (intravénás kanül tűjével, majd thoracostómiával)"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:padding="10dp"
-        android:textStyle="italic"
-        android:textColor="@color/text_red"
-        android:text="                                                                                                                 "/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

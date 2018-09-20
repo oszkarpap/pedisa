@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Minden olyan esetben, ahol megtartott keringésű, de nem egyértelműen ABCD stabil!"
+        android:text="Az esetek többségében RSI előtt szedálásra nincs szükség.
+Fontos, hogy a szedatívum adása előtt kezeljük az agitáltság egyéb okait (fájdalom, hipoxia,
+metabolikus ok)."
         android:textColor="@color/text_red"
         android:textSize="15sp"
         android:textStyle="italic" />
@@ -17,7 +19,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Kulcselemek:"
+        android:text="A midazolam dózisa a küzdő, kezelhetetlen betegek RSI előtti szedálásához 0,02 mg/kg
+egyszeri dózis, 3 PERC után ismételhető. Súlyosan agitált betegeknél 3 percenként ismételve
+sem szabad, hogy a teljes dózis meghaladja a 0,1mg/kg-ot"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="(Az 5mg/1ml-es ampulla 5ml-es fecskendőbe, így 1mg/1ml a higítás, 2-3 perc a hatásbeállás, 2 óra a hatás vége) "
         android:textColor="@color/text_red"
         android:textSize="15sp"
         android:textStyle="italic" />
@@ -26,60 +40,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Az első ABCDE vizsgálat mindig eszköz nélküli vizsgálat, a vizsgálatot a mev (általa felügyelt/oktatott) végezze"
-        android:textColor="@color/text_green"
-        android:textSize="15sp"
-        android:textStyle="italic" />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="- Vizsgálat során párhuzamos tevékenységek zajlanak (mev által delegálva)"
-        android:textColor="@color/text_blue"
-        android:textSize="15sp"
-        android:textStyle="italic" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="- minden KAB-nél történjen mielőbb 100% oxigén adása, nem visszalégző, rezervoáros maszkon át, nagy áramlással"
+        android:text="                                                                          "
         android:textColor="@color/text_red"
         android:textSize="15sp"
         android:textStyle="italic" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="- az eszközös vizsgálat nem késleltetheti/módosíthatja az eszköz nélküli vizsgálatot"
-        android:textColor="@color/text_green"
-        android:textSize="15sp"
-        android:textStyle="italic" />
+
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="                                                                                                        "
+        android:text="A midazolam dózisa a küzdő, kezelhetetlen betegek RSI előtti szedálásához 0,02 mg/kg
+egyszeri dózis, 3 PERC után ismételhető. Súlyosan agitált betegeknél 3 percenként ismételve
+sem szabad, hogy a teljes dózis meghaladja a 0,1mg/kg-ot"
         android:textColor="@color/text_green"
         android:textSize="15sp"
         android:textStyle="italic" />
+
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="                                                                                                         "
+        android:text="
+
+                                                                                                 "
         android:textColor="@color/text_green"
         android:textSize="15sp"
         android:textStyle="italic" />
-
-
 
 
 </LinearLayout>

@@ -22,7 +22,7 @@ public class AbcdeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_abcde);
-        overridePendingTransition(R.anim.pull_in_left,0);
+        overridePendingTransition(R.anim.pull_in_left, R.anim.fade_out);
         collapsingToolbarLayout =  findViewById(R.id.collapsingTollbar);
         collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.white));
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.white));
@@ -43,7 +43,7 @@ public class AbcdeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.push_out_left,0);
+
 
 
     }

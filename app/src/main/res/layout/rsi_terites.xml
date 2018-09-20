@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="gyógyszerek felszívása az alábbi fecskendőkbe:"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- ketamine: 200 mg / 20 ml (20 ml-es fecskendő, hígítva) – sárga címke"
+        android:textColor="@color/text_orange"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="(etomidate indukció esetén: etomidate 20 mg / 10 ml hígítás nélkül)"
+        android:textColor="@color/text_orange"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- szukcinilkolin: 2 db. 2 ml-es, 100 mg/2ml (összesen: 200 mg) - piros-fekete
+címke"
+        android:textColor="@color/text_black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- rocuronium: 100 mg / 10 ml-es fecskendő - piros címke"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="crash ETI szükségességével fenyegető helyzetben az első feszívandó gyógyszer a
+- SZUKCINILKOLIN!"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="intubációs eszközök sárga zsákon kiterítve:"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text=" - endotracheális tubus, méret az intubáló ellátóval egyeztetve"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- másodlagos tubus ugyanígy, méret egyeztetve"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- bougie, a tubusnak megfelelő méretben"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- laringoszkópok: kipróbálva, lapoc méret az intubáló ellátóval egyeztetve"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- 20 ml-es fecskendő a tubusmandzsettához"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- filter + kapnográf adapter (csatlakoztatva a monitorhoz) megfelelő sorrendben
+összerakva"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- kapnográf bekapcsolva, (kolorimetrikus eszköz előkészítve)"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- tubusrögzítő szalag: az ápoló nyakában"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- ballon-szelep rezervoárral, lélegeztető maszk megfelelő méretben, külön"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="motoros szívó: kipróbálva, használatra készen, durva leszívó toldattal, a beteg feje
+mellett jobb oldalon. Másodlagos szívó előkészítve"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="oxigén: legalább egy teli palack + lehetőleg egy tartalék. Lehetőleg külön palack a
+preoxigenizáció 100%-os maszkjához, külön a ballon rezervoárjához csatlakoztatva"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="monitor: a beteg jobb oldalán, kb. a hordágy felénél, az ápoló és az intubáló ellátó
+számára is látható. Kapnográf csatlakoztatva, hogy bemelegedjen, EKG, SpO 2 , NIBP
+a betegen"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="NIBP automata mérésre állítva (1-2 perc), lehetőleg másik karon, mint a használatos
+véna"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="sikertelen ETI esetére készenlétben: laringeális maszk, sebészi légút készlet"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                                                             "
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                                                             "
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                                                             "
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                                                             "
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                                                             "
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                                                             "
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+</LinearLayout>

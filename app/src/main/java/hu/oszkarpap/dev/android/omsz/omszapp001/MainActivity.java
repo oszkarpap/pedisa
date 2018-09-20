@@ -27,7 +27,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.medication.MedActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.AbcdeActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.Acticity02;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.Avtivity03;
-
+import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.RsiActivity;
 
 
 public class MainActivity extends AppCompatActivity
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        overridePendingTransition(R.anim.bounce,0);
+        overridePendingTransition(R.anim.bounce,R.anim.fade_in);
         auth = FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -282,11 +282,11 @@ public class MainActivity extends AppCompatActivity
                     switch (a) {
 
                         case (44):
-                            intent = new Intent(MainActivity.this, Acticity02.class);
+                            intent = new Intent(MainActivity.this, RsiActivity.class);
                             startActivity(intent);
                             break;
                         case (32):
-                            intent = new Intent(MainActivity.this, Avtivity03.class);
+                            intent = new Intent(MainActivity.this, RsiActivity.class);
 
 
 
@@ -302,7 +302,7 @@ public class MainActivity extends AppCompatActivity
 
                             break;
                         case (41):
-                            intent = new Intent(MainActivity.this, Acticity02.class);
+                            intent = new Intent(MainActivity.this, AbcdeActivity.class);
                             startActivity(intent);
                             break;
                         case (11):

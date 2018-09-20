@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import hu.oszkarpap.dev.android.omsz.omszapp001.ActivityAnimator;
+
 import hu.oszkarpap.dev.android.omsz.omszapp001.MainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 

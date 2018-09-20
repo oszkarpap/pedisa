@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Telefon a konzultánsnak?"
+        android:textColor="@color/text_black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="A beteg pozíciója optimalizált?"
+        android:textColor="@color/text_black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Stifneck eltávolítva, vagy kinyitva"
+        android:textColor="@color/text_black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="MILS szükséges? ha igen: megfelelő?"
+        android:textColor="@color/text_black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Szorosan illeszkedő rezervoáros oxigénmaszk, rezervoár mozog a
+légzéssel"
+        android:textColor="@color/text_black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Oxigénpalack: még minimum félig"
+        android:textColor="@color/text_black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Tartalék oxigénpalack"
+        android:textColor="@color/text_black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="EKG monitor felhelyezve, bekapcsolva"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Kezdeti vérnyomás, monitor 2-3 perces mérésen"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Szaturáció folyamatosan ellenőrizve"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Kapnográf a monitorhoz csatlakoztatva, bekapcsolva"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Intravénás kanül átöblítve, átjárható"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="(Második vénás kanül szükségessége? Ha igen, átöblítve, átjárható )"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Ketamin dózisa:"
+            android:textColor="@color/text_black"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:id="@+id/rsi_l_ket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Etomidate dózisa:"
+            android:textColor="@color/text_black"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:id="@+id/rsi_l_eto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Szukcinilkolin dózisa:"
+            android:textColor="@color/text_black"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:id="@+id/rsi_l_szu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Laringoszkóp, lapoc mérete:"
+            android:textColor="@color/text_black"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+
+        <TextView
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:id="@+id/rsi_l_lar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Alternatív lapoc, mérete:"
+            android:textColor="@color/text_black"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:id="@+id/rsi_l_altl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Szívó működik, elhelyezve"
+        android:textColor="@color/text_black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Másodlagos szívó (kézi) működik"
+        android:textColor="@color/text_black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="ET tubus mérete:"
+            android:textColor="@color/text_red"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:id="@+id/rsi_l_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Bougie mérete"
+            android:textColor="@color/text_red"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:id="@+id/rsi_l_bou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Fecskendő mandzsettához csatlakoztatva"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Alternatív tubus mérete:"
+            android:textColor="@color/text_red"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:id="@+id/rsi_l_altet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Ballon-rezervoár oxigénhez csatlakoztatva, lélegeztető maszk
+külön"
+        android:textColor="@color/text_black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Légző kör: Filter, kapnográf adapter (+ kolorimetrikus eszköz)"
+        android:textColor="@color/text_black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Szalag tubusrögzítéséhez"
+        android:textColor="@color/text_black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="LMA, mérete:"
+            android:textColor="@color/text_black"
+            android:textSize="15sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:id="@+id/rsi_l_lma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Sebészi légút felszerelés"
+        android:textColor="@color/text_black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Orofaringeális és 2 nazofaringeális tubus – méretek:"
+        android:textColor="@color/text_black"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Azonnali thoracostomia szükséges?"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Gyógyszerek: ki adja, hova – sorrend – milliliter"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                                                         "
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+</LinearLayout>

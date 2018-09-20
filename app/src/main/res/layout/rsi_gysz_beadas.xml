@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Indukciós szer, majd relaxáns adása GYORSAN, EGYMÁS UTÁN, bólusban, beöblítve:"
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Indukciós szer:"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- ketamin 2 mg/kg – (max. 200 mg)"
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- ketamin 1 mg/kg keringési instabilitás, hipovolémia, rossz általános állapot, vagy
+megelőző szedatív gyógyszerelés esetén"
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- etomidate 0,3 mg/kg – (max. 20 mg), a ketamin ellenjavallatai esetén( súlyos, kockázatot jelentő hipertenzió;
+szívelégtelenség (keringési instabilitás esetén az etomidat dózisa is felezendő); preeclampsia, eclampsia"
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- Indukciós szer nélkül végezhető RSI súlyos opioid és/vagy szedatív toxidrómákban, vagy
+fennálló ekvivalens gyógyszer hatásban, ha a beteg mélyen eszméletlen."
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Izomrelaxáns:"
+        android:textColor="@color/text_red"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- szukcinilkolin 1,5 mg/kg (felnőtt esetén 100, 125, 150, 175 vagy 200 mg-ra
+kerekíthető) – max. 200 mg"
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- Annak ellenére, hogy a prehospitális ellátásban nem feltétlenül tisztázhatók,
+mellőzhetetlen a legfontosabb ellenjavallatok említése (súlyossági sorrendben): malignus hipertermia az anamnézisben,
+jelentős hiperkalémia alapos gyanúja (az anamnézisből következően, és/vagy EKG alapján, és/vagy friss laborvizsgálattal igazoltan),
+ harántlézió, egyéb okú kiterjedt, tartós izombénulás, izomdisztrófia,"
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- megfontolást, óvatosságot igényel a kolinerg toxidróma (szerves foszfát mérgezés)
+Ha ezek valamelyike kiderül, periarreszt helyzetben egy gyógyszer nélküli ETI kísérlet
+megengedett; egyébként eltekintünk az ETI-tól, más módszert választunk.
+Megfelelő készség és jártasság esetén nem depolarizáló izomrelaxáns (rocuronium 1
+mg/kg) használata telefonos konzultációhoz kötötten megengedett az indukcióhoz."
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+
+                                                                                                 "
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+
+                                                                                                 "
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+
+                                                                                                 "
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+
+                                                                                                 "
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+
+                                                                                                 "
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+
+                                                                                                 "
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+
+                                                                                                 "
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+
+                                                                                                 "
+        android:textColor="@color/text_blue"
+        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+</LinearLayout>

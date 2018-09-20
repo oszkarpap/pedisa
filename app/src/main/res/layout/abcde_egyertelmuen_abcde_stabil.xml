@@ -40,9 +40,9 @@ az ellátó figyelmét."
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Stabil betegeknél követhető az ellátó által megszokott,
-egyéni séma is, feltéve, hogy a vizsgálat szisztematikus és alapos, tehát semmilyen fontos részlet nem kerüli el
-az ellátó figyelmét."
+        android:text="
+
+                                           "
         android:textColor="@color/text_green"
         android:textSize="15sp"
         android:textStyle="italic" />
@@ -51,9 +51,9 @@ az ellátó figyelmét."
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Stabil betegeknél követhető az ellátó által megszokott,
-egyéni séma is, feltéve, hogy a vizsgálat szisztematikus és alapos, tehát semmilyen fontos részlet nem kerüli el
-az ellátó figyelmét."
+        android:text="
+
+                                           "
         android:textColor="@color/text_green"
         android:textSize="15sp"
         android:textStyle="italic" />
@@ -62,16 +62,22 @@ az ellátó figyelmét."
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Stabil betegeknél követhető az ellátó által megszokott,
-egyéni séma is, feltéve, hogy a vizsgálat szisztematikus és alapos, tehát semmilyen fontos részlet nem kerüli el
-az ellátó figyelmét."
+        android:text="
+
+                                           "
         android:textColor="@color/text_green"
         android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
 
+                                           "
+        android:textColor="@color/text_green"
+        android:textSize="15sp"
+        android:textStyle="italic" />
 
 </LinearLayout>
