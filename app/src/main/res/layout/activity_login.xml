@@ -13,15 +13,22 @@
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="@dimen/activity_horizontal_margin">
+        android:padding="16dp">
 
 
         <ImageView
-            android:layout_width="@dimen/logo_w_h"
-            android:layout_height="@dimen/logo_w_h"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="30dp"
             android:src="@mipmap/ic_launcher_foreground" />
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center|bottom"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
@@ -68,7 +75,6 @@
 
             android:textAllCaps="false"
             android:textStyle="normal"
-            android:textSize="20sp"
             android:textColor="@color/colorAccent" />
 
 
@@ -82,7 +88,6 @@
 
             android:textAllCaps="false"
             android:textStyle="normal"
-            android:textSize="20sp"
             android:textColor="@color/colorAccent" />
 
         <!-- Link to Login Screen -->
@@ -97,15 +102,8 @@
 
             android:textAllCaps="false"
             android:textStyle="normal"
-            android:textSize="20sp"
             android:textColor="@color/colorAccent"/>
     </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center|bottom"
-        android:layout_marginBottom="10dp"
-        android:visibility="gone" />
+
 </android.support.design.widget.CoordinatorLayout>

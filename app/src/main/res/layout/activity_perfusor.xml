@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="hu.oszkarpap.dev.android.omsz.omszapp001.MainActivity">
+    tools:context="hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:entries="@array/med_arrays"
-                android:prompt="@string/medication_prompt" />
+                 />
 
 
             <Button
@@ -49,8 +49,7 @@
                 android:layout_height="wrap_content"
                 android:text="Kiválasztva"
                 android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <TextView
@@ -61,15 +60,13 @@
             android:paddingRight="48dp"
             android:textAlignment="center"
             android:textColor="@color/text_green"
-            android:textSize="20sp"
             android:textStyle="italic" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingLeft="32dp"
-            >
+            android:paddingLeft="32dp">
 
             <EditText
                 android:id="@+id/perf_patient_weight"
@@ -85,8 +82,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="illetve"
-                android:textColor="@color/text_green"
-                android:textSize="20sp" />
+                android:textColor="@color/text_green" />
 
             <EditText
                 android:id="@+id/perf_dose"
@@ -102,8 +98,7 @@
                 android:layout_height="wrap_content"
                 android:text="Számit"
                 android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:textColor="@color/white" />
 
             <TextView
                 android:id="@+id/perf_result"
@@ -111,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:textColor="@color/text_green"
-                android:textSize="20sp"
+
                 android:textStyle="bold" />
         </LinearLayout>
 

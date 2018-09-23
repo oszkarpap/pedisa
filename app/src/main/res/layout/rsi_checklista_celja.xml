@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/_8sdp"
     android:orientation="vertical">
 
     <TextView
@@ -10,7 +11,6 @@
         android:padding="10dp"
         android:text="Csekklista olvasása szigorú rend szerint:"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -21,7 +21,6 @@
 oxigénmaszkot. Eközben meggyőződik arról, hogy a rezervoáros oxigénmaszk szorosan
 illeszkedik és a zsákja a légzés ütemében telődik, illetve ürül."
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -30,7 +29,6 @@ illeszkedik és a zsákja a légzés ütemében telődik, illetve ürül."
         android:padding="10dp"
         android:text="A csekklista használatának céljai:"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -39,7 +37,6 @@ illeszkedik és a zsákja a légzés ütemében telődik, illetve ürül."
         android:padding="10dp"
         android:text="- ellenőrzi, hogy minden szükséges felszerelés rendelkezésre áll és működőképes"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -48,7 +45,6 @@ illeszkedik és a zsákja a légzés ütemében telődik, illetve ürül."
         android:padding="10dp"
         android:text="- biztosítja, hogy a beteg megfelelő pozícióban van az intubáláshoz"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -57,7 +53,6 @@ illeszkedik és a zsákja a légzés ütemében telődik, illetve ürül."
         android:padding="10dp"
         android:text="- csökkenti a sikertelen ETI kockázatát"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -67,7 +62,6 @@ illeszkedik és a zsákja a légzés ütemében telődik, illetve ürül."
         android:text="- minden lépés olyan sorrendben történik, amilyen sorrendben az adott felszerelés
 felhasználásra kerül, így egyetlen eszköz sem marad ki"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -77,18 +71,6 @@ felhasználásra kerül, így egyetlen eszköz sem marad ki"
         android:text="
                                                            "
         android:textColor="@color/text_green"
-        android:textSize="15sp"
-        android:textStyle="italic" />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="
-                                                           "
-        android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
 
@@ -99,7 +81,48 @@ felhasználásra kerül, így egyetlen eszköz sem marad ki"
         android:text="
                                                            "
         android:textColor="@color/text_green"
-        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+                                                           "
+        android:textColor="@color/text_green"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
 

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/_8sdp"
     android:orientation="vertical">
 
     <TextView
@@ -10,7 +11,6 @@
         android:padding="10dp"
         android:text="A telefonos konzultációval nagyban tudjuk növelni a helyszíni RSI biztonságát"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -19,7 +19,6 @@
         android:padding="10dp"
         android:text="- a konzultáció (a periarreszt helyzet kivételével) minden RSI előtt kötelező"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -28,16 +27,38 @@
         android:padding="10dp"
         android:text="- periarreszt helyzet esetén ETI után telefonáljunk"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text= "                                                                                                             "
+        android:text="                                                                                                             "
         android:textColor="@color/text_green"
-        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                           "
+        android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
 

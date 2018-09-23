@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_8sdp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="A dozírozásban törekedni kell arra, hogy a relaxáns hatás a kórházi átadáson túlra a lehető
+legkevésbé húzódjék el, különösen akut balszívfél elégtelenség és stroke esetén!"
+        android:textColor="@color/text_red"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- rocuronium 0,5 mg/kg egyszeri bólusban (a tubus rögzítése után mielőbb) a tananyagban részletezett szempontok alapján, hemodinamikai instabilitást nem okoz, hatása 20 - 30 perc"
+        android:textColor="@color/text_green"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- igény szerint ismételhető (a szállítás várható idejének függvényében) azon betegeknél,
+akik várhatóan tartós lélegeztetésre szorulnak"
+        android:textColor="@color/text_green"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- szükség esetén (rövid szállítás) felezhető (0,25 mg/kg)"
+        android:textColor="@color/text_green"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- akut balszívfél elégtelenség és stroke esetén kisebb dózisok alkalmazandóak"
+        android:textColor="@color/text_green"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="- hatása a kórházban szükség szerint felfüggeszthető"
+        android:textColor="@color/text_green"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:id="@+id/rsi_rocu_adag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <Button
+        android:layout_marginLeft="@dimen/_64sdp"
+        android:id="@+id/rsi_rocu_button"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:text="Felezett adag?"
+        android:textColor="@color/white" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+                                                         "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+                                                         "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+                                                         "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+                                                         "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+</LinearLayout>

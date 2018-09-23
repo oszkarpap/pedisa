@@ -10,7 +10,6 @@
         android:padding="10dp"
         android:text="Légutak vizsgálata 2 elemből áll:"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -19,7 +18,6 @@
         android:padding="10dp"
         android:text="- Légúti hangok hallgatása szabad füllel"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -28,7 +26,6 @@
         android:padding="10dp"
         android:text="(erölködő/frusztrán légzőmozgás, horkoló, szörcsölő, stridor)"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -37,7 +34,6 @@
         android:padding="10dp"
         android:text=" Fenyegetettségre utal: légúti égés, allergia gyanú, hanyatt fekvő eszméletlen"
         android:textColor="@color/text_red"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -46,7 +42,6 @@
         android:padding="10dp"
         android:text="Sz.e. azonnali beavatkozás az egyszerű légút-biztosítás eszközeivel"
         android:textColor="@color/text_red"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -55,7 +50,6 @@
         android:padding="10dp"
         android:text="Párhuzamos tevékenységek: "
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -64,7 +58,6 @@
         android:padding="10dp"
         android:text="-Manuális légút-biztosítás,"
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -73,7 +66,6 @@
         android:padding="10dp"
         android:text="- Szívó előkészítése, használata"
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -82,7 +74,6 @@
         android:padding="10dp"
         android:text="- Egyszerű légút-biztosító eszközök előkészítése/behelyezése"
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -91,7 +82,6 @@
         android:padding="10dp"
         android:text="- Sz.e. stabil oldalfekvő helyzet"
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -100,58 +90,83 @@
         android:padding="10dp"
         android:text="Mellkas megtekintése, áttapintása"
         android:textColor="@color/text_orange"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Mozgás, kitérés megtekintése, lehetőleg a sérült lába felől"
         android:textColor="@color/text_orange"
-        android:text="- Mozgás, kitérés megtekintése, lehetőleg a sérült lába felől"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Csontos crepitatio bordatörésre utal, gyakran töb borda is érintett"
         android:textColor="@color/text_orange"
-        android:text="- Csontos crepitatio bordatörésre utal, gyakran töb borda is érintett"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Subcutan emphysema a PTX egyértelmű jele"
         android:textColor="@color/text_orange"
-        android:text="- Subcutan emphysema a PTX egyértelmű jele"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Kritikus és hemodinamikailag instabil esetben a mellkas detenzionálás kötelező (intravénás kanül tűjével, majd thoracostómiával)"
         android:textColor="@color/text_red"
-        android:text="- Kritikus és hemodinamikailag instabil esetben a mellkas detenzionálás kötelező (intravénás kanül tűjével, majd thoracostómiával)"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="                                                                                                                 "
         android:textColor="@color/text_red"
-        android:text="                                                                                                                 "/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+                                                                                                       "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+                                                                                                       "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+                                                                                                       "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
 
 
 </LinearLayout>

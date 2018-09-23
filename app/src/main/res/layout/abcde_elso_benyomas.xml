@@ -10,7 +10,6 @@
         android:padding="10dp"
         android:text="Helyszín biztonságos?"
         android:textColor="@color/text_red"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -19,7 +18,6 @@
         android:padding="10dp"
         android:text="- egyéni védőfelszerelés"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
 
@@ -29,7 +27,6 @@
         android:padding="10dp"
         android:text="- sz.e. azonnali kimentés"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -38,7 +35,6 @@
         android:padding="10dp"
         android:text="Megközelítés"
         android:textColor="@color/text_red"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -47,7 +43,6 @@
         android:padding="10dp"
         android:text="- bőrszín, légzésszám, mozgás, AVPU"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -56,7 +51,6 @@
         android:padding="10dp"
         android:text="Meghatározandó:"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -65,7 +59,6 @@
         android:padding="10dp"
         android:text="-Resuscitatív, kritikus, egyértelműen stabil ABCD állapot,"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -74,7 +67,6 @@
         android:padding="10dp"
         android:text="- valamint, hogy a beteg sérült-e,"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -83,7 +75,6 @@
         android:padding="10dp"
         android:text="- mi lehet a sérülés/megbetegedés megközelítő mechanizmusa"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
 
@@ -93,7 +84,6 @@
         android:padding="10dp"
         android:text="Sérülés gyanúja esetén kiegészítendő:"
         android:textColor="@color/text_orange"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
 
@@ -103,7 +93,6 @@
         android:padding="10dp"
         android:text="- cABCDE jelentős külső vérzés csillapítása direkt nyomással "
         android:textColor="@color/text_orange"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
 
@@ -113,7 +102,6 @@
         android:padding="10dp"
         android:text="- ccABCDE döntés a nyaki gerinc rögzítéséről (MILS), amennyiben a mechanizmus alapján sérülése nem zárható ki"
         android:textColor="@color/text_orange"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
 
@@ -123,7 +111,38 @@
         android:padding="10dp"
         android:text="- mindenkettő delegálható"
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+                                                                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+                                                                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+                                                                                                              "
+        android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
     <TextView

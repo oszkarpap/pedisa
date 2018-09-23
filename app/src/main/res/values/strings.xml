@@ -1,8 +1,7 @@
 <resources>
 
 
-    <string name="medication_prompt">Válasszon készítményt</string>
-
+    <!-- perfusor activity-->
     <string-array name="med_arrays">
         <item>Tonogén</item>
         <item>Noradrenalin</item>
@@ -13,56 +12,15 @@
 
     </string-array>
 
-
+    <!-- mainactivity-->
     <string name="app_name">OMSZ Applikáció</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Országos Mentőszolgálat</string>
     <string name="nav_header_subtitle">Prehospitális sérült- és betegellátást támogató applikáció</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
 
-    <string name="ARD">Akut asztmás roham</string>
-    <string name="NIV">Noninvazív pozítiv nyomású lélegeztetés</string>
-    <string name="ALS">MRT ERC ALS</string>
-    <string name="equipment">A beteg feltalálási helyére juttatandó felszerelés</string>
-    <string name="Analgesia">Analgesia és Szedáció</string>
-    <string name="copd">COPD</string>
-    <string name="ACS">Akut Koronária Szindróma</string>
-    <string name="airway">Egyszerű légútbiztosítás</string>
-    <string name="fluid_n_dr_support">Folyadékterápia és gyógyszeres keringéstámogatás</string>
-    <string name="convulsion">Görcsroham</string>
-    <string name="AHD">Akut Balszívfél Elégtelenség</string>
-    <string name="IND">Intranazális gyógyszerelés</string>
-    <string name="kapno">Kapnográfia és kapnometria</string>
-    <string name="CV">Cardioversio</string>
-    <string name="HP_HA">Kórház értesítése, Segélykocsi</string>
-    <string name="prev_hypo">Lehülésvédelem</string>
-    <string name="o2">Oxigén terápia</string>
-    <string name="abcde">Prehospitális vizsgálat eljárásrendje</string>
-    <string name="fixed">Rögzítések</string>
-    <string name="sepsis">Szepszis</string>
-    <string name="Crush">Sürgősségi intubáció</string>
-    <string name="phone_cons">Telefonos konzultáció</string>
-    <string name="ttekg">TTEKG</string>
-    <string name="airway_menu">Airway</string>
-    <string name="breathing_menu">Breathing</string>
-    <string name="reanimation_menu">reanimation</string>
-    <string name="circulation_menu">Circulation</string>
-    <string name="disability_menu">Disability</string>
-    <string name="medication">Gyógyszerek</string>
-    <string name="apgar">Apgar Skála</string>
-    <string name="pediatrics">Gyermek paraméterek</string>
-    <string name="perf_calc">Perfúzoros számítás</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="list_med">rendszeresített gyógyszerek</string>
-    <string name="settings">Beállítások</string>
-    <string name="perfusor_calc">Perfúzor kalkulátor</string>
-
-
-    <string name="aaaa">transitionTitleNav</string>
 
 
     <string name="action_sign_in_short">Regisztráció</string>
@@ -74,7 +32,6 @@
     <string name="send_password_reset_email">Új e-mail cím beállítása</string>
     <string name="remove_user">Fiók törlése</string>
     <string name="new_pass">Új jelszó</string>
-    <string name="title_activity_profile">Firebase</string>
     <string name="title_activity_login">Bejelentkezés</string>
     <string name="hint_email">E-mail</string>
     <string name="hint_password">jelszó</string>
@@ -85,7 +42,6 @@
     <string name="title_activity_reset_password">Új jelszó</string>
     <string name="btn_forgot_password">Elfelejtettem a jelszavam</string>
     <string name="btn_reset_password">Új jelszó küldése </string>
-    <string name="btn_back"><![CDATA[<< Vissza]]></string>
     <string name="hint_new_email">Új e-mail</string>
     <string name="btn_change">CSERE</string>
     <string name="btn_send">ELTÁVOLÍTÁS</string>
@@ -94,25 +50,13 @@
     <string name="forgot_password_msg">Adja meg az e-mail címét</string>
     <string name="prompt_password">gyors jelszó</string>
     <string name="btn_remove">eltávolítás</string>
-    <string name="title_activity_bottom">BottomActivity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+
     <string name="parameters">Paraméterek</string>
     <string name="log_out">Kijelentkezés</string>
     <string name="title_activity_perfusor">PerfusorActivity</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="tab_text_3">Tab 3</string>
 
-    <string name="toolbar_title">Contacts</string>
-    <string name="action_search">Search</string>
-    <string name="search_hint">Type name…</string>
+
     <string name="repassword">jelszó ismét</string>
 
-    <string name="title_activity_abcde_fullscreen">AbcdeFullscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>

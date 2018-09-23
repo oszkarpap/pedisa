@@ -1,6 +1,8 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity;
 
-import android.graphics.Color;
+import android.content.Intent;
+import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -10,17 +12,29 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.alespero.expandablecardview.ExpandableCardView;
+
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 
 
 public class RsiActivity extends AppCompatActivity {
 
     private CollapsingToolbarLayout collapsingToolbarLayout;
-    private CheckBox checkBox;
-    private EditText midazolamEt, rsi_lar, rsi_altlar, rsi_bou, rsi_et, rsi_altet, rsi_lma;
-    private TextView clet, claltet, clbou, cll, clal, cllma, clketa, cleto, clszu;
-    private TextView midazolamTv, midazolamMg, midazolam, ketamin, etomidate, szukci, ketaminMg, etomidateMg, szukciMg, ketoD, etoD, szukciD;
-    private Button midazolamBtn;
+
+    //adatok almenu
+    private TextView rsi_midazolam, rsi_ketamin, rsi_etomidate, rsi_szukci, rsi_rocueti;
+    private EditText laringoscopSize, alternativLaringoscopSize,etSize, alternativEtSize,bougieSize, lmaSize, patientWeight;
+    private CheckBox KetaminHalfDoseCB;
+
+    //checklista almenu
+    private TextView CLKetaDose,CLEtoDose, CLSzukciDose, CLLaringSize, CLAltLarSize, CLETSize, CLBougieSize, CLAltEtSize, CLLmaSize;
+
+
+    private TextView rsiRocuDose, rsiGyszAlt, rsiGyszAlt02;
+    private Button rsi_calculator, call_to_konzulens, rsiRocuBtn;
+    private Intent intent;
+
+    String midDoseS, ketaDoseS, etoDoseS, szukciDoseS, rocuDoseEtiS, text;
 
 
     @Override
@@ -32,150 +46,244 @@ public class RsiActivity extends AppCompatActivity {
         collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.white));
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.white));
 
-        checkBox = findViewById(R.id.rsi_checkbox);
-
-        midazolamEt = findViewById(R.id.rsi_midazolam_et);
-        midazolamTv = findViewById(R.id.rsi_midazolam_tv);
-        rsi_lar = findViewById(R.id.rsi_laring);
-        rsi_altlar = findViewById(R.id.rsi_altLaring);
-        rsi_bou = findViewById(R.id.rsi_bugie);
-        rsi_et = findViewById(R.id.rsi_et);
-        rsi_altet = findViewById(R.id.rsi_altet);
-        rsi_lma = findViewById(R.id.rsi_lma);
 
 
-        midazolam = findViewById(R.id.rsi_midazolam);
-        ketamin = findViewById(R.id.rsi_ketamin);
-        etomidate = findViewById(R.id.rsi_etomidate);
-        szukci = findViewById(R.id.rsi_szukc);
+        initRsi();
 
-        ketoD = findViewById(R.id.rsi_ket_dose);
-        etoD = findViewById(R.id.rsi_eto_dose);
-        szukciD = findViewById(R.id.rsi_szukci_dose);
+        initCheckList();
+
+        initRocoMenu();
 
 
-        midazolamBtn = findViewById(R.id.rsi_midazolam_btn);
-        midazolamMg = findViewById(R.id.rsi_midazolam_mg);
-
-        ketaminMg = findViewById(R.id.rsi_ketamin_mg);
-        etomidateMg = findViewById(R.id.rsi_etomidate_mg);
-        szukciMg = findViewById(R.id.rsi_szukc_mg);
-
-        clet = findViewById(R.id.rsi_l_et);
-        claltet = findViewById(R.id.rsi_l_altet);
-        clbou = findViewById(R.id.rsi_l_bou);
-        cll = findViewById(R.id.rsi_l_lar);
-        clal = findViewById(R.id.rsi_l_altl);
-        cllma = findViewById(R.id.rsi_l_lma);
-        clketa = findViewById(R.id.rsi_l_ket);
-        cleto = findViewById(R.id.rsi_l_eto);
-        clszu = findViewById(R.id.rsi_l_szu);
-
-        midazolamMg.setVisibility(View.INVISIBLE);
-        ketaminMg.setVisibility(View.INVISIBLE);
-        etomidateMg.setVisibility(View.INVISIBLE);
-        szukciMg.setVisibility(View.INVISIBLE);
-        midazolam.setVisibility(View.INVISIBLE);
-        ketamin.setVisibility(View.INVISIBLE);
-        etomidate.setVisibility(View.INVISIBLE);
-        szukci.setVisibility(View.INVISIBLE);
-        ketoD.setVisibility(View.INVISIBLE);
-        etoD.setVisibility(View.INVISIBLE);
-        szukciD.setVisibility(View.INVISIBLE);
 
 
-        midazolamBtn.setOnClickListener(new View.OnClickListener() {
+        callKonzulens();
+
+        rsiCalcBtn();
+
+
+
+
+
+    }
+
+    public void initRsi(){
+
+        //Az adatok almenűben lévő elemek implementálása
+
+        laringoscopSize = findViewById(R.id.rsi_laringoscopSize);
+        alternativLaringoscopSize = findViewById(R.id.rsi_alternativLaringoscopSize);
+        etSize = findViewById(R.id.rsi_etSize);
+        alternativEtSize = findViewById(R.id.rsi_alternativEtSize);
+        bougieSize = findViewById(R.id.rsi_bougieSize);
+        lmaSize = findViewById(R.id.rsi_lmaSize);
+        patientWeight = findViewById(R.id.rsi_patientWeight);
+
+        KetaminHalfDoseCB = findViewById(R.id.rsi_KetaminHalfDoseCB);
+
+        rsi_calculator = findViewById(R.id.rsi_calculator);
+
+        rsi_midazolam = findViewById(R.id.rsi_midazolam);
+        rsi_ketamin = findViewById(R.id.rsi_ketamin);
+        rsi_etomidate = findViewById(R.id.rsi_etomidate);
+        rsi_szukci = findViewById(R.id.rsi_szukc);
+        rsi_rocueti = findViewById(R.id.rsi_rocoeti);
+        rsiRocuDose = findViewById(R.id.rsi_rocu_adag);
+        rsiRocuBtn = findViewById(R.id.rsi_rocu_button);
+
+        rsi_midazolam.setVisibility(View.INVISIBLE);
+        rsi_ketamin.setVisibility(View.INVISIBLE);
+        rsi_etomidate.setVisibility(View.INVISIBLE);
+        rsi_szukci.setVisibility(View.INVISIBLE);
+        rsi_rocueti.setVisibility(View.INVISIBLE);
+        rsiRocuDose.setVisibility(View.INVISIBLE);
+        rsiRocuBtn.setVisibility(View.INVISIBLE);
+
+    }
+
+    public void etiDoseCalcAndVisible(){
+
+        double minD = Double.parseDouble(patientWeight.getText().toString());
+        double ketD = Double.parseDouble(patientWeight.getText().toString());
+        double etoD = Double.parseDouble(patientWeight.getText().toString());
+        double szukD = Double.parseDouble(patientWeight.getText().toString());
+        double rocuD = Double.parseDouble(patientWeight.getText().toString());
+
+
+        midDoseS = Double.toString(minD *= 0.02);
+        ketaDoseS = Double.toString(ketD *= 2.0);
+        etoDoseS = Double.toString(etoD *= 0.3);
+        szukciDoseS = Double.toString(szukD *= 1.5);
+        rocuDoseEtiS = Double.toString(rocuD *= 1);
+
+        if(KetaminHalfDoseCB.isChecked()){
+            double temp = Double.parseDouble(ketaDoseS);
+            temp/=2;
+            ketaDoseS = Double.toString(temp);
+        }
+
+        if (ketD > 200.0) {
+            ketaDoseS = "200.0";
+        }
+        if (etoD > 20.0) {
+            etoDoseS = "20.0";
+        }
+        if (szukD > 200.0) {
+            szukciDoseS = "200.0";
+        }
+
+        rsi_midazolam.setText("A midazolam egyszeri adagja: "+midDoseS+" mg");
+        rsi_ketamin.setText("A ketamin adagja az ETI-hoz: "+ketaDoseS+" mg");
+        rsi_etomidate.setText("Az etomidate adagja az ETI-hoz: "+etoDoseS+" mg");
+        rsi_szukci.setText("A szukcinilkolin adagja az ETI-hoz: "+szukciDoseS+" mg");
+        rsi_rocueti.setText("A rocoronium adagja ETI-hoz: "+rocuDoseEtiS+" mg");
+
+
+        rsi_midazolam.setVisibility(View.VISIBLE);
+        rsi_ketamin.setVisibility(View.VISIBLE);
+        rsi_etomidate.setVisibility(View.VISIBLE);
+        rsi_szukci.setVisibility(View.VISIBLE);
+        rsi_rocueti.setVisibility(View.VISIBLE);
+        rsiRocuBtn.setVisibility(View.VISIBLE);
+        rsiRocuDose.setVisibility(View.VISIBLE);
+
+
+
+        rocuD/=2;
+         text = String.valueOf(rocuD);
+        rsiRocuDose.setText("A Rokuronium 0.5mg/ttkg adagja :"+text+" mg");
+        rsiRocuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                try {
-                    double midDose = Double.parseDouble(midazolamEt.getText().toString());
-                    double midKeta = Double.parseDouble(midazolamEt.getText().toString());
-                    double midEto = Double.parseDouble(midazolamEt.getText().toString());
-                    double midSzukci = Double.parseDouble(midazolamEt.getText().toString());
+                double temp = Double.parseDouble(text);
+                temp/=2;
+                rsiRocuDose.setText("A Rokuronium 0.25mg/ttkg adagja: "+Double.toString(temp)+" mg");
+                rsiRocuBtn.setEnabled(false);
 
 
-                        String midDoseS = Double.toString(midDose *= 0.02);
-
-                        String etoDoseS = Double.toString(midEto *= 0.3);
-                        String szukciDoseS = Double.toString(midSzukci *= 1.5);
-                    if(checkBox.isChecked()){
-                        midKeta/=2;
-                    }
-                    String ketaDoseS = Double.toString(midKeta *= 2);
-
-                    if(midKeta>200.0) {ketaDoseS = "200.0";
-                    }
-                    if(midEto>20.0) {etoDoseS = "20.0";
-                    }
-                    if(midSzukci>200.0) {szukciDoseS = "200.0";
-                    }
-
-                    midazolamTv.setText(midDoseS);
-                    ketamin.setText(ketaDoseS);
-                    etomidate.setText(etoDoseS);
-                    szukci.setText(szukciDoseS);
-
-
-                    midazolam.setVisibility(View.VISIBLE);
-                    midazolamMg.setVisibility(View.VISIBLE);
-                    midazolamMg.setVisibility(View.VISIBLE);
-                    ketaminMg.setVisibility(View.VISIBLE);
-                    etomidateMg.setVisibility(View.VISIBLE);
-                    szukciMg.setVisibility(View.VISIBLE);
-                    midazolam.setVisibility(View.VISIBLE);
-                    ketamin.setVisibility(View.VISIBLE);
-                    etomidate.setVisibility(View.VISIBLE);
-                    szukci.setVisibility(View.VISIBLE);
-                    ketoD.setVisibility(View.VISIBLE);
-                    etoD.setVisibility(View.VISIBLE);
-                    szukciD.setVisibility(View.VISIBLE);
-//////////////////////////////////////////////////////////////////
-
-                    String editTextValue01 = rsi_et.getText().toString();
-                    clet.setText(editTextValue01);
-                    String editTextValue02 = rsi_altet.getText().toString();
-                    claltet.setText(editTextValue02);
-                    String editTextValue03 = rsi_lar.getText().toString();
-                    cll.setText(editTextValue03);
-                    String editTextValue04 = rsi_altlar.getText().toString();
-                    clal.setText(editTextValue04);
-                    String editTextValue05 = rsi_lma.getText().toString();
-                    cllma.setText(editTextValue05);
-                    String editTextValue06 = ketamin.getText().toString();
-                    clketa.setText(editTextValue06);
-                    String editTextValue07 = etomidate.getText().toString();
-                    cleto.setText(editTextValue07);
-                    String editTextValue08 = szukci.getText().toString();
-                    clszu.setText(editTextValue08);
-                    String editTextValue09 = rsi_bou.getText().toString();
-                    clbou.setText(editTextValue09);
-
-
-                } catch (Exception e) {
-                    midazolamTv.setText("Üres mező!");
-                    midazolamMg.setVisibility(View.INVISIBLE);
-                    ketaminMg.setVisibility(View.INVISIBLE);
-                    etomidateMg.setVisibility(View.INVISIBLE);
-                    szukciMg.setVisibility(View.INVISIBLE);
-                    midazolam.setVisibility(View.INVISIBLE);
-                    ketamin.setVisibility(View.INVISIBLE);
-                    etomidate.setVisibility(View.INVISIBLE);
-                    szukci.setVisibility(View.INVISIBLE);
-                    ketoD.setVisibility(View.INVISIBLE);
-                    etoD.setVisibility(View.INVISIBLE);
-                    szukciD.setVisibility(View.INVISIBLE);
-                }
             }
         });
 
-
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
+    public void anesthMed(){
 
+        rsiGyszAlt = findViewById(R.id.rsi_gysz_alt);
+        rsiGyszAlt02 = findViewById(R.id.rsi_gysz_alt2);
 
+        //altatáshoz gyógyszerek
+
+        double anesthKeta = Double.parseDouble(patientWeight.getText().toString());
+        double anesthProp = Double.parseDouble(patientWeight.getText().toString());
+        double anesthFenta = Double.parseDouble(patientWeight.getText().toString());
+        double anesthKetahalfDose = anesthKeta * 0.5;
+        double anesthPropoPerfusor = anesthProp * 0.3;
+
+        String anesthketaString = Double.toString(anesthKeta);
+        String anesthPropoString = Double.toString(anesthProp);
+        String anesthKetaHalfDoseString = Double.toString(anesthKetahalfDose);
+        String anesthPropoPerfusorString = Double.toString(anesthPropoPerfusor);
+        String anesthFentaString = Double.toString(anesthFenta);
+
+        String belowhundredsys = "100 Hgmm alatt: " + anesthKetaHalfDoseString + " - " + anesthketaString + "mg Ketamin bólusban 20 percenként ismétlve; ";
+        String abovehundredsys = "100 Hgmm fölött: " + anesthPropoString + "mg/óra Propofol induló dózis perfúzorral (hiányában " +anesthPropoPerfusorString  + "mg bólus " +
+                " 5-10 percenként), Fentanyl " + anesthFentaString + " mg 20 percenként ismételve";
+
+        rsiGyszAlt.setText(belowhundredsys);
+        rsiGyszAlt02.setText(abovehundredsys);
     }
+
+public void callKonzulens(){
+
+    call_to_konzulens = findViewById(R.id.call_to_konzulens);
+    call_to_konzulens.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:0680205025"));
+            startActivity(intent);
+        }
+    });
+}
+
+public void initCheckList(){
+
+    CLKetaDose = findViewById(R.id.rsi_check_ketamin);
+    CLEtoDose = findViewById(R.id.rsi_check_etomidate);
+    CLSzukciDose = findViewById(R.id.rsi_check_szukci);
+    CLLaringSize = findViewById(R.id.rsi_check_laringSize);
+    CLAltLarSize = findViewById(R.id.rsi_check_alternativLaringSize);
+    CLETSize = findViewById(R.id.rsi_check_etiSize);
+    CLBougieSize = findViewById(R.id.rsi_check_bougieSize);
+    CLAltEtSize = findViewById(R.id.rsi_check_alternativETSize);
+    CLLmaSize = findViewById(R.id.rsi_check_lmaSize);
+
+
+
+
+
+
+}
+
+public void createCheckList(){
+    CLKetaDose.setText("Ketamin dózia: "+ketaDoseS+" mg");
+    CLKetaDose.setTypeface(null, Typeface.BOLD);
+    CLEtoDose.setText("Etomidate dózisa: "+etoDoseS+" mg");
+    CLEtoDose.setTypeface(null, Typeface.BOLD);
+    CLSzukciDose.setText("Szukcinilkolin dózisa: "+szukciDoseS+" mg");
+    CLSzukciDose.setTypeface(null, Typeface.BOLD);
+    CLLaringSize.setText("Laringoszkóp lapoc, mérete: "+laringoscopSize.getText().toString());
+    CLLaringSize.setTypeface(null, Typeface.BOLD);
+    CLAltLarSize.setText("Alternativ lapoc, mérete: "+alternativLaringoscopSize.getText().toString());
+    CLAltLarSize.setTypeface(null, Typeface.BOLD);
+    CLETSize.setText("ET tubus mérete: "+etSize.getText().toString()+" mm");
+    CLETSize.setTypeface(null, Typeface.BOLD);
+    CLBougieSize.setText("Bougie mérete: "+bougieSize.getText().toString()+" Ch");
+    CLBougieSize.setTypeface(null, Typeface.BOLD);
+    CLAltEtSize.setText("Alternatív tubus mérete: "+alternativEtSize.getText().toString()+" mm");
+    CLAltEtSize.setTypeface(null, Typeface.BOLD);
+    CLLmaSize.setText("LMA, mérete: "+lmaSize.getText().toString());
+    CLLmaSize.setTypeface(null, Typeface.BOLD);
+}
+
+public void rsiCalcBtn(){
+
+    rsi_calculator.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            try {
+
+                // ETI-hez való gyógyszerek
+
+                etiDoseCalcAndVisible();
+
+                anesthMed();
+
+                createCheckList();
+
+
+            } catch (Exception e) {
+                rsi_midazolam.setText("Üres mező!");
+                rsi_midazolam.setVisibility(View.VISIBLE);
+                rsiRocuBtn.setVisibility(View.INVISIBLE);
+                rsiRocuDose.setVisibility(View.INVISIBLE);
+                rsi_szukci.setVisibility(View.INVISIBLE);
+                rsi_etomidate.setVisibility(View.INVISIBLE);
+                rsi_ketamin.setVisibility(View.INVISIBLE);
+                rsi_rocueti.setVisibility(View.INVISIBLE);
+            }
+        }
+    });
+}
+
+public void initRocoMenu(){
+
+
+
+
+
+
+
+}
 }

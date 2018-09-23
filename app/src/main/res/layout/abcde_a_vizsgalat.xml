@@ -1,131 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="Légutak vizsgálata 2 elemből áll:"
         android:textColor="@color/text_green"
-        android:text="Légutak vizsgálata 2 elemből áll:"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Légúti hangok hallgatása szabad füllel"
         android:textColor="@color/text_green"
-        android:text="- Légúti hangok hallgatása szabad füllel"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="(erölködő/frusztrán légzőmozgás, horkoló, szörcsölő, stridor)"
         android:textColor="@color/text_green"
-        android:text="(erölködő/frusztrán légzőmozgás, horkoló, szörcsölő, stridor)"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text=" Fenyegetettségre utal: légúti égés, allergia gyanú, hanyatt fekvő eszméletlen"
         android:textColor="@color/text_red"
-        android:text=" Fenyegetettségre utal: légúti égés, allergia gyanú, hanyatt fekvő eszméletlen"/>
+        android:textStyle="italic" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="Sz.e. azonnali beavatkozás az egyszerű légút-biztosítás eszközeivel"
         android:textColor="@color/text_red"
-        android:text="Sz.e. azonnali beavatkozás az egyszerű légút-biztosítás eszközeivel"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="Párhuzamos tevékenységek: "
         android:textColor="@color/text_blue"
-        android:text="Párhuzamos tevékenységek: "/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="-Manuális légút-biztosítás,"
         android:textColor="@color/text_blue"
-        android:text="-Manuális légút-biztosítás,"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Szívó előkészítése, használata"
         android:textColor="@color/text_blue"
-        android:text="- Szívó előkészítése, használata"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Egyszerű légút-biztosító eszközök előkészítése/behelyezése"
         android:textColor="@color/text_blue"
-        android:text="- Egyszerű légút-biztosító eszközök előkészítése/behelyezése"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Sz.e. stabil oldalfekvő helyzet"
         android:textColor="@color/text_blue"
-        android:text="- Sz.e. stabil oldalfekvő helyzet"/>
+        android:textStyle="italic" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Nyaki gerincsérülés-gyanúnál MILS áll kiemeléssel"
         android:textColor="@color/text_orange"
-        android:text="- Nyaki gerincsérülés-gyanúnál MILS áll kiemeléssel"/>
+        android:textStyle="italic" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Vérző arckoponya sérültnél sz.e. a garatüreg leszívása"
         android:textColor="@color/text_orange"
-        android:text="- Vérző arckoponya sérültnél sz.e. a garatüreg leszívása"/>
+        android:textStyle="italic" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Utóbbi delegálható"
         android:textColor="@color/text_blue"
-        android:text="- Utóbbi delegálható"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+                                                                                                       "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+                                                                                                       "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+                                                                                                       "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
 </LinearLayout>

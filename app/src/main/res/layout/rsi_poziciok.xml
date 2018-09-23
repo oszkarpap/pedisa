@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/_8sdp"
     android:orientation="vertical">
 
     <TextView
@@ -10,7 +11,6 @@
         android:padding="10dp"
         android:text="Beteg:"
         android:textColor="@color/text_red"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -20,7 +20,6 @@
         android:text="- 360 fokos hozzáférés (mentőjárművön kívül), kb. térdmagasságú elhelyezés
 (leengedett hordágy)"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -29,7 +28,6 @@
         android:padding="10dp"
         android:text="- aspiráció kockázata esetén: megemelt fejrész, lásd később"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -39,7 +37,6 @@
         android:text="- ha a nyaki gerinc sérülése valószínűtlen, a fej hátraszegése, vagy un. “sniffing”
 pozícióba hozása segíti az ETI-t"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -50,7 +47,6 @@ pozícióba hozása segíti az ETI-t"
 vagy akár ülő helyzet, laringoszkópia során megemelt fej és vállak (HELP
 pozíció)"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -61,7 +57,6 @@ pozíció)"
 testhelyzetben kell, hogy történjék, amely számukra a legelviselhetőbb, és
 amelyben leginkább átjárhatók maradnak a légutak."
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -71,7 +66,6 @@ amelyben leginkább átjárhatók maradnak a légutak."
         android:text="- ha a nyaki gerinc sérülése valószínűtlen, a fej hátraszegése, vagy un. “sniffing”
 pozícióba hozása segíti az ETI-t"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -81,7 +75,6 @@ pozícióba hozása segíti az ETI-t"
         android:text="- diszpnoés beteg: ülő, vagy félülő helyzet az indukcióig”
 pozícióba hozása segíti az ETI-t"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -90,7 +83,6 @@ pozícióba hozása segíti az ETI-t"
         android:padding="10dp"
         android:text="Intubáló ellátó (operátor):"
         android:textColor="@color/text_red"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -99,7 +91,6 @@ pozícióba hozása segíti az ETI-t"
         android:padding="10dp"
         android:text="- a fej mögött térdel"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -108,7 +99,6 @@ pozícióba hozása segíti az ETI-t"
         android:padding="10dp"
         android:text="- légútra, oxigénmaszkra vigyáz"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -117,7 +107,6 @@ pozícióba hozása segíti az ETI-t"
         android:padding="10dp"
         android:text="- a monitort figyeli"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -126,7 +115,6 @@ pozícióba hozása segíti az ETI-t"
         android:padding="10dp"
         android:text="- a légzést figyeli"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -135,7 +123,6 @@ pozícióba hozása segíti az ETI-t"
         android:padding="10dp"
         android:text="- a segítőket irányítja"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -144,7 +131,6 @@ pozícióba hozása segíti az ETI-t"
         android:padding="10dp"
         android:text="Ápoló:"
         android:textColor="@color/text_red"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -153,7 +139,6 @@ pozícióba hozása segíti az ETI-t"
         android:padding="10dp"
         android:text="- az intubáló ellátó mellett a jobb oldalon térdel"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -162,7 +147,6 @@ pozícióba hozása segíti az ETI-t"
         android:padding="10dp"
         android:text="- felszerelést készít elő"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -171,7 +155,6 @@ pozícióba hozása segíti az ETI-t"
         android:padding="10dp"
         android:text="Segítők:"
         android:textColor="@color/text_red"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -182,7 +165,6 @@ pozícióba hozása segíti az ETI-t"
 bal oldaláról, úgy fogja a fejet két oldalról, hogy az állkapocs nyitható
 maradjon)"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -191,7 +173,6 @@ maradjon)"
         android:padding="10dp"
         android:text="2: Sellick manőver: akkor alkalmazható, ha kijelölt, képzett személy végzi"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -200,7 +181,6 @@ maradjon)"
         android:padding="10dp"
         android:text="                                                                           "
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -209,7 +189,6 @@ maradjon)"
         android:padding="10dp"
         android:text="                                                                           "
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -218,7 +197,6 @@ maradjon)"
         android:padding="10dp"
         android:text="                                                                           "
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -227,7 +205,6 @@ maradjon)"
         android:padding="10dp"
         android:text="                                                                           "
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -236,8 +213,38 @@ maradjon)"
         android:padding="10dp"
         android:text="                                                                           "
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                           "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                           "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
 
 </LinearLayout>

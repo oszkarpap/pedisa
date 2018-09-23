@@ -15,7 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.AuthResult;
 
-import hu.oszkarpap.dev.android.omsz.omszapp001.MainActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 
 
@@ -63,6 +63,8 @@ public class SignupActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String email = inputEmail.getText().toString().trim();
+
+                
                 String password = inputPassword.getText().toString().trim();
                 String repassword = inputRepassword.getText().toString().trim();
 
@@ -81,8 +83,8 @@ public class SignupActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (password.length() < 4 || repassword.length()<4 ) {
-                    Toast.makeText(getApplicationContext(), "legalább 4 karakter legyen!", Toast.LENGTH_SHORT).show();
+                if (password.length() < 6 || repassword.length()<6 ) {
+                    Toast.makeText(getApplicationContext(), "legalább 6 karakter legyen!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

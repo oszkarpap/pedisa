@@ -1,46 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
-        android:textColor="@color/text_green"
         android:text="A sürgősségi ellátást tanító különböző kurzusok, iskolák (ALS, ITLS, ATLS) ABCDE betegvizsgálati sémái
 nem egészen azonosak. Az ellátó e sémák közül az adott helyzetnek megfelelőt követheti, feltéve, hogy
-megfelel az ABCDE szemléletnek, tehát:"/>
+megfelel az ABCDE szemléletnek, tehát:"
+        android:textColor="@color/text_green"
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- ABCDE sorrendű"
         android:textColor="@color/text_green"
-        android:text="- ABCDE sorrendű"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Szisztematikus"
         android:textColor="@color/text_green"
-        android:text="- Szisztematikus"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Azonnali ellátást igénylő probléma esetén csak a probléma elhárítása után lép tovább"
         android:textColor="@color/text_green"
-        android:text="- Azonnali ellátást igénylő probléma esetén csak a probléma elhárítása után lép tovább"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
@@ -49,7 +45,27 @@ megfelel az ABCDE szemléletnek, tehát:"/>
         android:text=" -Állapotváltozáskor, beavatkozás, vagy betegmozgatás után a szisztematikus vizsgálat az elejéről
 ismétlődik."
         android:textColor="@color/text_green"
-        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+                                                                                                       "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+                                                                                                       "
+        android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
 
@@ -59,7 +75,6 @@ ismétlődik."
         android:padding="10dp"
         android:text="                                                                                                                 "
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
 
@@ -69,7 +84,6 @@ ismétlődik."
         android:padding="10dp"
         android:text="                                                                                                              "
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView

@@ -15,7 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            android:transitionName="@string/aaaa"
             app:collapsedTitleTextAppearance="@style/MyCollapsingToolbar"
             app:contentScrim="@color/colorPrimary"
             app:expandedTitleTextAppearance="@style/MyCollapsingToolbar"
@@ -60,7 +59,7 @@
 
 
             android:paddingBottom="20dp"
-            tools:context=".MainActivity">
+            tools:context=".main.MainActivity">
 
             <com.alespero.expandablecardview.ExpandableCardView
                 android:id="@+id/abcde_hatter"

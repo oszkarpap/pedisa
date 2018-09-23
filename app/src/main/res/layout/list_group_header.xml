@@ -13,5 +13,5 @@
         android:paddingRight="?attr/listPreferredItemPaddingRight"
         android:icon="@drawable/ic_folder_black_24dp"
         android:textColor="#625d5d"
-        android:textSize="16sp" />
+        />
 </LinearLayout>

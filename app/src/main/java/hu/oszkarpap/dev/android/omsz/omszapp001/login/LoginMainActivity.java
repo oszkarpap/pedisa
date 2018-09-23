@@ -68,6 +68,7 @@ public class LoginMainActivity extends AppCompatActivity {
         remove = (Button) findViewById(R.id.remove);
 
 
+
         oldEmail = (EditText) findViewById(R.id.old_email);
         newEmail = (EditText) findViewById(R.id.new_email);
         password = (EditText) findViewById(R.id.password);
@@ -147,8 +148,8 @@ public class LoginMainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
                 if (user != null && !newPassword.getText().toString().trim().equals("")) {
-                    if (newPassword.getText().toString().trim().length() < 4) {
-                        newPassword.setError("Legalább 4 karakter");
+                    if (newPassword.getText().toString().trim().length() < 6) {
+                        newPassword.setError("Legalább 6 karakter");
                         progressBar.setVisibility(View.GONE);
                     } else {
                         user.updatePassword(newPassword.getText().toString().trim())
@@ -226,8 +227,7 @@ public class LoginMainActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(LoginMainActivity.this, "Profil törölve!", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(LoginMainActivity.this, SignupActivity.class));
-                                        finish();
+
                                         progressBar.setVisibility(View.GONE);
                                     } else {
                                         Toast.makeText(LoginMainActivity.this, "Sikertelen profiltörlés!", Toast.LENGTH_SHORT).show();

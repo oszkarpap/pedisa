@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hu.oszkarpap.dev.android.omsz.omszapp001">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -12,15 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar.MM" />
-        <activity
-            android:name=".nav_view_activity.Acticity02"
-            android:label="A 02" />
-        <activity
-            android:name=".nav_view_activity.Avtivity03"
-            android:label="A 03" />
         <activity
             android:name=".login.SignupActivity"
             android:label="Regisztráció" />
@@ -43,7 +37,7 @@
             android:label="Rendszermenű"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".PerfusorActivity"
+            android:name=".menu_activity.PerfusorActivity"
             android:label="Perfusor kalkulátor"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -51,20 +45,26 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".nav_view_activity.RsiActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="RSI"/>
+            android:label="RSI"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".medication.MedActivity"
+            android:name=".menu_activity.medication.MedActivity"
             android:label="Rendszeresített gyógyszerek"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
-        <activity android:name=".nav_view_activity.AbcdeProtokollActivity" />
-        <activity android:name=".ParametersActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="Paraméterek"/>
+        <activity
+            android:name=".nav_view_activity.AbcdeProtokollActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".menu_activity.ParametersActivity"
+            android:label="Paraméterek"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".menu_activity.HelpActivity" />
+        <activity android:name=".nav_view_activity.VeinActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

@@ -1,227 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="Vizsgálat elemei:"
         android:textColor="@color/text_green"
-        android:text="Vizsgálat elemei:"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="1. Bőrszín, hömérséklet, nedvesség"
         android:textColor="@color/text_green"
-        android:text="1. Bőrszín, hömérséklet, nedvesség"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="2. Pulzus"
         android:textColor="@color/text_green"
-        android:text="2. Pulzus"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="3. CRT"
         android:textColor="@color/text_green"
-        android:text="3. CRT"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:padding="10dp"
-        android:textStyle="italic"
-        android:textColor="@color/text_green"
-        android:text="- A bőr vizsgálata megtekintéssel és tapintással (sápadt, márványozott, hűvös - meleg, száraz - verejtékes)"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- A bőr vizsgálata megtekintéssel és tapintással (sápadt, márványozott, hűvös - meleg, száraz - verejtékes)"
         android:textColor="@color/text_green"
-        android:text="- Perifériás pulzus tapintása, tapintható-e"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Perifériás pulzus tapintása, tapintható-e"
+        android:textColor="@color/text_green"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Hiányában azonnal ellenőrizni kell a centrális pulzust!"
         android:textColor="@color/text_red"
-        android:text="Hiányában azonnal ellenőrizni kell a centrális pulzust!"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Frekvencia (6 sec x 10, kvalitása, ritmusos-e)"
         android:textColor="@color/text_green"
-        android:text="- Frekvencia (6 sec x 10, kvalitása, ritmusos-e)"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Kapilláris újratelődési idő, 5 sec nyomás a körömágyon vagy szegycsonton (2 sec fölött kóros)"
         android:textColor="@color/text_red"
-        android:text="- Kapilláris újratelődési idő, 5 sec nyomás a körömágyon vagy szegycsonton (2 sec fölött kóros)"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Indokolt esetben - és kompentencia birtokában - vénabiztosítás a korai gyógyszer és folyadékterápia végett"
         android:textColor="@color/text_blue"
-        android:text="- Indokolt esetben - és kompentencia birtokában - vénabiztosítás a korai gyógyszer és folyadékterápia végett"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- EKG monitor (4 eres monitor, öntapadós elektrodákkal a vállra és csípőkre)"
         android:textColor="@color/text_blue"
-        android:text="- EKG monitor (4 eres monitor, öntapadós elektrodákkal a vállra és csípőkre)"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Vérnyomásmérés (mérési intervallum 2 min-re állítása)"
         android:textColor="@color/text_blue"
-        android:text="- Vérnyomásmérés (mérési intervallum 2 min-re állítása)"/>
+        android:textStyle="italic" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Vérnyomásmérés (mérési intervallum 2 min-re állítása)"
         android:textColor="@color/text_blue"
-        android:text="- Vérnyomásmérés (mérési intervallum 2 min-re állítása)"/>
-
+        android:textStyle="italic" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Jelentős külső vérzés felismerése és és csillapítása, ha még nem történt meg"
         android:textColor="@color/text_orange"
-        android:text="- Jelentős külső vérzés felismerése és és csillapítása, ha még nem történt meg"/>
+        android:textStyle="italic" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Hosszú csöves csontok töréseinek felismerése"
         android:textColor="@color/text_orange"
-        android:text="- Hosszú csöves csontok töréseinek felismerése"/>
+        android:textStyle="italic" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Medence megítélése (mechanizmus, külsérelmi nyomok, aszimetria )"
         android:textColor="@color/text_orange"
-        android:text="- Medence megítélése (mechanizmus, külsérelmi nyomok, aszimetria )"/>
+        android:textStyle="italic" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- A has itt megtapintható, de az üregi vérzés negatív tapintási lelet mellett sem zárható ki"
         android:textColor="@color/text_red"
-        android:text="- A has itt megtapintható, de az üregi vérzés negatív tapintási lelet mellett sem zárható ki"/>
+        android:textStyle="italic" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Külső vérzés csillapítása direkt nyomással, nyomókötéssel"
         android:textColor="@color/text_blue"
-        android:text="- Külső vérzés csillapítása direkt nyomással, nyomókötéssel"/>
+        android:textStyle="italic" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Femurtörés esetén azonnali és folyamatos manuális húzás (sz.sz. analgézia után)"
         android:textColor="@color/text_blue"
-        android:text="- Femurtörés esetén azonnali és folyamatos manuális húzás (sz.sz. analgézia után)"/>
+        android:textStyle="italic" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- a sérült csomagolásához sz.e. medencerögzítő, illetve húzósín, továbbá buborékfólia, lapáthordágy előkészítése"
         android:textColor="@color/text_blue"
-        android:text="- a sérült csomagolásához sz.e. medencerögzítő, illetve húzósín, továbbá buborékfólia, lapáthordágy előkészítése"/>
+        android:textStyle="italic" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="                                                                                                                 "
         android:textColor="@color/text_blue"
-        android:text="                                                                                                                 "/>
+        android:textStyle="italic" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="                                                                                                                 "
         android:textColor="@color/text_blue"
-        android:text="                                                                                                                 "/>
+        android:textStyle="italic" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="                                                                                                                 "
         android:textColor="@color/text_blue"
-        android:text="                                                                                                                 "/>
+        android:textStyle="italic" />
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+                                                                                                       "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+                                                                                                       "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -15,12 +15,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            android:transitionName="@string/aaaa"
             app:collapsedTitleTextAppearance="@style/MyCollapsingToolbar"
             app:contentScrim="@color/colorPrimary"
             app:expandedTitleTextAppearance="@style/MyCollapsingToolbar"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:title="Rapid Sequence Intubation"
+
             app:titleEnabled="true">
 
             <ImageView
@@ -60,7 +60,7 @@
 
 
             android:paddingBottom="20dp"
-            tools:context=".MainActivity">
+            tools:context=".main.MainActivity">
 
             <com.alespero.expandablecardview.ExpandableCardView
                 android:id="@+id/rsi_cel"
@@ -147,7 +147,7 @@
                 app:title="RSI előtti szedálás" />
 
             <com.alespero.expandablecardview.ExpandableCardView
-                android:id="@+id/rsi_adatok"
+                android:id="@+id/rsi_nehezitett_legut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -155,9 +155,95 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
                 app:expandOnClick="true"
+                app:inner_view="@layout/rsi_nehezitett_legut_kulso_jelek"
+                app:title="Nehezített légút / külső jelek" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/rsi_gysz_lemon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/rsi_lemon"
+                app:title="Nehezített légút / LEMON" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/rsi_mallampati"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/rsi_mallampati"
+                app:title="Nehezített légút / Mallampati" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/rsi_cormack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/rsi_cormack"
+                app:title="Nehezített légút / Cormack" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/rsi_gysz_beadas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/rsi_gysz_beadas"
+                app:title="Beadandó gyógyszerek " />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/rsi_med_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/rsi_med_label"
+                app:title="Gyógyszerek táblázata " />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/rsi_adatok"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:icon="@drawable/ic_injection_24dp"
                 app:inner_view="@layout/rsi_adatok"
                 app:title="Adatok bevitele" />
 
+            <Button
+                android:id="@+id/call_to_konzulens"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:text="Konzulens hívása"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
 
             <com.alespero.expandablecardview.ExpandableCardView
                 android:id="@+id/rsi_terites"
@@ -192,11 +278,13 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
                 app:expandOnClick="true"
+                app:icon="@drawable/ic_assignment_black_24dp"
                 app:inner_view="@layout/rsi_checklista"
                 app:title="Checklista" />
 
+
             <com.alespero.expandablecardview.ExpandableCardView
-                android:id="@+id/rsi_gysz_beadas"
+                android:id="@+id/rsi_sellick_laring"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -204,9 +292,121 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
                 app:expandOnClick="true"
-                app:inner_view="@layout/rsi_gysz_beadas"
-                app:title="Gyógyszerek beadása" />
+                app:inner_view="@layout/rsi_sellick_laringoscopia"
+                app:title="Sellick manőver/Laringoscópia" />
 
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/rsi_sikertelen_eti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/rsi_sikertelen_eti"
+                app:title="Sikertelen ETI (30 ms eljárás) (B)" />
+
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/rsi_tubushelyzet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/rsi_et_ell_es_rogzites"
+                app:title="Tubushelyzet ellenörzése, rögzítése" />
+
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/rsi_sikeres_eti_utan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/rsi_sikeres_eti_utan"
+                app:title="Sikeres ETI utáni lélegeztetés" />
+
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/rsi_hosszu_izomrel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:icon="@drawable/ic_injection_24dp"
+                app:inner_view="@layout/rsi_hosszu_izomrel"
+                app:title="Hosszú hatású izomrelaxáns" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/rsi_rel_altatas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/rsi_rel_altatas"
+                app:title="Relaxált beteg altatása" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/rsi_rel_gysz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:icon="@drawable/ic_injection_24dp"
+                app:inner_view="@layout/rsi_rel_gysz"
+                app:title="Relaxált beteg gyógyszerei" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/rsi_sikertelen_eti_c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/rsi_sikertelen_eti_c"
+                app:title="Sikertlen ETI (C)" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/rsi_conicotomia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/rsi_conicotomia"
+                app:title="Conicotómia" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/rsi_transzp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/rsi_transzp"
+                app:title="Transzport" />
 
 
         </LinearLayout>

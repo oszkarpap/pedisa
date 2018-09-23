@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/_8sdp"
     android:orientation="vertical">
 
     <TextView
@@ -10,7 +11,6 @@
         android:padding="10dp"
         android:text="Indukciós szer, majd relaxáns adása GYORSAN, EGYMÁS UTÁN, bólusban, beöblítve:"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -19,7 +19,6 @@
         android:padding="10dp"
         android:text="Indukciós szer:"
         android:textColor="@color/text_red"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -28,7 +27,6 @@
         android:padding="10dp"
         android:text="- ketamin 2 mg/kg – (max. 200 mg)"
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -38,7 +36,6 @@
         android:text="- ketamin 1 mg/kg keringési instabilitás, hipovolémia, rossz általános állapot, vagy
 megelőző szedatív gyógyszerelés esetén"
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -48,7 +45,6 @@ megelőző szedatív gyógyszerelés esetén"
         android:text="- etomidate 0,3 mg/kg – (max. 20 mg), a ketamin ellenjavallatai esetén( súlyos, kockázatot jelentő hipertenzió;
 szívelégtelenség (keringési instabilitás esetén az etomidat dózisa is felezendő); preeclampsia, eclampsia"
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -58,7 +54,6 @@ szívelégtelenség (keringési instabilitás esetén az etomidat dózisa is fel
         android:text="- Indukciós szer nélkül végezhető RSI súlyos opioid és/vagy szedatív toxidrómákban, vagy
 fennálló ekvivalens gyógyszer hatásban, ha a beteg mélyen eszméletlen."
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -67,7 +62,6 @@ fennálló ekvivalens gyógyszer hatásban, ha a beteg mélyen eszméletlen."
         android:padding="10dp"
         android:text="Izomrelaxáns:"
         android:textColor="@color/text_red"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -77,7 +71,6 @@ fennálló ekvivalens gyógyszer hatásban, ha a beteg mélyen eszméletlen."
         android:text="- szukcinilkolin 1,5 mg/kg (felnőtt esetén 100, 125, 150, 175 vagy 200 mg-ra
 kerekíthető) – max. 200 mg"
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -89,7 +82,6 @@ mellőzhetetlen a legfontosabb ellenjavallatok említése (súlyossági sorrendb
 jelentős hiperkalémia alapos gyanúja (az anamnézisből következően, és/vagy EKG alapján, és/vagy friss laborvizsgálattal igazoltan),
  harántlézió, egyéb okú kiterjedt, tartós izombénulás, izomdisztrófia,"
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -102,7 +94,6 @@ megengedett; egyébként eltekintünk az ETI-tól, más módszert választunk.
 Megfelelő készség és jártasság esetén nem depolarizáló izomrelaxáns (rocuronium 1
 mg/kg) használata telefonos konzultációhoz kötötten megengedett az indukcióhoz."
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -114,31 +105,22 @@ mg/kg) használata telefonos konzultációhoz kötötten megengedett az indukci�
 
                                                                                                  "
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="
-
-
-                                                                                                 "
+        android:text="                                                           "
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="
-
-
-                                                                                                 "
+        android:text="                                                           "
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
 
@@ -151,7 +133,6 @@ mg/kg) használata telefonos konzultációhoz kötötten megengedett az indukci�
 
                                                                                                  "
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -163,7 +144,18 @@ mg/kg) használata telefonos konzultációhoz kötötten megengedett az indukci�
 
                                                                                                  "
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+
+                                                                                                 "
+        android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
     <TextView
@@ -175,7 +167,6 @@ mg/kg) használata telefonos konzultációhoz kötötten megengedett az indukci�
 
                                                                                                  "
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -187,7 +178,6 @@ mg/kg) használata telefonos konzultációhoz kötötten megengedett az indukci�
 
                                                                                                  "
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -199,8 +189,32 @@ mg/kg) használata telefonos konzultációhoz kötötten megengedett az indukci�
 
                                                                                                  "
         android:textColor="@color/text_blue"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
 
+
+                                                                                                 "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
 </LinearLayout>

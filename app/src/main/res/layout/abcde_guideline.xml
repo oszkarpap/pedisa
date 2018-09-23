@@ -14,7 +14,6 @@
 
         android:textAllCaps="false"
         android:textStyle="normal"
-        android:textSize="20sp"
         android:textColor="@color/colorAccent" />
 
 

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/_8sdp"
     android:orientation="vertical">
 
     <TextView
@@ -12,7 +13,6 @@
 Fontos, hogy a szedatívum adása előtt kezeljük az agitáltság egyéb okait (fájdalom, hipoxia,
 metabolikus ok)."
         android:textColor="@color/text_red"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -23,7 +23,6 @@ metabolikus ok)."
 egyszeri dózis, 3 PERC után ismételhető. Súlyosan agitált betegeknél 3 percenként ismételve
 sem szabad, hogy a teljes dózis meghaladja a 0,1mg/kg-ot"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
 
@@ -33,20 +32,7 @@ sem szabad, hogy a teljes dózis meghaladja a 0,1mg/kg-ot"
         android:padding="10dp"
         android:text="(Az 5mg/1ml-es ampulla 5ml-es fecskendőbe, így 1mg/1ml a higítás, 2-3 perc a hatásbeállás, 2 óra a hatás vége) "
         android:textColor="@color/text_red"
-        android:textSize="15sp"
         android:textStyle="italic" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="                                                                          "
-        android:textColor="@color/text_red"
-        android:textSize="15sp"
-        android:textStyle="italic" />
-
-
-
 
     <TextView
         android:layout_width="match_parent"
@@ -56,9 +42,7 @@ sem szabad, hogy a teljes dózis meghaladja a 0,1mg/kg-ot"
 egyszeri dózis, 3 PERC után ismételhető. Súlyosan agitált betegeknél 3 percenként ismételve
 sem szabad, hogy a teljes dózis meghaladja a 0,1mg/kg-ot"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
-
 
 
     <TextView
@@ -69,8 +53,61 @@ sem szabad, hogy a teljes dózis meghaladja a 0,1mg/kg-ot"
 
                                                                                                  "
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                              "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="                                                           "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
 
 </LinearLayout>

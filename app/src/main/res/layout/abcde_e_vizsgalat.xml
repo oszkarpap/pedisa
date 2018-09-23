@@ -10,7 +10,6 @@
         android:padding="10dp"
         android:text="Egyéb vizsgálatok:"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -19,7 +18,6 @@
         android:padding="10dp"
         android:text="- Testhömérséklet megitélése tapintással (súlyos hipotermia-magas láz kizárása)"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -28,7 +26,6 @@
         android:padding="10dp"
         android:text="- Egyéb célzott vizsgálatok: "
         android:textColor="@color/text_red"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
 
@@ -38,7 +35,6 @@
         android:padding="10dp"
         android:text="- 12-es EKG"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -47,7 +43,6 @@
         android:padding="10dp"
         android:text="- Szívhang"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
@@ -56,119 +51,136 @@
         android:padding="10dp"
         android:text="- A has vizsgálata tapintással"
         android:textColor="@color/text_green"
-        android:textSize="15sp"
         android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Ödéma, anasarca felismerése"
         android:textColor="@color/text_green"
-        android:text="- Ödéma, anasarca felismerése"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Sérülés keresése olyan betegnél, akit nem sérültként vizsgálunk"
         android:textColor="@color/text_green"
-        android:text="- Sérülés keresése olyan betegnél, akit nem sérültként vizsgálunk"/>
+        android:textStyle="italic" />
 
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Körülmények vizsgálata"
         android:textColor="@color/text_green"
-        android:text="- Körülmények vizsgálata"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Anamnézis felvétele (SAMPLE) "
         android:textColor="@color/text_green"
-        android:text="- Anamnézis felvétele (SAMPLE) "/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- Hömérsékelt mérése műszerrel "
         android:textColor="@color/text_blue"
-        android:text="- Hömérsékelt mérése műszerrel "/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="ABCD problémák elhárítása esetén, ha elég idő áll rendelkezésre, vagy út közben:"
         android:textColor="@color/text_orange"
-        android:text="ABCD problémák elhárítása esetén, ha elég idő áll rendelkezésre, vagy út közben:"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- A hát vizsgálata egyedül penetráló trauma, ill. annak gyanúja esetén szükséges"
         android:textColor="@color/text_orange"
-        android:text="- A hát vizsgálata egyedül penetráló trauma, ill. annak gyanúja esetén szükséges"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="-További sérülések, például disztális végtag-törések, sebek felismerése"
         android:textColor="@color/text_orange"
-        android:text="-További sérülések, például disztális végtag-törések, sebek felismerése"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
-        android:textColor="@color/text_red"
         android:text="(12 elvezetéses EKG készítése súlyos sérült esetén az időveszteség és a következmények hiánya miatt
-nem indokolt)"/>
+nem indokolt)"
+        android:textColor="@color/text_red"
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="- kihülés elleni védelem biztosítása"
         android:textColor="@color/text_blue"
-        android:text="- kihülés elleni védelem biztosítása"/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="                                             "
         android:textColor="@color/text_blue"
-        android:text="                                             "/>
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="15sp"
         android:padding="10dp"
-        android:textStyle="italic"
+        android:text="                                                                               "
         android:textColor="@color/text_blue"
-        android:text="                                                                               "/>
+        android:textStyle="italic" />
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+                                                                                                       "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+                                                                                                       "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="
+
+                                                                                                       "
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
 
     <TextView
         android:layout_width="wrap_content"
