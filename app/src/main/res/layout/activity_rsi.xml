@@ -219,7 +219,7 @@
                 app:title="Gyógyszerek táblázata " />
 
             <com.alespero.expandablecardview.ExpandableCardView
-                android:id="@+id/rsi_adatok"
+                android:id="@+id/rsi_adatok2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
@@ -229,8 +229,9 @@
                 android:layout_marginTop="5dp"
                 app:expandOnClick="true"
                 app:icon="@drawable/ic_injection_24dp"
-                app:inner_view="@layout/rsi_adatok"
+                app:inner_view="@layout/rsi_adatok2"
                 app:title="Adatok bevitele" />
+
 
             <Button
                 android:id="@+id/call_to_konzulens"

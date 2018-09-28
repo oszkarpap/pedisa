@@ -1,79 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-
-    <android.support.design.widget.AppBarLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
 
-    </android.support.design.widget.AppBarLayout>
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="#FAFAFA"
+            android:clipChildren="false"
+            android:orientation="vertical"
+            android:paddingTop="64dp"
+            tools:context=".main.MainActivity">
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/par_baby"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:icon="@drawable/ic_newborn_24dp"
+                app:inner_view="@layout/ecw_par_baby"
+                app:title="Csecsemő paraméterek" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/par_child"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:icon="@drawable/ic_kid_teddy_bear_24dp"
+                app:inner_view="@layout/ecw_par_child"
+                app:title="Gyermek paraméterek" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/par_adult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:icon="@drawable/ic_adult_avatar_24dp"
+                app:inner_view="@layout/ecw_par_adult"
+                app:title="Felnőtt paraméterek" />
+
+        </LinearLayout>
 
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    </RelativeLayout>
+
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="#FAFAFA"
-        android:clipChildren="false"
-        android:orientation="vertical"
-        android:paddingTop="64dp"
-        tools:context=".main.MainActivity">
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/activity_main_dawer">
 
-        <com.alespero.expandablecardview.ExpandableCardView
-            android:id="@+id/par_baby"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="5dp"
-            app:expandOnClick="true"
-            app:icon="@drawable/ic_newborn_24dp"
-            app:inner_view="@layout/ecw_par_baby"
-            app:title="Csecsemő paraméterek" />
+            android:orientation="vertical">
 
-        <com.alespero.expandablecardview.ExpandableCardView
-            android:id="@+id/par_child"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="5dp"
-            app:expandOnClick="true"
-            app:icon="@drawable/ic_kid_teddy_bear_24dp"
-            app:inner_view="@layout/ecw_par_child"
-            app:title="Gyermek paraméterek" />
-
-        <com.alespero.expandablecardview.ExpandableCardView
-            android:id="@+id/par_adult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="5dp"
-            app:expandOnClick="true"
-            app:icon="@drawable/ic_adult_avatar_24dp"
-            app:inner_view="@layout/ecw_par_adult"
-            app:title="Felnőtt paraméterek" />
-
-    </LinearLayout>
+            <include
+                layout="@layout/nav_header_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true" />
 
 
-</android.support.design.widget.CoordinatorLayout>
+            <ExpandableListView
+
+                android:id="@+id/expandableListView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:color/white"
+                android:dividerHeight="0dp"
+                android:groupIndicator="@null"
+                />
+
+
+        </LinearLayout>
+    </android.support.design.widget.NavigationView>
+
+
+</android.support.v4.widget.DrawerLayout>
+

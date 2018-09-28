@@ -16,9 +16,8 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity.medication.MedActivity;
 
 
-public class ParametersActivity extends AppCompatActivity {
+public class ParametersActivity extends MainActivity {
 
-    private Intent intent;
     private SeekBar seekBar;
     private TextView age, hr, lsz, sys, ts, tm, th, bou;
 
@@ -27,19 +26,18 @@ public class ParametersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parameters);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        createMainActivity();
 
 
-        seekBar = (SeekBar) findViewById(R.id.par_sb);
-        age = (TextView) findViewById(R.id.par_age);
-        hr = (TextView) findViewById(R.id.par_hr);
-        lsz = (TextView) findViewById(R.id.par_lsz);
-        sys = (TextView) findViewById(R.id.par_sys);
-        ts = (TextView) findViewById(R.id.par_testsuly);
-        tm = (TextView) findViewById(R.id.par_tubusmeret);
-        th = (TextView) findViewById(R.id.par_tubushossz);
-        bou = (TextView) findViewById(R.id.par_bougie);
+        seekBar =  findViewById(R.id.par_sb);
+        age =  findViewById(R.id.par_age);
+        hr =  findViewById(R.id.par_hr);
+        lsz =  findViewById(R.id.par_lsz);
+        sys =  findViewById(R.id.par_sys);
+        ts =  findViewById(R.id.par_testsuly);
+        tm =  findViewById(R.id.par_tubusmeret);
+        th =  findViewById(R.id.par_tubushossz);
+        bou =  findViewById(R.id.par_bougie);
 
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -99,6 +97,12 @@ public class ParametersActivity extends AppCompatActivity {
                 }
 
 
+
+                /*created by
+                 * Oszkar Pap
+                 * */
+
+
             }
 
             @Override
@@ -112,57 +116,6 @@ public class ParametersActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        menu.getItem(5).setTitle("Főablak");
-        return true;
-
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.menu_medication) {
-            intent = new Intent(ParametersActivity.this, MedActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.menu_parameters) {
-            intent = new Intent(ParametersActivity.this, ParametersActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.menu_perfusor) {
-            intent = new Intent(ParametersActivity.this, PerfusorActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.menu_settings) {
-            intent = new Intent(ParametersActivity.this, LoginMainActivity.class);
-            startActivity(intent);
-        }
-        if(id == R.id.menu_kany){
-            intent = new Intent(Intent.ACTION_DIAL);
-            intent.setData(Uri.parse("tel:0680210022"));
-            startActivity(intent);
-        }
-        if (id == R.id.menu_log_out) {
-            intent = new Intent(ParametersActivity.this, MainActivity.class);
-            startActivity(intent);
-        }
-
-        if (id == R.id.menu_help) {
-            intent = new Intent(ParametersActivity.this,HelpActivity.class);
-            startActivity(intent);}
-        return super.onOptionsItemSelected(item);
     }
 
 }

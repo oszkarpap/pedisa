@@ -29,7 +29,7 @@
                 android:adjustViewBounds="true"
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/rsi"
+                android:src="@mipmap/veinpunction"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.7" />
 
@@ -86,6 +86,43 @@
                 app:expandOnClick="true"
                 app:inner_view="@layout/vein_chose"
                 app:title="Vénaválasztás" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/vein_kanul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/vein_kanul"
+                app:title="Kanül méretek" />
+
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/vein_line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/vein_line"
+                app:title="Vénabiztosítás menete" />
+
+            <com.alespero.expandablecardview.ExpandableCardView
+                android:id="@+id/vein_calc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                app:expandOnClick="true"
+                app:inner_view="@layout/vein_calc"
+                app:title="Calculator" />
 
         </LinearLayout>
 

@@ -12,6 +12,47 @@
 
     </string-array>
 
+    <!-- vein activity-->
+    <string-array name="vein_arrays">
+        <item>24G Sárga</item>
+        <item>22G Kék</item>
+        <item>20G Rózsaszín</item>
+        <item>18G Zöld</item>
+        <item>16G Szürke</item>
+        <item>14G Narancssárga</item>
+
+    </string-array>
+
+    <!-- rsi activity et size-->
+    <string-array name="et_arrays">
+        <item>10.0</item>
+        <item>9.5</item>
+        <item>9.0</item>
+        <item>8.5</item>
+        <item>8.0</item>
+        <item>7.5</item>
+        <item>7.0</item>
+        <item>6.5</item>
+        <item>6.0</item>
+        <item>5.5</item>
+        <item>5.0</item>
+        <item>4.5</item>
+        <item>4.0</item>
+        <item>3.5</item>
+        <item>3.0</item>
+        <item>2.5</item>
+        <item>2.0</item>
+    </string-array>
+
+    <!-- rsi activity lar size-->
+    <string-array name="lar_size">
+        <item>5</item>
+        <item>4</item>
+        <item>3</item>
+        <item>2</item>
+        <item>1</item>
+    </string-array>
+
     <!-- mainactivity-->
     <string name="app_name">OMSZ Applikáció</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -20,7 +61,7 @@
     <string name="nav_header_subtitle">Prehospitális sérült- és betegellátást támogató applikáció</string>
 
 
-    <!-- TODO: Remove or change this placeholder text -->
+
 
 
     <string name="action_sign_in_short">Regisztráció</string>
@@ -58,5 +99,29 @@
 
     <string name="repassword">jelszó ismét</string>
 
+    <!--  Med Adapter  -->
+    <style name="med_name1">Adenocor</style>
+    <style name="med_agent1">(adenozin)</style>
+    <style name="med_pack1">6mg/2ml</style>
+    <style name="med_ind1">PSVT, dd SVT/VT</style>
+    <style name="med_contra1">allergia, II. III. AVB, SSS, asthma bronchiale,COPD</style>
+    <style name="med_adult1">6mg iv. bolus, sz.e. 2 min 12mg, sz.e. ism</style>
+    <style name="med_child1">0,05-0,3mg/ttkg iv (2ml 6m-re higítva)</style>
+
+    <style name="med_name2"></style>
+    <style name="med_agent2"></style>
+    <style name="med_pack2"></style>
+    <style name="med_ind2"></style>
+    <style name="med_contra2"></style>
+    <style name="med_adult2"></style>
+    <style name="med_child2"></style>
+
+    <style name="med_name3"></style>
+    <style name="med_agent3"></style>
+    <style name="med_pack3"></style>
+    <style name="med_ind3"></style>
+    <style name="med_contra3"></style>
+    <style name="med_adult3"></style>
+    <style name="med_child3"></style>
 
 </resources>

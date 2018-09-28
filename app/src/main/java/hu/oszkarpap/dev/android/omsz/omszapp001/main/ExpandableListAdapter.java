@@ -7,10 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
-
 import java.util.HashMap;
 import java.util.List;
-
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
@@ -23,6 +21,11 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         this.context = context;
         this.listDataHeader = listDataHeader;
         this.listDataChild = listChildData;
+
+
+        /*created by
+         * Oszkar Pap
+         * */
     }
 
     @Override

@@ -6,9 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
-
 
 public class AbcdeActivity extends AppCompatActivity {
 
@@ -19,10 +17,8 @@ public class AbcdeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_abcde);
-        overridePendingTransition(R.anim.pull_in_left, R.anim.fade_out);
-        collapsingToolbarLayout =  findViewById(R.id.collapsingTollbar);
-        collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.white));
-        collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.white));
+
+        createActivity();
         guideline = findViewById(R.id.btn_abcde_guideline);
         guideline.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +38,14 @@ public class AbcdeActivity extends AppCompatActivity {
         super.onBackPressed();
 
 
+
+    }
+
+    public void createActivity(){
+        overridePendingTransition(R.anim.pull_in_left, R.anim.fade_out);
+        collapsingToolbarLayout =  findViewById(R.id.collapsingTollbar);
+        collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.white));
+        collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.white));
 
     }
 }

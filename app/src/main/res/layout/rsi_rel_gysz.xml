@@ -74,7 +74,7 @@ bólusok 5-10 percenként) "
         android:padding="10dp"
         android:text=""
         android:textColor="@color/text_blue"
-        android:textSize="@dimen/_15sdp"
+        android:textSize="@dimen/_10sdp"
         android:textStyle="bold" />
 
     <TextView
@@ -84,7 +84,7 @@ bólusok 5-10 percenként) "
         android:padding="10dp"
         android:text=""
         android:textColor="@color/text_blue"
-        android:textSize="@dimen/_15sdp"
+        android:textSize="@dimen/_10sdp"
         android:textStyle="bold" />
 
 

@@ -20,6 +20,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 
+
+/*created by
+ * Oszkar Pap
+ * */
+
 public class LoginMainActivity extends AppCompatActivity {
 
     private Button btnChangeEmail, btnChangePassword, btnSendResetEmail, btnRemoveUser,

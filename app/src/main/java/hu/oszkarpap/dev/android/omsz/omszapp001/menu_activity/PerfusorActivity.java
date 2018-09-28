@@ -3,8 +3,6 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,33 +10,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity.medication.MedActivity;
 
+public class PerfusorActivity extends MainActivity {
 
-public class PerfusorActivity extends AppCompatActivity {
-
-    private Intent intent;
     private Spinner perf_spinner;
-    private Button perf_submit, perf_calc;
-    private EditText perf_patient_weight, perf_dose;
-    private TextView perf_scr, perf_result, perf_ill;
+    private Button perf_chose, perf_calc;
+    private EditText perf_patient_weight, perf_dose, perf_db, perf_pack01, perf_pack02, perf_dilution;
+    private TextView perf_scr, perf_mg, perf_ml, perf_result, perf_db_label, perf_kg, perf_per;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfusor);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
+        createMainActivity();
 
         addListenerOnButton();
         addListenerOnSpinnerItemSelection();
 
-        perf_submit.setOnClickListener(new View.OnClickListener() {
+        perf_chose.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -48,15 +41,30 @@ public class PerfusorActivity extends AppCompatActivity {
                 switch (spinnerValue) {
                     case ("Tonogén"):
                         perf_scr.setText("Adrenalin adásának leírása");
-                        perf_dose.setVisibility(View.VISIBLE);
-                        perf_patient_weight.setVisibility(View.VISIBLE);
-                        perf_ill.setVisibility(View.VISIBLE);
-                        perf_calc.setVisibility(View.VISIBLE);
-                        perf_result.setVisibility(View.VISIBLE);
-                        perf_calc.setEnabled(true);
+                        setVisibilityOther();
+                        break;
+                    case ("Noradrenalin"):
+                        perf_scr.setText("Noradrenalin adásának leírása");
+                        setVisibilityOther();
+                        break;
+                    case ("Dopamin"):
+                        perf_scr.setText("Dopamin adásának leírása");
+                        setVisibilityOther();
+                        break;
+                    case ("NitroPohl"):
+                        perf_scr.setText("Nitropohl adásának leírása");
+                        setVisibilityOther();
+                        break;
+                    case ("Propofol"):
+                        perf_scr.setText("Propofol adásának leírása");
+                        setVisibilityOther();
+                        break;
+                    case ("Cordarone"):
+                        perf_scr.setText("Cordarone adásának leírása");
+                        setVisibilityOther();
                         break;
                     default:
-                        perf_scr.setText("Még nem lett beírva a többi, csak a Adr");
+                        perf_scr.setText("Készítmény kiválasztása kötelező");
                 }
 
             }
@@ -65,18 +73,31 @@ public class PerfusorActivity extends AppCompatActivity {
         });
 
 
+
+
+        /*created by
+         * Oszkar Pap
+         * */
+
+
         perf_calc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double perf_weight_calc = 0;
-                double perf_dose_calc = 0;
+                double weight = 0;
+                double dose = 0;
+                double pack01 = 0;
+                double pack02 = 0;
+                double dilution = 0;
 
                 try {
-                    perf_weight_calc = Double.parseDouble(perf_patient_weight.getText().toString());
-                    perf_dose_calc = Double.parseDouble(perf_dose.getText().toString());
-                    double result = perf_dose_calc * perf_weight_calc;
-                    String tot = new Double(result).toString();
-                    perf_result.setText(tot);
+                    weight = Double.parseDouble(perf_patient_weight.getText().toString());
+                    dose = Double.parseDouble(perf_dose.getText().toString());
+                    pack01 = Double.parseDouble(perf_pack01.getText().toString());
+                    pack02 = Double.parseDouble(perf_pack02.getText().toString());
+                    dilution = Double.parseDouble(perf_dilution.getText().toString());
+
+
+                    perf_result.setText("Még nem írtam be a logikát!");
 
                 } catch (Exception e) {
                     perf_result.setText("Üres mező!");
@@ -87,83 +108,70 @@ public class PerfusorActivity extends AppCompatActivity {
 
 
     public void addListenerOnSpinnerItemSelection() {
-        perf_spinner = (Spinner) findViewById(R.id.perf_spinner);
+        perf_spinner =  findViewById(R.id.perf_spinner);
         perf_spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
     }
 
-    // get the selected dropdown list value
     public void addListenerOnButton() {
 
-        perf_spinner = (Spinner) findViewById(R.id.perf_spinner);
-        perf_submit = (Button) findViewById(R.id.perf_submit);
+        perf_spinner =  findViewById(R.id.perf_spinner);
+        perf_chose =  findViewById(R.id.perf_submit);
         perf_patient_weight = findViewById(R.id.perf_patient_weight);
         perf_dose = findViewById(R.id.perf_dose);
         perf_scr = findViewById(R.id.perf_scr);
         perf_result = findViewById(R.id.perf_result);
-        perf_ill = findViewById(R.id.perf_ill);
+        perf_pack01 = findViewById(R.id.perf_pack01);
+        perf_pack02 = findViewById(R.id.perf_pack02);
+        perf_dilution = findViewById(R.id.perf_dilution);
         perf_calc = findViewById(R.id.perf_calc);
+        perf_mg = findViewById(R.id.perf_mg);
+        perf_ml = findViewById(R.id.perf_ml);
+        perf_db = findViewById(R.id.perf_db);
+        perf_per = findViewById(R.id.perf_per);
+        perf_kg = findViewById(R.id.perf_kg);
+        perf_db_label = findViewById(R.id.perf_db_label);
 
 
         perf_dose.setVisibility(View.INVISIBLE);
         perf_patient_weight.setVisibility(View.INVISIBLE);
-        perf_ill.setVisibility(View.INVISIBLE);
         perf_calc.setVisibility(View.INVISIBLE);
         perf_result.setVisibility(View.INVISIBLE);
-
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        menu.getItem(5).setTitle("Főablak");
-        return true;
-
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.menu_medication) {
-            intent = new Intent(PerfusorActivity.this, MedActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.menu_parameters) {
-            intent = new Intent(PerfusorActivity.this, ParametersActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.menu_perfusor) {
-            intent = new Intent(PerfusorActivity.this, PerfusorActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.menu_settings) {
-            intent = new Intent(PerfusorActivity.this, LoginMainActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.menu_kany) {
-            intent = new Intent(Intent.ACTION_DIAL);
-            intent.setData(Uri.parse("tel:0680210022"));
-            startActivity(intent);
-        }
-        if (id == R.id.menu_log_out) {
-            intent = new Intent(PerfusorActivity.this, MainActivity.class);
-            startActivity(intent);
-        }
-        if (id == R.id.menu_help) {
-            intent = new Intent(PerfusorActivity.this, HelpActivity.class);
-            startActivity(intent);}
-            return super.onOptionsItemSelected(item);
-        }
+        perf_pack02.setVisibility(View.INVISIBLE);
+        perf_pack01.setVisibility(View.INVISIBLE);
+        perf_dilution.setVisibility(View.INVISIBLE);
+        perf_scr.setVisibility(View.INVISIBLE);
+        perf_mg.setVisibility(View.INVISIBLE);
+        perf_ml.setVisibility(View.INVISIBLE);
+        perf_db.setVisibility(View.INVISIBLE);
+        perf_per.setVisibility(View.INVISIBLE);
+        perf_kg.setVisibility(View.INVISIBLE);
+        perf_db_label.setVisibility(View.INVISIBLE);
 
 
     }
+
+    public void setVisibilityOther(){
+        perf_dose.setVisibility(View.VISIBLE);
+        perf_patient_weight.setVisibility(View.VISIBLE);
+        perf_calc.setVisibility(View.VISIBLE);
+        perf_result.setVisibility(View.VISIBLE);
+        perf_pack01.setVisibility(View.VISIBLE);
+        perf_pack02.setVisibility(View.VISIBLE);
+        perf_dilution.setVisibility(View.VISIBLE);
+        perf_mg.setVisibility(View.VISIBLE);
+        perf_ml.setVisibility(View.VISIBLE);
+        perf_scr.setVisibility(View.VISIBLE);
+        perf_db.setVisibility(View.VISIBLE);
+        perf_per.setVisibility(View.VISIBLE);
+        perf_kg.setVisibility(View.VISIBLE);
+        perf_db_label.setVisibility(View.VISIBLE);
+
+        perf_calc.setEnabled(true);
+    }
+
+
+
+}
 
 
 

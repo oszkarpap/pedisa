@@ -9,6 +9,11 @@ public class MenuModel {
     public int modelId;
     public boolean hasChildren, isGroup;
 
+
+    /*created by
+     * Oszkar Pap
+     * */
+
     public MenuModel(String menuName, boolean isGroup, boolean hasChildren, int modelId) {
         this.menuName = menuName;
         this.modelId = modelId;

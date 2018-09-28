@@ -57,13 +57,17 @@
         </activity>
         <activity
             android:name=".nav_view_activity.AbcdeProtokollActivity"
+            android:label="ABCDE PROTOKOLL"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".menu_activity.ParametersActivity"
             android:label="Paraméterek"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".menu_activity.HelpActivity" />
-        <activity android:name=".nav_view_activity.VeinActivity"
+        <activity
+            android:name=".menu_activity.HelpActivity"
+            android:label="RSI menu használati segédlet" />
+        <activity
+            android:name=".nav_view_activity.VeinActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

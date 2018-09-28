@@ -22,6 +22,11 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 
 public class LoginActivity extends AppCompatActivity {
 
+
+
+    /*created by
+     * Oszkar Pap
+     * */
     private EditText inputEmail, inputPassword;
     private FirebaseAuth auth;
     private ProgressBar progressBar;

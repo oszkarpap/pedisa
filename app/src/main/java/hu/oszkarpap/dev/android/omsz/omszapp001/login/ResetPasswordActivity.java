@@ -18,6 +18,11 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 
 public class ResetPasswordActivity extends AppCompatActivity {
 
+
+
+    /*created by
+     * Oszkar Pap
+     * */
     private EditText inputEmail;
     private Button btnReset;
     private FirebaseAuth auth;
