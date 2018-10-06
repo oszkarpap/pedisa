@@ -2,6 +2,7 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.main;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -17,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -124,8 +127,27 @@ public class MainActivity extends AppCompatActivity
         }
 
         if (id == R.id.menu_log_out) {
-            auth.signOut();
-            finish();
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setMessage("Biztos ki akar jelentkezni?");
+                    alertDialogBuilder.setPositiveButton("Igen",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface arg0, int arg1) {
+                                    Toast.makeText(MainActivity.this,"Sikeresen kijelentkezett!",Toast.LENGTH_LONG).show();
+                                    auth.signOut();
+                                    finish();
+                                }
+                            });
+
+            alertDialogBuilder.setNegativeButton("Nem",new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(MainActivity.this, "Nem jelentkezett ki!", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
         }
         if (id == R.id.menu_help) {
             intent = new Intent(MainActivity.this, HelpActivity.class);
