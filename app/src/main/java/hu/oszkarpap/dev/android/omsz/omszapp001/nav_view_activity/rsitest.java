@@ -1,0 +1,23 @@
+...
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+...
+
+    konzPhoneNumber = "0680205025";
+    editor = sharedPreferences.edit();
+...
+        if ( sharedPreferences.getString("NewPhoneNumber","-1") == "-1") {
+                    intent.setData(Uri.parse("tel:" + konzPhoneNumber));
+                ...
+...
+        editor.putString("NewPhoneNumber", rsiOtherKonzEt.getText().toString());
+                        editor.commit();
+                        rsiOtherKonzEt.setText(null);
+        ...
+                        rsiNumberReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    editor.clear();
+                    editor.commit();
+           ...

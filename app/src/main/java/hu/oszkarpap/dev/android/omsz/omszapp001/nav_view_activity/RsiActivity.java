@@ -460,7 +460,6 @@ public class RsiActivity extends AppCompatActivity {
 
         konzPhoneNumber = "0680205025";
         editor = sharedPreferences.edit();
-        editor.commit();
 
 
         call_to_konzulens.setOnClickListener(new View.OnClickListener() {
