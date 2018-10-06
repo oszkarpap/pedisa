@@ -42,10 +42,11 @@ public class RsiActivity extends AppCompatActivity {
     private TextView rsigyszalt, rsigyszalt2;
     private Intent intent;
     private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
     private Button rsiOtherKonzBtn, rsiNumberReset;
     private EditText rsiOtherKonzEt;
     private String konzPhoneNumber;
-    private SharedPreferences.Editor editor;
+
     private int Oraculum;
 
 
@@ -458,15 +459,18 @@ public class RsiActivity extends AppCompatActivity {
     public void konzulensCallMethod(){
 
         konzPhoneNumber = "0680205025";
+        editor = sharedPreferences.edit();
+        editor.commit();
+
 
         call_to_konzulens.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(Intent.ACTION_DIAL);
-                if (sharedPreferences == null) {
+                if ( sharedPreferences.getString("NewPhoneNumber","1") == "1") {
                     intent.setData(Uri.parse("tel:" + konzPhoneNumber));
                 } else {
-                    intent.setData(Uri.parse("tel:"+sharedPreferences.getString("NewPhoneNumber",null)));
+                    intent.setData(Uri.parse("tel:"+sharedPreferences.getString("NewPhoneNumber","1")));
                 }
                 startActivity(intent);
             }
@@ -479,8 +483,8 @@ public class RsiActivity extends AppCompatActivity {
 
                 if (!rsiOtherKonzEt.getText().toString().matches("")){
                     try {
-                        editor = sharedPreferences.edit();
-                        editor.putString("OriginalPhoneNumber", konzPhoneNumber);
+
+
                         editor.putString("NewPhoneNumber", rsiOtherKonzEt.getText().toString());
                         editor.commit();
                         rsiOtherKonzEt.setText(null);
@@ -500,7 +504,7 @@ public class RsiActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    editor.putString("NewPhoneNumber", konzPhoneNumber);
+                    editor.clear();
                     editor.commit();
                     Toast.makeText(RsiActivity.this, "Eredeti Konzulens telefonszám visszaállítva!", Toast.LENGTH_SHORT).show();
                 }catch (Exception e){
