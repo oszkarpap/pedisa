@@ -1,7 +1,9 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.main;
 
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
+
     /*created by
      * Oszkar Pap
      * */
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         createMainActivity();
 
@@ -69,6 +73,8 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+
+
 
 
     }
@@ -234,7 +240,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         childModelsList = new ArrayList<>();
-        menuModel = new MenuModel("Exposure", true, true, 7);
+        menuModel = new MenuModel("Environment", true, true, 7);
         headerList.add(menuModel);
         childModel = new MenuModel("Rögzítések", false, false, 71);
         childModelsList.add(childModel);
@@ -295,6 +301,7 @@ public class MainActivity extends AppCompatActivity
                             intent = new Intent(MainActivity.this, MedActivity.class);
                             startActivity(intent);
                             break;
+
 
 
                     }

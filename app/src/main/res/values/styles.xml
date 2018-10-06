@@ -22,7 +22,7 @@
 
     </style>
 
-    <style name="AppTheme.NoActionBar.MM">
+    <style name="AppTheme.NoActionBar.Mainmenu">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
