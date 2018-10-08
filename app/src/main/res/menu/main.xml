@@ -34,17 +34,21 @@
         android:title="KÁNY hívása"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/menu_log_out"
-        android:orderInCategory="100"
-        android:title="@string/log_out"
-        app:showAsAction="never" />
 
     <item
         android:id="@+id/menu_help"
         android:orderInCategory="100"
         android:title="RSI menu segédlet"
         app:showAsAction="never" />
-
+    <item
+        android:id="@+id/menu_note"
+        android:orderInCategory="100"
+        android:title="Saját jegyzet"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_log_out"
+        android:orderInCategory="100"
+        android:title="@string/log_out"
+        app:showAsAction="never" />
 
 </menu>

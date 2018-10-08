@@ -27,8 +27,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+
+
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.memory.MemoryActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity.HelpActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity.ParametersActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity.PerfusorActivity;
@@ -106,6 +109,10 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.menu_medication) {
             intent = new Intent(MainActivity.this, MedActivity.class);
+            startActivity(intent);
+        }
+        if (id== R.id.menu_note) {
+            intent = new Intent(MainActivity.this, MemoryActivity.class);
             startActivity(intent);
         }
         if (id == R.id.menu_parameters) {

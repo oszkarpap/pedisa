@@ -71,7 +71,11 @@
             android:label="RSI menu használati segédlet" />
         <activity
             android:name=".nav_view_activity.VeinActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".memory.MemoryActivity"
+            android:label="Saját gyógyszerkártyák"/>
+        <activity android:name=".memory.CreateMemoryActivity"
+            android:label="Új gyógyszer bevitele"></activity>
     </application>
 
 </manifest>

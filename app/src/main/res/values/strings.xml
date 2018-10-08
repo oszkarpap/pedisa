@@ -61,9 +61,6 @@
     <string name="nav_header_subtitle">Prehospitális sérült- és betegellátást támogató applikáció</string>
 
 
-
-
-
     <string name="action_sign_in_short">Regisztráció</string>
     <string name="email">Email</string>
     <string name="minimum_password">Minimum 6 karakter!</string>
@@ -98,30 +95,54 @@
 
 
     <string name="repassword">jelszó ismét</string>
+    <string name="remove_all_menu">összes törélse</string>
+    <string name="create_todo_menu">új</string>
+    <string name="create_todo_title">cím</string>
+    <string name="create_todo_description">leírás</string>
+    <string name="create_todo_assignee">felelős</string>
+    <string name="create_todo_button">Létrehoz</string>
 
     <!--  Med Adapter  -->
     <style name="med_name1">Adenocor</style>
+
     <style name="med_agent1">(adenozin)</style>
+
     <style name="med_pack1">6mg/2ml</style>
+
     <style name="med_ind1">PSVT, dd SVT/VT</style>
+
     <style name="med_contra1">allergia, II. III. AVB, SSS, asthma bronchiale,COPD</style>
+
     <style name="med_adult1">6mg iv. bolus, sz.e. 2 min 12mg, sz.e. ism</style>
+
     <style name="med_child1">0,05-0,3mg/ttkg iv (2ml 6m-re higítva)</style>
 
     <style name="med_name2"></style>
+
     <style name="med_agent2"></style>
+
     <style name="med_pack2"></style>
+
     <style name="med_ind2"></style>
+
     <style name="med_contra2"></style>
+
     <style name="med_adult2"></style>
+
     <style name="med_child2"></style>
 
     <style name="med_name3"></style>
+
     <style name="med_agent3"></style>
+
     <style name="med_pack3"></style>
+
     <style name="med_ind3"></style>
+
     <style name="med_contra3"></style>
+
     <style name="med_adult3"></style>
+
     <style name="med_child3"></style>
 
 </resources>

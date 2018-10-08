@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".memory.CreateMemoryActivity">
+
+    <Button
+        android:id="@+id/createMemoryBTN"
+        style="@style/Base.Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        android:text="Létrehoz"
+        android:textColor="@color/white" />
+
+    <EditText
+        android:id="@+id/createNameET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:hint="Gyógyszer neve" />
+
+    <EditText
+        android:id="@+id/createAgentET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:hint="Hatóanyag" />
+
+    <EditText
+        android:id="@+id/createPackET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:hint="Kiszerelés" />
+
+    <EditText
+        android:id="@+id/createIndET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:hint="Indikáció" />
+
+    <EditText
+        android:id="@+id/createContraET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:hint="Kontraindikáció" />
+
+    <EditText
+        android:id="@+id/createAdultET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:hint="Felnőtt dózis" />
+
+    <EditText
+        android:id="@+id/createChildET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:hint="Gyermek dózis" />
+
+
+</LinearLayout>
