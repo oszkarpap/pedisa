@@ -1,4 +1,4 @@
-package hu.oszkarpap.dev.android.omsz.omszapp001.memory.adapter;
+package hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity.medication;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -15,38 +15,38 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.memory.model.Memory;
 
 
-public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.ViewHolder>{
+public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ViewHolder>{
 
 
     private final Context context;
-    private List<Memory> memories;
+    private List<Medication> medications;
     private final LayoutInflater inflater;
     private OnItemLongClickListener listener;
 
-    public MemoryAdapter(Context context, List<Memory> memories, OnItemLongClickListener listener) {
+    public MedAdapter(Context context, List<Medication> medications, OnItemLongClickListener listener) {
         this.context = context;
-        this.memories = memories;
+        this.medications = medications;
         this.inflater= LayoutInflater.from(context);
         this.listener = listener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-       View view=inflater.inflate(R.layout.li_memory,parent,false);
+       View view=inflater.inflate(R.layout.row_medication,parent,false);
        ViewHolder holder=new ViewHolder(view);
        return holder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        Memory memory=memories.get(position);
-        holder.name.setText(memory.getName());
-        holder.agent.setText(memory.getAgent());
-        holder.pack.setText(memory.getPack());
-        holder.ind.setText(memory.getInd());
-        holder.contra.setText(memory.getCont());
-        holder.adult.setText(memory.getAdult());
-        holder.child.setText(memory.getChild());
+        Medication medication= medications.get(position);
+        holder.name.setText(medication.getName());
+        holder.agent.setText(medication.getAgent());
+        holder.pack.setText(medication.getPack());
+        holder.ind.setText(medication.getInd());
+        holder.contra.setText(medication.getCont());
+        holder.adult.setText(medication.getAdult());
+        holder.child.setText(medication.getChild());
         holder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -58,7 +58,7 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return memories.size();
+        return medications.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -68,23 +68,23 @@ public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.ViewHolder
 
         public ViewHolder(View itemView) {
             super(itemView);
-            linearLayout= itemView.findViewById(R.id.layout_memory);
-            name = itemView.findViewById(R.id.nameTV);
-            agent = itemView.findViewById(R.id.agentTV);
-            pack = itemView.findViewById(R.id.packTV);
-            ind = itemView.findViewById(R.id.indTV);
-            contra = itemView.findViewById(R.id.contTV);
-            adult = itemView.findViewById(R.id.adultTV);
-            child = itemView.findViewById(R.id.childTV);
+            linearLayout= itemView.findViewById(R.id.row_med_layout);
+            name = itemView.findViewById(R.id.txt_med_name);
+            agent = itemView.findViewById(R.id.txt_med_agent);
+            pack = itemView.findViewById(R.id.txt_med_pack);
+            ind = itemView.findViewById(R.id.txt_med_indication);
+            contra = itemView.findViewById(R.id.txt_med_contra);
+            adult = itemView.findViewById(R.id.txt_med_adult_dose);
+            child = itemView.findViewById(R.id.txt_med_child_dose);
 
 
         }
     }
 
-    public void updateList(List<Memory> newList) {
+    public void updateList(List<Medication> newList) {
 
-        memories = new ArrayList<>();
-        memories.addAll(newList);
+        medications = new ArrayList<>();
+        medications.addAll(newList);
         notifyDataSetChanged();
 
     }

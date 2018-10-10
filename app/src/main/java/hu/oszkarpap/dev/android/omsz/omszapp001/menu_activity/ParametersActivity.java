@@ -1,19 +1,11 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
-import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity.medication.MedActivity;
 
 
 public class ParametersActivity extends MainActivity {

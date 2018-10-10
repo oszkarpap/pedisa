@@ -1,19 +1,13 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
-import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity.medication.MedActivity;
 
 public class PerfusorActivity extends MainActivity {
 

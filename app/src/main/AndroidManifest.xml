@@ -51,14 +51,6 @@
             android:label="RSI"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".menu_activity.medication.MedActivity"
-            android:label="Rendszeresített gyógyszerek"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".nav_view_activity.AbcdeProtokollActivity"
             android:label="ABCDE PROTOKOLL"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -72,10 +64,20 @@
         <activity
             android:name=".nav_view_activity.VeinActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".memory.MemoryActivity"
-            android:label="Saját gyógyszerkártyák"/>
-        <activity android:name=".memory.CreateMemoryActivity"
+        <activity
+            android:name=".memory.MemoryActivity"
+            android:label="Saját gyógyszerkártyák" />
+        <activity
+            android:name=".memory.CreateMemoryActivity"
             android:label="Új gyógyszer bevitele"></activity>
+        <activity
+            android:name=".menu_activity.medication.MedActivity"
+            android:label="Rendszeresített gyógyszerek"
+
+            />
+        <activity
+            android:name=".menu_activity.medication.CreateMedActivity"
+            android:label="Gyógyszer a Firebase-be" />
     </application>
 
 </manifest>

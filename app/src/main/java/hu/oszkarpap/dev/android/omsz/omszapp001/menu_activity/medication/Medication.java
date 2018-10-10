@@ -1,7 +1,10 @@
-package hu.oszkarpap.dev.android.omsz.omszapp001.memory.model;
+package hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity.medication;
 
-public class Memory {
+import java.util.Objects;
+
+public class Medication {
     private Long id;
+    private String key;
     private String name;
     private String agent;
     private String pack;
@@ -10,7 +13,7 @@ public class Memory {
     private String adult;
     private String child;
 
-    public Memory(Long id, String name, String agent, String pack, String ind, String cont, String adult, String child) {
+    public Medication(Long id, String name, String agent, String pack, String ind, String cont, String adult, String child) {
         this.id = id;
         this.name = name;
         this.agent = agent;
@@ -21,7 +24,7 @@ public class Memory {
         this.child = child;
     }
 
-    public Memory(String name, String agent, String pack, String ind, String cont, String adult, String child) {
+    public Medication(String name, String agent, String pack, String ind, String cont, String adult, String child) {
         this.name = name;
         this.agent = agent;
         this.pack = pack;
@@ -31,9 +34,16 @@ public class Memory {
         this.child = child;
     }
 
-    public Memory() {
+    public Medication() {
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public Long getId() {
         return id;
@@ -99,5 +109,16 @@ public class Memory {
         this.child = child;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Medication memory = (Medication) o;
+        return Objects.equals(key, memory.key);
+    }
 
+    @Override
+    public int hashCode() {
+        return 0;
+    }
 }

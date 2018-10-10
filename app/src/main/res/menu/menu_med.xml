@@ -9,4 +9,12 @@
         app:showAsAction="collapseActionView|always"
         app:actionViewClass="android.support.v7.widget.SearchView"
         android:title="med search" />
+    <item
+        android:id="@+id/createMedMenu"
+        android:title="@string/create_todo_menu"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/removeAllMedication"
+        android:title="@string/remove_all_menu" />
 </menu>

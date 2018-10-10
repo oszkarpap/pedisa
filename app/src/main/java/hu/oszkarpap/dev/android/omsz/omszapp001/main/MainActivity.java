@@ -1,10 +1,8 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.main;
 
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -158,6 +156,10 @@ public class MainActivity extends AppCompatActivity
         }
         if (id == R.id.menu_help) {
             intent = new Intent(MainActivity.this, HelpActivity.class);
+            startActivity(intent);
+        }
+        if (id == R.id.menu_note){
+            intent = new Intent(MainActivity.this, MemoryActivity.class);
             startActivity(intent);
         }
 

@@ -2,11 +2,12 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.memory;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -16,13 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
-import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.memory.adapter.MemoryAdapter;
 import hu.oszkarpap.dev.android.omsz.omszapp001.memory.model.Memory;
 import hu.oszkarpap.dev.android.omsz.omszapp001.memory.repository.Repository;
 import hu.oszkarpap.dev.android.omsz.omszapp001.memory.repository.sqlite.SQLiteRepository;
 
-public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.OnItemLongClickListener {
+public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener {
 
     public static final int REQUEST_CODE = 111;
     private List<Memory> memories;
@@ -30,16 +30,17 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
     private Repository repository;
     private Memory memory;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory);
 
-        repository= new SQLiteRepository();
+        repository = new SQLiteRepository();
 
         memories = new ArrayList<>();
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView_todo);
+        RecyclerView recyclerView = findViewById(R.id.recycler_view_memory);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -73,12 +74,12 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
     }
 
 
-    private void saveMemoriesAsync(final Memory memory) {
+    private void saveMemoriesAsync(final Memory memo) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 repository.open(MemoryActivity.this);
-                repository.saveMemory(memory);
+                repository.saveMemory(memo);
                 repository.close();
 
                 runOnUiThread(new Runnable() {
@@ -90,9 +91,11 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
             }
         });
         thread.start();
+
+
     }
 
-    private void deleteMemoryAsync(final Memory memory) {
+    private void deleteMemoryAsync(final Memory memo) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -134,13 +137,42 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_memory, menu);
+
+        MenuItem menuItem = menu.findItem(R.id.memo_search);
+
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setQueryHint("Keresés gyógyszernév vagy hatóanyag alapján ");
+        searchView.setOnQueryTextListener(this);
         return true;
+
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.removeAllMemory) {
-            deleteAllAsync();
+
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setMessage("Biztos törölni szeretné az ÖSSZES jegyzetet?");
+            alertDialogBuilder.setPositiveButton("Igen",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            Toast.makeText(MemoryActivity.this, "Törölve!", Toast.LENGTH_LONG).show();
+                            deleteAllAsync();
+                            adapter.notifyDataSetChanged();
+                            finish();
+
+                        }
+                    });
+
+            alertDialogBuilder.setNegativeButton("Nem", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
 
 
         } else if (item.getItemId() == R.id.createMemoryMenu) {
@@ -182,13 +214,13 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        Toast.makeText(MemoryActivity.this,"Törölve!",Toast.LENGTH_LONG).show();
+                        Toast.makeText(MemoryActivity.this, "Törölve!", Toast.LENGTH_LONG).show();
 
                         deleteMemoryAsync(memory);
                     }
                 });
 
-        alertDialogBuilder.setNegativeButton("Nem",new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setNegativeButton("Nem", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
 
             }
@@ -196,5 +228,29 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+
+        String MedInput = s.toLowerCase();
+        List<Memory> newList = new ArrayList<>();
+
+        for (Memory x : memories) {
+            if (x.getName().toLowerCase().contains(MedInput) || x.getAgent().toLowerCase().contains(MedInput)
+                    || x.getPack().toLowerCase().contains(MedInput) || x.getInd().toLowerCase().contains(MedInput)
+                    || x.getCont().toLowerCase().contains(MedInput) || x.getAdult().toLowerCase().contains(MedInput)
+                    || x.getChild().toLowerCase().contains(MedInput)) {
+                newList.add(x);
+            }
+        }
+
+        adapter.updateList(newList);
+        return true;
     }
 }
