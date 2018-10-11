@@ -12,14 +12,18 @@ import android.view.MenuItem;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.memory.CreateMemoryActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.memory.model.Memory;
 
 
 public class ParametersActivity extends MainActivity implements OnQueryTextListener {
+
 
     private SeekBar seekBar, seekBarMed;
     private TextView age, hr, lsz, sys, ts, tm, th, bou;
@@ -28,6 +32,8 @@ public class ParametersActivity extends MainActivity implements OnQueryTextListe
     private ArrayList<ParametersMed> parametersMeds;
     private ParameterMedAdapter adapter;
     private TextView childWeight;
+
+
 
     private String adenozin;
     private String atropin;
@@ -71,8 +77,8 @@ public class ParametersActivity extends MainActivity implements OnQueryTextListe
     private String exacyl;
     private String ceftriaxon;
     private SearchView searchView;
-    private List<ParametersMed> newList;
     private int progressValue;
+
 
 
     @Override
@@ -192,7 +198,7 @@ public class ParametersActivity extends MainActivity implements OnQueryTextListe
 
 
         adapter = new ParameterMedAdapter(parametersMeds);
-        fillParMed();
+        fillParMed(parametersMeds);
 
         recyclerView.setAdapter(adapter);
 
@@ -224,7 +230,7 @@ public class ParametersActivity extends MainActivity implements OnQueryTextListe
             public void onStopTrackingTouch(SeekBar seekBar) {
 
                 parametersMeds.clear();
-                fillParMed();
+                fillParMed(parametersMeds);
                 adapter.notifyDataSetChanged();
 
 
@@ -232,49 +238,49 @@ public class ParametersActivity extends MainActivity implements OnQueryTextListe
         });
     }
 
-    private void fillParMed() {
-        parametersMeds.add(new ParametersMed("Adenozin: ", adenozin));
-        parametersMeds.add(new ParametersMed("Atropin: ", atropin));
-        parametersMeds.add(new ParametersMed("Betaloc: ", betaloc));
-        parametersMeds.add(new ParametersMed("Cordarone: ", cordarone));
-        parametersMeds.add(new ParametersMed("Magnézium: ", magnesium));
-        parametersMeds.add(new ParametersMed("Verapamil: ", verapamil));
-        parametersMeds.add(new ParametersMed("Fentanyl: ", fenatyl));
-        parametersMeds.add(new ParametersMed("Morfin: ", morfin));
-        parametersMeds.add(new ParametersMed("Naloxon: ", naloxon));
-        parametersMeds.add(new ParametersMed("Ketamin: ", ketamin));
-        parametersMeds.add(new ParametersMed("Algopyrin: ", algopyrin));
-        parametersMeds.add(new ParametersMed("NoSpa: ", nospa));
-        parametersMeds.add(new ParametersMed("Nurofen: ", nurofen));
-        parametersMeds.add(new ParametersMed("NitroPohl: ", nitropohl));
-        parametersMeds.add(new ParametersMed("Berodual: ", berodual));
-        parametersMeds.add(new ParametersMed("Rectodelt: ", rectodelt));
-        parametersMeds.add(new ParametersMed("Metilprednisolon: ", metilprednisolon));
-        parametersMeds.add(new ParametersMed("Ventolin: ", ventolin));
-        parametersMeds.add(new ParametersMed("Bricanyl: ", bricanyl));
-        parametersMeds.add(new ParametersMed("Suprastin: ", suprastin));
-        parametersMeds.add(new ParametersMed("Calcimusc: ", calcimusc));
-        parametersMeds.add(new ParametersMed("Diazepan Dezitin: ", dezitin));
-        parametersMeds.add(new ParametersMed("Sedixen: ", seduxen));
-        parametersMeds.add(new ParametersMed("Midazolam: ", midazolam));
-        parametersMeds.add(new ParametersMed("Epanutin: ", epanutin));
-        parametersMeds.add(new ParametersMed("Etomidate: ", etomidate));
-        parametersMeds.add(new ParametersMed("Propofol: ", propofol));
-        parametersMeds.add(new ParametersMed("Ebrantil", ebrantil));
-        parametersMeds.add(new ParametersMed("Furosemid: ", furosemid));
-        parametersMeds.add(new ParametersMed("Tensiomin: ", tensiomin));
-        parametersMeds.add(new ParametersMed("Cerucal: ", tensiomin));
-        parametersMeds.add(new ParametersMed("Tonogén: ", tonogen));
-        parametersMeds.add(new ParametersMed("Dopamin", dopamin));
-        parametersMeds.add(new ParametersMed("Heparin", heparin));
-        parametersMeds.add(new ParametersMed("Glukagen: ", glukagen));
-        parametersMeds.add(new ParametersMed(" Anexate: ", anexate));
-        parametersMeds.add(new ParametersMed("Arterenlol: ", arterenol));
-        parametersMeds.add(new ParametersMed("Esmeron: ", esmeron));
-        parametersMeds.add(new ParametersMed("Cerucal: ", cerucal));
-        parametersMeds.add(new ParametersMed("Lystheron: ", lystheron));
-        parametersMeds.add(new ParametersMed("Exacyl: ", exacyl));
-        parametersMeds.add(new ParametersMed("Ceftriaxon", ceftriaxon));
+    private void fillParMed(ArrayList<ParametersMed> x) {
+        x.add(new ParametersMed("Adenozin: ", adenozin));
+        x.add(new ParametersMed("Atropin: ", atropin));
+        x.add(new ParametersMed("Betaloc: ", betaloc));
+        x.add(new ParametersMed("Cordarone: ", cordarone));
+        x.add(new ParametersMed("Magnézium: ", magnesium));
+        x.add(new ParametersMed("Verapamil: ", verapamil));
+        x.add(new ParametersMed("Fentanyl: ", fenatyl));
+        x.add(new ParametersMed("Morfin: ", morfin));
+        x.add(new ParametersMed("Naloxon: ", naloxon));
+        x.add(new ParametersMed("Ketamin: ", ketamin));
+        x.add(new ParametersMed("Algopyrin: ", algopyrin));
+        x.add(new ParametersMed("NoSpa: ", nospa));
+        x.add(new ParametersMed("Nurofen: ", nurofen));
+        x.add(new ParametersMed("NitroPohl: ", nitropohl));
+        x.add(new ParametersMed("Berodual: ", berodual));
+        x.add(new ParametersMed("Rectodelt: ", rectodelt));
+        x.add(new ParametersMed("Metilprednisolon: ", metilprednisolon));
+        x.add(new ParametersMed("Ventolin: ", ventolin));
+        x.add(new ParametersMed("Bricanyl: ", bricanyl));
+        x.add(new ParametersMed("Suprastin: ", suprastin));
+        x.add(new ParametersMed("Calcimusc: ", calcimusc));
+        x.add(new ParametersMed("Diazepan Dezitin: ", dezitin));
+        x.add(new ParametersMed("Sedixen: ", seduxen));
+        x.add(new ParametersMed("Midazolam: ", midazolam));
+        x.add(new ParametersMed("Epanutin: ", epanutin));
+        x.add(new ParametersMed("Etomidate: ", etomidate));
+        x.add(new ParametersMed("Propofol: ", propofol));
+        x.add(new ParametersMed("Ebrantil", ebrantil));
+        x.add(new ParametersMed("Furosemid: ", furosemid));
+        x.add(new ParametersMed("Tensiomin: ", tensiomin));
+        x.add(new ParametersMed("Cerucal: ", tensiomin));
+        x.add(new ParametersMed("Tonogén: ", tonogen));
+        x.add(new ParametersMed("Dopamin", dopamin));
+        x.add(new ParametersMed("Heparin", heparin));
+        x.add(new ParametersMed("Glukagen: ", glukagen));
+        x.add(new ParametersMed(" Anexate: ", anexate));
+        x.add(new ParametersMed("Arterenlol: ", arterenol));
+        x.add(new ParametersMed("Esmeron: ", esmeron));
+        x.add(new ParametersMed("Cerucal: ", cerucal));
+        x.add(new ParametersMed("Lystheron: ", lystheron));
+        x.add(new ParametersMed("Exacyl: ", exacyl));
+        x.add(new ParametersMed("Ceftriaxon", ceftriaxon));
 
 
     }
@@ -351,6 +357,8 @@ public class ParametersActivity extends MainActivity implements OnQueryTextListe
         return super.onOptionsItemSelected(item);
     }
 
+
+
     @Override
     public boolean onQueryTextSubmit(String s) {
         return false;
@@ -360,8 +368,8 @@ public class ParametersActivity extends MainActivity implements OnQueryTextListe
     public boolean onQueryTextChange(String s) {
 
         String Input = s.toLowerCase();
-        newList = new ArrayList<>();
 
+        ArrayList<ParametersMed> newList = new ArrayList<>();
         for (ParametersMed x : parametersMeds) {
             if (x.getMedLabel().toLowerCase().contains(Input)) {
                 newList.add(x);

@@ -44,6 +44,7 @@ public class MedActivity extends AppCompatActivity implements MedAdapter.OnItemL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_med);
+        overridePendingTransition(0, 0);
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
 

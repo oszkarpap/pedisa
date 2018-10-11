@@ -1,6 +1,7 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.login;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -27,12 +28,10 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 
 public class LoginMainActivity extends AppCompatActivity {
 
-    private Button btnChangeEmail, btnChangePassword, btnSendResetEmail, btnRemoveUser,
-            changeEmail, changePassword, sendEmail, remove;
-
-    private EditText oldEmail, newEmail, password, newPassword;
+    private Button remove, newEmail, newPassword, ok;
+    private EditText editText;
     private ProgressBar progressBar;
-    private FirebaseAuth.AuthStateListener authListener;
+
     private FirebaseAuth auth;
 
     @Override
@@ -40,233 +39,160 @@ public class LoginMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.app_name));
         setSupportActionBar(toolbar);
 
-        //get firebase auth instance
+
+
         auth = FirebaseAuth.getInstance();
 
-        //get current user
+
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        authListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user == null) {
-                    // user auth state is changed - user is null
-                    // launch login activity
-                    startActivity(new Intent(LoginMainActivity.this, LoginActivity.class));
-                    finish();
-                }
-            }
-        };
-
-        btnChangeEmail = (Button) findViewById(R.id.change_email_button);
-        btnChangePassword = (Button) findViewById(R.id.change_password_button);
-        btnSendResetEmail = (Button) findViewById(R.id.sending_pass_reset_button);
-        btnRemoveUser = (Button) findViewById(R.id.remove_user_button);
-        changeEmail = (Button) findViewById(R.id.changeEmail);
-        changePassword = (Button) findViewById(R.id.changePass);
-        sendEmail = (Button) findViewById(R.id.send);
-        remove = (Button) findViewById(R.id.remove);
 
 
 
-        oldEmail = (EditText) findViewById(R.id.old_email);
-        newEmail = (EditText) findViewById(R.id.new_email);
-        password = (EditText) findViewById(R.id.password);
-        newPassword = (EditText) findViewById(R.id.newPassword);
+        remove = findViewById(R.id.login_main_remove_user_button);
+        newPassword = findViewById(R.id.login_main_change_password_button);
+        newEmail = findViewById(R.id.login_main_change_email_button);
+        progressBar = findViewById(R.id.main_login_progressbar);
+        editText = findViewById(R.id.main_login_edittext);
+        ok = findViewById(R.id.main_login_ok);
+        editText.setVisibility(View.INVISIBLE);
+        ok.setVisibility(View.INVISIBLE);
+        progressBar.setVisibility(View.INVISIBLE);
 
-        oldEmail.setVisibility(View.GONE);
-        newEmail.setVisibility(View.GONE);
-        password.setVisibility(View.GONE);
-        newPassword.setVisibility(View.GONE);
-        changeEmail.setVisibility(View.GONE);
-        changePassword.setVisibility(View.GONE);
-        sendEmail.setVisibility(View.GONE);
-        remove.setVisibility(View.GONE);
-
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-
-        if (progressBar != null) {
-            progressBar.setVisibility(View.GONE);
-        }
-
-        btnChangeEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oldEmail.setVisibility(View.GONE);
-                newEmail.setVisibility(View.VISIBLE);
-                password.setVisibility(View.GONE);
-                newPassword.setVisibility(View.GONE);
-                changeEmail.setVisibility(View.VISIBLE);
-                changePassword.setVisibility(View.GONE);
-                sendEmail.setVisibility(View.GONE);
-                remove.setVisibility(View.GONE);
-            }
-        });
-
-        changeEmail.setOnClickListener(new View.OnClickListener() {
+        remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 progressBar.setVisibility(View.VISIBLE);
-                if (user != null && !newEmail.getText().toString().trim().equals("")) {
-                    user.updateEmail(newEmail.getText().toString().trim())
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(LoginMainActivity.this, "E-mail cím megújítva!", Toast.LENGTH_LONG).show();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(LoginMainActivity.this);
+                alertDialogBuilder.setMessage("Biztos törli a profilt?");
+                alertDialogBuilder.setPositiveButton("Igen",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
 
-                                        progressBar.setVisibility(View.GONE);
-                                    } else {
-                                        Toast.makeText(LoginMainActivity.this, "Sikertlen e-mail újítás!", Toast.LENGTH_LONG).show();
-                                        progressBar.setVisibility(View.GONE);
-                                    }
-                                }
-                            });
-                } else if (newEmail.getText().toString().trim().equals("")) {
-                    newEmail.setError("Enter email");
-                    progressBar.setVisibility(View.GONE);
-                }
-            }
-        });
 
-        btnChangePassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oldEmail.setVisibility(View.GONE);
-                newEmail.setVisibility(View.GONE);
-                password.setVisibility(View.GONE);
-                newPassword.setVisibility(View.VISIBLE);
-                changeEmail.setVisibility(View.GONE);
-                changePassword.setVisibility(View.VISIBLE);
-                sendEmail.setVisibility(View.GONE);
-                remove.setVisibility(View.GONE);
-            }
-        });
-
-        changePassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                progressBar.setVisibility(View.VISIBLE);
-                if (user != null && !newPassword.getText().toString().trim().equals("")) {
-                    if (newPassword.getText().toString().trim().length() < 6) {
-                        newPassword.setError("Legalább 6 karakter");
-                        progressBar.setVisibility(View.GONE);
-                    } else {
-                        user.updatePassword(newPassword.getText().toString().trim())
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
-                                            Toast.makeText(LoginMainActivity.this, "Jelszó megújítva!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(LoginMainActivity.this, "Sikeres profiltörlés!", Toast.LENGTH_LONG).show();
+                                            progressBar.setVisibility(View.INVISIBLE);
 
-                                            progressBar.setVisibility(View.GONE);
+                                            finish();
+                                            android.os.Process.killProcess(android.os.Process.myPid());
+                                            LoginMainActivity.super.onDestroy();
+
+                                            System.exit(0);
                                         } else {
-                                            Toast.makeText(LoginMainActivity.this, "Sikertelen jelszó újítás!", Toast.LENGTH_SHORT).show();
-                                            progressBar.setVisibility(View.GONE);
+                                            Toast.makeText(LoginMainActivity.this, "Nem sikerült a profiltörlés", Toast.LENGTH_LONG).show();
+                                            progressBar.setVisibility(View.INVISIBLE);
+
                                         }
                                     }
                                 });
+
+                            }
+                        });
+
+                alertDialogBuilder.setNegativeButton("Nem", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(LoginMainActivity.this, "Nem törölte a profilját!", Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.INVISIBLE);
                     }
-                } else if (newPassword.getText().toString().trim().equals("")) {
-                    newPassword.setError("Jelszó");
-                    progressBar.setVisibility(View.GONE);
-                }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
         });
 
-        btnSendResetEmail.setOnClickListener(new View.OnClickListener() {
+        newEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                oldEmail.setVisibility(View.VISIBLE);
-                newEmail.setVisibility(View.GONE);
-                password.setVisibility(View.GONE);
-                newPassword.setVisibility(View.GONE);
-                changeEmail.setVisibility(View.GONE);
-                changePassword.setVisibility(View.GONE);
-                sendEmail.setVisibility(View.VISIBLE);
-                remove.setVisibility(View.GONE);
-            }
-        });
+                editText.setVisibility(View.VISIBLE);
+                ok.setVisibility(View.VISIBLE);
+                editText.setHint("új e-mail cím megadása");
+                editText.setText(null);
+                ok.setText("Új E-mail Küldés");
+                ok.setOnClickListener(new View.OnClickListener() {
 
-        sendEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                progressBar.setVisibility(View.VISIBLE);
-                if (!oldEmail.getText().toString().trim().equals("")) {
-                    auth.sendPasswordResetEmail(oldEmail.getText().toString().trim())
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onClick(View v) {
+
+                        progressBar.setVisibility(View.VISIBLE);
+
+                        if (!(user == null) && editText.getText().toString().contains("@gmail.com")) {
+                            user.updateEmail(editText.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(LoginMainActivity.this, "Új jelszó elküldve!", Toast.LENGTH_SHORT).show();
-                                        progressBar.setVisibility(View.GONE);
+                                        Toast.makeText(LoginMainActivity.this, "Új email cím beállítva", Toast.LENGTH_SHORT).show();
+                                        progressBar.setVisibility(View.INVISIBLE);
                                     } else {
-                                        Toast.makeText(LoginMainActivity.this, "Sikertelen!", Toast.LENGTH_SHORT).show();
-                                        progressBar.setVisibility(View.GONE);
+                                        Toast.makeText(LoginMainActivity.this, "Nem sikerült az e-mail csere", Toast.LENGTH_SHORT).show();
+                                        progressBar.setVisibility(View.INVISIBLE);
                                     }
                                 }
                             });
-                } else {
-                    oldEmail.setError("E-mail");
-                    progressBar.setVisibility(View.GONE);
-                }
+
+
+                        } else {
+                            Toast.makeText(LoginMainActivity.this, "gmail-es e-mail címet adjon!", Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.INVISIBLE);
+                        }
+
+                    }
+
+                });
+
             }
         });
 
-        btnRemoveUser.setOnClickListener(new View.OnClickListener() {
+
+        newPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressBar.setVisibility(View.VISIBLE);
+                editText.setVisibility(View.VISIBLE);
+                editText.setHint("Új jelszó megadása");
+                editText.setText(null);
 
+                ok.setVisibility(View.VISIBLE);
+                ok.setText("Új jelszó Küldés");
+                ok.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        progressBar.setVisibility(View.VISIBLE);
 
-                if (user != null) {
+                        if ((editText.getText().toString().trim().length() > 5)) {
 
-                    user.delete()
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            user.updatePassword(editText.getText().toString()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        Toast.makeText(LoginMainActivity.this, "Profil törölve!", Toast.LENGTH_SHORT).show();
-
-                                        progressBar.setVisibility(View.GONE);
+                                        progressBar.setVisibility(View.INVISIBLE);
+                                        Toast.makeText(LoginMainActivity.this, "Sikeres jelszócsere!", Toast.LENGTH_SHORT).show();
                                     } else {
-                                        Toast.makeText(LoginMainActivity.this, "Sikertelen profiltörlés!", Toast.LENGTH_SHORT).show();
-                                        progressBar.setVisibility(View.GONE);
+                                        Toast.makeText(LoginMainActivity.this, "Nem sikerült a jelszócsere", Toast.LENGTH_SHORT).show();
+                                        progressBar.setVisibility(View.INVISIBLE);
                                     }
                                 }
                             });
-                }
+
+                        } else {
+                            Toast.makeText(LoginMainActivity.this, "Legalább 6 karakter legyen a jelszó!", Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.INVISIBLE);
+                        }
+
+                    }
+                });
             }
         });
 
-
-
-    }
-
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        progressBar.setVisibility(View.GONE);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        auth.addAuthStateListener(authListener);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        if (authListener != null) {
-            auth.removeAuthStateListener(authListener);
-        }
     }
 }
+
+

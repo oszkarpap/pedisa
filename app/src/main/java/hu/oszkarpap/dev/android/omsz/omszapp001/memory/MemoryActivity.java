@@ -17,12 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.memory.adapter.MemoryAdapter;
 import hu.oszkarpap.dev.android.omsz.omszapp001.memory.model.Memory;
 import hu.oszkarpap.dev.android.omsz.omszapp001.memory.repository.Repository;
 import hu.oszkarpap.dev.android.omsz.omszapp001.memory.repository.sqlite.SQLiteRepository;
 
-public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener {
+public class MemoryActivity extends MainActivity implements MemoryAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener {
 
     public static final int REQUEST_CODE = 111;
     private List<Memory> memories;
@@ -35,6 +36,7 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory);
+        overridePendingTransition(0, 0);
 
         repository = new SQLiteRepository();
 
@@ -182,6 +184,8 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
 
         return super.onOptionsItemSelected(item);
     }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

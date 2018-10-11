@@ -21,6 +21,7 @@ public class PerfusorActivity extends MainActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfusor);
         createMainActivity();
+        overridePendingTransition(0, 0);
 
         addListenerOnButton();
         addListenerOnSpinnerItemSelection();

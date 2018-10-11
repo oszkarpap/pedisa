@@ -102,8 +102,11 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.menu_medication) {
+            try{
             intent = new Intent(MainActivity.this, MedActivity.class);
-            startActivity(intent);
+            startActivity(intent);}catch (Exception e){
+                Toast.makeText(this, "Elnézést, próbálja újra!", Toast.LENGTH_LONG).show();
+            }
         }
 
         if (id == R.id.menu_parameters) {
