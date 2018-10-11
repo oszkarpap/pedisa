@@ -40,18 +40,18 @@
             android:paddingTop="64dp"
             tools:context=".main.MainActivity">
 
-            <com.alespero.expandablecardview.ExpandableCardView
-                android:id="@+id/par_baby"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="5dp"
-                app:expandOnClick="true"
-                app:icon="@drawable/ic_newborn_24dp"
-                app:inner_view="@layout/ecw_par_baby"
-                app:title="Csecsemő paraméterek" />
+            <!--       <com.alespero.expandablecardview.ExpandableCardView
+                       android:id="@+id/par_baby"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginBottom="5dp"
+                       android:layout_marginLeft="20dp"
+                       android:layout_marginRight="20dp"
+                       android:layout_marginTop="5dp"
+                       app:expandOnClick="true"
+                       app:icon="@drawable/ic_newborn_24dp"
+                       app:inner_view="@layout/ecw_par_baby"
+                       app:title="Csecsemő paraméterek" />-->
 
             <com.alespero.expandablecardview.ExpandableCardView
                 android:id="@+id/par_child"
@@ -66,18 +66,24 @@
                 app:inner_view="@layout/ecw_par_child"
                 app:title="Gyermek paraméterek" />
 
-            <com.alespero.expandablecardview.ExpandableCardView
-                android:id="@+id/par_adult"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="5dp"
-                app:expandOnClick="true"
-                app:icon="@drawable/ic_adult_avatar_24dp"
-                app:inner_view="@layout/ecw_par_adult"
-                app:title="Felnőtt paraméterek" />
+            <!--   <com.alespero.expandablecardview.ExpandableCardView
+                   android:id="@+id/par_adult"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginBottom="5dp"
+                   android:layout_marginLeft="20dp"
+                   android:layout_marginRight="20dp"
+                   android:layout_marginTop="5dp"
+                   app:expandOnClick="true"
+                   app:icon="@drawable/ic_injection_parameters_24dp"
+                   app:inner_view="@layout/ecw_par_child_med_dose"
+                   app:title="Gyermek gyógyszeradagolás" /> -->
+
+            <include
+                layout="@layout/ecw_par_child_med_dose"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
 
         </LinearLayout>
 
@@ -113,8 +119,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@android:color/white"
                 android:dividerHeight="0dp"
-                android:groupIndicator="@null"
-                />
+                android:groupIndicator="@null" />
 
 
         </LinearLayout>

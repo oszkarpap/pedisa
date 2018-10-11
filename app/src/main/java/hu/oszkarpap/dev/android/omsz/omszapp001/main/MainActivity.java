@@ -25,8 +25,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-
-
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.memory.MemoryActivity;
@@ -79,8 +77,6 @@ public class MainActivity extends AppCompatActivity
         });
 
 
-
-
     }
 
     @Override
@@ -109,10 +105,7 @@ public class MainActivity extends AppCompatActivity
             intent = new Intent(MainActivity.this, MedActivity.class);
             startActivity(intent);
         }
-        if (id== R.id.menu_note) {
-            intent = new Intent(MainActivity.this, MemoryActivity.class);
-            startActivity(intent);
-        }
+
         if (id == R.id.menu_parameters) {
             intent = new Intent(MainActivity.this, ParametersActivity.class);
             startActivity(intent);
@@ -134,17 +127,17 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.menu_log_out) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setMessage("Biztos ki akar jelentkezni?");
-                    alertDialogBuilder.setPositiveButton("Igen",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface arg0, int arg1) {
-                                    Toast.makeText(MainActivity.this,"Sikeresen kijelentkezett!",Toast.LENGTH_LONG).show();
-                                    auth.signOut();
-                                    finish();
-                                }
-                            });
+            alertDialogBuilder.setPositiveButton("Igen",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
+                            Toast.makeText(MainActivity.this, "Sikeresen kijelentkezett!", Toast.LENGTH_LONG).show();
+                            auth.signOut();
+                            finish();
+                        }
+                    });
 
-            alertDialogBuilder.setNegativeButton("Nem",new DialogInterface.OnClickListener() {
+            alertDialogBuilder.setNegativeButton("Nem", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     Toast.makeText(MainActivity.this, "Nem jelentkezett ki!", Toast.LENGTH_SHORT).show();
                 }
@@ -158,7 +151,7 @@ public class MainActivity extends AppCompatActivity
             intent = new Intent(MainActivity.this, HelpActivity.class);
             startActivity(intent);
         }
-        if (id == R.id.menu_note){
+        if (id == R.id.menu_note) {
             intent = new Intent(MainActivity.this, MemoryActivity.class);
             startActivity(intent);
         }
@@ -318,8 +311,8 @@ public class MainActivity extends AppCompatActivity
                             break;
                         case (32):
                             intent = new Intent(MainActivity.this, RsiActivity.class);
-                           startActivity(intent);
-                           break;
+                            startActivity(intent);
+                            break;
                         case (41):
                             intent = new Intent(MainActivity.this, AbcdeActivity.class);
                             startActivity(intent);
@@ -332,7 +325,6 @@ public class MainActivity extends AppCompatActivity
                             intent = new Intent(MainActivity.this, MedActivity.class);
                             startActivity(intent);
                             break;
-
 
 
                     }

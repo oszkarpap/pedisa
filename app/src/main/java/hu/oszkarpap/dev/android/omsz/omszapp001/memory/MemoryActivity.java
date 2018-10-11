@@ -253,4 +253,10 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
         adapter.updateList(newList);
         return true;
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
 }

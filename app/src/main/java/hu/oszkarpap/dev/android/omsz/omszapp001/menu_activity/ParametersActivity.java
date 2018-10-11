@@ -1,43 +1,118 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.support.v7.widget.SearchView.OnQueryTextListener;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
+import java.util.ArrayList;
+import java.util.List;
+
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 
 
-public class ParametersActivity extends MainActivity {
+public class ParametersActivity extends MainActivity implements OnQueryTextListener {
 
-    private SeekBar seekBar;
+    private SeekBar seekBar, seekBarMed;
     private TextView age, hr, lsz, sys, ts, tm, th, bou;
+
+    private RecyclerView recyclerView;
+    private ArrayList<ParametersMed> parametersMeds;
+    private ParameterMedAdapter adapter;
+    private TextView childWeight;
+
+    private String adenozin;
+    private String atropin;
+    private String betaloc;
+    private String cordarone;
+    private String magnesium;
+    private String verapamil;
+    private String fenatyl;
+    private String morfin;
+    private String naloxon;
+    private String ketamin;
+    private String algopyrin;
+    private String nospa;
+    private String nurofen;
+    private String nitropohl;
+    private String berodual;
+    private String rectodelt;
+    private String metilprednisolon;
+    private String ventolin;
+    private String bricanyl;
+    private String suprastin;
+    private String calcimusc;
+    private String dezitin;
+    private String seduxen;
+    private String midazolam;
+    private String epanutin;
+    private String etomidate;
+    private String propofol;
+    private String ebrantil;
+    private String furosemid;
+    private String tensiomin;
+    private String cerucal;
+    private String tonogen;
+    private String dopamin;
+    private String heparin;
+    private String glukagen;
+    private String anexate;
+    private String arterenol;
+    private String esmeron;
+    private String lystheron;
+    private String exacyl;
+    private String ceftriaxon;
+    private SearchView searchView;
+    private List<ParametersMed> newList;
+    private int progressValue;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_parameters);
+
         createMainActivity();
+        overridePendingTransition(0, 0);
+
+        seekBar = findViewById(R.id.par_sb);
+        age = findViewById(R.id.par_age);
+        hr = findViewById(R.id.par_hr);
+        lsz = findViewById(R.id.par_lsz);
+        sys = findViewById(R.id.par_sys);
+        ts = findViewById(R.id.par_testsuly);
+        tm = findViewById(R.id.par_tubusmeret);
+        th = findViewById(R.id.par_tubushossz);
+        bou = findViewById(R.id.par_bougie);
 
 
-        seekBar =  findViewById(R.id.par_sb);
-        age =  findViewById(R.id.par_age);
-        hr =  findViewById(R.id.par_hr);
-        lsz =  findViewById(R.id.par_lsz);
-        sys =  findViewById(R.id.par_sys);
-        ts =  findViewById(R.id.par_testsuly);
-        tm =  findViewById(R.id.par_tubusmeret);
-        th =  findViewById(R.id.par_tubushossz);
-        bou =  findViewById(R.id.par_bougie);
+        seekBarMed = findViewById(R.id.par_med_sb);
+        childWeight = findViewById(R.id.par_weight);
 
+
+        childParameters();
+        childMedDose();
+
+
+    }
+
+    private void childParameters() {
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
-                // TODO Auto-generated method stub
+
                 age.setText(String.valueOf(progress));
 
                 if (progress == 0) {
@@ -63,10 +138,9 @@ public class ParametersActivity extends MainActivity {
                 }
 
 
-                if (progress > 0 && progress <11) {
+                if (progress > 0 && progress < 11) {
 
                     double value = seekBar.getProgress();
-
 
 
                     ts.setText(String.valueOf((value + 4) * 2));
@@ -84,7 +158,7 @@ public class ParametersActivity extends MainActivity {
                 if (tmS == 5 || tmS == 6) {
                     bou.setText("10 Ch");
                 }
-                if (tmS<5){
+                if (tmS < 5) {
                     bou.setText("ne használj bougie-t!");
                 }
 
@@ -99,15 +173,204 @@ public class ParametersActivity extends MainActivity {
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                // TODO Auto-generated method stub
             }
         });
+    }
+
+    private void childMedDose() {
+
+
+        parametersMeds = new ArrayList<>();
+
+        recyclerView = findViewById(R.id.recycler_view_par_med);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+
+        adapter = new ParameterMedAdapter(parametersMeds);
+        fillParMed();
+
+        recyclerView.setAdapter(adapter);
+
+        seekBarMedmethod();
 
     }
+
+
+    private void seekBarMedmethod() {
+
+
+        seekBarMed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                childWeight.setText("Gyermek tömege: " + String.valueOf(progress) + " kg");
+                progressValue = progress;
+
+                medString(progressValue);
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+                parametersMeds.clear();
+                fillParMed();
+                adapter.notifyDataSetChanged();
+
+
+            }
+        });
+    }
+
+    private void fillParMed() {
+        parametersMeds.add(new ParametersMed("Adenozin: ", adenozin));
+        parametersMeds.add(new ParametersMed("Atropin: ", atropin));
+        parametersMeds.add(new ParametersMed("Betaloc: ", betaloc));
+        parametersMeds.add(new ParametersMed("Cordarone: ", cordarone));
+        parametersMeds.add(new ParametersMed("Magnézium: ", magnesium));
+        parametersMeds.add(new ParametersMed("Verapamil: ", verapamil));
+        parametersMeds.add(new ParametersMed("Fentanyl: ", fenatyl));
+        parametersMeds.add(new ParametersMed("Morfin: ", morfin));
+        parametersMeds.add(new ParametersMed("Naloxon: ", naloxon));
+        parametersMeds.add(new ParametersMed("Ketamin: ", ketamin));
+        parametersMeds.add(new ParametersMed("Algopyrin: ", algopyrin));
+        parametersMeds.add(new ParametersMed("NoSpa: ", nospa));
+        parametersMeds.add(new ParametersMed("Nurofen: ", nurofen));
+        parametersMeds.add(new ParametersMed("NitroPohl: ", nitropohl));
+        parametersMeds.add(new ParametersMed("Berodual: ", berodual));
+        parametersMeds.add(new ParametersMed("Rectodelt: ", rectodelt));
+        parametersMeds.add(new ParametersMed("Metilprednisolon: ", metilprednisolon));
+        parametersMeds.add(new ParametersMed("Ventolin: ", ventolin));
+        parametersMeds.add(new ParametersMed("Bricanyl: ", bricanyl));
+        parametersMeds.add(new ParametersMed("Suprastin: ", suprastin));
+        parametersMeds.add(new ParametersMed("Calcimusc: ", calcimusc));
+        parametersMeds.add(new ParametersMed("Diazepan Dezitin: ", dezitin));
+        parametersMeds.add(new ParametersMed("Sedixen: ", seduxen));
+        parametersMeds.add(new ParametersMed("Midazolam: ", midazolam));
+        parametersMeds.add(new ParametersMed("Epanutin: ", epanutin));
+        parametersMeds.add(new ParametersMed("Etomidate: ", etomidate));
+        parametersMeds.add(new ParametersMed("Propofol: ", propofol));
+        parametersMeds.add(new ParametersMed("Ebrantil", ebrantil));
+        parametersMeds.add(new ParametersMed("Furosemid: ", furosemid));
+        parametersMeds.add(new ParametersMed("Tensiomin: ", tensiomin));
+        parametersMeds.add(new ParametersMed("Cerucal: ", tensiomin));
+        parametersMeds.add(new ParametersMed("Tonogén: ", tonogen));
+        parametersMeds.add(new ParametersMed("Dopamin", dopamin));
+        parametersMeds.add(new ParametersMed("Heparin", heparin));
+        parametersMeds.add(new ParametersMed("Glukagen: ", glukagen));
+        parametersMeds.add(new ParametersMed(" Anexate: ", anexate));
+        parametersMeds.add(new ParametersMed("Arterenlol: ", arterenol));
+        parametersMeds.add(new ParametersMed("Esmeron: ", esmeron));
+        parametersMeds.add(new ParametersMed("Cerucal: ", cerucal));
+        parametersMeds.add(new ParametersMed("Lystheron: ", lystheron));
+        parametersMeds.add(new ParametersMed("Exacyl: ", exacyl));
+        parametersMeds.add(new ParametersMed("Ceftriaxon", ceftriaxon));
+
+
+    }
+
+    private void medString(int income) {
+
+        double progress = income;
+
+        adenozin = progress / 10 + " mg iv, sz.e. ism " + 2 * progress / 10 + " mg";
+        atropin = 2 * progress / 10 + " mg iv.";
+        betaloc = 5 * progress / 100 + " - " + 7 * progress / 100 + " mg iv.";
+        cordarone = 5 * progress + " mg iv";
+        magnesium = 25 * progress + " - " + 50 * progress + " mg iv";
+        verapamil = progress / 10 + " - " + 3 * progress / 10 + " mg max 5mg";
+        fenatyl = progress + " - " + 3 * progress + " ug iv, titrálva";
+        morfin = progress / 10 + " - " + 2 * progress / 10 + " mg iv., im.";
+        naloxon = progress / 100 + " mg iv. sz.e. ism 2-3 min múlva;";
+        ketamin = progress / 4 + " - " + progress / 2 + " mg analgesia, " + progress + " - " + 2 * progress + " mg iv. RSI";
+        algopyrin = 10 * progress + " mg iv., im.";
+        nospa = progress / 2 + " - " + progress + " mg iv., im., kerülendő!";
+        nurofen = "1 kúp 9 hónapos kor alatt, 2 kúp 9 hónapos kor felett";
+        nitropohl = progress / 10000 + " - " + progress / 1000 + " mg/min";
+        berodual = "0.5-1-2 ml";
+        rectodelt = "30mg 6 éves kor alatt, 60mg felette";
+        metilprednisolon = progress + " - " + 2 * progress + " iv.";
+        ventolin = "0.1 mg expozíció";
+        bricanyl = progress * 5 + " - " + progress * 10 + " ug sc.";
+        suprastin = progress / 2 + " - " + progress + " iv., max " + 2 * progress + " mg";
+        calcimusc = 10 * progress + " - " + 20 * progress + " mg iv.";
+        dezitin = "10-15 kg között 5mg, 15 kg felett 10mg";
+        seduxen = progress / 5 + " - " + progress / 2 + " mg iv, max " + progress + " mg-ig";
+        midazolam = 2 * progress / 100 + " mg iv";
+        epanutin = 15 * progress + " mg iv., max " + progress + "mg min";
+        etomidate = 15 * progress / 100 + " - " + 30 * progress / 100 + " mg iv.";
+        propofol = 25 * progress / 100 + " - " + 3 * progress / 10 + " mg iv. anesthesia";
+        ebrantil = 15 * progress / 100 + " - " + 70 * progress / 100 + " mg iv.";
+        furosemid = progress / 2 + " - " + progress + "mg iv";
+        tensiomin = progress / 2 + " - " + progress + " mg per os";
+        cerucal = progress / 10 + " mg iv, 14 éves kor alatt megfontolandó, 2 éves kor alatt ne!";
+        tonogen = 10 * progress + " ug iv., REA, anaphylaxia " + progress + " ug iv, im adagja 6 év alatt 0.15mg, 6-12 év között 0.3mg";
+        dopamin = progress + " - " + progress * 3 + " - " + progress * 10 + " ug/min vese - béta1 - alfa receptor stimuláló";
+        heparin = 50 * progress + " NE iv";
+        glukagen = 10 * progress + " - " + 20 * progress + " ug sc., im., iv., BB intox: " + progress * 5 + " - " + progress * 150 + " ug";
+        anexate = "0.2 mg iv 15 sec alatt, majd percenként 0.1mg-ként emelve max 2mg-ig ";
+        arterenol = 5 * progress / 100 + " - " + progress / 2 + "/min perfuzorban";
+        esmeron = progress / 2 + " - " + progress + " mg iv";
+        lystheron = 15 * progress / 100 + " mg iv.";
+        exacyl = 20 * progress + " mg iv";
+        ceftriaxon = 50 * progress + " - " + 100 * progress + " mg iv lassan, max 2gr";
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_par, menu);
+        MenuItem menuItem = menu.findItem(R.id.par_search);
+
+        searchView = (SearchView) menuItem.getActionView();
+        searchView.setQueryHint("Gyógyszer neve:");
+        searchView.setOnQueryTextListener(this);
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.par_refresh) {
+            finish();
+            Intent intent = new Intent(ParametersActivity.this, ParametersActivity.class);
+            startActivity(intent);
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+
+        String Input = s.toLowerCase();
+        newList = new ArrayList<>();
+
+        for (ParametersMed x : parametersMeds) {
+            if (x.getMedLabel().toLowerCase().contains(Input)) {
+                newList.add(x);
+            }
+        }
+
+        adapter.updateList(newList);
+        return true;
+    }
+
 
 }
