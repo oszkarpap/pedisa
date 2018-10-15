@@ -22,10 +22,19 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.memory.adapter.MemoryAdapter;
 import hu.oszkarpap.dev.android.omsz.omszapp001.memory.model.Memory;
 import hu.oszkarpap.dev.android.omsz.omszapp001.memory.repository.Repository;
 import hu.oszkarpap.dev.android.omsz.omszapp001.memory.repository.sqlite.SQLiteRepository;
+import hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity.medication.MedActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity.medication.ModifyMedActivity;
 
-public class MemoryActivity extends MainActivity implements MemoryAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener {
+public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener {
 
     public static final int REQUEST_CODE = 111;
+    public static final String KEY_NAME_MODIFY_MEMORY = "MEMORY_NAME";
+    public static final String KEY_AGENT_MODIFY_MEMORY = "MEMORY_AGENT";
+    public static final String KEY_PACK_MODIFY_MEMORY = "MEMORY_PACK";
+    public static final String KEY_IND_MODIFY_MEMORY = "MEMORY_IND";
+    public static final String KEY_CONTRA_MODIFY_MEMORY = "MEMORY_CONTRA";
+    public static final String KEY_ADULT_MODIFY_MEMORY = "MEMORY_ADULT";
+    public static final String KEY_CHILD_MODIFY_MEMORY = "MEMORY_CHILD";
     private List<Memory> memories;
     private MemoryAdapter adapter;
     private Repository repository;
@@ -76,7 +85,7 @@ public class MemoryActivity extends MainActivity implements MemoryAdapter.OnItem
     }
 
 
-    private void saveMemoriesAsync(final Memory memo) {
+    public void saveMemoriesAsync(final Memory memo) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -212,21 +221,37 @@ public class MemoryActivity extends MainActivity implements MemoryAdapter.OnItem
     public void onItemLongClicked(int position) {
         memory = memories.get(position);
 
+
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("Biztos törölni szeretné a jegyzetet?");
-        alertDialogBuilder.setPositiveButton("Igen",
+        alertDialogBuilder.setMessage("Duplikálni vagy törölni szeretné az elemet?");
+        alertDialogBuilder.setPositiveButton("Vissza",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        Toast.makeText(MemoryActivity.this, "Törölve!", Toast.LENGTH_LONG).show();
 
-                        deleteMemoryAsync(memory);
+
                     }
                 });
 
-        alertDialogBuilder.setNegativeButton("Nem", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setNegativeButton("Törlés", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
+                deleteMemoryAsync(memory);
+            }
+        });
+        alertDialogBuilder.setNeutralButton("Duplikáció", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(MemoryActivity.this, ModifyMemoryActivity.class);
+                intent.putExtra(KEY_NAME_MODIFY_MEMORY, memory.getName());
+                intent.putExtra(KEY_AGENT_MODIFY_MEMORY, memory.getAgent());
+                intent.putExtra(KEY_PACK_MODIFY_MEMORY, memory.getPack());
+                intent.putExtra(KEY_IND_MODIFY_MEMORY, memory.getInd());
+                intent.putExtra(KEY_CONTRA_MODIFY_MEMORY, memory.getCont());
+                intent.putExtra(KEY_ADULT_MODIFY_MEMORY, memory.getAdult());
+                intent.putExtra(KEY_CHILD_MODIFY_MEMORY, memory.getChild());
 
+
+                startActivity(intent);
             }
         });
 

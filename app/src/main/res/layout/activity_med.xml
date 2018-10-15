@@ -6,13 +6,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:openDrawer="start">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view_med"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical" />
+    <com.alespero.expandablecardview.ExpandableCardView
+        android:id="@+id/med_calc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:outlineAmbientShadowColor="@color/text_blue"
+
+        android:paddingRight="@dimen/_50sdp"
+        android:outlineSpotShadowColor="@color/text_blue"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        app:expandOnClick="true"
+
+        app:inner_view="@layout/cardview_calculator"
+        app:title="Calculator" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_med"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
 
 
 </LinearLayout>

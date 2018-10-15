@@ -464,14 +464,16 @@ public class RsiActivity extends AppCompatActivity {
 
         call_to_konzulens.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) { try{
                 intent = new Intent(Intent.ACTION_DIAL);
                 if ( sharedPreferences.getString("NewPhoneNumber","1") == "1") {
                     intent.setData(Uri.parse("tel:" + konzPhoneNumber));
                 } else {
                     intent.setData(Uri.parse("tel:"+sharedPreferences.getString("NewPhoneNumber","1")));
                 }
-                startActivity(intent);
+                startActivity(intent);}catch (Exception e){
+                Toast.makeText(RsiActivity.this, "Nincs hívásindító az eszközén!", Toast.LENGTH_LONG).show();
+            }
             }
         });
 

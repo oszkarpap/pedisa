@@ -1,9 +1,9 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity.medication;
 
-import java.util.Objects;
+
 
 public class Medication {
-    private Long id;
+    private String id;
     private String key;
     private String name;
     private String agent;
@@ -13,7 +13,7 @@ public class Medication {
     private String adult;
     private String child;
 
-    public Medication(Long id, String name, String agent, String pack, String ind, String cont, String adult, String child) {
+    public Medication(String id, String name, String agent, String pack, String ind, String cont, String adult, String child) {
         this.id = id;
         this.name = name;
         this.agent = agent;
@@ -45,11 +45,11 @@ public class Medication {
         this.key = key;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -109,16 +109,6 @@ public class Medication {
         this.child = child;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Medication memory = (Medication) o;
-        return Objects.equals(key, memory.key);
-    }
 
-    @Override
-    public int hashCode() {
-        return 0;
-    }
+
 }

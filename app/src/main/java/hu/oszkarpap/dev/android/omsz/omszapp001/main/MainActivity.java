@@ -28,9 +28,7 @@ import java.util.List;
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.memory.MemoryActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity.HelpActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity.ParametersActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity.PerfusorActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.menu_activity.medication.MedActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.AbcdeActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.nav_view_activity.RsiActivity;
@@ -47,7 +45,7 @@ public class MainActivity extends AppCompatActivity
     HashMap<MenuModel, List<MenuModel>> childList = new HashMap<>();
     private Intent intent;
     private FirebaseAuth auth;
-    private Button toDev;
+    private Button toDev, tutorial;
 
 
 
@@ -73,6 +71,16 @@ public class MainActivity extends AppCompatActivity
                 intent.putExtra(Intent.EXTRA_SUBJECT, "OMSZ APP");
                 intent.setData(Uri.parse("mailto:pap.oszkar.mt@gmail.com"));
                 startActivity(intent);
+            }
+        });
+
+        tutorial = findViewById(R.id.tutorial);
+        tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://drive.google.com/open?id=1NaBVLCYm43LENyoyse-u9iY6Ir5tJn4I"));
+                startActivity(intent);
+
             }
         });
 
@@ -113,18 +121,23 @@ public class MainActivity extends AppCompatActivity
             intent = new Intent(MainActivity.this, ParametersActivity.class);
             startActivity(intent);
         }
-        if (id == R.id.menu_perfusor) {
-            intent = new Intent(MainActivity.this, PerfusorActivity.class);
-            startActivity(intent);
-        }
+
         if (id == R.id.menu_settings) {
             intent = new Intent(MainActivity.this, LoginMainActivity.class);
             startActivity(intent);
         }
         if (id == R.id.menu_kany) {
+            try{
             intent = new Intent(Intent.ACTION_DIAL);
             intent.setData(Uri.parse("tel:0680210022"));
+            startActivity(intent);}catch (Exception e){
+                Toast.makeText(this, "Nincs hívásindító az eszközén!", Toast.LENGTH_LONG).show();
+            }
+        }
+        if(id == R.id.menu_help){
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://drive.google.com/open?id=1NaBVLCYm43LENyoyse-u9iY6Ir5tJn4I"));
             startActivity(intent);
+
         }
 
         if (id == R.id.menu_log_out) {
@@ -150,10 +163,7 @@ public class MainActivity extends AppCompatActivity
             alertDialog.show();
 
         }
-        if (id == R.id.menu_help) {
-            intent = new Intent(MainActivity.this, HelpActivity.class);
-            startActivity(intent);
-        }
+
         if (id == R.id.menu_note) {
             intent = new Intent(MainActivity.this, MemoryActivity.class);
             startActivity(intent);
@@ -190,7 +200,7 @@ public class MainActivity extends AppCompatActivity
         menuModel = new MenuModel("Reanimáció", true, true, 2);
         headerList.add(menuModel);
         childModelsList = new ArrayList<>();
-        childModel = new MenuModel("MRT ERC ALS", false, false, 21);
+        childModel = new MenuModel("MRT ERC ALS", false, false, 0);
         childModelsList.add(childModel);
 
 
@@ -203,11 +213,11 @@ public class MainActivity extends AppCompatActivity
         menuModel = new MenuModel("Airway", true, true, 3);
         headerList.add(menuModel);
         childModelsList = new ArrayList<>();
-        childModel = new MenuModel("Egyszerű Légút", false, false, 31);
+        childModel = new MenuModel("Egyszerű Légút", false, false, 0);
         childModelsList.add(childModel);
         childModel = new MenuModel("RSI", false, false, 32);
         childModelsList.add(childModel);
-        childModel = new MenuModel("Sürgősségi intubáció", false, false, 33);
+        childModel = new MenuModel("Sürgősségi intubáció", false, false, 0);
         childModelsList.add(childModel);
 
         if (menuModel.hasChildren) {
@@ -218,19 +228,19 @@ public class MainActivity extends AppCompatActivity
         childModelsList = new ArrayList<>();
         menuModel = new MenuModel("Breathing", true, true, 4);
         headerList.add(menuModel);
-        childModel = new MenuModel("Oxigén terápia", false, false, 41);
+        childModel = new MenuModel("Oxigén terápia", false, false, 0);
         childModelsList.add(childModel);
 
-        childModel = new MenuModel("Akut asztmás roham", false, false, 42);
+        childModel = new MenuModel("Akut asztmás roham", false, false, 0);
         childModelsList.add(childModel);
 
-        childModel = new MenuModel("Noninvazív lélegeztetés", false, false, 43);
+        childModel = new MenuModel("Noninvazív lélegeztetés", false, false, 0);
         childModelsList.add(childModel);
 
-        childModel = new MenuModel("COPD", false, false, 44);
+        childModel = new MenuModel("COPD", false, false, 0);
         childModelsList.add(childModel);
 
-        childModel = new MenuModel("Kapnográfia, kapnometria", false, false, 45);
+        childModel = new MenuModel("Kapnográfia, kapnometria", false, false, 0);
         childModelsList.add(childModel);
 
 
@@ -241,11 +251,11 @@ public class MainActivity extends AppCompatActivity
         childModelsList = new ArrayList<>();
         menuModel = new MenuModel("Circulation", true, true, 5);
         headerList.add(menuModel);
-        childModel = new MenuModel("Akut Coronária Szindróma", false, false, 51);
+        childModel = new MenuModel("Akut Coronária Szindróma", false, false, 0);
         childModelsList.add(childModel);
-        childModel = new MenuModel("Akut Balszívfél elégtelenség", false, false, 52);
+        childModel = new MenuModel("Akut Balszívfél elégtelenség", false, false, 0);
         childModelsList.add(childModel);
-        childModel = new MenuModel("Cardioverzió", false, false, 53);
+        childModel = new MenuModel("Cardioverzió", false, false, 0);
         childModelsList.add(childModel);
 
         if (menuModel.hasChildren) {
@@ -255,11 +265,11 @@ public class MainActivity extends AppCompatActivity
         childModelsList = new ArrayList<>();
         menuModel = new MenuModel("Disability", true, true, 6);
         headerList.add(menuModel);
-        childModel = new MenuModel("Görcsroham", false, false, 61);
+        childModel = new MenuModel("Görcsroham", false, false, 0);
         childModelsList.add(childModel);
-        childModel = new MenuModel("Sepszis", false, false, 62);
+        childModel = new MenuModel("Sepszis", false, false, 0);
         childModelsList.add(childModel);
-        childModel = new MenuModel("Folyadékterápia és keringéstámogatás", false, false, 63);
+        childModel = new MenuModel("Folyadékterápia és keringéstámogatás", false, false, 0);
         childModelsList.add(childModel);
 
         if (menuModel.hasChildren) {
@@ -269,7 +279,7 @@ public class MainActivity extends AppCompatActivity
         childModelsList = new ArrayList<>();
         menuModel = new MenuModel("Environment", true, true, 7);
         headerList.add(menuModel);
-        childModel = new MenuModel("Rögzítések", false, false, 71);
+        childModel = new MenuModel("Rögzítések", false, false, 0);
         childModelsList.add(childModel);
 
         if (menuModel.hasChildren) {
@@ -308,26 +318,19 @@ public class MainActivity extends AppCompatActivity
                             intent = new Intent(MainActivity.this, VeinActivity.class);
                             startActivity(intent);
                             break;
-                        case (44):
-                            intent = new Intent(MainActivity.this, RsiActivity.class);
-                            startActivity(intent);
-                            break;
+
                         case (32):
                             intent = new Intent(MainActivity.this, RsiActivity.class);
                             startActivity(intent);
                             break;
-                        case (41):
-                            intent = new Intent(MainActivity.this, AbcdeActivity.class);
-                            startActivity(intent);
-                            break;
+
                         case (11):
                             intent = new Intent(MainActivity.this, AbcdeActivity.class);
                             startActivity(intent);
                             break;
-                        case (21):
-                            intent = new Intent(MainActivity.this, MedActivity.class);
-                            startActivity(intent);
-                            break;
+                        case (0):
+                            Toast.makeText(MainActivity.this, "Sajnálom, nem implementáltam még a protokollt! Prehospitális vizsgálat sorrendje, Vénabiztosítás és az RSI működik!", Toast.LENGTH_LONG).show();
+
 
 
                     }

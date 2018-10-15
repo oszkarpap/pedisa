@@ -95,7 +95,7 @@
 
 
     <string name="repassword">jelszó ismét</string>
-    <string name="remove_all_menu">összes törélse</string>
+    <string name="remove_all_menu">összes törlése</string>
     <string name="create_todo_menu">új</string>
     <string name="create_todo_title">cím</string>
     <string name="create_todo_description">leírás</string>

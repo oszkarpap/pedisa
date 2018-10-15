@@ -4,13 +4,6 @@
 
     >
     <item
-        android:id="@+id/menu_perfusor"
-        android:orderInCategory="100"
-        android:title="Perfusor"
-        app:showAsAction="never" />
-
-
-    <item
         android:id="@+id/menu_medication"
         android:orderInCategory="100"
         android:title="Gyógyszerek"
@@ -21,6 +14,17 @@
         android:orderInCategory="100"
         android:title="@string/parameters"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_kany"
+        android:orderInCategory="100"
+        android:title="KÁNY hívása"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_note"
+        android:orderInCategory="100"
+        android:title="Saját jegyzet"
+        app:showAsAction="never" />
+
 
     <item
         android:id="@+id/menu_settings"
@@ -28,23 +32,13 @@
         android:title="Beállítások"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/menu_kany"
-        android:orderInCategory="100"
-        android:title="KÁNY hívása"
-        app:showAsAction="never" />
-
 
     <item
         android:id="@+id/menu_help"
         android:orderInCategory="100"
-        android:title="HELP"
+        android:title="Használati útmutató"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/menu_note"
-        android:orderInCategory="100"
-        android:title="Saját jegyzet"
-        app:showAsAction="never" />
+
     <item
         android:id="@+id/menu_log_out"
         android:orderInCategory="100"

@@ -39,10 +39,7 @@
             android:name=".login.LoginMainActivity"
             android:label="Rendszermenű"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".menu_activity.PerfusorActivity"
-            android:label="Perfusor kalkulátor"
-            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".nav_view_activity.AbcdeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -58,9 +55,8 @@
             android:name=".menu_activity.ParametersActivity"
             android:label="Paraméterek"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".menu_activity.HelpActivity"
-            android:label="RSI menu használati segédlet" />
+
+
         <activity
             android:name=".nav_view_activity.VeinActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -69,15 +65,23 @@
             android:label="Saját gyógyszerkártyák" />
         <activity
             android:name=".memory.CreateMemoryActivity"
-            android:label="Új gyógyszer bevitele"></activity>
+            android:label="Új gyógyszer bevitele" />
         <activity
             android:name=".menu_activity.medication.MedActivity"
-            android:label="Rendszeresített gyógyszerek"
+            android:label="Rendszeresített gyógyszerek" />
 
-            />
+
         <activity
             android:name=".menu_activity.medication.CreateMedActivity"
             android:label="Gyógyszer a Firebase-be" />
+
+        <activity
+            android:name=".menu_activity.medication.ModifyMedActivity"
+            android:label="Gyógyszer módisítása a Firebase-be" />
+        <activity
+            android:name=".memory.ModifyMemoryActivity"
+            android:label="Saját gyógyszerkártya módosítása" />
+
     </application>
 
 </manifest>

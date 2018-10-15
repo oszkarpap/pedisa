@@ -9,6 +9,7 @@ import android.support.v7.widget.SearchView.OnQueryTextListener;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -107,6 +108,8 @@ public class ParametersActivity extends MainActivity implements OnQueryTextListe
 
         childParameters();
         childMedDose();
+
+
 
 
     }
@@ -377,6 +380,7 @@ public class ParametersActivity extends MainActivity implements OnQueryTextListe
         }
 
         adapter.updateList(newList);
+        seekBarMed.setVisibility(View.INVISIBLE);
         return true;
     }
 
