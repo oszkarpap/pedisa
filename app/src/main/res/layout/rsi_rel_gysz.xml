@@ -43,7 +43,7 @@ ismételve"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- propofol 1 mg/kg/óra induló dózissal perfúzorral (perfúzor hiányában 0,3/kg
+        android:text="- propofol 1 mg/kg/óra induló dózissal perfúzorral (perfúzor hiányában 0,3mg/kg
 bólusok 5-10 percenként) "
         android:textColor="@color/text_red"
         android:textStyle="italic" />

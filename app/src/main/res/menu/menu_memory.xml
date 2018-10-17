@@ -12,6 +12,12 @@
         android:id="@+id/createMemoryMenu"
         android:icon="@drawable/ic_add_black_24dp"
         app:showAsAction="always"/>
+    <item
+        android:id="@+id/memory_refresh"
+        android:icon="@drawable/ic_refresh_black_24dp"
+        android:orderInCategory="100"
+        app:showAsAction="collapseActionView|always"
+        android:title="refresh" />
 
     <item
         android:id="@+id/removeAllMemory"

@@ -3,9 +3,8 @@
     package="hu.oszkarpap.dev.android.omsz.omszapp001">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission. ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
@@ -39,49 +38,43 @@
             android:name=".login.LoginMainActivity"
             android:label="Rendszermenű"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
-            android:name=".nav_view_activity.AbcdeActivity"
+            android:name=".navigation.AbcdeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".nav_view_activity.RsiActivity"
+            android:name=".navigation.RsiActivity"
             android:label="RSI"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".nav_view_activity.AbcdeProtokollActivity"
+            android:name=".navigation.AbcdeProtokollActivity"
             android:label="ABCDE PROTOKOLL"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".menu_activity.ParametersActivity"
+            android:name=".guide.parameters.ParametersActivity"
             android:label="Paraméterek"
             android:theme="@style/AppTheme.NoActionBar" />
-
-
         <activity
-            android:name=".nav_view_activity.VeinActivity"
+            android:name=".navigation.VeinActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".memory.MemoryActivity"
+            android:name=".guide.memory.MemoryActivity"
             android:label="Saját gyógyszerkártyák" />
         <activity
-            android:name=".memory.CreateMemoryActivity"
+            android:name=".guide.memory.CreateMemoryActivity"
             android:label="Új gyógyszer bevitele" />
         <activity
-            android:name=".menu_activity.medication.MedActivity"
+            android:name=".guide.medication.MedActivity"
             android:label="Rendszeresített gyógyszerek" />
-
-
         <activity
-            android:name=".menu_activity.medication.CreateMedActivity"
+            android:name=".guide.medication.CreateMedActivity"
             android:label="Gyógyszer a Firebase-be" />
-
         <activity
-            android:name=".menu_activity.medication.ModifyMedActivity"
+            android:name=".guide.medication.ModifyMedActivity"
             android:label="Gyógyszer módisítása a Firebase-be" />
         <activity
-            android:name=".memory.ModifyMemoryActivity"
+            android:name=".guide.memory.ModifyMemoryActivity"
             android:label="Saját gyógyszerkártya módosítása" />
-
+        <activity android:name=".guide.LocationActivity"></activity>
     </application>
 
 </manifest>

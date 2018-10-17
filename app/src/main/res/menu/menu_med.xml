@@ -20,7 +20,5 @@
         app:showAsAction="collapseActionView|always"
         android:title="refresh" />
 
-    <item
-        android:id="@+id/removeAllMedication"
-        android:title="@string/remove_all_menu" />
+
 </menu>

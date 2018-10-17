@@ -138,6 +138,14 @@ légzéssel"
         android:text="Szukcinilkolin dózisa:"
         android:textColor="@color/text_black"
         android:textStyle="italic" />
+    <TextView
+        android:id="@+id/rsi_check_atropin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text=""
+        android:textColor="@color/text_black"
+        android:textStyle="italic" />
 
     <TextView
         android:id="@+id/rsi_check_laringSize"

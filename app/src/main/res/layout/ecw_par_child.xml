@@ -21,15 +21,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Életkor meghatározása (év): "
-                android:textColor="@color/text_green"
-                 />
+                android:textColor="@color/text_green" />
 
             <TextView
                 android:id="@+id/par_age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_red"
-                 />
+                android:textColor="@color/text_red" />
         </LinearLayout>
 
         <LinearLayout
@@ -41,22 +39,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Szívfrekvencia:  "
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
 
             <TextView
                 android:id="@+id/par_hr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="  / min"
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
         </LinearLayout>
 
 
@@ -69,22 +64,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Légzésszám:  "
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
 
             <TextView
                 android:id="@+id/par_lsz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="  / min"
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
         </LinearLayout>
 
 
@@ -97,22 +89,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Vérnyomás (Sys):  "
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
 
             <TextView
                 android:id="@+id/par_sys"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="  Hgmm"
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
         </LinearLayout>
 
         <LinearLayout
@@ -124,22 +113,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Testsúly:  "
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
 
             <TextView
                 android:id="@+id/par_testsuly"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="  kg"
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
         </LinearLayout>
 
         <LinearLayout
@@ -151,22 +137,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tubusméret:  "
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
 
             <TextView
                 android:id="@+id/par_tubusmeret"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="  "
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
         </LinearLayout>
 
         <LinearLayout
@@ -178,24 +161,63 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tubushossz:  "
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
 
             <TextView
                 android:id="@+id/par_tubushossz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="  cm"
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bougie mérete:  "
+                android:textColor="@color/text_blue" />
+
+            <TextView
+                android:id="@+id/par_bougie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_blue" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tidal Volumen:  "
+                android:textColor="@color/text_blue" />
+
+            <TextView
+                android:id="@+id/par_tidalvol"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_blue" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" ml"
+                android:textColor="@color/text_blue" />
+        </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -205,19 +227,21 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bougie mérete:  "
-                android:textColor="@color/text_blue"
-                 />
+                android:text="Defibrilláció:  "
+                android:textColor="@color/text_blue" />
 
             <TextView
-                android:id="@+id/par_bougie"
+                android:id="@+id/par_def"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_blue"
-                 />
+                android:textColor="@color/text_blue" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" J"
+                android:textColor="@color/text_blue" />
         </LinearLayout>
-
 
 
         <SeekBar
@@ -225,15 +249,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginBottom="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:max="10"
             android:maxHeight="6dp"
             android:minHeight="6dp"
             android:scrollbarStyle="insideOverlay"
             android:thumbTint="@color/text_blue" />
-
-
 
 
     </LinearLayout>

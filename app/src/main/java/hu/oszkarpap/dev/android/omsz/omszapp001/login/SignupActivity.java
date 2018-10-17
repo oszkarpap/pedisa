@@ -1,7 +1,10 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.login;
+
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,11 +15,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
-import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 
 
 public class SignupActivity extends AppCompatActivity {
@@ -25,7 +28,6 @@ public class SignupActivity extends AppCompatActivity {
     private Button btnSignIn, btnSignUp, btnResetPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
-
 
 
     /*created by
@@ -47,12 +49,22 @@ public class SignupActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
 
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Kérem olyan e-mail címet adjon meg, melyet használ, hogy későbbiekben megkapja az applikáció frissített verzióját!");
+        alertDialogBuilder.setNegativeButton("Rendben", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
         inputEmail.setError("csak gmail.com valid!");
 
         btnResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               startActivity(new Intent(SignupActivity.this, ResetPasswordActivity.class));
+                startActivity(new Intent(SignupActivity.this, ResetPasswordActivity.class));
             }
         });
 
@@ -69,7 +81,7 @@ public class SignupActivity extends AppCompatActivity {
 
                 String email = inputEmail.getText().toString().trim();
 
-                
+
                 String password = inputPassword.getText().toString().trim();
                 String repassword = inputRepassword.getText().toString().trim();
 
@@ -78,7 +90,7 @@ public class SignupActivity extends AppCompatActivity {
                     return;
                 }
 
-                if(!email.endsWith("@gmail.com")){
+                if (!email.endsWith("@gmail.com")) {
                     Toast.makeText(getApplicationContext(), "Gmail-es e-mail címet írjon!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -88,12 +100,12 @@ public class SignupActivity extends AppCompatActivity {
                     return;
                 }
 
-                if (password.length() < 6 || repassword.length()<6 ) {
+                if (password.length() < 6 || repassword.length() < 6) {
                     Toast.makeText(getApplicationContext(), "legalább 6 karakter legyen!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if ( !password.equals(repassword)) {
+                if (!password.equals(repassword)) {
                     Toast.makeText(getApplicationContext(), "Nem egyezik a jelszó!", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -104,7 +116,7 @@ public class SignupActivity extends AppCompatActivity {
                         .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                Toast.makeText(SignupActivity.this, "Új felhasználó!" , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignupActivity.this, "Új felhasználó!", Toast.LENGTH_SHORT).show();
                                 progressBar.setVisibility(View.GONE);
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
