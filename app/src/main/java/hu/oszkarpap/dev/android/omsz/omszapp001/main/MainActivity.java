@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,22 +17,26 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
-import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.guide.memory.MemoryActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.guide.LocationActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.guide.parameters.ParametersActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.guide.medication.MedActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.guide.memory.MemoryActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.guide.parameters.ParametersActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.navigation.AbcdeActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.navigation.RsiActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.navigation.VeinActivity;
@@ -51,6 +56,7 @@ public class MainActivity extends AppCompatActivity
     HashMap<MenuModel, List<MenuModel>> childList = new HashMap<>();
     private Intent intent;
     private FirebaseAuth auth;
+
     private Button toDev, tutorial;
     private FirebaseUser user;
 
@@ -70,9 +76,12 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         createMainActivity();
 
+        final PhoneNumber number = new PhoneNumber();
 
 
         toDev = findViewById(R.id.email_to_dev);
+
+
 
         auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
