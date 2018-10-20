@@ -1,4 +1,6 @@
-package hu.oszkarpap.dev.android.omsz.omszapp001.navigation;
+
+package hu.oszkarpap.dev.android.omsz.omszapp001.left;
+
 
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -10,13 +12,20 @@ import android.widget.TextView;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 
+/**
+ * @author Oszkar Pap
+ * @version 1.0
+ * @see AbcdeActivity
+ *
+ * This is the vein punction giudeline
+ */
+
 public class VeinActivity extends AbcdeActivity {
 
     private Spinner veinSpinner;
     private EditText veinDose, veinTime;
     private Button veinDoseCalc, veinTimeClac;
     private TextView veinResult;
-    private String spinnerValue;
     private double kanul;
 
 
@@ -33,6 +42,20 @@ public class VeinActivity extends AbcdeActivity {
         veinTimeClac = findViewById(R.id.vein_time_calc);
         veinResult = findViewById(R.id.vein_result);
 
+        time();
+
+        dose();
+
+
+
+    }
+
+    /**
+     * this method calculate how many ml infusion give with selected branule in time
+     *
+     * */
+    public void time(){
+
         veinTimeClac.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -42,13 +65,43 @@ public class VeinActivity extends AbcdeActivity {
                     spinnerValue();
                     double time = Double.parseDouble(veinTime.getText().toString());
                     double result = Math.round(time * kanul);
-                    veinResult.setText(Double.toString(result) + " ml adható be " + time + " perc alatt");
+                    String t1 = Double.toString(result) + getString(R.string.give_ml_into_vein_activity) + time + getString(R.string.in_minutes_vein_activity);
+                    veinResult.setText(t1);
                     veinResult.setTypeface(null,Typeface.BOLD);
                 } catch (Exception e) {
-                    veinResult.setText("Legalább egy mező kitöltése kötelező, és a mellette lévő gomb megnyomandó");
+                    String t2 =getString(R.string.exception_vein_activity);
+                    veinResult.setText(t2);
                 }
             }
         });
+    }
+
+    /**
+     * Select type of branule
+     * */
+    public void spinnerValue() {
+        String spinnerValue = String.valueOf(veinSpinner.getSelectedItem());
+        kanul = 0;
+        if (spinnerValue.contains(getString(R.string.G24))) {
+            kanul = 20;
+        } else if (spinnerValue.contains(getString(R.string.G22))) {
+            kanul = 30;
+        } else if (spinnerValue.contains(getString(R.string.G20))) {
+            kanul = 55;
+        } else if (spinnerValue.contains(getString(R.string.G18))) {
+            kanul = 100;
+        } else if (spinnerValue.contains(getString(R.string.G16))) {
+            kanul = 180;
+        } else {
+            kanul = 270;
+        }
+    }
+
+    /**
+     * this method calculate how many minutes give insert ml infusion with selected branule
+     * */
+
+    public void dose(){
 
         veinDoseCalc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,32 +110,14 @@ public class VeinActivity extends AbcdeActivity {
                     spinnerValue();
                     double dose = Double.parseDouble(veinDose.getText().toString());
                     double result = Math.round(dose / kanul);
-                    veinResult.setText(Double.toString(result) + " perc alatt adható be " + dose + " ml folyadék");
+                    String t3=Double.toString(result) + getString(R.string.min_give_into_ml_vein_activity) + dose + getString(R.string.ml_infusion_vein_activity);
+                    veinResult.setText(t3);
                     veinResult.setTypeface(null, Typeface.BOLD);
                 } catch (Exception e) {
-                    veinResult.setText("Legalább egy mező kitöltése kötelező, és a mellette lévő gomb megnyomandó");
+                    veinResult.setText(R.string.exception_vein_activity);
                 }
 
             }
         });
-
-    }
-
-    public void spinnerValue() {
-        spinnerValue = String.valueOf(veinSpinner.getSelectedItem());
-        kanul = 0;
-        if (spinnerValue.contains("24G Sárga")) {
-            kanul = 20;
-        } else if (spinnerValue.contains("22G Kék")) {
-            kanul = 30;
-        } else if (spinnerValue.contains("20G Rózsaszín")) {
-            kanul = 55;
-        } else if (spinnerValue.contains("18G Zöld")) {
-            kanul = 100;
-        } else if (spinnerValue.contains("16G Szürke")) {
-            kanul = 180;
-        } else {
-            kanul = 270;
-        }
     }
 }

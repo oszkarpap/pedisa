@@ -39,42 +39,38 @@
             android:label="Rendszermenű"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".navigation.AbcdeActivity"
+            android:name=".left.AbcdeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".navigation.RsiActivity"
+            android:name=".left.RsiActivity"
             android:label="RSI"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
-            android:name=".navigation.AbcdeProtokollActivity"
-            android:label="ABCDE PROTOKOLL"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".guide.parameters.ParametersActivity"
+            android:name=".right.parameters.ParametersActivity"
             android:label="Paraméterek"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".navigation.VeinActivity"
+            android:name=".left.VeinActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".guide.memory.MemoryActivity"
+            android:name=".right.memory.MemoryActivity"
             android:label="Saját gyógyszerkártyák" />
         <activity
-            android:name=".guide.memory.CreateMemoryActivity"
+            android:name=".right.memory.CreateMemoryActivity"
             android:label="Új gyógyszer bevitele" />
         <activity
-            android:name=".guide.medication.MedActivity"
+            android:name=".right.medication.MedActivity"
             android:label="Rendszeresített gyógyszerek" />
         <activity
-            android:name=".guide.medication.CreateMedActivity"
+            android:name=".right.medication.CreateMedActivity"
             android:label="Gyógyszer a Firebase-be" />
         <activity
-            android:name=".guide.medication.ModifyMedActivity"
+            android:name=".right.medication.ModifyMedActivity"
             android:label="Gyógyszer módisítása a Firebase-be" />
         <activity
-            android:name=".guide.memory.ModifyMemoryActivity"
+            android:name=".right.memory.ModifyMemoryActivity"
             android:label="Saját gyógyszerkártya módosítása" />
-        <activity android:name=".guide.LocationActivity"></activity>
     </application>
 
 </manifest>

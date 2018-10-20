@@ -1,5 +1,6 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.main;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
@@ -11,21 +12,24 @@ import java.util.HashMap;
 import java.util.List;
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 
+/**
+ * @author Oszkar Pap
+ * @version 1.0
+ * This is the Adapter for the left - omsz protocol - menu
+ */
+
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private Context context;
     private List<MenuModel> listDataHeader;
     private HashMap<MenuModel, List<MenuModel>> listDataChild;
 
-    public ExpandableListAdapter(Context context, List<MenuModel> listDataHeader,
-                                 HashMap<MenuModel, List<MenuModel>> listChildData) {
+    ExpandableListAdapter(Context context, List<MenuModel> listDataHeader,
+                          HashMap<MenuModel, List<MenuModel>> listChildData) {
         this.context = context;
         this.listDataHeader = listDataHeader;
         this.listDataChild = listChildData;
 
 
-        /*created by
-         * Oszkar Pap
-         * */
     }
 
     @Override
@@ -39,6 +43,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         return childPosition;
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getChildView(int groupPosition, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
@@ -48,6 +53,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            assert infalInflater != null;
             convertView = infalInflater.inflate(R.layout.list_group_child, null);
         }
 
@@ -84,6 +90,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         return groupPosition;
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded,
                              View convertView, ViewGroup parent) {
@@ -91,6 +98,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
         if (convertView == null) {
             LayoutInflater infalInflater = (LayoutInflater) this.context
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            assert infalInflater != null;
             convertView = infalInflater.inflate(R.layout.list_group_header, null);
         }
 

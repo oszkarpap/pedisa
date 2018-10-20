@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
 
     <!-- perfusor activity-->
@@ -101,48 +101,58 @@
     <string name="create_todo_description">leírás</string>
     <string name="create_todo_assignee">felelős</string>
     <string name="create_todo_button">Létrehoz</string>
+    <string name="give_ml_into_vein_activity">ml adható be</string>
+    <string name="in_minutes_vein_activity">perc alatt</string>
+    <string name="exception_vein_activity">Legalább egy mező kitöltése kötelező, és a mellette lévő gomb megnyomandó</string>
+    <string name="min_give_into_ml_vein_activity">perc alatt adható be</string>
+    <string name="ml_infusion_vein_activity">ml folyadék</string>
+    <string name="G24">24G Sárga</string>
+    <string name="G22">22G Kék</string>
+    <string name="G20">20G Rózsaszín</string>
+    <string name="G18">18G Zöld</string>
+    <string name="G16">16G Szürke</string>
+    <string name="roku_dose_rsi_activity">Rocuronium adagja:</string>
+    <string name="question_half_dose_rsi_activity">Felezett adag?</string>
+    <string name="question_original_dose_rsi_activity">Eredeti adag?</string>
+    <string name="roku_half_dose_rsi_activity">Rocuronium felezett adagja:</string>
+    <string name="yaer_weight">év, tömege:</string>
+    <string name="the_childs_age_rsi_activity">A gyermek kora:</string>
+    <string name="newlyborn_and_weight">Újszülött 3.5kg</string>
+    <string name="child_age_rsi_activity">A gyermek kora:</string>
+    <string name="year_weight_seven_kg_rsi_activity">év, tömege: 7kg</string>
+    <string name="lma_6_rsi_a">LMA, mérete: 6</string>
+    <string name="lma_5_rsi_a">LMA, mérete: 5</string>
+    <string name="lma_4_rsi_a">LMA mérete: 4</string>
+    <string name="lma_3_rsi_a">LMA, mérete: 3</string>
+    <string name="lma_2_5_rsi_a">LMA, mérete: 2.5</string>
+    <string name="lma_2_rsi_a">LMA, mérete: 2.0</string>
+    <string name="lma_1_5_rsi_a">LMA, mérete: 1.5</string>
+    <string name="lma_1_rsi_a">LMA, mérete: 1.0</string>
+    <string name="lar_3_rsi_a">Laringoskóp, mérete: 3</string>
+    <string name="lar_2_rsi_a">Alternativ lapoc, mérete: 2</string>
+    <string name="lar_size_rsi_a">Laringoskóp, mérete:</string>
+    <string name="lar_sec_size_rsi_a">Alternativ lapoc, mérete:</string>
+    <string name="ket_max_dose_rsi_a">Ketamin dózisa: 200mg (maximum dózis)</string>
+    <string name="eto_dose_rsi_a">Etomidate:</string>
+    <string name="ket_dose_rsi_a">Ketamin dózisa:</string>
+    <string name="eto_max_dose_rsi_a">Etomidate adagja 20 mg (maximum dózis)</string>
+    <string name="ket_dose_rsi_a2">Ketomidate:</string>
+    <string name="eto_dose_rsi_a3">Etomidate dózisa:</string>
+    <string name="eto_dose_rsi_a2">Etomidate:</string>
+    <string name="keto_dose_rsi_a2">Ketomidate:</string>
+    <string name="suk_max_dose_rsi_a">Szukcinilkolin adagja: 200mg (maximum dózis)</string>
+    <string name="szuk_dose_rsi_a">Szukcinilkolin adagja:</string>
+    <string name="roku_dose_rsi_a">Rokuronium adagja:</string>
+    <string name="roku_dose_rsi_a2">Rocuronium adagja:</string>
+    <string name="send_new_mail_main_login_a">Új E-mail Küldés</string>
+    <string name="send_new_pw_login_main_a">Új jelszó Küldés</string>
+    <string name="email_resetpw_a">E-mail!</string>
+    <string name="thisisnotemail_reserpw_a">Nem e-mail címet adott meg!</string>
+    <string name="sendind_email_reserpw_a">E-mail elküldve!</string>
+    <string name="unsuccesful_experiment_resetpw_a">Sikertelen kisérlet!</string>
+    <string name="validate_email_string" tools:ignore="TypographyDashes"><![CDATA[^[a–zA–Z0-9.!#$%&\'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$]]></string>
+    <string name="del_your_profile_main_a">Profilja törölve lett, Nincs jogosultsága az alkalmazás használatához!</string>
 
-    <!--  Med Adapter  -->
-    <style name="med_name1">Adenocor</style>
 
-    <style name="med_agent1">(adenozin)</style>
-
-    <style name="med_pack1">6mg/2ml</style>
-
-    <style name="med_ind1">PSVT, dd SVT/VT</style>
-
-    <style name="med_contra1">allergia, II. III. AVB, SSS, asthma bronchiale,COPD</style>
-
-    <style name="med_adult1">6mg iv. bolus, sz.e. 2 min 12mg, sz.e. ism</style>
-
-    <style name="med_child1">0,05-0,3mg/ttkg iv (2ml 6m-re higítva)</style>
-
-    <style name="med_name2"></style>
-
-    <style name="med_agent2"></style>
-
-    <style name="med_pack2"></style>
-
-    <style name="med_ind2"></style>
-
-    <style name="med_contra2"></style>
-
-    <style name="med_adult2"></style>
-
-    <style name="med_child2"></style>
-
-    <style name="med_name3"></style>
-
-    <style name="med_agent3"></style>
-
-    <style name="med_pack3"></style>
-
-    <style name="med_ind3"></style>
-
-    <style name="med_contra3"></style>
-
-    <style name="med_adult3"></style>
-
-    <style name="med_child3"></style>
 
 </resources>

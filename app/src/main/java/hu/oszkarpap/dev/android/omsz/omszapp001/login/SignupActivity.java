@@ -1,10 +1,8 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.login;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -22,51 +20,39 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 
 
+/**
+ * @author Oszkar Pap
+ * @version 1.0
+ * This is the sign up activity
+ */
+
 public class SignupActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword, inputRepassword;
-    private Button btnSignIn, btnSignUp, btnResetPassword;
+    private Button btnSignUp;
+    private Button btnResetPassword;
     private ProgressBar progressBar;
     private FirebaseAuth auth;
 
 
-    /*created by
-     * Oszkar Pap
-     * */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
-        btnSignIn = (Button) findViewById(R.id.sign_in_button);
-        btnSignUp = (Button) findViewById(R.id.sign_up_button);
-        inputEmail = (EditText) findViewById(R.id.email);
-        inputPassword = (EditText) findViewById(R.id.password);
-        inputRepassword = (EditText) findViewById(R.id.repassword);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-        btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
+        Button btnSignIn = findViewById(R.id.sign_in_button);
+        btnSignUp = findViewById(R.id.sign_up_button);
+        inputEmail = findViewById(R.id.email);
+        inputPassword = findViewById(R.id.password);
+        inputRepassword = findViewById(R.id.repassword);
+        progressBar = findViewById(R.id.progressBar);
+        btnResetPassword = findViewById(R.id.btn_reset_password);
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("Kérem olyan e-mail címet adjon meg, melyet használ, hogy későbbiekben megkapja az applikáció frissített verzióját!");
-        alertDialogBuilder.setNegativeButton("Rendben", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
 
-            }
-        });
+        clickResetPw();
 
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
-        inputEmail.setError("csak gmail.com valid!");
-
-        btnResetPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SignupActivity.this, ResetPasswordActivity.class));
-            }
-        });
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +60,15 @@ public class SignupActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        clickSignUp();
+
+    }
+
+    /**
+     * click sign up button
+     */
+    public void clickSignUp() {
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,13 +80,20 @@ public class SignupActivity extends AppCompatActivity {
                 String password = inputPassword.getText().toString().trim();
                 String repassword = inputRepassword.getText().toString().trim();
 
+
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "E-mail cím!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                if (isValidEmailAddress(email)) {
+                    Toast.makeText(SignupActivity.this, "Nem e-mail címet adott meg!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 if (!email.endsWith("@gmail.com")) {
-                    Toast.makeText(getApplicationContext(), "Gmail-es e-mail címet írjon!", Toast.LENGTH_SHORT).show();
+                    inputEmail.setError("csak gmail.com valid!");
+
+
                     return;
                 }
 
@@ -134,6 +136,33 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    /**
+     * click reset password button
+     */
+    public void clickResetPw() {
+
+
+        btnResetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SignupActivity.this, ResetPasswordActivity.class));
+            }
+        });
+    }
+
+
+    /**
+     * check email validate
+     */
+    public boolean isValidEmailAddress(String email) {
+        String ePattern = getString(R.string.validate_email_string);
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return !m.matches();
+    }
+
 
     @Override
     protected void onResume() {

@@ -19,29 +19,40 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
-import hu.oszkarpap.dev.android.omsz.omszapp001.guide.LocationActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.guide.medication.MedActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.guide.memory.MemoryActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.guide.parameters.ParametersActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.left.AbcdeActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.left.RsiActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.left.VeinActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.navigation.AbcdeActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.navigation.RsiActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.navigation.VeinActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.MedActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.right.parameters.ParametersActivity;
 
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
+
+
+/**
+ * @author Oszkar Pap
+ * @version 1.0
+ * This is main screen in activity
+ * The String SAS set the layout of RSI activity
+ */
 
 
 public class MainActivity extends AppCompatActivity
@@ -49,7 +60,8 @@ public class MainActivity extends AppCompatActivity
 
 
     public static final String SAS = "SAS";
-    public static final String RIGO = "RIGO";
+    public static final String KONZULENS_SZAMA = "konzulensSzama";
+    public static final String KANY_SZAMA = "kanySzama";
     ExpandableListAdapter expandableListAdapter;
     ExpandableListView expandableListView;
     List<MenuModel> headerList = new ArrayList<>();
@@ -57,34 +69,49 @@ public class MainActivity extends AppCompatActivity
     private Intent intent;
     private FirebaseAuth auth;
 
-    private Button toDev, tutorial;
-    private FirebaseUser user;
+    private TextView konzTv, kanyTv;
+    private Button konzBtn, kanyBtn;
+    private EditText konzEt, kanyEt;
+    private String kanySzama;
 
 
-
-
-
-    /*created by
-     * Oszkar Pap
-     * */
-
+    /**
+     * in this method checked Firebase Realtime Database
+     * and set tutorial and send email to developer action
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
         createMainActivity();
 
-        final PhoneNumber number = new PhoneNumber();
+        try {
+            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        } catch (RuntimeException e) {
+            Toast.makeText(this, "A Firebase újratöltődik!", Toast.LENGTH_SHORT).show();
+        }
+
+        Button toDev = findViewById(R.id.email_to_dev);
+
+        konzEt = findViewById(R.id.main_konz_ET);
+        konzBtn = findViewById(R.id.main_konz_BTN);
+        konzTv = findViewById(R.id.main_konz_TV);
 
 
-        toDev = findViewById(R.id.email_to_dev);
+        kanyEt = findViewById(R.id.main_kany_ET);
+        kanyBtn = findViewById(R.id.main_kany_BTN);
+        kanyTv = findViewById(R.id.main_kany_TV);
 
+        setPhoneNumbers();
 
+        setKonzToFirebase();
+
+        setKanyToFirebase();
 
         auth = FirebaseAuth.getInstance();
-        user = auth.getCurrentUser();
 
         toDev.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +123,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        tutorial = findViewById(R.id.tutorial);
+        Button tutorial = findViewById(R.id.tutorial);
         tutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,12 +155,17 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    /**
+     * Set right which menu item start which action
+     * and check secret the user parameters, and if user delete, profil sign out
+     */
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         if (id == R.id.menu_medication) {
-            auth.getCurrentUser().reload();
+            Objects.requireNonNull(auth.getCurrentUser()).reload();
             try {
 
                 intent = new Intent(MainActivity.this, MedActivity.class);
@@ -152,7 +184,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         if (id == R.id.menu_settings) {
-            auth.getCurrentUser().reload();
+            Objects.requireNonNull(auth.getCurrentUser()).reload();
             intent = new Intent(MainActivity.this, LoginMainActivity.class);
             startActivity(intent);
         }
@@ -160,14 +192,14 @@ public class MainActivity extends AppCompatActivity
             ifDelUser();
             try {
                 intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:0680210022"));
+                intent.setData(Uri.parse("tel:" + kanySzama));
                 startActivity(intent);
             } catch (Exception e) {
                 Toast.makeText(this, "Nincs hívásindító az eszközén!", Toast.LENGTH_LONG).show();
             }
         }
         if (id == R.id.menu_help) {
-            auth.getCurrentUser().reload();
+            Objects.requireNonNull(auth.getCurrentUser()).reload();
             intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://drive.google.com/open?id=1NaBVLCYm43LENyoyse-u9iY6Ir5tJn4I"));
             startActivity(intent);
 
@@ -198,7 +230,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         if (id == R.id.menu_note) {
-            auth.getCurrentUser().reload();
+            Objects.requireNonNull(auth.getCurrentUser()).reload();
             intent = new Intent(MainActivity.this, MemoryActivity.class);
             startActivity(intent);
         }
@@ -215,12 +247,16 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    /**
+     * Set the Navigatin drawer - left menu - omsz protocol menu item
+     */
 
     private void prepareMenuData() {
 
@@ -241,7 +277,7 @@ public class MainActivity extends AppCompatActivity
         menuModel = new MenuModel("Reanimáció", true, true, 2);
         headerList.add(menuModel);
         childModelsList = new ArrayList<>();
-        childModel = new MenuModel("MRT ERC ALS", false, false, 99);
+        childModel = new MenuModel("MRT ERC ALS", false, false, 0);
         childModelsList.add(childModel);
 
 
@@ -330,6 +366,10 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    /**
+     * ckeck the navigation drawer menu - left menu - protokoll menu, which element start to which activity,
+     * and reload secret user parameters
+     */
     private void populateExpandableList() {
 
         expandableListAdapter = new ExpandableListAdapter(this, headerList, childList);
@@ -356,29 +396,25 @@ public class MainActivity extends AppCompatActivity
                     switch (a) {
 
                         case (12):
-                            auth.getCurrentUser().reload();
+                            Objects.requireNonNull(auth.getCurrentUser()).reload();
                             intent = new Intent(MainActivity.this, VeinActivity.class);
                             startActivity(intent);
                             break;
 
                         case (32):
-                            auth.getCurrentUser().reload();
+                            Objects.requireNonNull(auth.getCurrentUser()).reload();
                             intent = new Intent(MainActivity.this, RsiActivity.class);
                             intent.putExtra(SAS, "02");
                             startActivity(intent);
                             break;
-                        case (999):
-                            auth.getCurrentUser().reload();
-                            intent = new Intent(MainActivity.this, LocationActivity.class);
-                            startActivity(intent);
-                            break;
+
                         case (11):
-                            auth.getCurrentUser().reload();
+                            Objects.requireNonNull(auth.getCurrentUser()).reload();
                             intent = new Intent(MainActivity.this, AbcdeActivity.class);
                             startActivity(intent);
                             break;
                         case (0):
-                            auth.getCurrentUser().reload();
+                            Objects.requireNonNull(auth.getCurrentUser()).reload();
                             Toast.makeText(MainActivity.this, "Sajnálom, nem implementáltam még a protokollt! Prehospitális vizsgálat sorrendje, Vénabiztosítás és az RSI működik!", Toast.LENGTH_LONG).show();
 
 
@@ -391,6 +427,10 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
+
+    /**
+     * This method generate the look of main screen
+     */
 
     public void createMainActivity() {
         overridePendingTransition(R.anim.bounce, R.anim.fade_in);
@@ -415,13 +455,125 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    /**
+     * This method checked the firebase RTDB for phone number
+     */
+
+    public void setPhoneNumbers() {
+
+        FirebaseDatabase.getInstance().getReference().child(KONZULENS_SZAMA).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String t01 = "(" + Objects.requireNonNull(dataSnapshot.getValue()).toString() + ")";
+                konzTv.setText(t01);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        FirebaseDatabase.getInstance().getReference().child(KANY_SZAMA).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String t02 = "(" + Objects.requireNonNull(dataSnapshot.getValue()).toString() + ")";
+                kanyTv.setText(t02);
+                kanySzama = Objects.requireNonNull(dataSnapshot.getValue()).toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    /**
+     * This method check to profile, and sign out, if the admin del it
+     */
+
     public void ifDelUser() {
 
         if (auth.getCurrentUser() == null) {
-            Toast.makeText(this, "Profilja törölve lett, Nincs jogosultsága az alkalmazás használatához!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.del_your_profile_main_a, Toast.LENGTH_LONG).show();
             auth.signOut();
             finish();
         }
+    }
+
+    /**
+     * This method change to konzulens phone number in firebase realtime database
+     */
+    public void setKonzToFirebase() {
+        konzBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (konzEt.getText().toString().length() < 8) {
+                    Toast.makeText(MainActivity.this, "Biztos telefonszámot adott meg?", Toast.LENGTH_SHORT).show();
+                } else {
+                    FirebaseDatabase.getInstance().getReference()
+                            .child(KONZULENS_SZAMA)
+                            .setValue(konzEt.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(MainActivity.this, "Firebase felhőbe mentve!", Toast.LENGTH_SHORT).show();
+
+                                }
+                            });
+                }
+                FirebaseDatabase.getInstance().getReference().child(KONZULENS_SZAMA).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String t01 = "(" + Objects.requireNonNull(dataSnapshot.getValue()).toString() + ")";
+                        konzTv.setText(t01);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+    }
+
+    /**
+     * This method change Kany phone Number in Firebase realtime database
+     */
+    public void setKanyToFirebase() {
+
+        kanyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (kanyEt.getText().toString().length() < 8) {
+                    Toast.makeText(MainActivity.this, "Biztos telefonszámot adott meg?", Toast.LENGTH_SHORT).show();
+                } else {
+                    FirebaseDatabase.getInstance().getReference()
+                            .child(KANY_SZAMA)
+                            .setValue(kanyEt.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(MainActivity.this, "Firebase felhőbe mentve!", Toast.LENGTH_SHORT).show();
+
+                                }
+                            });
+                }
+                FirebaseDatabase.getInstance().getReference().child(KANY_SZAMA).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String t01 = "(" + Objects.requireNonNull(dataSnapshot.getValue()).toString() + ")";
+                        kanyTv.setText(t01);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
     }
 
     @Override

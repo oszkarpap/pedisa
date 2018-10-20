@@ -34,35 +34,42 @@
         android:paddingTop="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-
+    <LinearLayout
+        android:id="@+id/main_login_top_linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
         <EditText
             android:id="@+id/main_login_edittext"
-            android:layout_alignParentTop="true"
-            android:layout_width="match_parent"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:focusableInTouchMode="true"
             android:imeOptions="actionUnspecified"
+            android:layout_marginRight="@dimen/_10sdp"
             android:maxLines="1"
             android:singleLine="true" />
 
 
         <Button
-            android:layout_below="@id/main_login_edittext"
+
             android:id="@+id/main_login_ok"
             style="?android:textAppearanceSmall"
-            android:layout_width="match_parent"
+            android:padding="@dimen/_5sdp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+
             android:background="@color/colorPrimaryDark"
 
             android:textColor="@android:color/white"
             android:textStyle="bold" />
 
-
+    </LinearLayout>
 
 
         <Button
-            android:layout_below="@id/main_login_ok"
+            android:layout_below="@id/main_login_top_linear"
             android:id="@+id/login_main_change_email_button"
             style="?android:textAppearanceSmall"
             android:layout_width="match_parent"

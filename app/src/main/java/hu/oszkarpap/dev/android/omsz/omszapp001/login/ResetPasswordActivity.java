@@ -2,7 +2,6 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.login;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -16,13 +15,16 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 
-public class ResetPasswordActivity extends AppCompatActivity {
+
+/**
+ * @author Oszkar Pap
+ * @version 1.0
+ * This is the forgot password and send new password to own email
+ */
+
+public class ResetPasswordActivity extends SignupActivity {
 
 
-
-    /*created by
-     * Oszkar Pap
-     * */
     private EditText inputEmail;
     private Button btnReset;
     private FirebaseAuth auth;
@@ -33,12 +35,22 @@ public class ResetPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
 
-        inputEmail = (EditText) findViewById(R.id.email);
-        btnReset = (Button) findViewById(R.id.btn_reset_password);
+        inputEmail =  findViewById(R.id.email);
+        btnReset =  findViewById(R.id.btn_reset_password);
 
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        progressBar =  findViewById(R.id.progressBar);
 
         auth = FirebaseAuth.getInstance();
+
+        clickResetPw();
+
+    }
+
+    /**
+     * This method send change password
+     * */
+
+    public void clickResetPw(){
 
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +59,11 @@ public class ResetPasswordActivity extends AppCompatActivity {
                 String email = inputEmail.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplication(), "E-mail!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplication(), R.string.email_resetpw_a, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (isValidEmailAddress(inputEmail.getText().toString())) {
+                    Toast.makeText(getApplicationContext(), R.string.thisisnotemail_reserpw_a, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -57,9 +73,9 @@ public class ResetPasswordActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(ResetPasswordActivity.this, "E-mail elküldve!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ResetPasswordActivity.this, R.string.sendind_email_reserpw_a, Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(ResetPasswordActivity.this, "Sikertelen kisérlet!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ResetPasswordActivity.this, R.string.unsuccesful_experiment_resetpw_a, Toast.LENGTH_SHORT).show();
                                 }
 
                                 progressBar.setVisibility(View.GONE);
