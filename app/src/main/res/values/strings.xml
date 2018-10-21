@@ -152,7 +152,7 @@
     <string name="unsuccesful_experiment_resetpw_a">Sikertelen kisérlet!</string>
     <string name="validate_email_string" tools:ignore="TypographyDashes"><![CDATA[^[a–zA–Z0-9.!#$%&\'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$]]></string>
     <string name="del_your_profile_main_a">Profilja törölve lett, Nincs jogosultsága az alkalmazás használatához!</string>
-
+    <string name="create_medication_name_alert">Alfanumerkius, ill. )(/.,+-*_%}{ karaktereket használjon!</string>
 
 
 </resources>

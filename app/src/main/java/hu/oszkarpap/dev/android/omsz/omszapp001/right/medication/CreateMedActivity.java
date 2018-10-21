@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 
 /**
  * @author Oszkar Pap
@@ -36,7 +37,7 @@ public class CreateMedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_medication);
         createName = findViewById(R.id.createNameMedET);
-        createName.setError("Alfanumerkius karaktereket, ill. (/) (.) (,) használjon! ",null);
+        createName.setError(getString(R.string.create_medication_name_alert),null);
         createAgent = findViewById(R.id.createAgentMedET);
         createPack = findViewById(R.id.createPackMedET);
         createInd = findViewById(R.id.createIndMedET);
@@ -47,6 +48,20 @@ public class CreateMedActivity extends AppCompatActivity {
         createChD02 = findViewById(R.id.createChildMedETDose02);
         createChMaxD = findViewById(R.id.createChildMedETDoseMax);
         createChDesciption = findViewById(R.id.createChildMedETDoseDesc);
+
+        if (!(getIntent().getStringExtra(MedActivity.KEY_NAME_MODIFY)==null)) {
+            createName.setText(getIntent().getStringExtra(MedActivity.KEY_NAME_MODIFY));
+            createAgent.setText(getIntent().getStringExtra(MedActivity.KEY_AGENT_MODIFY));
+            createPack.setText(getIntent().getStringExtra(MedActivity.KEY_PACK_MODIFY));
+            createInd.setText(getIntent().getStringExtra(MedActivity.KEY_IND_MODIFY));
+            createContra.setText(getIntent().getStringExtra(MedActivity.KEY_CONTRA_MODIFY));
+            createAdult.setText(getIntent().getStringExtra(MedActivity.KEY_ADULT_MODIFY));
+            createChild.setText(getIntent().getStringExtra(MedActivity.KEY_CHILD_MODIFY));
+            createChD01.setText(getIntent().getStringExtra(MedActivity.KEY_CHILDD01_MODIFY));
+            createChD02.setText(getIntent().getStringExtra(MedActivity.KEY_CHILDD02_MODIFY));
+            createChMaxD.setText(getIntent().getStringExtra(MedActivity.KEY_CHILDDMAX_MODIFY));
+            createChDesciption.setText(getIntent().getStringExtra(MedActivity.KEY_CHILDDDESC_MODIFY));
+        }
 
         Button createMemoryBTN = findViewById(R.id.createMedBTN);
 

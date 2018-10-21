@@ -19,6 +19,7 @@
             android:theme="@style/AppTheme.NoActionBar.Mainmenu" />
         <activity
             android:name=".login.SignupActivity"
+            android:theme="@style/AppTheme.NoActionBar"
             android:label="Regisztráció" />
         <activity
             android:name=".login.LoginActivity"

@@ -51,7 +51,7 @@ public class SignupActivity extends AppCompatActivity {
         btnResetPassword = findViewById(R.id.btn_reset_password);
 
 
-        clickResetPw();
+        clickResetPwActivity();
 
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -141,7 +141,7 @@ public class SignupActivity extends AppCompatActivity {
     /**
      * click reset password button
      */
-    public void clickResetPw() {
+    public void clickResetPwActivity() {
 
 
         btnResetPassword.setOnClickListener(new View.OnClickListener() {
@@ -160,7 +160,7 @@ public class SignupActivity extends AppCompatActivity {
         String ePattern = getString(R.string.validate_email_string);
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
         java.util.regex.Matcher m = p.matcher(email);
-        return !m.matches();
+        return m.matches();
     }
 
 

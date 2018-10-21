@@ -129,7 +129,10 @@ public class MedActivity extends AppCompatActivity implements MedAdapter.OnItemL
     public void saveMed(final Medication med) {
 
         try {
-            String key = med.getName().replace("/", "0").replace(".", "0").replace(",", "0").toLowerCase() + "01" + System.currentTimeMillis();
+            String key = med.getName().replace(")", "0").replace("(", "0").replace("/", "0")
+                    .replace(".", "0").replace(",", "0").replace("+", "0").replace("-", "0")
+                    .replace("*", "0").replace("_", "0").replace("%", "0").replace("{", "0")
+                    .replace("}", "0").toLowerCase() + "01" + System.currentTimeMillis();
             med.setKey(key);
             FirebaseDatabase.getInstance().getReference()
                     .child("med")
@@ -258,7 +261,7 @@ public class MedActivity extends AppCompatActivity implements MedAdapter.OnItemL
         alertDialogBuilder.setNeutralButton("Duplikáció", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(MedActivity.this, ModifyMedActivity.class);
+                Intent intent = new Intent(MedActivity.this, CreateMedActivity.class);
                 intent.putExtra(KEY_NAME_MODIFY, medi.getName());
                 intent.putExtra(KEY_AGENT_MODIFY, medi.getAgent());
                 intent.putExtra(KEY_PACK_MODIFY, medi.getPack());
