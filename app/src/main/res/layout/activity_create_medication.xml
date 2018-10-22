@@ -1,109 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".right.memory.CreateMemoryActivity">
 
-    <Button
-        android:id="@+id/createMedBTN"
-        style="@style/Base.Widget.AppCompat.Button.Colored"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="4dp"
-        android:text="Létrehoz"
-        android:textColor="@color/white" />
-
-    <EditText
-        android:id="@+id/createNameMedET"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:hint="Gyógyszer neve" />
-
-    <EditText
-        android:id="@+id/createAgentMedET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:hint="Hatóanyag" />
-
-    <EditText
-        android:id="@+id/createPackMedET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:hint="Kiszerelés" />
-
-    <EditText
-        android:id="@+id/createIndMedET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:hint="Indikáció" />
-
-    <EditText
-        android:id="@+id/createContraMedET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:hint="Kontraindikáció" />
-
-    <EditText
-        android:id="@+id/createAdultMedET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:hint="Felnőtt dózis" />
-
-    <EditText
-        android:id="@+id/createChildMedET"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:hint="Gyermek dózis" />
-
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/createChildMedETDose01"
+        <Button
+            android:id="@+id/createMedBTN"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
+            android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:hint="Gyermek dózis 01" />
+            android:text="Létrehoz"
+            android:textColor="@color/white" />
 
         <EditText
-            android:id="@+id/createChildMedETDose02"
+            android:id="@+id/createNameMedET"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
             android:layout_margin="4dp"
-            android:hint="Gyermek dózis 02" />
+            android:hint="Gyógyszer neve" />
 
         <EditText
-            android:id="@+id/createChildMedETDoseMax"
+            android:id="@+id/createAgentMedET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:layout_margin="4dp"
-            android:hint="Gyermek dózis max" />
+            android:hint="Hatóanyag" />
 
+        <EditText
+            android:id="@+id/createPackMedET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="Kiszerelés" />
+
+        <EditText
+            android:id="@+id/createIndMedET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="Indikáció" />
+
+        <EditText
+            android:id="@+id/createContraMedET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="Kontraindikáció" />
+
+        <EditText
+            android:id="@+id/createAdultMedET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="Felnőtt dózis" />
+
+        <EditText
+            android:id="@+id/createChildMedET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="Gyermek dózis" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_4sdp"
+            android:text="Az alábbi paraméterek szintén a felhőbe tárolódnak, azonban a Paraméterek menüpont alatti értékeket állítják be!"
+            android:textColor="@color/text_blue" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/createChildMedETDose01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:hint="Gyermek dózis 01"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/createChildMedETDose02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:hint="Gyermek dózis 02"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/createChildMedETUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:hint="Gyermek dózis m.e."
+                 />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/createChildMedETDoseMax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:inputType="numberDecimal"
+                android:hint="Gyermek dózis max 01" />
+
+            <EditText
+                android:id="@+id/createChildMedETDoseMax02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:inputType="numberDecimal"
+                android:hint="Gyermek dózis max 02" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/createChildMedETDoseDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint=" Gyermek dózis egyéb" />
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/createChildMedETDoseDesc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:hint="Gyermek dózis leírás" />
-
-
-
-</LinearLayout>
+</android.support.v4.widget.NestedScrollView>

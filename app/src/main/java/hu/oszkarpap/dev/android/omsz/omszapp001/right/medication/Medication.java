@@ -14,8 +14,26 @@ public class Medication {
     private String child;
     private String child01;
     private String child02;
+    private String unit;
     private String childDMax;
+    private String childDMax02;
     private String childDDesc;
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
+    public String getChildDMax02() {
+        return childDMax02;
+    }
+
+    public void setChildDMax02(String childDMax02) {
+        this.childDMax02 = childDMax02;
+    }
 
     public String getChild01() {
         return child01;
@@ -50,7 +68,7 @@ public class Medication {
     }
 
     public Medication(String id, String name, String agent, String pack, String ind, String cont, String adult, String child,
-                      String child01, String child02, String childDMax, String childDDesc) {
+                      String child01, String child02,String unit, String childDMax,String childDMax02, String childDDesc) {
         this.id = id;
         this.name = name;
         this.agent = agent;
@@ -61,12 +79,14 @@ public class Medication {
         this.child = child;
         this.child01 = child01;
         this.child02 = child02;
+        this.unit = unit;
         this.childDMax = childDMax;
+        this.childDMax02 = childDMax02;
         this.childDDesc = childDDesc;
     }
 
     public Medication(String name, String agent, String pack, String ind, String cont, String adult, String child, String child01,
-                      String child02, String childDMax, String childDDesc) {
+                      String child02,String unit, String childDMax,String childDMax02, String childDDesc) {
         this.name = name;
         this.agent = agent;
         this.pack = pack;
@@ -76,7 +96,9 @@ public class Medication {
         this.child = child;
         this.child01 = child01;
         this.child02 = child02;
+        this.unit = unit;
         this.childDMax = childDMax;
+        this.childDMax02 = childDMax02;
         this.childDDesc = childDDesc;
     }
 

@@ -43,9 +43,11 @@ public class MedActivity extends AppCompatActivity implements MedAdapter.OnItemL
     public static final String KEY_CONTRA_MODIFY = "CONTRA_MODIFY";
     public static final String KEY_ADULT_MODIFY = "ADULT_MODIFY";
     public static final String KEY_CHILD_MODIFY = "CHILD_MODIFY";
+    public static final String KEY_UNIT_MODIFY = "UNIT_MODIFY";
     public static final String KEY_CHILDD01_MODIFY = "CHILDD01_MODIFY";
     public static final String KEY_CHILDD02_MODIFY = "CHILDD02_MODIFY";
     public static final String KEY_CHILDDMAX_MODIFY = "CHILDMAX_MODIFY";
+    public static final String KEY_CHILDDMAX02_MODIFY = "CHILDMAX02_MODIFY";
     public static final String KEY_CHILDDDESC_MODIFY = "CHILDDESC_MODIFY";
     private List<Medication> medications;
     private MedAdapter adapter;
@@ -222,9 +224,12 @@ public class MedActivity extends AppCompatActivity implements MedAdapter.OnItemL
                 String child = data.getStringExtra(CreateMedActivity.KEY_CHILD);
                 String childD01 = data.getStringExtra(CreateMedActivity.KEY_CHILD01);
                 String childD02 = data.getStringExtra(CreateMedActivity.KEY_CHILD02);
+                String unit = data.getStringExtra(CreateMedActivity.KEY_CHILDUNIT);
                 String childDMax = data.getStringExtra(CreateMedActivity.KEY_CHILDMAX);
+                String childDMax02 = data.getStringExtra(CreateMedActivity.KEY_CHILDMAX02);
                 String childDdesc = data.getStringExtra(CreateMedActivity.KEY_CHILDDESC);
-                Medication med = new Medication(name, agent, pack, ind, contra, adult, child, childD01, childD02, childDMax, childDdesc);
+                Medication med = new Medication(name, agent, pack, ind, contra, adult,
+                        child, childD01, childD02, unit, childDMax, childDMax02, childDdesc);
                 saveMed(med);
 
 
@@ -271,11 +276,13 @@ public class MedActivity extends AppCompatActivity implements MedAdapter.OnItemL
                 intent.putExtra(KEY_CHILD_MODIFY, medi.getChild());
                 intent.putExtra(KEY_CHILDD01_MODIFY, medi.getChild01());
                 intent.putExtra(KEY_CHILDD02_MODIFY, medi.getChild02());
+                intent.putExtra(KEY_UNIT_MODIFY, medi.getUnit());
                 intent.putExtra(KEY_CHILDDMAX_MODIFY, medi.getChildDMax());
+                intent.putExtra(KEY_CHILDDMAX02_MODIFY, medi.getChildDMax02());
                 intent.putExtra(KEY_CHILDDDESC_MODIFY, medi.getChildDDesc());
 
 
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE);
             }
         });
 
