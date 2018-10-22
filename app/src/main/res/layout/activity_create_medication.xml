@@ -73,6 +73,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/createMedActivityPrametersTV"
             android:padding="@dimen/_4sdp"
             android:text="Az alábbi paraméterek szintén a felhőbe tárolódnak, azonban a Paraméterek menüpont alatti értékeket állítják be!"
             android:textColor="@color/text_blue" />

@@ -17,6 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.CreateMedActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.MedActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.MedAdapter;
+import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.Medication;
 import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.repository.Repository;
 import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.repository.sqlite.SQLiteRepository;
 
@@ -25,20 +29,15 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.repository.sqlite.S
  * @version 1.0
  * This is the Medication Memory Activity, this is own Medications, there are only own device! do not connect the firebase
  */
-public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener {
+public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener {
 
     public static final int REQUEST_CODE = 111;
-    public static final String KEY_NAME_MODIFY_MEMORY = "MEMORY_NAME";
-    public static final String KEY_AGENT_MODIFY_MEMORY = "MEMORY_AGENT";
-    public static final String KEY_PACK_MODIFY_MEMORY = "MEMORY_PACK";
-    public static final String KEY_IND_MODIFY_MEMORY = "MEMORY_IND";
-    public static final String KEY_CONTRA_MODIFY_MEMORY = "MEMORY_CONTRA";
-    public static final String KEY_ADULT_MODIFY_MEMORY = "MEMORY_ADULT";
-    public static final String KEY_CHILD_MODIFY_MEMORY = "MEMORY_CHILD";
-    private List<Memory> memories;
-    public MemoryAdapter adapter;
+
+    private List<Medication> memories;
+    public MedAdapter adapter;
     private Repository repository;
-    private Memory memory;
+    private Medication memory;
+    public static final String KEY_MEMORY = "MEMORY";
 
 
     @Override
@@ -56,7 +55,7 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
         recyclerView.setLayoutManager(layoutManager);
 
 
-        adapter = new MemoryAdapter(this, memories, this);
+        adapter = new MedAdapter(this, memories, this);
         recyclerView.setAdapter(adapter);
 
 
@@ -73,7 +72,7 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
             @Override
             public void run() {
                 repository.open(MemoryActivity.this);
-                final List<Memory> memoriesLoaded = repository.getAllMemory();
+                final List<Medication> memoriesLoaded = repository.getAllMemory();
                 repository.close();
                 runOnUiThread(new Runnable() {
                     @Override
@@ -93,7 +92,7 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
      * save new medication memory
      */
 
-    public void saveMemoriesAsync(final Memory memo) {
+    public void saveMemoriesAsync(final Medication memo) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -118,7 +117,7 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
     /**
      * delete selected own medication memory
      */
-    private void deleteMemoryAsync(final Memory memo) {
+    private void deleteMemoryAsync(final Medication memo) {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -211,7 +210,8 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
 
 
         } else if (item.getItemId() == R.id.createMemoryMenu) {
-            Intent intent = new Intent(this, CreateMemoryActivity.class);
+            Intent intent = new Intent(this, CreateMedActivity.class);
+            intent.putExtra(KEY_MEMORY, "YES");
             startActivityForResult(intent, REQUEST_CODE);
         } else if (item.getItemId() == R.id.memory_refresh) {
             finish();
@@ -230,14 +230,14 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
-                String name = data.getStringExtra(CreateMemoryActivity.KEY_NAME);
-                String agent = data.getStringExtra(CreateMemoryActivity.KEY_AGENT);
-                String pack = data.getStringExtra(CreateMemoryActivity.KEY_PACK);
-                String ind = data.getStringExtra(CreateMemoryActivity.KEY_IND);
-                String contra = data.getStringExtra(CreateMemoryActivity.KEY_CONTRA);
-                String adult = data.getStringExtra(CreateMemoryActivity.KEY_ADULT);
-                String child = data.getStringExtra(CreateMemoryActivity.KEY_CHILD);
-                Memory memory = new Memory(name, agent, pack, ind, contra, adult, child);
+                String name = data.getStringExtra(CreateMedActivity.KEY_NAME);
+                String agent = data.getStringExtra(CreateMedActivity.KEY_AGENT);
+                String pack = data.getStringExtra(CreateMedActivity.KEY_PACK);
+                String ind = data.getStringExtra(CreateMedActivity.KEY_IND);
+                String contra = data.getStringExtra(CreateMedActivity.KEY_CONTRA);
+                String adult = data.getStringExtra(CreateMedActivity.KEY_ADULT);
+                String child = data.getStringExtra(CreateMedActivity.KEY_CHILD);
+                Medication memory = new Medication(name, agent, pack, ind, contra, adult, child);
                 saveMemoriesAsync(memory);
 
 
@@ -250,7 +250,7 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
 
     /**
      * if long clicked one medication memory, show new alertdialoge, and can change duplicate or delete this medication memory
-     * */
+     */
     @Override
     public void onItemLongClicked(int position) {
         memory = memories.get(position);
@@ -275,17 +275,18 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
         alertDialogBuilder.setNeutralButton("Duplikáció", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(MemoryActivity.this, ModifyMemoryActivity.class);
-                intent.putExtra(KEY_NAME_MODIFY_MEMORY, memory.getName());
-                intent.putExtra(KEY_AGENT_MODIFY_MEMORY, memory.getAgent());
-                intent.putExtra(KEY_PACK_MODIFY_MEMORY, memory.getPack());
-                intent.putExtra(KEY_IND_MODIFY_MEMORY, memory.getInd());
-                intent.putExtra(KEY_CONTRA_MODIFY_MEMORY, memory.getCont());
-                intent.putExtra(KEY_ADULT_MODIFY_MEMORY, memory.getAdult());
-                intent.putExtra(KEY_CHILD_MODIFY_MEMORY, memory.getChild());
+                Intent intent = new Intent(MemoryActivity.this, CreateMedActivity.class);
+                intent.putExtra(KEY_MEMORY, "YES");
+                intent.putExtra(MedActivity.KEY_NAME_MODIFY, memory.getName());
+                intent.putExtra(MedActivity.KEY_AGENT_MODIFY, memory.getAgent());
+                intent.putExtra(MedActivity.KEY_PACK_MODIFY, memory.getPack());
+                intent.putExtra(MedActivity.KEY_IND_MODIFY, memory.getInd());
+                intent.putExtra(MedActivity.KEY_CONTRA_MODIFY, memory.getCont());
+                intent.putExtra(MedActivity.KEY_ADULT_MODIFY, memory.getAdult());
+                intent.putExtra(MedActivity.KEY_CHILD_MODIFY, memory.getChild());
 
 
-                startActivity(intent);
+                startActivityForResult(intent, REQUEST_CODE);
             }
         });
 
@@ -301,14 +302,14 @@ public class MemoryActivity extends AppCompatActivity implements MemoryAdapter.O
 
     /**
      * this method set up the adapter via searchview parameters
-     * */
+     */
     @Override
     public boolean onQueryTextChange(String s) {
 
         String MedInput = s.toLowerCase();
-        List<Memory> newList = new ArrayList<>();
+        List<Medication> newList = new ArrayList<>();
 
-        for (Memory x : memories) {
+        for (Medication x : memories) {
             if (x.getName().toLowerCase().contains(MedInput) || x.getAgent().toLowerCase().contains(MedInput)
                     || x.getPack().toLowerCase().contains(MedInput) || x.getInd().toLowerCase().contains(MedInput)
                     || x.getCont().toLowerCase().contains(MedInput) || x.getAdult().toLowerCase().contains(MedInput)

@@ -224,27 +224,30 @@ public class RsiActivity extends AbcdeActivity {
             @Override
             public void onClick(View v) {
 
-                try {
 
-                    setEtsAndAtropin();
+                    try {
 
-                    setBougieSize();
+                        setEtsAndAtropin();
 
-                    setLmaSize();
+                        setBougieSize();
 
-                    setLaringSize();
+                        setLmaSize();
 
-                    medDoseForEti();
+                        setLaringSize();
 
-                    afterEtiDose();
+                        medDoseForEti();
 
-                } catch (Exception e) {
+                        afterEtiDose();
 
-
-                    Toast.makeText(RsiActivity.this, "Adja meg a beteg ttkg-ját!", Toast.LENGTH_LONG).show();
+                    } catch (Exception e) {
 
 
-                }
+                        Toast.makeText(RsiActivity.this, "Adja meg a beteg ttkg-ját!", Toast.LENGTH_LONG).show();
+
+
+                    }
+
+                Toast.makeText(RsiActivity.this, "Checklista kitöltve!", Toast.LENGTH_LONG).show();
 
             }
 

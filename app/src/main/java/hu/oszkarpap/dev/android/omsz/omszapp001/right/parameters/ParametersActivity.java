@@ -10,6 +10,7 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,21 +39,17 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.Medication;
 public class ParametersActivity extends MainActivity implements SearchView.OnQueryTextListener {
 
 
-    private SeekBar seekBar, seekBarMed;
+    private SeekBar seekBarChildAge, seekBarMedicationParameters;
     private TextView age, hr, lsz, sys, ts, tm, th, bou, tidal, def;
 
     private RecyclerView recyclerView;
     private List<Medication> parametersMeds;
-    public static MedParametersAdapter adapter;
+    public static ParametersAdapter adapter;
     private TextView childWeight;
     private SearchView searchView;
     private Medication med;
-    public static double progressValue;
-    public String value01;
-    public String value02;
-    public double dose01;
-    public double dose02;
-    public double dose01D;
+    public static int progressValue;
+
 
 
     @Override
@@ -64,7 +61,7 @@ public class ParametersActivity extends MainActivity implements SearchView.OnQue
         createMainActivity();
         overridePendingTransition(0, 0);
 
-        seekBar = findViewById(R.id.par_sb);
+        seekBarChildAge = findViewById(R.id.par_sb);
         age = findViewById(R.id.par_age);
         hr = findViewById(R.id.par_hr);
         lsz = findViewById(R.id.par_lsz);
@@ -77,7 +74,7 @@ public class ParametersActivity extends MainActivity implements SearchView.OnQue
         def = findViewById(R.id.par_def);
 
 
-        seekBarMed = findViewById(R.id.par_med_sb);
+        seekBarMedicationParameters = findViewById(R.id.par_med_sb);
         childWeight = findViewById(R.id.par_weight);
 
 
@@ -95,7 +92,7 @@ public class ParametersActivity extends MainActivity implements SearchView.OnQue
         recyclerView.setLayoutManager(layoutManager);
 
 
-        adapter = new MedParametersAdapter(this, parametersMeds);
+        adapter = new ParametersAdapter(this, parametersMeds);
         recyclerView.setAdapter(adapter);
 
         childParameters();
@@ -149,7 +146,7 @@ public class ParametersActivity extends MainActivity implements SearchView.OnQue
 
     private void childParameters() {
 
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        seekBarChildAge.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
@@ -243,7 +240,7 @@ public class ParametersActivity extends MainActivity implements SearchView.OnQue
     public void seekBarMedmethod() {
 
 
-        seekBarMed.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        seekBarMedicationParameters.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -272,8 +269,8 @@ public class ParametersActivity extends MainActivity implements SearchView.OnQue
 
 
     /**
-     * this method set searchable rigth menu
-     * serach only medication name
+     * this method set searchable right menu
+     * because the parameters are together in one TextView, can search all child Medication parameters, but only medication!
      */
 
     @Override
@@ -316,8 +313,18 @@ public class ParametersActivity extends MainActivity implements SearchView.OnQue
      */
     @Override
     public boolean onQueryTextChange(String s) {
+        String Input = s.toLowerCase();
 
-        return false;
+        ArrayList<Medication> newList = new ArrayList<>();
+        for (Medication x : parametersMeds) {
+            if (x.getName().toLowerCase().contains(Input)) {
+                newList.add(x);
+            }
+        }
+
+        adapter.updateList(newList);
+        seekBarMedicationParameters.setVisibility(View.INVISIBLE);
+        return true;
     }
 
 

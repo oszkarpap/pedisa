@@ -6,16 +6,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
 /**
  * @author Oszkar Pap
  * @version 1.0
  * This is created medication activity
+ * This Activity used by create Med action, modify Med action, create own Med action, modify own Med action
  */
 
-public class CreateMedActivity extends AppCompatActivity {
+public class CreateMedActivity extends MedActivity {
 
     public static final String KEY_NAME = "NAME";
     public static final String KEY_AGENT = "AGENT";
@@ -32,6 +37,7 @@ public class CreateMedActivity extends AppCompatActivity {
     public static final String KEY_CHILDDESC = "CHILDDESC";
     private EditText createName, createAgent, createPack, createInd, createContra, createAdult, createChild,
             createChD01, createChD02, createChU, createChMaxD, createChMaxD02, createChDesciption;
+    private TextView createChildParameters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,25 @@ public class CreateMedActivity extends AppCompatActivity {
         createChMaxD = findViewById(R.id.createChildMedETDoseMax);
         createChMaxD02 = findViewById(R.id.createChildMedETDoseMax02);
         createChDesciption = findViewById(R.id.createChildMedETDoseDesc);
+        createChildParameters = findViewById(R.id.createMedActivityPrametersTV);
+        if((getIntent().getStringExtra(MemoryActivity.KEY_MEMORY).equals("YES"))){
+            createChD01.setVisibility(View.INVISIBLE);
+            createChD02.setVisibility(View.INVISIBLE);
+            createChU.setVisibility(View.INVISIBLE);
+            createChMaxD.setVisibility(View.INVISIBLE);
+            createChMaxD02.setVisibility(View.INVISIBLE);
+            createChDesciption.setVisibility(View.INVISIBLE);
+            createChildParameters.setVisibility(View.INVISIBLE);
+            setTitle("Saját Gyógyszerjegyzet");
+        }else{
+            createChD01.setVisibility(View.VISIBLE);
+            createChD02.setVisibility(View.VISIBLE);
+            createChU.setVisibility(View.VISIBLE);
+            createChMaxD.setVisibility(View.VISIBLE);
+            createChMaxD02.setVisibility(View.VISIBLE);
+            createChDesciption.setVisibility(View.VISIBLE);
+            createChildParameters.setVisibility(View.VISIBLE);
+        }
 
         if (!(getIntent().getStringExtra(MedActivity.KEY_NAME_MODIFY) == null)) {
             createName.setText(getIntent().getStringExtra(MedActivity.KEY_NAME_MODIFY));

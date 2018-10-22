@@ -203,11 +203,7 @@ public class LoginMainActivity extends SignupActivity {
         });
     }
 
-    @Override
-    protected void onStop() {
 
-        super.onStop();
-    }
 }
 
 

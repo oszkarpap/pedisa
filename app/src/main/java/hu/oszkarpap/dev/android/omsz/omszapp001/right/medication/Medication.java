@@ -3,7 +3,7 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.right.medication;
 
 
 public class Medication {
-    private String id;
+    private Long id;
     private String key;
     private String name;
     private String agent;
@@ -67,23 +67,7 @@ public class Medication {
         this.childDDesc = childDDesc;
     }
 
-    public Medication(String id, String name, String agent, String pack, String ind, String cont, String adult, String child,
-                      String child01, String child02,String unit, String childDMax,String childDMax02, String childDDesc) {
-        this.id = id;
-        this.name = name;
-        this.agent = agent;
-        this.pack = pack;
-        this.ind = ind;
-        this.cont = cont;
-        this.adult = adult;
-        this.child = child;
-        this.child01 = child01;
-        this.child02 = child02;
-        this.unit = unit;
-        this.childDMax = childDMax;
-        this.childDMax02 = childDMax02;
-        this.childDDesc = childDDesc;
-    }
+
 
     public Medication(String name, String agent, String pack, String ind, String cont, String adult, String child, String child01,
                       String child02,String unit, String childDMax,String childDMax02, String childDDesc) {
@@ -105,6 +89,27 @@ public class Medication {
     public Medication() {
     }
 
+    public Medication(Long id, String name, String agent, String pack, String ind, String cont, String adult, String child) {
+        this.id = id;
+        this.name = name;
+        this.agent = agent;
+        this.pack = pack;
+        this.ind = ind;
+        this.cont = cont;
+        this.adult = adult;
+        this.child = child;
+    }
+
+    public Medication(String name, String agent, String pack, String ind, String cont, String adult, String child) {
+        this.name = name;
+        this.agent = agent;
+        this.pack = pack;
+        this.ind = ind;
+        this.cont = cont;
+        this.adult = adult;
+        this.child = child;
+    }
+
     public String getKey() {
         return key;
     }
@@ -113,11 +118,11 @@ public class Medication {
         this.key = key;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

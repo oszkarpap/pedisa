@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
 /**
  * @author Oszkar Pap
@@ -195,6 +196,7 @@ public class MedActivity extends AppCompatActivity implements MedAdapter.OnItemL
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.createMedMenu) {
             Intent intent = new Intent(this, CreateMedActivity.class);
+            intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
             startActivityForResult(intent, REQUEST_CODE);
         } else if (item.getItemId() == R.id.med_refresh) {
             finish();
@@ -267,6 +269,7 @@ public class MedActivity extends AppCompatActivity implements MedAdapter.OnItemL
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(MedActivity.this, CreateMedActivity.class);
+                intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
                 intent.putExtra(KEY_NAME_MODIFY, medi.getName());
                 intent.putExtra(KEY_AGENT_MODIFY, medi.getAgent());
                 intent.putExtra(KEY_PACK_MODIFY, medi.getPack());

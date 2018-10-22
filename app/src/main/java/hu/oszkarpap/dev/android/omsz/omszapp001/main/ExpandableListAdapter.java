@@ -15,7 +15,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 /**
  * @author Oszkar Pap
  * @version 1.0
- * This is the Adapter for the left - omsz protocol - menu
+ * This is the Adapter for the left / omsz protocol - menu
  */
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {

@@ -4,7 +4,7 @@ import android.content.Context;
 
 import java.util.List;
 
-import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.Memory;
+import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.Medication;
 
 /**
  * @author Oszkar Pap
@@ -13,9 +13,9 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.Memory;
  */
 
 public interface Repository {
-    void saveMemory(Memory memory);
-    List<Memory> getAllMemory();
-    void deleteMemory(Memory memory);
+    void saveMemory(Medication memory);
+    List<Medication> getAllMemory();
+    void deleteMemory(Medication memory);
     void deleteAllMemory();
     void open(Context context);
     void close();

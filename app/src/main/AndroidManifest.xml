@@ -19,8 +19,8 @@
             android:theme="@style/AppTheme.NoActionBar.Mainmenu" />
         <activity
             android:name=".login.SignupActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="Regisztráció" />
+            android:label="Regisztráció"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".login.LoginActivity"
             android:label="OMSZ APP"
@@ -57,21 +57,15 @@
         <activity
             android:name=".right.memory.MemoryActivity"
             android:label="Saját gyógyszerkártyák" />
-        <activity
-            android:name=".right.memory.CreateMemoryActivity"
-            android:label="Új gyógyszer bevitele" />
+
         <activity
             android:name=".right.medication.MedActivity"
             android:label="Rendszeresített gyógyszerek" />
         <activity
             android:name=".right.medication.CreateMedActivity"
             android:label="Gyógyszer a Firebase-be" />
-        <activity
-            android:name=".right.medication.ModifyMedActivity"
-            android:label="Gyógyszer módisítása a Firebase-be" />
-        <activity
-            android:name=".right.memory.ModifyMemoryActivity"
-            android:label="Saját gyógyszerkártya módosítása" />
+
+
     </application>
 
 </manifest>

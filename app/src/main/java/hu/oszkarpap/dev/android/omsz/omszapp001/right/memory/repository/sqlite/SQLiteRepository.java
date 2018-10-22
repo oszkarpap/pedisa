@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.Memory;
+import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.Medication;
 import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.repository.Repository;
 
 /**
@@ -28,7 +28,7 @@ public class SQLiteRepository implements Repository {
      */
 
     @Override
-    public void saveMemory(Memory memory) {
+    public void saveMemory(Medication memory) {
         ContentValues values = new ContentValues();
         values.put(DBConstants.MEMORY_MODEL.NAME, memory.getName());
         values.put(DBConstants.MEMORY_MODEL.AGENT, memory.getAgent());
@@ -46,7 +46,7 @@ public class SQLiteRepository implements Repository {
      * load all medication memory from own deivce DB
      */
     @Override
-    public List<Memory> getAllMemory() {
+    public List<Medication> getAllMemory() {
 
         Cursor cursor = db.query(DBConstants.TABLE_MEMORY,
                 new String[]{
@@ -60,7 +60,7 @@ public class SQLiteRepository implements Repository {
                         DBConstants.MEMORY_MODEL.CHILD
                 }, null, null, null, null, DBConstants.MEMORY_MODEL.NAME);
 
-        List<Memory> memoriesLoaded = new ArrayList<>(cursor.getCount());
+        List<Medication> memoriesLoaded = new ArrayList<>(cursor.getCount());
 
         while (cursor.moveToNext()) {
             long id = cursor.getLong(cursor.getColumnIndex(DBConstants.MEMORY_MODEL.ID));
@@ -71,7 +71,7 @@ public class SQLiteRepository implements Repository {
             String contra = cursor.getString(cursor.getColumnIndex(DBConstants.MEMORY_MODEL.CONTRA));
             String adult = cursor.getString(cursor.getColumnIndex(DBConstants.MEMORY_MODEL.ADULT));
             String child = cursor.getString(cursor.getColumnIndex(DBConstants.MEMORY_MODEL.CHILD));
-            Memory memory = new Memory(id, name, agent, pack, ind, contra, adult, child);
+            Medication memory = new Medication(id, name, agent, pack, ind, contra, adult, child);
             memoriesLoaded.add(memory);
 
 
@@ -86,7 +86,7 @@ public class SQLiteRepository implements Repository {
      */
 
     @Override
-    public void deleteMemory(Memory memory) {
+    public void deleteMemory(Medication memory) {
         Long id = memory.getId();
         if (id != null) {
             db.delete(DBConstants.TABLE_MEMORY, DBConstants.MEMORY_MODEL.ID + "=" + memory.getId(), null);
