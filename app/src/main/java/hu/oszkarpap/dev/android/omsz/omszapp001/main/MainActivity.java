@@ -169,6 +169,7 @@ public class MainActivity extends AppCompatActivity
             try {
 
                 intent = new Intent(MainActivity.this, MedActivity.class);
+
                 startActivity(intent);
             } catch (Exception e) {
                 Toast.makeText(this, "Elnézést, próbálja újra!", Toast.LENGTH_LONG).show();
@@ -243,6 +244,27 @@ public class MainActivity extends AppCompatActivity
         }
 
 
+        if (id == R.id.menu_about) {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setMessage("Az Applikáció használata nem helyettesíti a megfelelő előképzettséget ill. szakmai tudást.  " +
+                    "Esetleges elírásokért ill. nem naprakész információkért a készítő nem vállal felelősséget! " +
+                    "Mindenféle kritikát szívesen fogadok e-mailben (Főképernyő > Üzenet a fejlesztőnek)");
+            alertDialogBuilder.setPositiveButton("Megértettem",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface arg0, int arg1) {
+
+                            return;
+                        }
+                    });
+
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+
+        }
+
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -260,7 +282,7 @@ public class MainActivity extends AppCompatActivity
 
     private void prepareMenuData() {
 
-        MenuModel menuModel = new MenuModel("Szabványos eljárásrend", true, true, 1);
+        MenuModel menuModel = new MenuModel("Eljárásrendek", true, true, 1);
         headerList.add(menuModel);
         List<MenuModel> childModelsList = new ArrayList<>();
         MenuModel childModel = new MenuModel("Prehospitális vizsgálat sorrendje", false, false, 11);

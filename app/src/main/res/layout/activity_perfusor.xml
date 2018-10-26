@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:openDrawer="start">
+
+    <com.alespero.expandablecardview.ExpandableCardView
+        android:id="@+id/per_ecw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginTop="5dp"
+        app:expandOnClick="true"
+        app:icon="@drawable/ic_injection_parameters_24dp"
+        app:inner_view="@layout/ecw_perfusor"
+        app:title="Gyógyszerpumpa Calculator" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_med"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:scrollbars="vertical" />
+
+
+</LinearLayout>
+
+
+
+
+
+

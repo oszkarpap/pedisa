@@ -1,9 +1,11 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.right.parameters;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -36,20 +38,17 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.Medication;
  */
 
 
-public class ParametersActivity extends MainActivity implements SearchView.OnQueryTextListener {
+public class ParametersActivity extends MainActivity implements ParametersAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener {
 
 
     private SeekBar seekBarChildAge, seekBarMedicationParameters;
-    private TextView age, hr, lsz, sys, ts, tm, th, bou, tidal, def;
-
+    private TextView ageChild, hr, lsz, sys, ttkg, etSize, etLength, bougie, tidalVol, def;
     private RecyclerView recyclerView;
     private List<Medication> parametersMeds;
     public static ParametersAdapter adapter;
     private TextView childWeight;
     private SearchView searchView;
-    private Medication med;
     public static int progressValue;
-
 
 
     @Override
@@ -62,15 +61,15 @@ public class ParametersActivity extends MainActivity implements SearchView.OnQue
         overridePendingTransition(0, 0);
 
         seekBarChildAge = findViewById(R.id.par_sb);
-        age = findViewById(R.id.par_age);
+        ageChild = findViewById(R.id.par_age);
         hr = findViewById(R.id.par_hr);
         lsz = findViewById(R.id.par_lsz);
         sys = findViewById(R.id.par_sys);
-        ts = findViewById(R.id.par_testsuly);
-        tm = findViewById(R.id.par_tubusmeret);
-        th = findViewById(R.id.par_tubushossz);
-        bou = findViewById(R.id.par_bougie);
-        tidal = findViewById(R.id.par_tidalvol);
+        ttkg = findViewById(R.id.par_testsuly);
+        etSize = findViewById(R.id.par_tubusmeret);
+        etLength = findViewById(R.id.par_tubushossz);
+        bougie = findViewById(R.id.par_bougie);
+        tidalVol = findViewById(R.id.par_tidalvol);
         def = findViewById(R.id.par_def);
 
 
@@ -92,7 +91,7 @@ public class ParametersActivity extends MainActivity implements SearchView.OnQue
         recyclerView.setLayoutManager(layoutManager);
 
 
-        adapter = new ParametersAdapter(this, parametersMeds);
+        adapter = new ParametersAdapter(this, parametersMeds, this);
         recyclerView.setAdapter(adapter);
 
         childParameters();
@@ -109,10 +108,10 @@ public class ParametersActivity extends MainActivity implements SearchView.OnQue
         FirebaseDatabase.getInstance().getReference().child("med").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                med = dataSnapshot.getValue(Medication.class);
+                Medication med = dataSnapshot.getValue(Medication.class);
 
-                    parametersMeds.add(med);
-                    adapter.notifyDataSetChanged();
+                parametersMeds.add(med);
+                adapter.notifyDataSetChanged();
 
             }
 
@@ -151,86 +150,91 @@ public class ParametersActivity extends MainActivity implements SearchView.OnQue
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress,
                                           boolean fromUser) {
+                double age = progress;
 
-                age.setText(String.valueOf(progress));
-                tidal.setText(String.valueOf(progress * 7));
-                def.setText(String.valueOf(progress * 4));
+                if (progress == 1) {
+                    age = 0.5;
+                } else if (progress > 1) {
+                    age = progress - 1;
+                }
 
-                if (progress == 0) {
+                ageChild.setText(String.valueOf(age)+" év");
+                ttkg.setText(String.valueOf((age + 4) * 2));
+                etSize.setText(String.valueOf((age / 4) + 4));
+                etLength.setText(String.valueOf((age / 2) + 12));
+                def.setText(String.valueOf((age + 4) * 2 * 4)+" J");
+                tidalVol.setText(String.valueOf((age + 4) * 2 * 7));
+
+
+                if (age == 0) {
+                    ttkg.setText("3.5");
+                    etSize.setText("3.5");
                     hr.setText("110-160");
                     lsz.setText("30-40");
                     sys.setText("70-90");
-                    tidal.setText("24.5 ml újszülött, illetve 49ml féléves");
-                    def.setText("14 J újszülött, illetve 28 J féléves");
-                } else if (progress == 1 || progress == 2) {
+                    tidalVol.setText("24.5 ");
+                    def.setText("14 J ");
+                } else if (age == 0.5) {
+                    etSize.setText("3.5");
+                    ttkg.setText("7");
+                    etLength.setText("12");
+                    hr.setText("110-160");
+                    lsz.setText("30-40");
+                    sys.setText("70-90");
+                    tidalVol.setText("49 ");
+                    def.setText("28 J");
+                } else if (age == 1) {
+                    etSize.setText("4");
                     hr.setText("100-150");
                     lsz.setText("25-35");
                     sys.setText("80-95");
-                } else if (progress > 2 && progress < 6) {
+                } else if (age == 2) {
+                    hr.setText("100-150");
+                    lsz.setText("25-35");
+                    sys.setText("80-95");
+                } else if (age == 3) {
+                    etSize.setText("4.5");
+                } else if (age > 2 && age < 6) {
                     hr.setText("90-140");
                     lsz.setText("25-30");
                     sys.setText("80-100");
-                } else if (progress > 5 && progress <= 12) {
+                } else if (age > 5 && age <= 12) {
                     hr.setText("80-130");
                     lsz.setText("20-25");
                     sys.setText("90-110");
-                } else if (progress > 12) {
-                    hr.setText("60-100");
-                    lsz.setText("15-20");
-                    sys.setText("100-120");
+                } else if (age == 5) {
+                    etSize.setText("5");
+                } else if (age == 7) {
+                    etSize.setText("6");
+                } else if (age == 9) {
+                    etSize.setText("6.5");
                 }
 
 
-                if (progress > -1 && progress < 11) {
-
-                    double value = seekBar.getProgress();
-
-
-                    ts.setText(String.valueOf((value + 4) * 2));
-                    tm.setText(String.valueOf((value / 4) + 4));
-                    if (value == 0) {
-                        ts.setText("3.5kg újszülött, a féléves 7");
-                        tm.setText("3.5");
-
-                    } else if (value == 1) {
-                        tm.setText("4");
-                    } else if (value == 3) {
-                        tm.setText("4.5");
-                    } else if (value == 5) {
-                        tm.setText("5");
-                    } else if (value == 7) {
-                        tm.setText("6");
-                    } else if (value == 9) {
-                        tm.setText("6.5");
-                    }
-                    th.setText(String.valueOf((value / 2) + 12));
-
-
-                }
-
-                Double tmS = Double.parseDouble(tm.getText().toString());
+                Double tmS = Double.parseDouble(etSize.getText().toString());
 
                 if (tmS > 6) {
-                    bou.setText("15 Ch");
+                    bougie.setText("15 Ch");
                 }
                 if (tmS == 5 || tmS == 6) {
-                    bou.setText("10 Ch");
+                    bougie.setText("10 Ch");
                 }
                 if (tmS < 5) {
-                    bou.setText("ne használj bougie-t!");
+                    bougie.setText("ne használjon!");
                 }
 
-            }
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
+        }
 
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-            }
-        });
-    }
+        @Override
+        public void onStartTrackingTouch (SeekBar seekBar){
+        }
+
+        @Override
+        public void onStopTrackingTouch (SeekBar seekBar){
+        }
+    });
+}
 
 
     /**
@@ -259,8 +263,6 @@ public class ParametersActivity extends MainActivity implements SearchView.OnQue
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 adapter.notifyDataSetChanged();
-
-
 
 
             }
@@ -327,5 +329,30 @@ public class ParametersActivity extends MainActivity implements SearchView.OnQue
         return true;
     }
 
+    @Override
+    public void onItemLongClicked(final int position) {
+        final Medication med = parametersMeds.get(position);
 
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Hatóanyag: " + med.getAgent());
+
+        alertDialogBuilder.setPositiveButton("Vissza",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+
+                    }
+                });
+
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
 }

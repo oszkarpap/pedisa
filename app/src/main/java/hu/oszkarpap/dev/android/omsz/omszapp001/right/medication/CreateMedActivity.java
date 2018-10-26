@@ -20,7 +20,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
  * This Activity used by create Med action, modify Med action, create own Med action, modify own Med action
  */
 
-public class CreateMedActivity extends MedActivity {
+public class CreateMedActivity extends AppCompatActivity {
 
     public static final String KEY_NAME = "NAME";
     public static final String KEY_AGENT = "AGENT";

@@ -30,6 +30,7 @@ public class AbcdeActivity extends AppCompatActivity {
         guideline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 Intent intent = new Intent(AbcdeActivity.this, AbcdeActivity.class);
                 startActivity(intent);
             }
@@ -49,5 +50,11 @@ public class AbcdeActivity extends AppCompatActivity {
         collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.white));
         collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.white));
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
     }
 }

@@ -614,4 +614,10 @@ public class RsiActivity extends AbcdeActivity {
                 " hiányában " + 3 * patientWeightD / 10 + " mg bólusok 5-10 percenként), valamint Fentanyl " + patientWeightD + "ug ( 20 percenként ismételve ) bólusokban";
         transportMed02Tv.setText(t28);
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
 }

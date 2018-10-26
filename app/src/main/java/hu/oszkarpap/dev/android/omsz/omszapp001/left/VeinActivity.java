@@ -65,7 +65,7 @@ public class VeinActivity extends AbcdeActivity {
                     spinnerValue();
                     double time = Double.parseDouble(veinTime.getText().toString());
                     double result = Math.round(time * kanul);
-                    String t1 = Double.toString(result) + getString(R.string.give_ml_into_vein_activity) + time + getString(R.string.in_minutes_vein_activity);
+                    String t1 = Double.toString(result) +" "+getString(R.string.give_ml_into_vein_activity) +" "+ time +" "+ getString(R.string.in_minutes_vein_activity);
                     veinResult.setText(t1);
                     veinResult.setTypeface(null,Typeface.BOLD);
                 } catch (Exception e) {
@@ -110,7 +110,7 @@ public class VeinActivity extends AbcdeActivity {
                     spinnerValue();
                     double dose = Double.parseDouble(veinDose.getText().toString());
                     double result = Math.round(dose / kanul);
-                    String t3=Double.toString(result) + getString(R.string.min_give_into_ml_vein_activity) + dose + getString(R.string.ml_infusion_vein_activity);
+                    String t3=Double.toString(result) +" "+ getString(R.string.min_give_into_ml_vein_activity) +" "+ dose +" "+ getString(R.string.ml_infusion_vein_activity);
                     veinResult.setText(t3);
                     veinResult.setTypeface(null, Typeface.BOLD);
                 } catch (Exception e) {
@@ -119,5 +119,11 @@ public class VeinActivity extends AbcdeActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
     }
 }

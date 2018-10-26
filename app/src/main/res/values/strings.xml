@@ -101,11 +101,11 @@
     <string name="create_todo_description">leírás</string>
     <string name="create_todo_assignee">felelős</string>
     <string name="create_todo_button">Létrehoz</string>
-    <string name="give_ml_into_vein_activity">ml adható be</string>
-    <string name="in_minutes_vein_activity">perc alatt</string>
+    <string name="give_ml_into_vein_activity"> ml adható be </string>
+    <string name="in_minutes_vein_activity"> perc alatt </string>
     <string name="exception_vein_activity">Legalább egy mező kitöltése kötelező, és a mellette lévő gomb megnyomandó</string>
-    <string name="min_give_into_ml_vein_activity">perc alatt adható be</string>
-    <string name="ml_infusion_vein_activity">ml folyadék</string>
+    <string name="min_give_into_ml_vein_activity"> perc alatt adható be </string>
+    <string name="ml_infusion_vein_activity"> ml folyadék </string>
     <string name="G24">24G Sárga</string>
     <string name="G22">22G Kék</string>
     <string name="G20">20G Rózsaszín</string>

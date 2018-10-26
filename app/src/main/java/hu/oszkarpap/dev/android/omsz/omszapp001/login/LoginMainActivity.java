@@ -203,7 +203,11 @@ public class LoginMainActivity extends SignupActivity {
         });
     }
 
-
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
 }
 
 

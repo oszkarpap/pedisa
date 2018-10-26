@@ -15,6 +15,7 @@
         android:title="@string/parameters"
         app:showAsAction="never" />
 
+
     <item
         android:id="@+id/menu_rsi"
         android:orderInCategory="100"
@@ -44,6 +45,11 @@
         android:id="@+id/menu_help"
         android:orderInCategory="100"
         android:title="Használati útmutató"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_about"
+        android:orderInCategory="100"
+        android:title="Felhasználói feltételek"
         app:showAsAction="never" />
 
     <item

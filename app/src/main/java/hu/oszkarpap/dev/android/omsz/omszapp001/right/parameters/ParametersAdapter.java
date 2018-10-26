@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.MedAdapter;
 import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.Medication;
 
 /**
@@ -23,17 +24,22 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.Medication;
 
 public class ParametersAdapter extends RecyclerView.Adapter<ParametersAdapter.ViewHolder> {
 
-
+    private final Context context;
     private List<Medication> medications;
     private final LayoutInflater inflater;
+    private OnItemLongClickListener listener;
 
-    private String name, dose01, dose02, doseMaxPrefix, doseMax, doseMax02, dose03, doseDesc;
+    private String name, dose01, dose02, doseMax, doseMax02, dose03, doseDesc;
     private Medication medication;
 
+    private String unit;
 
-    public ParametersAdapter(Context context, List<Medication> medications) {
+
+    public ParametersAdapter(Context context, List<Medication> medications, OnItemLongClickListener listener) {
+        this.context = context;
         this.medications = medications;
         this.inflater = LayoutInflater.from(context);
+        this.listener = listener;
     }
 
     @NonNull
@@ -47,9 +53,16 @@ public class ParametersAdapter extends RecyclerView.Adapter<ParametersAdapter.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         medication = medications.get(position);
         makeParametersStringMethod();
-        String parameters = name + dose01 + dose02 + dose03 + doseMaxPrefix + doseMax + doseMax02 + doseDesc;
-        holder.name.setText(parameters);
+        String parameters = name + dose01 + dose02 + dose03 + doseMax + doseDesc;
 
+        holder.name.setText(parameters);
+        holder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                listener.onItemLongClicked(position);
+                return false;
+            }
+        });
     }
 
     @Override
@@ -89,101 +102,149 @@ public class ParametersAdapter extends RecyclerView.Adapter<ParametersAdapter.Vi
      */
 
     private void makeParametersStringMethod() {
-        /*
-         * Create Med Name always
-         * */
-        name = medication.getName() + ": ";
 
-        /*
-         * Create Child dose 01
-         * (if have 2 dose, this is low dose, if low dose per kg is bigger max dose 01,
-         * set the low dose is the max dose 01)
-         * */
 
-        if (!(medication.getChild01() == null)) {
-            if (ParametersActivity.progressValue * Float.parseFloat(medication.getChild01())
-                    > Float.parseFloat(medication.getChildDMax())) {
-                dose01 = medication.getChildDMax() + " " + medication.getUnit() + " ";
+        try {
+            unit = " " + medication.getUnit();
+        } catch (Exception e) {
+            unit = "";
+        }
 
-            } else {
-                dose01 = (String.valueOf(ParametersActivity.progressValue * Float.parseFloat(medication.getChild01())) +
-                        " " + medication.getUnit());
+        try {
+            double a;
+            try {
+                a = Double.parseDouble(medication.getChildDMax());
+            } catch (Exception e) {
+                a = 100000;
             }
-        } else {
+
+            if (Double.parseDouble(medication.getChild01()) * ParametersActivity.progressValue >
+                    a) {
+
+                dose01 = medication.getChildDMax() + unit;
+            } else {
+                double x = 1000 * Double.parseDouble(medication.getChild01()) * ParametersActivity.progressValue;
+
+                int z = (int) x;
+                x = ((double) z) / 1000;
+
+
+                dose01 = String.valueOf(x) + unit;
+            }
+        } catch (Exception e) {
             dose01 = "";
         }
 
-        /*
-         * Create Child dose 02
-         * (if have 2 dose, this is high dose, if high dose per kg is bigger max dose 02,
-         * set the high dose is the max dose 02)
-         * */
-
-        if (!(medication.getChild02() == null)) {
-            if (ParametersActivity.progressValue * Float.parseFloat(medication.getChild02())
-                    > Float.parseFloat(medication.getChildDMax02())) {
-                dose02 = " - " + medication.getChildDMax02() + " " + medication.getUnit() + ". ";
-
-            } else {
-                dose02 = " - " + (String.valueOf(ParametersActivity.progressValue * Float.parseFloat(medication.getChild02())) +
-                        " " + medication.getUnit() + " . ");
+        try {
+            double a;
+            try {
+                a = Double.parseDouble(medication.getChildDMax02());
+            } catch (Exception e) {
+                a = 100000;
             }
-        } else {
+
+            if (Double.parseDouble(medication.getChild02()) * ParametersActivity.progressValue >
+                    a) {
+                dose02 = " - " + medication.getChildDMax02() + unit;
+            } else {
+                double x = 1000 * Double.parseDouble(medication.getChild02()) * ParametersActivity.progressValue;
+
+                int z = (int) x;
+                x = ((double) z) / 1000;
+
+                dose02 = " - " + String.valueOf(x) + unit;
+            }
+        } catch (Exception e) {
             dose02 = "";
         }
 
-        /*
-         * The recyclerView show the original Med dose per kg
-         * */
-
-        if (medication.getChild01() != null && medication.getChild02() != null) {
-            dose03 = "(" + medication.getChild01() + " " + medication.getUnit() + "/ttkg - " +
-                    medication.getChild02() + " " + medication.getUnit() + " /ttkg). ";
-        } else if (medication.getChild01() != null && medication.getChild02() == null) {
-            dose03 = "(" + medication.getChild01() + " " + medication.getUnit() + "/ttkg). ";
-        } else {
-            dose03 = "";
-        }
-
-        /*
-         * If have got Max dose, show it
-         * */
-
-        if (medication.getChildDMax() != null || medication.getChildDMax02() != null) {
-            doseMaxPrefix = "Max dózis: ";
-        } else {
-            doseMaxPrefix = "";
-        }
-
-        if (!(medication.getChildDMax() == null)) {
-            doseMax = (medication.getChildDMax() + medication.getUnit() + "/ttkg ");
-
-        } else {
+        try {
+            if (medication.getChildDMax() != null && !medication.getChildDMax02().equals("")) {
+                doseMax = medication.getChildDMax();
+            } else {
+                doseMax = "";
+            }
+        } catch (Exception e) {
             doseMax = "";
         }
 
-        /*
-         * If have got Max dose 02, show it
-         * */
+        try {
+            if (medication.getChildDMax02() != null && !medication.getChildDMax02().equals("")) {
+                doseMax02 = medication.getChildDMax02();
+            } else {
+                doseMax02 = "";
+            }
 
-        if (!(medication.getChildDMax02() == null)) {
-            doseMax02 = " - " + (medication.getChildDMax02() + medication.getUnit() + "/ttkg . ");
 
-        } else {
+        } catch (Exception e) {
             doseMax02 = "";
         }
 
-        /*
-         * If have other description about medication, show it on the end of TextView
-         * */
 
-        if (!(medication.getChild02() == null)) {
-            doseDesc = " Egyéb: " + (medication.getChildDDesc());
-
+        if (doseMax != "") {
+            doseMax = " " + doseMax + unit;
         } else {
+            doseMax = "";
+        }
+        if (doseMax02 != "") {
+            doseMax += " - " + doseMax02 + unit;
+        } else {
+            doseMax += "";
+        }
+
+        if (doseMax != "") {
+            doseMax = ". Max: " + doseMax + ". ";
+        } else {
+            doseMax += "";
+        }
+
+
+
+        try {
+
+            name = medication.getName() + ": ";
+
+        } catch (Exception e) {
+            name = "";
+        }
+
+        try {
+            if (dose01 != "") {
+                dose03 = medication.getChild01() + unit;
+            } else {
+                dose03 = "";
+            }
+            if (dose02 != "") {
+                dose03 += " - " + medication.getChild02() + unit;
+            } else {
+                dose03 += "";
+            }
+
+            if (dose03 != "") {
+                dose03 = " (" + dose03 + " /ttkg)";
+            } else {
+                dose03 += "";
+            }
+
+
+        } catch (Exception e) {
+            dose03 = "";
+        }
+
+        try {
+            if (medication.getChildDDesc() != null) {
+                doseDesc = " Egyéb leírás: " + medication.getChildDDesc();
+            } else {
+                doseDesc = "";
+            }
+        } catch (Exception e) {
             doseDesc = "";
         }
 
+    }
+
+    public interface OnItemLongClickListener{
+        void onItemLongClicked(int position);
     }
 
 

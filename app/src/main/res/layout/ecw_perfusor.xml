@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/_200sdp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:padding="@dimen/_10sdp"
+            android:paddingTop="@dimen/_2sdp"
+            android:rowCount="4">
+
+            <Button
+                android:id="@+id/perf_chose01"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_row="0"
+
+
+                android:text="ug/ttkg/min "
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/perf_chose02"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_row="0"
+
+
+                android:text="ug/min"
+                android:textColor="@color/white" />
+            <EditText
+                android:id="@+id/per_from_ug"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_row="1"
+                android:layout_weight="1"
+                android:hint="hány µg-ot higít?"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/per_to_ml"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_row="1"
+                android:layout_weight="1"
+                android:hint="hány ml-re?"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/per_dose"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_row="2"
+                android:layout_weight="1"
+                android:hint="dose (µg)"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/per_ttkg"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_row="2"
+                android:layout_weight="1"
+                android:hint=" tömeg (ttkg)"
+                android:inputType="numberDecimal" />
+
+            <Button
+                android:id="@+id/per_calc"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:layout_column="0"
+                android:layout_row="3"
+
+
+                android:text="Számít"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/per_tv"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="wrap_content"
+                android:layout_column="1"
+                android:layout_row="3"
+                android:layout_weight="1"
+                android:textColor="@color/text_blue"
+                android:textSize="@dimen/_20sdp" />
+
+
+        </GridLayout>
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

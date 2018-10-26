@@ -18,7 +18,7 @@
             android:layout_centerVertical="true"
 
             android:layout_marginTop="@dimen/_5sdp"
-            android:max="10"
+            android:max="11"
             android:maxHeight="6dp"
             android:minHeight="6dp"
             android:scrollbarStyle="insideOverlay"
@@ -32,7 +32,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Életkor meghatározása (év): "
+                android:text="Életkor meghatározása: "
                 android:textColor="@color/text_green" />
 
             <TextView
@@ -124,7 +124,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Testsúly:  "
+                android:text="Testtömeg:  "
                 android:textColor="@color/text_blue" />
 
             <TextView
@@ -160,7 +160,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="  "
+                android:text=" mm "
                 android:textColor="@color/text_blue" />
         </LinearLayout>
 
@@ -251,7 +251,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" J"
+                android:text=" "
                 android:textColor="@color/text_blue" />
         </LinearLayout>
 
