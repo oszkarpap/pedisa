@@ -65,7 +65,7 @@ public class RsiActivity extends AbcdeActivity {
     private String konzulensPhoneNumberS;
 
     /**
-     * MainActivity.SAS set the layout. The RSI activity start in left menu created full guideline,
+     * MainActivity.SAS set the layout of activity RSI. The RSI activity start in left menu created full guideline,
      * in right menu the RSI is decrease protocol
      */
 
@@ -162,7 +162,7 @@ public class RsiActivity extends AbcdeActivity {
     }
 
     /**
-     * Set Invisible the Child and after RSI rokuronium dose
+     * Set Invisible the Child element and after RSI rokuronium dose
      */
 
     public void setStartVisible() {
@@ -276,7 +276,7 @@ public class RsiActivity extends AbcdeActivity {
                     rokuDose01Tv.setText(t3);
                     String t4 = getString(R.string.question_original_dose_rsi_activity);
                     changeRokuBtn01.setText(t4);
-                    counter++;
+                    counter--;
                 }
 
             }

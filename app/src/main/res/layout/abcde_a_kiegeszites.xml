@@ -11,9 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="A sürgősségi ellátást tanító különböző kurzusok, iskolák (ALS, ITLS, ATLS) ABCDE betegvizsgálati sémái
-nem egészen azonosak. Az ellátó e sémák közül az adott helyzetnek megfelelőt követheti, feltéve, hogy
-megfelel az ABCDE szemléletnek, tehát:"
+        android:text="@string/abcde_kieg_01"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -21,7 +19,7 @@ megfelel az ABCDE szemléletnek, tehát:"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- ABCDE sorrendű"
+        android:text="@string/abcde_sorrend_02"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -29,7 +27,7 @@ megfelel az ABCDE szemléletnek, tehát:"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Szisztematikus"
+        android:text="@string/abcde_kieg_03"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -37,7 +35,7 @@ megfelel az ABCDE szemléletnek, tehát:"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Azonnali ellátást igénylő probléma esetén csak a probléma elhárítása után lép tovább"
+        android:text="@string/abcde_kieg_04"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -45,8 +43,7 @@ megfelel az ABCDE szemléletnek, tehát:"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text=" -Állapotváltozáskor, beavatkozás, vagy betegmozgatás után a szisztematikus vizsgálat az elejéről
-ismétlődik."
+        android:text="@string/abcde_kieg_06"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 

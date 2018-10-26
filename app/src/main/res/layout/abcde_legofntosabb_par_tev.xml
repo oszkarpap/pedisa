@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- segítség szükségességének megítélése, sz.e. segélykocsi hívása"
+        android:text="@string/abcde002"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- 360°-os hozzáférhetőség biztosítása"
+        android:text="@string/abcde003"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- a ruházat eltávolítása/levágása a vizsgálathoz"
+        android:text="@string/abcde004"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- oxigénterápia, egyszerű légúti segédeszközök előkészítése, behelyezése"
+        android:text="@string/abcd005"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- monitorozás (amennyiben a kimentés nem akadályozza)"
+        android:text="@string/abcde006"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- indokolt esetben - és kompetencia birtokában - vénabiztosítás"
+        android:text="@string/abcde007"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 

@@ -13,7 +13,7 @@
         android:padding="10dp"
         android:textStyle="italic"
         android:textColor="@color/text_green"
-        android:text="- Eltér a klasszikus  belgyógyászati vizsgálattól"/>
+        android:text="@string/abcde201"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
         android:padding="10dp"
         android:textStyle="italic"
         android:textColor="@color/text_green"
-        android:text="- Szisztematikus"/>
+        android:text="@string/abcde0"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
         android:padding="10dp"
         android:textStyle="italic"
         android:textColor="@color/text_green"
-        android:text="- ABCDE sorrendű"/>
+        android:text="@string/abcde203"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
         android:padding="10dp"
         android:textStyle="italic"
         android:textColor="@color/text_green"
-        android:text="- gyors vizsgálat"/>
+        android:text="@string/abcde204"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
         android:padding="10dp"
         android:textStyle="italic"
         android:textColor="@color/text_red"
-        android:text="Azonosítani a közvetlen, potenciális életveszélyt,valamint a sürgős beavatkozást igénylő problémákat"/>
+        android:text="@string/abcde206"/>
 
 
 

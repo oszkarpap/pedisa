@@ -9,7 +9,8 @@
         android:id="@+id/abcde_guideline_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@mipmap/abcde_protokoll"/>
+        android:src="@mipmap/abcde_protokoll"
+        android:contentDescription="@string/abcde_guideline_image" />
 
 
 </LinearLayout>

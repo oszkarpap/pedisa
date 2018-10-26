@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Egyéb vizsgálatok:"
+        android:text="@string/abcde70"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Testhömérséklet megitélése tapintással (súlyos hipotermia-magas láz kizárása)"
+        android:text="@string/abcde71"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Egyéb célzott vizsgálatok: "
+        android:text="@string/abcde72"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- 12-es EKG"
+        android:text="@string/abcde73"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Szívhang"
+        android:text="@string/abcde74"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- A has vizsgálata tapintással"
+        android:text="@string/abcde76"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -60,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Ödéma, anasarca felismerése"
+        android:text="@string/abcde77"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -68,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Sérülés keresése olyan betegnél, akit nem sérültként vizsgálunk"
+        android:text="@string/abcde78"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -77,7 +77,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Körülmények vizsgálata"
+        android:text="@string/abcde79"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -85,7 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Anamnézis felvétele (SAMPLE) "
+        android:text="@string/abcde791"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -93,7 +93,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Hömérsékelt mérése műszerrel "
+        android:text="@string/abcde792"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -101,7 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="ABCD problémák elhárítása esetén, ha elég idő áll rendelkezésre, vagy út közben:"
+        android:text="@string/abcde793"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 
@@ -109,7 +109,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- A hát vizsgálata egyedül penetráló trauma, ill. annak gyanúja esetén szükséges"
+        android:text="@string/abcde794"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 
@@ -117,7 +117,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="-További sérülések, például disztális végtag-törések, sebek felismerése"
+        android:text="@string/abcde795"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 
@@ -125,8 +125,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="(12 elvezetéses EKG készítése súlyos sérült esetén az időveszteség és a következmények hiánya miatt
-nem indokolt)"
+        android:text="@string/abcde796"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -134,7 +133,7 @@ nem indokolt)"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- kihülés elleni védelem biztosítása"
+        android:text="@string/abcde797"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 

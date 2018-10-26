@@ -94,6 +94,9 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(this, "A Firebase újratöltődik!", Toast.LENGTH_SHORT).show();
         }
 
+
+
+
         Button toDev = findViewById(R.id.email_to_dev);
 
         konzEt = findViewById(R.id.main_konz_ET);
@@ -459,6 +462,7 @@ public class MainActivity extends AppCompatActivity
         auth = getInstance();
 
 
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -466,7 +470,6 @@ public class MainActivity extends AppCompatActivity
         expandableListView = findViewById(R.id.expandableListView);
         prepareMenuData();
         populateExpandableList();
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

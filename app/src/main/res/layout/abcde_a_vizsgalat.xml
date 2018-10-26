@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Légutak vizsgálata 2 elemből áll:"
+        android:text="@string/abcde01"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Légúti hangok hallgatása szabad füllel"
+        android:text="@string/abcde02"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="(erölködő/frusztrán légzőmozgás, horkoló, szörcsölő, stridor)"
+        android:text="@string/abcde03"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text=" Fenyegetettségre utal: légúti égés, allergia gyanú, hanyatt fekvő eszméletlen"
+        android:text="@string/abcde04"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Sz.e. azonnali beavatkozás az egyszerű légút-biztosítás eszközeivel"
+        android:text="@string/abcde05"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Párhuzamos tevékenységek: "
+        android:text="@string/abcde06"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="-Manuális légút-biztosítás,"
+        android:text="@string/abcde07"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -67,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Szívó előkészítése, használata"
+        android:text="@string/abcde08"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -75,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Egyszerű légút-biztosító eszközök előkészítése/behelyezése"
+        android:text="@string/abcde09"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -83,7 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Sz.e. stabil oldalfekvő helyzet"
+        android:text="@string/abcde10"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -92,7 +92,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Nyaki gerincsérülés-gyanúnál MILS áll kiemeléssel"
+        android:text="@string/abcde11"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 
@@ -101,7 +101,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Vérző arckoponya sérültnél sz.e. a garatüreg leszívása"
+        android:text="@string/abcde12"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 
@@ -110,7 +110,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Utóbbi delegálható"
+        android:text="@string/abcde13"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 

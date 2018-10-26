@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Az idegrendszer vizsgálat elemei :"
+        android:text="@string/abcde60"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Pupillák vizsgálata"
+        android:text="@string/abcde61"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Pontos kezdeti GCS felvétele "
+        android:text="@string/abcde62"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="(lehetőleg gysz adása előtt, fájdalominger a supraorbitális ideg kilépési pontjának nyomása, mindig a legmasabb érték rögzítendő, minden változást gondosan dokumentálnunk kell)"
+        android:text="@string/abcde63"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Oldaliság vizsgálata "
+        android:text="@string/abcde64"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="(bulbusok helyzete, arc aszimetriája, végtagmozgások felszólításra és fájdalomingerre (első vizsgálat során nincs mód részletes érzés-mozgás eltérés vizsgálatára))"
+        android:text="@string/abcde65"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -60,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Vércukorérték meghatározása a kanül tűjéből vett vérből"
+        android:text="@string/abcde66"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -69,7 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Megtartott tudatú betegnél gerincsérülés gyanúja esetén részletesebb vizsgálat az idegrendszeri eltérések, így a sérülés magasságának azonosítására"
+        android:text="@string/abcde67"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 
@@ -78,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- A vércukor mérése megváltozott tudatú sérült esetén kiemelt fontosságú."
+        android:text="@string/abcde68"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 

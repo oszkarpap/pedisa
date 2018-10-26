@@ -11,10 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Amennyiben egy beteg kiérkezésünkkor járóképes és egész mondatokban, értelmesen képes kommunikálni,
-valószínűsíthetjük az ABCD stabilitást, tehát azt, hogy a légutak, a légzés, a keringés és az idegrendszer az adott
-pillanatban megfelelően működik ahhoz, hogy azonnali beavatkozás nélkül folytathassuk a helyszíni
-tájékozódást."
+        android:text="@string/abcde80"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -22,7 +19,7 @@ tájékozódást."
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Beteg vizsgálatával párhuzamosan végezhetjük a célzott anamnézis felvételt."
+        android:text="@string/abcde81"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -30,9 +27,7 @@ tájékozódást."
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Stabil betegeknél követhető az ellátó által megszokott,
-egyéni séma is, feltéve, hogy a vizsgálat szisztematikus és alapos, tehát semmilyen fontos részlet nem kerüli el
-az ellátó figyelmét."
+        android:text="@string/abcde82"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 

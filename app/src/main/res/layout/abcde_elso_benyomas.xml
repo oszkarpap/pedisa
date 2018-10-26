@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Helyszín biztonságos?"
+        android:text="@string/abcde90"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- egyéni védőfelszerelés"
+        android:text="@string/abcde91"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- sz.e. azonnali kimentés"
+        android:text="@string/abcde92"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Megközelítés"
+        android:text="@string/abcde93"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- bőrszín, légzésszám, mozgás, AVPU"
+        android:text="@string/abcde94"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Meghatározandó:"
+        android:text="@string/abcde95"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -60,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="-Resuscitatív, kritikus, egyértelműen stabil ABCD állapot,"
+        android:text="@string/abcde96"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -68,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- valamint, hogy a beteg sérült-e,"
+        android:text="@string/abcde97"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -76,7 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- mi lehet a sérülés/megbetegedés megközelítő mechanizmusa"
+        android:text="@string/abcde98"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -85,7 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Sérülés gyanúja esetén kiegészítendő:"
+        android:text="@string/abcde99"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 
@@ -94,7 +94,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- cABCDE jelentős külső vérzés csillapítása direkt nyomással "
+        android:text="@string/abcde990"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 
@@ -103,7 +103,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- ccABCDE döntés a nyaki gerinc rögzítéséről (MILS), amennyiben a mechanizmus alapján sérülése nem zárható ki"
+        android:text="@string/abcde991"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 
@@ -112,7 +112,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- mindenkettő delegálható"
+        android:text="@string/abcde992"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 

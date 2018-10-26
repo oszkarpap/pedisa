@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Vizsgálat elemei:"
+        android:text="@string/abcde29"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="1. Bőrszín, hömérséklet, nedvesség"
+        android:text="@string/abcde30"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="2. Pulzus"
+        android:text="@string/abcde31"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="3. CRT"
+        android:text="@string/abcde32"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- A bőr vizsgálata megtekintéssel és tapintással (sápadt, márványozott, hűvös - meleg, száraz - verejtékes)"
+        android:text="@string/abcde33"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Perifériás pulzus tapintása, tapintható-e"
+        android:text="@string/abcde34"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Hiányában azonnal ellenőrizni kell a centrális pulzust!"
+        android:text="@string/abcde35"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -67,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Frekvencia (6 sec x 10, kvalitása, ritmusos-e)"
+        android:text="@string/abcde36"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -75,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Kapilláris újratelődési idő, 5 sec nyomás a körömágyon vagy szegycsonton (2 sec fölött kóros)"
+        android:text="@string/abcde37"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -83,7 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Indokolt esetben - és kompentencia birtokában - vénabiztosítás a korai gyógyszer és folyadékterápia végett"
+        android:text="@string/abcde38"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -91,7 +91,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- EKG monitor (4 eres monitor, öntapadós elektrodákkal a vállra és csípőkre)"
+        android:text="@string/abcde39"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -99,16 +99,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Vérnyomásmérés (mérési intervallum 2 min-re állítása)"
-        android:textColor="@color/text_blue"
-        android:textStyle="italic" />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="- Vérnyomásmérés (mérési intervallum 2 min-re állítása)"
+        android:text="@string/abcde40"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -117,7 +108,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Jelentős külső vérzés felismerése és és csillapítása, ha még nem történt meg"
+        android:text="@string/abcde41"
+        android:textColor="@color/text_blue"
+        android:textStyle="italic" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/abcde42"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 
@@ -126,7 +126,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Hosszú csöves csontok töréseinek felismerése"
+        android:text="@string/abcde43"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 
@@ -135,7 +135,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Medence megítélése (mechanizmus, külsérelmi nyomok, aszimetria )"
+        android:text="@string/abcde44"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 
@@ -144,7 +144,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- A has itt megtapintható, de az üregi vérzés negatív tapintási lelet mellett sem zárható ki"
+        android:text="@string/abcde46"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -153,7 +153,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Külső vérzés csillapítása direkt nyomással, nyomókötéssel"
+        android:text="@string/abcde47"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -162,7 +162,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Femurtörés esetén azonnali és folyamatos manuális húzás (sz.sz. analgézia után)"
+        android:text="@string/abcde48"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -171,7 +171,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- a sérült csomagolásához sz.e. medencerögzítő, illetve húzósín, továbbá buborékfólia, lapáthordágy előkészítése"
+        android:text="@string/abcde49"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 

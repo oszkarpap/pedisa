@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Légutak vizsgálata 2 elemből áll:"
+        android:text="@string/abcde14"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Légúti hangok hallgatása szabad füllel"
+        android:text="@string/abcde15"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="(erölködő/frusztrán légzőmozgás, horkoló, szörcsölő, stridor)"
+        android:text="@string/abcde16"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text=" Fenyegetettségre utal: légúti égés, allergia gyanú, hanyatt fekvő eszméletlen"
+        android:text="@string/abcde17"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -43,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Sz.e. azonnali beavatkozás az egyszerű légút-biztosítás eszközeivel"
+        android:text="@string/abcde18"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -51,7 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Párhuzamos tevékenységek: "
+        android:text="@string/abcde19"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="-Manuális légút-biztosítás,"
+        android:text="@string/abcde20"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -67,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Szívó előkészítése, használata"
+        android:text="@string/abcde21"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -75,7 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Egyszerű légút-biztosító eszközök előkészítése/behelyezése"
+        android:text="@string/abcde22"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -83,7 +83,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Sz.e. stabil oldalfekvő helyzet"
+        android:text="@string/abcde23"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -91,7 +91,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Mellkas megtekintése, áttapintása"
+        android:text="@string/abcde24"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 
@@ -100,7 +100,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Mozgás, kitérés megtekintése, lehetőleg a sérült lába felől"
+        android:text="@string/abcde25"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 
@@ -108,7 +108,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Csontos crepitatio bordatörésre utal, gyakran töb borda is érintett"
+        android:text="@string/abcde26"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 
@@ -116,7 +116,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Subcutan emphysema a PTX egyértelmű jele"
+        android:text="@string/abcde27"
         android:textColor="@color/text_orange"
         android:textStyle="italic" />
 
@@ -124,18 +124,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Kritikus és hemodinamikailag instabil esetben a mellkas detenzionálás kötelező (intravénás kanül tűjével, majd thoracostómiával)"
+        android:text="@string/abcde28"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:text="                                                                                                                 "
-        android:textColor="@color/text_red"
-        android:textStyle="italic" />
-
 
 
 

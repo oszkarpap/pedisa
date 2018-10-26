@@ -1,11 +1,9 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.left;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
+
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 
@@ -17,24 +15,13 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 
 public class AbcdeActivity extends AppCompatActivity {
 
-    /**
-     * Here is not still implemented the full picture of protocol Activity, therefore this intent shows to itself
-     */
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_abcde);
         createActivity();
-        Button guideline = findViewById(R.id.btn_abcde_guideline);
-        guideline.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                Intent intent = new Intent(AbcdeActivity.this, AbcdeActivity.class);
-                startActivity(intent);
-            }
-        });
 
     }
 

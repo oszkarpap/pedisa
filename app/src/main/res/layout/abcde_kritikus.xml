@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Minden olyan esetben, ahol megtartott keringésű, de nem egyértelműen ABCD stabil!"
+        android:text="@string/abcde111"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="Kulcselemek:"
+        android:text="@string/abcde112"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Az első ABCDE vizsgálat mindig eszköz nélküli vizsgálat, a vizsgálatot a mev (általa felügyelt/oktatott) végezze"
+        android:text="@string/abcde113"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- Vizsgálat során párhuzamos tevékenységek zajlanak (mev által delegálva)"
+        android:text="@string/abcde114"
         android:textColor="@color/text_blue"
         android:textStyle="italic" />
 
@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- minden KAB-nél történjen mielőbb 100% oxigén adása, nem visszalégző, rezervoáros maszkon át, nagy áramlással"
+        android:text="@string/abcde115"
         android:textColor="@color/text_red"
         android:textStyle="italic" />
 
@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:text="- az eszközös vizsgálat nem késleltetheti/módosíthatja az eszköz nélküli vizsgálatot"
+        android:text="@string/abcde116"
         android:textColor="@color/text_green"
         android:textStyle="italic" />
 
