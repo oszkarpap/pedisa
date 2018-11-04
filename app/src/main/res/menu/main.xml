@@ -6,7 +6,7 @@
     <item
         android:id="@+id/menu_medication"
         android:orderInCategory="100"
-        android:title="Gyógyszerek"
+        android:title="OMSZ Gyógyszerek"
         app:showAsAction="never" />
 
     <item
@@ -30,7 +30,7 @@
     <item
         android:id="@+id/menu_note"
         android:orderInCategory="100"
-        android:title="Saját jegyzet"
+        android:title="Saját Gyógyszerek"
         app:showAsAction="never" />
 
 

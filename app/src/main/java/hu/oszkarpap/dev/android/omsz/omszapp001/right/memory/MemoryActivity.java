@@ -27,7 +27,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.repository.sqlite.S
 /**
  * @author Oszkar Pap
  * @version 1.0
- * This is the Medication Memory Activity, this is own Medications, there are only own device! do not connect the firebase
+ * This is the Medication Memory Activity, this is own Medications, there are only in own device! This do not connect the firebase
  */
 public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener {
 
@@ -64,7 +64,7 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
     }
 
     /**
-     * load saved medication memory
+     * load saved own medication
      */
 
     private void loadMemoriesAsync() {
@@ -89,7 +89,7 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
     }
 
     /**
-     * save new medication memory
+     * save new own medication
      */
 
     public void saveMemoriesAsync(final Medication memo) {
@@ -115,7 +115,7 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
     }
 
     /**
-     * delete selected own medication memory
+     * delete selected own medication
      */
     private void deleteMemoryAsync(final Medication memo) {
         Thread thread = new Thread(new Runnable() {
@@ -138,7 +138,7 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
     }
 
     /**
-     * delete all medication memory in own DB
+     * delete all own medication memory in own DB
      */
     private void deleteAllAsync() {
         Thread thread = new Thread(new Runnable() {
@@ -161,8 +161,8 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
     }
 
     /**
-     * create right menu with serchview
-     * search for medication name and agent
+     * create right menu with serchView
+     * search for medication name, agent, pack, ind, contraInd and doses
      */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -249,7 +249,7 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
 
 
     /**
-     * if long clicked one medication memory, show new alertdialoge, and can change duplicate or delete this medication memory
+     * if long clicked one medication memory, show new alert dialog, and can change duplicate or delete this medication
      */
     @Override
     public void onItemLongClicked(int position) {
@@ -301,7 +301,7 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
 
 
     /**
-     * this method set up the adapter via searchview parameters
+     * this method set up the adapter via searchView parameters
      */
     @Override
     public boolean onQueryTextChange(String s) {

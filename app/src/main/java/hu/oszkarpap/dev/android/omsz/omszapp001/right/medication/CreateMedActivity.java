@@ -8,8 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
@@ -38,6 +36,7 @@ public class CreateMedActivity extends AppCompatActivity {
     private EditText createName, createAgent, createPack, createInd, createContra, createAdult, createChild,
             createChD01, createChD02, createChU, createChMaxD, createChMaxD02, createChDesciption;
     private TextView createChildParameters;
+    private Button createMemoryBTN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +57,21 @@ public class CreateMedActivity extends AppCompatActivity {
         createChMaxD02 = findViewById(R.id.createChildMedETDoseMax02);
         createChDesciption = findViewById(R.id.createChildMedETDoseDesc);
         createChildParameters = findViewById(R.id.createMedActivityPrametersTV);
-        if((getIntent().getStringExtra(MemoryActivity.KEY_MEMORY).equals("YES"))){
+        createMemoryBTN = findViewById(R.id.createMedBTN);
+
+        setDifferentLayout();
+
+        setEdittextModify();
+
+        clickCreateButton();
+
+    }
+
+    /**
+     * this method set layout from omsz medication activity and from own medication activity
+     */
+    public void setDifferentLayout() {
+        if ((getIntent().getStringExtra(MemoryActivity.KEY_MEMORY).equals("YES"))) {
             createChD01.setVisibility(View.INVISIBLE);
             createChD02.setVisibility(View.INVISIBLE);
             createChU.setVisibility(View.INVISIBLE);
@@ -67,7 +80,7 @@ public class CreateMedActivity extends AppCompatActivity {
             createChDesciption.setVisibility(View.INVISIBLE);
             createChildParameters.setVisibility(View.INVISIBLE);
             setTitle("Saját Gyógyszerjegyzet");
-        }else{
+        } else {
             createChD01.setVisibility(View.VISIBLE);
             createChD02.setVisibility(View.VISIBLE);
             createChU.setVisibility(View.VISIBLE);
@@ -76,7 +89,12 @@ public class CreateMedActivity extends AppCompatActivity {
             createChDesciption.setVisibility(View.VISIBLE);
             createChildParameters.setVisibility(View.VISIBLE);
         }
+    }
 
+    /**
+     * this method set EditText, if i can modify Medication parameters
+     */
+    public void setEdittextModify() {
         if (!(getIntent().getStringExtra(MedActivity.KEY_NAME_MODIFY) == null)) {
             createName.setText(getIntent().getStringExtra(MedActivity.KEY_NAME_MODIFY));
             createAgent.setText(getIntent().getStringExtra(MedActivity.KEY_AGENT_MODIFY));
@@ -93,8 +111,12 @@ public class CreateMedActivity extends AppCompatActivity {
             createChDesciption.setText(getIntent().getStringExtra(MedActivity.KEY_CHILDDDESC_MODIFY));
         }
 
-        Button createMemoryBTN = findViewById(R.id.createMedBTN);
+    }
 
+    /**
+     * this is the click create button method
+     */
+    public void clickCreateButton() {
         createMemoryBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,7 +158,6 @@ public class CreateMedActivity extends AppCompatActivity {
 
             }
         });
-
 
     }
 }

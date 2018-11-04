@@ -1,5 +1,10 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.right.medication;
 
+/**
+ * @author Oszkar Pap
+ * @version 1.0
+ * This class set the Medication item
+ */
 
 
 public class Medication {

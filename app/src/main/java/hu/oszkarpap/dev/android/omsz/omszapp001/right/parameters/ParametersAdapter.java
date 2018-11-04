@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
-import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.MedAdapter;
 import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.Medication;
 
 /**

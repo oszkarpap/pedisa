@@ -95,8 +95,6 @@ public class MainActivity extends AppCompatActivity
         }
 
 
-
-
         Button toDev = findViewById(R.id.email_to_dev);
 
         konzEt = findViewById(R.id.main_konz_ET);
@@ -130,8 +128,7 @@ public class MainActivity extends AppCompatActivity
         tutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://drive.google.com/open?id=1NaBVLCYm43LENyoyse-u9iY6Ir5tJn4I"));
-                startActivity(intent);
+                userGuideMethod();
 
             }
         });
@@ -159,8 +156,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     * Set right which menu item start which action
-     * and check secret the user parameters, and if user delete, profil sign out
+     * Set right menu item, where which item start which action
+     * and check the user parameters, and if user delete, profil sign out
      */
 
     @Override
@@ -204,9 +201,7 @@ public class MainActivity extends AppCompatActivity
         }
         if (id == R.id.menu_help) {
             Objects.requireNonNull(auth.getCurrentUser()).reload();
-            intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://drive.google.com/open?id=1NaBVLCYm43LENyoyse-u9iY6Ir5tJn4I"));
-            startActivity(intent);
-
+            userGuideMethod();
         }
 
         if (id == R.id.menu_log_out) {
@@ -257,7 +252,6 @@ public class MainActivity extends AppCompatActivity
                         @Override
                         public void onClick(DialogInterface arg0, int arg1) {
 
-                            return;
                         }
                     });
 
@@ -283,7 +277,7 @@ public class MainActivity extends AppCompatActivity
      * Set the Navigatin drawer - left menu - omsz protocol menu item
      */
 
-    private void prepareMenuData() {
+    private void leftMenuData() {
 
         MenuModel menuModel = new MenuModel("Eljárásrendek", true, true, 1);
         headerList.add(menuModel);
@@ -393,9 +387,9 @@ public class MainActivity extends AppCompatActivity
 
     /**
      * ckeck the navigation drawer menu - left menu - protokoll menu, which element start to which activity,
-     * and reload secret user parameters
+     * and reload user parameters
      */
-    private void populateExpandableList() {
+    private void leftMenuIntent() {
 
         expandableListAdapter = new ExpandableListAdapter(this, headerList, childList);
         expandableListView.setAdapter(expandableListAdapter);
@@ -462,14 +456,13 @@ public class MainActivity extends AppCompatActivity
         auth = getInstance();
 
 
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
         expandableListView = findViewById(R.id.expandableListView);
-        prepareMenuData();
-        populateExpandableList();
+        leftMenuData();
+        leftMenuIntent();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -601,6 +594,12 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
+    public void userGuideMethod() {
+        intent = new Intent(Intent.ACTION_VIEW, Uri.parse(
+                "https://drive.google.com/open?id=1cy4ZKJfVEPEKqVxnHAY8wx26nKWcFw4I"));
+        startActivity(intent);
+
+    }
 
 }
 

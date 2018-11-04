@@ -238,7 +238,7 @@ public class ParametersActivity extends MainActivity implements ParametersAdapte
 
 
     /**
-     * this method set the parameters via child weigt
+     * this method set the parameters via child weight
      */
 
     public void seekBarMedmethod() {
@@ -329,6 +329,9 @@ public class ParametersActivity extends MainActivity implements ParametersAdapte
         return true;
     }
 
+    /**
+     * if long clicked in one medication, show the agent in alert dialog
+     * */
     @Override
     public void onItemLongClicked(final int position) {
         final Medication med = parametersMeds.get(position);
@@ -336,7 +339,7 @@ public class ParametersActivity extends MainActivity implements ParametersAdapte
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("Hatóanyag: " + med.getAgent());
 
-        alertDialogBuilder.setPositiveButton("Vissza",
+        alertDialogBuilder.setPositiveButton("OK",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {

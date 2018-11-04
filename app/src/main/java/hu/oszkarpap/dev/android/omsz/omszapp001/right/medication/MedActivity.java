@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -19,7 +18,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.alespero.expandablecardview.ExpandableCardView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
@@ -60,8 +58,6 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
     private MedAdapter adapter;
     private EditText ug, ml, ttkg, dose;
     private TextView result;
-    private Button chose01, chose02, calc;
-    private ExpandableCardView ecw;
     private Medication medi;
 
     @Override
@@ -138,7 +134,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
     /**
      * This method save the new medication to FB DB
-     * some character is false in database, in the future  I will change this method
+     * some character is false as key in database, in the future  I will change this method
      */
 
     public void saveMed(final Medication med) {
@@ -185,7 +181,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
 
     /**
-     * Set searchview right menu
+     * Set searchView right menu
      */
 
     @Override
@@ -255,7 +251,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
     }
 
     /**
-     * if long click one medication show up alert dialoge, and can change duplicate or delete this medication
+     * if long click one medication show up alert dialog, and can change duplicate or delete this medication
      */
 
     @Override
@@ -339,14 +335,9 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
             ttkg = findViewById(R.id.per_ttkg);
             dose = findViewById(R.id.per_dose);
             result = findViewById(R.id.per_tv);
-            calc = findViewById(R.id.per_calc);
-            chose01 = findViewById(R.id.perf_chose01);
-            chose02 = findViewById(R.id.perf_chose02);
-
-
-
-            ecw = findViewById(R.id.per_ecw);
-
+        Button calc = findViewById(R.id.per_calc);
+        Button chose01 = findViewById(R.id.perf_chose01);
+        Button chose02 = findViewById(R.id.perf_chose02);
 
             chose02.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -397,8 +388,8 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
 
                     Double x = doseD * ttkgD * 60 / (ugD / mlD);
-
-                    result.setText(String.valueOf(x) + " ml/h ");
+                    String y = String.valueOf(x) + " ml/h ";
+                    result.setText(y);
 
 
                 }

@@ -113,7 +113,7 @@ public class SQLiteRepository implements Repository {
     }
 
     /**
-     * close current SQliteOpenhelper
+     * close current SQLiteOpenHelper
      */
     @Override
     public void close() {

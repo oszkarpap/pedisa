@@ -56,12 +56,12 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".right.memory.MemoryActivity"
-            android:label="Saját gyógyszerkártyák" />
+            android:label="Saját gyógyszerek" />
 
         <activity
             android:name=".right.medication.MedActivity"
             android:theme="@style/AppTheme.NoActionBar"
-            android:label="Rendszeresített gyógyszerek" />
+            android:label="OMSZ gyógyszerek" />
         <activity
             android:name=".right.medication.CreateMedActivity"
             android:label="Gyógyszer a Firebase-be" />
