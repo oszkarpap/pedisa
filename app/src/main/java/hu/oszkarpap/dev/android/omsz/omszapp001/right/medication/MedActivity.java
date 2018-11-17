@@ -59,6 +59,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
     private EditText ug, ml, ttkg, dose;
     private TextView result;
     private Medication medi;
+    private double ttkgD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -204,6 +205,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.createMedMenu) {
+           // Toast.makeText(this, "Új gyógyszer felvitele MASTER funkció", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, CreateMedActivity.class);
             intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
             startActivityForResult(intent, REQUEST_CODE);
@@ -256,7 +258,8 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
     @Override
     public void onItemLongClicked(final int position) {
-        medi = medications.get(position);
+         // Toast.makeText(this, "Módosítási lehetőség csak MASTER funkció", Toast.LENGTH_SHORT).show();
+           medi = medications.get(position);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("Duplikálni vagy törölni szeretné az elemet?");
@@ -343,6 +346,8 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
                 @Override
                 public void onClick(View v) {
                     ttkg.setVisibility(View.INVISIBLE);
+                    ttkg.setText("");
+                    ttkgD = 1;
                 }
             });
             chose01.setOnClickListener(new View.OnClickListener() {
@@ -355,7 +360,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
             calc.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    double ugD, mlD, ttkgD, doseD;
+                    double ugD, mlD, doseD;
                     try {
                         ugD = Double.parseDouble(ug.getText().toString());
 

@@ -100,11 +100,13 @@ public class MainActivity extends AppCompatActivity
         konzEt = findViewById(R.id.main_konz_ET);
         konzBtn = findViewById(R.id.main_konz_BTN);
         konzTv = findViewById(R.id.main_konz_TV);
+        //konzBtn.setEnabled(false);
 
 
         kanyEt = findViewById(R.id.main_kany_ET);
         kanyBtn = findViewById(R.id.main_kany_BTN);
         kanyTv = findViewById(R.id.main_kany_TV);
+        //kanyBtn.setEnabled(false);
 
         setPhoneNumbers();
 
