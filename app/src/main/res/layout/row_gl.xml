@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:padding="@dimen/_8sdp"
-                android:textColor="@color/text_green"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/_10sdp" />
         </LinearLayout>
 

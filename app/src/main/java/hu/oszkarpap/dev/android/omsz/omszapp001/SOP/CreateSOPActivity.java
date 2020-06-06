@@ -25,6 +25,7 @@ public class CreateSOPActivity extends AppCompatActivity {
     private EditText createName, createDesc;
     private Button createMemoryBTN;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,7 @@ public class CreateSOPActivity extends AppCompatActivity {
         createName.setError(getString(R.string.create_medication_name_alert), null);
         createDesc = findViewById(R.id.createDescSopET);
         createMemoryBTN = findViewById(R.id.createSopBTN);
+        setTitle(getTitle()+" - Protokoll név és leírás");
 
 
 

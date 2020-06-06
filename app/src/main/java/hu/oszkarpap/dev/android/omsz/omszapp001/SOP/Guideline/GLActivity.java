@@ -129,13 +129,13 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
             }
         }); */
 
-            FirebaseDatabase.getInstance().getReference().child("gl").addChildEventListener(new ChildEventListener() {
+            FirebaseDatabase.getInstance().getReference().child("gl").child(SOPKey).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 GL gl = dataSnapshot.getValue(GL.class);
-                if(gl.getAsc().equals(SOPKey)){
+                //if(gl.getAsc().equals(SOPKey)){
                 gls.add(gl);
-                }
+                //}
                 adapter.notifyDataSetChanged();
             }
 
@@ -171,14 +171,13 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
     public void saveGL(final GL gl) {
 
         try {
-            String key = gl.getName().replace(")", "0").replace("(", "0").replace("/", "0")
-                    .replace(".", "0").replace(",", "0").replace("+", "0").replace("-", "0")
-                    .replace("*", "0").replace("_", "0").replace("%", "0").replace("{", "0")
-                    .replace("}", "0").toLowerCase() + "01" + System.currentTimeMillis();
+            String key = gl.getKey();
+            String x = key+System.currentTimeMillis();
             gl.setKey(key);
+            gl.setAsc(x);
             FirebaseDatabase.getInstance().getReference()
                     .child("gl")
-                    .child(key)
+                    .child(key).child(x)
                     .setValue(gl)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -201,10 +200,15 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
 
     private void deleteGL(final GL gl) {
 
-        FirebaseDatabase.getInstance().getReference().child("gl").child(gl.getKey()).removeValue(new DatabaseReference.CompletionListener() {
+        FirebaseDatabase.getInstance().getReference().child("gl").child(gl.getKey()).child(gl.getAsc()).removeValue(new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
                 Toast.makeText(GLActivity.this, "Törlés sikeres!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(GLActivity.this, GLActivity.class);
+                intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
+                intent.putExtra(KEY_GL_TITLE_MODIFY,title);
+                startActivityForResult(intent,REQUEST_CODE);
+                finish();
 
             }
         });
@@ -224,6 +228,16 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setQueryHint("Keresés ");
         searchView.setOnQueryTextListener(this);
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(GLActivity.this, "Ne módosítson adatokat keresés közben!!", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+
         return true;
 
     }
@@ -251,6 +265,7 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
             startActivityForResult(intent,REQUEST_CODE);
 
 
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -274,7 +289,7 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
                 GL gl = new GL();
                 gl.setName(name);
                 gl.setDesc(desc);
-                gl.setAsc(asc);
+                gl.setKey(asc);
                 saveGL(gl);
 
 

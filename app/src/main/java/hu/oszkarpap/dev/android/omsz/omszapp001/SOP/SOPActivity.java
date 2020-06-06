@@ -12,6 +12,7 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -178,6 +179,15 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setQueryHint("Keresés ");
         searchView.setOnQueryTextListener(this);
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(SOPActivity.this, "Ne módosítson adatokat keresés közben!!", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
         return true;
 
     }

@@ -28,6 +28,19 @@ public class GL {
     public GL() {
     }
 
+    public GL(String desc, String key, String name) {
+        this.key = key;
+        this.name = name;
+        this.desc = desc;
+    }
+
+    public GL(String key, String name, String desc, String asc) {
+        this.key = key;
+        this.name = name;
+        this.desc = desc;
+        this.asc = asc;
+    }
+
     public GL(Long id, String name, String desc, String asc) {
         this.id = id;
         this.name = name;

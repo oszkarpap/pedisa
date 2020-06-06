@@ -37,6 +37,7 @@ import java.util.Objects;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.left.AbcdeActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.left.RsiActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.left.VeinActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
@@ -288,13 +289,15 @@ public class MainActivity extends AppCompatActivity
         childModelsList.add(childModel);
         childModel = new MenuModel("Vénabiztosítás", false, false, 12);
         childModelsList.add(childModel);
+        childModel = new MenuModel("Giudeline", false, false, 14);
+        childModelsList.add(childModel);
 
 
-        if (menuModel.hasChildren) {
+        if (!childList.containsValue(menuModel.hasChildren)) {
 
             childList.put(menuModel, childModelsList);
         }
-
+/*
         menuModel = new MenuModel("Reanimáció", true, true, 2);
         headerList.add(menuModel);
         childModelsList = new ArrayList<>();
@@ -305,25 +308,25 @@ public class MainActivity extends AppCompatActivity
         if (menuModel.hasChildren) {
 
             childList.put(menuModel, childModelsList);
-        }
+        } */
 
 
         menuModel = new MenuModel("Airway", true, true, 3);
         headerList.add(menuModel);
         childModelsList = new ArrayList<>();
-        childModel = new MenuModel("Egyszerű Légút", false, false, 0);
-        childModelsList.add(childModel);
+  //      childModel = new MenuModel("Egyszerű Légút", false, false, 0);
+    //    childModelsList.add(childModel);
         childModel = new MenuModel("RSI", false, false, 32);
         childModelsList.add(childModel);
-        childModel = new MenuModel("Sürgősségi intubáció", false, false, 0);
-        childModelsList.add(childModel);
+ //       childModel = new MenuModel("Sürgősségi intubáció", false, false, 0);
+ //       childModelsList.add(childModel);
 
         if (menuModel.hasChildren) {
 
             childList.put(menuModel, childModelsList);
         }
 
-        childModelsList = new ArrayList<>();
+     /*   childModelsList = new ArrayList<>();
         menuModel = new MenuModel("Breathing", true, true, 4);
         headerList.add(menuModel);
         childModel = new MenuModel("Oxigén terápia", false, false, 0);
@@ -345,36 +348,36 @@ public class MainActivity extends AppCompatActivity
         if (menuModel.hasChildren) {
             childList.put(menuModel, childModelsList);
         }
+*/
+  //      childModelsList = new ArrayList<>();
+       // menuModel = new MenuModel("Circulation", true, true, 5);
+       // headerList.add(menuModel);
+       // childModel = new MenuModel("Akut Coronária Szindróma", false, false, 0);
+       // childModelsList.add(childModel);
+       // childModel = new MenuModel("Akut Balszívfél elégtelenség", false, false, 0);
+       // childModelsList.add(childModel);
+       // childModel = new MenuModel("Cardioverzió", false, false, 0);
+       // childModelsList.add(childModel);
 
-        childModelsList = new ArrayList<>();
-        menuModel = new MenuModel("Circulation", true, true, 5);
-        headerList.add(menuModel);
-        childModel = new MenuModel("Akut Coronária Szindróma", false, false, 0);
-        childModelsList.add(childModel);
-        childModel = new MenuModel("Akut Balszívfél elégtelenség", false, false, 0);
-        childModelsList.add(childModel);
-        childModel = new MenuModel("Cardioverzió", false, false, 0);
-        childModelsList.add(childModel);
+       // if (menuModel.hasChildren) {
+       //     childList.put(menuModel, childModelsList);
+       // }
 
-        if (menuModel.hasChildren) {
-            childList.put(menuModel, childModelsList);
-        }
+       // childModelsList = new ArrayList<>();
+       // menuModel = new MenuModel("Disability", true, true, 6);
+       // headerList.add(menuModel);
+       // childModel = new MenuModel("Görcsroham", false, false, 0);
+       // childModelsList.add(childModel);
+       // childModel = new MenuModel("Sepszis", false, false, 0);
+       // childModelsList.add(childModel);
+       // childModel = new MenuModel("Folyadékterápia és keringéstámogatás", false, false, 0);
+       // childModelsList.add(childModel);
 
-        childModelsList = new ArrayList<>();
-        menuModel = new MenuModel("Disability", true, true, 6);
-        headerList.add(menuModel);
-        childModel = new MenuModel("Görcsroham", false, false, 0);
-        childModelsList.add(childModel);
-        childModel = new MenuModel("Sepszis", false, false, 0);
-        childModelsList.add(childModel);
-        childModel = new MenuModel("Folyadékterápia és keringéstámogatás", false, false, 0);
-        childModelsList.add(childModel);
+       // if (menuModel.hasChildren) {
+       //     childList.put(menuModel, childModelsList);
+       // }
 
-        if (menuModel.hasChildren) {
-            childList.put(menuModel, childModelsList);
-        }
-
-        childModelsList = new ArrayList<>();
+      /*  childModelsList = new ArrayList<>();
         menuModel = new MenuModel("Environment", true, true, 7);
         headerList.add(menuModel);
         childModel = new MenuModel("Rögzítések", false, false, 0);
@@ -383,7 +386,7 @@ public class MainActivity extends AppCompatActivity
         if (menuModel.hasChildren) {
             childList.put(menuModel, childModelsList);
         }
-
+*/
 
     }
 
@@ -431,12 +434,17 @@ public class MainActivity extends AppCompatActivity
 
                         case (11):
                             Objects.requireNonNull(auth.getCurrentUser()).reload();
-                            intent = new Intent(MainActivity.this, SOPActivity.class);
+                            intent = new Intent(MainActivity.this, AbcdeActivity.class);
                             startActivity(intent);
                             break;
                         case (0):
                             Objects.requireNonNull(auth.getCurrentUser()).reload();
                             Toast.makeText(MainActivity.this, "Sajnálom, nem implementáltam még a protokollt! Prehospitális vizsgálat sorrendje, Vénabiztosítás és az RSI működik!", Toast.LENGTH_LONG).show();
+                        case (14):
+                            Objects.requireNonNull(auth.getCurrentUser()).reload();
+                            intent = new Intent(MainActivity.this, SOPActivity.class);
+                            startActivity(intent);
+                            break;
 
 
                     }

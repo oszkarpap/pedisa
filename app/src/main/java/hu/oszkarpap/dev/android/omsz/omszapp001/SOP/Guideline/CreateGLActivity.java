@@ -31,7 +31,7 @@ public class CreateGLActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_sop);
+        setContentView(R.layout.activity_create_gl);
         createName = findViewById(R.id.createNameSopET);
         createName.setError(getString(R.string.create_medication_name_alert), null);
         createDesc = findViewById(R.id.createDescSopET);
@@ -39,6 +39,7 @@ public class CreateGLActivity extends AppCompatActivity {
         asc = getIntent().getStringExtra(GLActivity.KEY_GL_ASC_MODIFY);
         title = getIntent().getStringExtra(GLActivity.KEY_GL_TITLE_MODIFY);
         //Toast.makeText(this, ""+asc, Toast.LENGTH_SHORT).show();
+        setTitle(getTitle()+" - Protokoll részlet név és kifejtés");
 
 
         setEdittextModify();
