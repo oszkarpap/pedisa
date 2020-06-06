@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.Objects;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
-import hu.oszkarpap.dev.android.omsz.omszapp001.left.AbcdeActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.left.RsiActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.left.VeinActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
@@ -431,7 +431,7 @@ public class MainActivity extends AppCompatActivity
 
                         case (11):
                             Objects.requireNonNull(auth.getCurrentUser()).reload();
-                            intent = new Intent(MainActivity.this, AbcdeActivity.class);
+                            intent = new Intent(MainActivity.this, SOPActivity.class);
                             startActivity(intent);
                             break;
                         case (0):

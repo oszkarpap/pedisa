@@ -1,0 +1,25 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".SOP.Guideline.GuidelineActivity_template">
+    <item
+        android:id="@+id/gl_search"
+        android:icon="@drawable/ic_search_white_24dp"
+        android:orderInCategory="100"
+        app:showAsAction="collapseActionView|always"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        android:title="med search" />
+    <item
+        android:id="@+id/createglMenu"
+        android:icon="@drawable/ic__add_24"
+        app:showAsAction="always"
+        android:title="ADD" />
+    <item
+        android:id="@+id/gl_refresh"
+        android:icon="@drawable/ic_refresh_black_24dp"
+        android:orderInCategory="100"
+        app:showAsAction="collapseActionView|always"
+        android:title="refresh" />
+
+
+</menu>

@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_foreground"
@@ -13,6 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SOP.Guideline.GLActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".SOP.CreateSOPActivity" />
+        <activity android:name=".SOP.Guideline.CreateGLActivity" />
         <activity
             android:name=".main.MainActivity"
             android:label="@string/app_name"
@@ -24,13 +27,7 @@
         <activity
             android:name=".login.LoginActivity"
             android:label="OMSZ APP"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".login.ResetPasswordActivity"
             android:label="Új jelszó"
@@ -43,10 +40,19 @@
             android:name=".left.AbcdeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".SOP.SOPActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
             android:name=".left.RsiActivity"
             android:label="RSI"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".right.parameters.ParametersActivity"
             android:label="Paraméterek"
@@ -57,16 +63,13 @@
         <activity
             android:name=".right.memory.MemoryActivity"
             android:label="Saját gyógyszerek" />
-
         <activity
             android:name=".right.medication.MedActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:label="OMSZ gyógyszerek" />
+            android:label="OMSZ gyógyszerek"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".right.medication.CreateMedActivity"
             android:label="Gyógyszer a Firebase-be" />
-
-
     </application>
 
 </manifest>
