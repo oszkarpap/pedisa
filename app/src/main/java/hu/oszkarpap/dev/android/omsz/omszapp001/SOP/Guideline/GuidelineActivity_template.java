@@ -67,8 +67,8 @@ public class GuidelineActivity_template extends AppCompatActivity implements Sea
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view_guideline);
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
-        //LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        //recyclerView.setLayoutManager(layoutManager);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
 
         adapter = new GuidelineAdapter(this, glcs);
         recyclerView.setAdapter(adapter);
