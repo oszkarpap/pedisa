@@ -16,14 +16,13 @@
         android:orientation="vertical"
         android:padding="5dp">
 
-        <TextView
-            android:id="@+id/txt_sop_iniciale"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/text_green"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:textSize="@dimen/_48sdp" />
+        <ImageView
+            android:id="@+id/row_sop_icon"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:layout_gravity="center"
+            android:layout_margin="12dp"
+            android:background="@drawable/healthcare_and_medical" />
 
 
         <TextView

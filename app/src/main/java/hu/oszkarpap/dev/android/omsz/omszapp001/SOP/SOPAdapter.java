@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -56,7 +58,7 @@ public class SOPAdapter extends RecyclerView.Adapter<SOPAdapter.ViewHolder>{
         SOP sop= sops.get(position);
         holder.name.setText(sop.getName());
         holder.desc.setText(sop.getDesc());
-        holder.ini.setText(String.valueOf(sop.getName().charAt(0)));
+        //holder.ini.setText(String.valueOf(sop.getName().charAt(0)));
         holder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -71,6 +73,7 @@ public class SOPAdapter extends RecyclerView.Adapter<SOPAdapter.ViewHolder>{
                 oneClickListener.onItemClicked(position);
             }
         });
+        //holder.setIsRecyclable(true);
          }
 
     @Override
@@ -80,15 +83,17 @@ public class SOPAdapter extends RecyclerView.Adapter<SOPAdapter.ViewHolder>{
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
-        public final TextView ini, name, desc;
+        public final TextView name, desc;
         public final LinearLayout linearLayout;
+        public final ImageView icon;
 
         public ViewHolder(View itemView) {
             super(itemView);
             linearLayout= itemView.findViewById(R.id.row_sop_layout);
-            ini = itemView.findViewById(R.id.txt_sop_iniciale);
+            //ini = itemView.findViewById(R.id.txt_sop_iniciale);
             name = itemView.findViewById(R.id.txt_sop_name);
             desc = itemView.findViewById(R.id.txt_sop_desc);
+            icon = itemView.findViewById(R.id.row_sop_icon);
 
         }
     }

@@ -46,6 +46,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
     private List<SOP> sops;
     private SOPAdapter adapter;
     private SOP sopi;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
 
         sops = new ArrayList<>();
 
-        RecyclerView recyclerView = findViewById(R.id.recycler_view_sop);
+        recyclerView = findViewById(R.id.recycler_view_sop);
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         //LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         //recyclerView.setLayoutManager(layoutManager);
@@ -203,12 +204,6 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
             Intent intent = new Intent(this, CreateSOPActivity.class);
             intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
             startActivityForResult(intent, REQUEST_CODE);
-        } else if (item.getItemId() == R.id.sop_refresh) {
-            finish();
-            Intent intent = new Intent(SOPActivity.this, SOPActivity.class);
-            startActivity(intent);
-
-
         }
 
         return super.onOptionsItemSelected(item);
@@ -275,6 +270,9 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         alertDialogBuilder.setNegativeButton("Törlés", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 deleteSOP(sopi);
+                finish();
+                Intent intent = new Intent(SOPActivity.this, SOPActivity.class);
+                startActivity(intent);
             }
         });
         alertDialogBuilder.setNeutralButton("Duplikáció", new DialogInterface.OnClickListener() {
@@ -311,10 +309,15 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         for (SOP sopName : sops) {
             if (sopName.getName().toLowerCase().contains(MedInput) || sopName.getDesc().toLowerCase().contains(MedInput)) {
                 newList.add(sopName);
+
             }
         }
 
         adapter.updateList(newList);
+
+        adapter.notifyDataSetChanged();
+        recyclerView.setAdapter(adapter);
+
         return true;
     }
 

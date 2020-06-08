@@ -1,14 +1,17 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.right.medication;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -30,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPAdapter;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
@@ -38,7 +42,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
  * @version 1.0
  * This is the Medication Activity, connect to Firebase Realtime Database
  */
-public class MedActivity extends MainActivity implements MedAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener {
+public class MedActivity extends MainActivity implements MedAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener, MedAdapter.OnItemClickListener {
 
     public static final int REQUEST_CODE = 999;
     public static final String KEY_NAME_MODIFY = "NAME_MODIFY";
@@ -79,11 +83,13 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
         medications = new ArrayList<>();
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view_med);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView = findViewById(R.id.recycler_view_med);
+        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
 
 
-        adapter = new MedAdapter(this, medications, this);
+
+
+        adapter = new MedAdapter(this, medications, this,this);
         recyclerView.setAdapter(adapter);
 
 
@@ -175,6 +181,9 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
             @Override
             public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
                 Toast.makeText(MedActivity.this, "Törlés sikeres!", Toast.LENGTH_SHORT).show();
+                finish();
+                Intent intent = new Intent(MedActivity.this, MedActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -209,12 +218,6 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
             Intent intent = new Intent(this, CreateMedActivity.class);
             intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
             startActivityForResult(intent, REQUEST_CODE);
-        } else if (item.getItemId() == R.id.med_refresh) {
-            finish();
-            Intent intent = new Intent(MedActivity.this, MedActivity.class);
-            startActivity(intent);
-
-
         }
 
         return super.onOptionsItemSelected(item);
@@ -244,6 +247,9 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
                 Medication med = new Medication(name, agent, pack, ind, contra, adult,
                         child, childD01, childD02, unit, childDMax, childDMax02, childDdesc);
                 saveMed(med);
+                finish();
+                Intent intent = new Intent(MedActivity.this, MedActivity.class);
+                startActivity(intent);
 
 
             }
@@ -407,4 +413,15 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
         finish();
         super.onBackPressed();
     }
+
+    @Override
+    public void onItemClicked(int position) {
+    }
+
+
+
+
+
 }
+
+

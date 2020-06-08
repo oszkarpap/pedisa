@@ -12,13 +12,9 @@
     <item
         android:id="@+id/createMedMenu"
         android:title="@string/create_todo_menu"
+        android:icon="@drawable/ic__add_24"
         app:showAsAction="always"/>
-    <item
-        android:id="@+id/med_refresh"
-        android:icon="@drawable/ic_refresh_black_24dp"
-        android:orderInCategory="100"
-        app:showAsAction="collapseActionView|always"
-        android:title="refresh" />
+
 
 
 </menu>

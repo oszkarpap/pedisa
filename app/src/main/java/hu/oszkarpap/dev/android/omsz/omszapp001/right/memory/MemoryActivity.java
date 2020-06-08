@@ -55,7 +55,7 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
         recyclerView.setLayoutManager(layoutManager);
 
 
-        adapter = new MedAdapter(this, memories, this);
+        adapter = new MedAdapter(this, memories, this, (MedAdapter.OnItemClickListener) this);
         recyclerView.setAdapter(adapter);
 
 
