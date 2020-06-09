@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -60,17 +61,16 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
     public static final String KEY_CHILDDDESC_MODIFY = "CHILDDESC_MODIFY";
     private List<Medication> medications;
     private MedAdapter adapter;
-    private EditText ug, ml, ttkg, dose;
-    private TextView result;
+    private TextView name, agent, pack, ind, contra, adult, child;
+    private CardView cardView;
     private Medication medi;
-    private double ttkgD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-            setContentView(R.layout.activity_med);
-            createMainActivity();
+        setContentView(R.layout.activity_med);
+        createMainActivity();
 
         overridePendingTransition(0, 0);
         try {
@@ -95,8 +95,16 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
         loadMed();
 
-        getPerfusorElements();
 
+
+        name = findViewById(R.id.med_cardview_name);
+        agent = findViewById(R.id.med_cardview_agent);
+        pack = findViewById(R.id.med_cardview_pack);
+        ind = findViewById(R.id.med_cardview_ind);
+        contra = findViewById(R.id.med_cardview_contra);
+        adult = findViewById(R.id.med_cardview_adult);
+        child = findViewById(R.id.med_cardview_child);
+        cardView = findViewById(R.id.activitiy_med_cardview);
     }
 
 
@@ -214,7 +222,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.createMedMenu) {
-           // Toast.makeText(this, "Új gyógyszer felvitele MASTER funkció", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this, "Új gyógyszer felvitele MASTER funkció", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, CreateMedActivity.class);
             intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
             startActivityForResult(intent, REQUEST_CODE);
@@ -264,8 +272,8 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
     @Override
     public void onItemLongClicked(final int position) {
-         // Toast.makeText(this, "Módosítási lehetőség csak MASTER funkció", Toast.LENGTH_SHORT).show();
-           medi = medications.get(position);
+        // Toast.makeText(this, "Módosítási lehetőség csak MASTER funkció", Toast.LENGTH_SHORT).show();
+        medi = medications.get(position);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("Duplikálni vagy törölni szeretné az elemet?");
@@ -333,80 +341,14 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
         }
 
         adapter.updateList(newList);
+        adapter.notifyDataSetChanged();
         return true;
-    }
-
-    public void getPerfusorElements() {
-
-
-            ug = findViewById(R.id.per_from_ug);
-            ml = findViewById(R.id.per_to_ml);
-            ttkg = findViewById(R.id.per_ttkg);
-            dose = findViewById(R.id.per_dose);
-            result = findViewById(R.id.per_tv);
-        Button calc = findViewById(R.id.per_calc);
-        Button chose01 = findViewById(R.id.perf_chose01);
-        Button chose02 = findViewById(R.id.perf_chose02);
-
-            chose02.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ttkg.setVisibility(View.INVISIBLE);
-                    ttkg.setText("");
-                    ttkgD = 1;
-                }
-            });
-            chose01.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ttkg.setVisibility(View.VISIBLE);
-                }
-            });
-
-            calc.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    double ugD, mlD, doseD;
-                    try {
-                        ugD = Double.parseDouble(ug.getText().toString());
-
-                    } catch (NumberFormatException e) {
-                        ugD = 1;
-                    }
-                    try {
-                        mlD = Double.parseDouble(ml.getText().toString());
-
-                    } catch (NumberFormatException e) {
-                        mlD = 1;
-                    }
-
-                    try {
-                        ttkgD = Double.parseDouble(ttkg.getText().toString());
-
-                    } catch (NumberFormatException e) {
-                        ttkgD = 1;
-                    }
-                    try {
-                        doseD = Double.parseDouble(dose.getText().toString());
-
-                    } catch (NumberFormatException e) {
-                        doseD = 1;
-                    }
-                    if (doseD == 0 || ttkgD == 0 || ugD == 0 || mlD == 0) {
-                        Toast.makeText(MedActivity.this, "Valós értéket adjon!", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-
-
-                    Double x = doseD * ttkgD * 60 / (ugD / mlD);
-                    String y = String.valueOf(x) + " ml/h ";
-                    result.setText(y);
-
-
-                }
-            });
 
     }
+
+
+
+
 
     @Override
     public void onBackPressed() {
@@ -416,6 +358,18 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
     @Override
     public void onItemClicked(int position) {
+        medi = medications.get(position);
+        name.setText(medi.getName());
+        agent.setText(medi.getAgent());
+        pack.setText(medi.getPack());
+        ind.setText(medi.getInd());
+        contra.setText(medi.getCont());
+        adult.setText(medi.getAdult());
+        child.setText(medi.getChild());
+        cardView.setVisibility(View.VISIBLE);
+
+
+
     }
 
 
@@ -423,5 +377,11 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
 
 }
+
+
+
+
+
+
 
 
