@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    >
-    <item
-        android:id="@+id/menu_medication"
-        android:orderInCategory="100"
-        android:title="OMSZ Gyógyszerek"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/menu_parameters"
-        android:orderInCategory="100"
-        android:title="@string/parameters"
-        app:showAsAction="never" />
-
-
-    <item
-        android:id="@+id/menu_rsi"
-        android:orderInCategory="100"
-        android:title="RSI calculator"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/menu_kany"
-        android:orderInCategory="100"
-        android:title="KÁNY hívása"
-        app:showAsAction="never" />
     <item
         android:id="@+id/menu_note"
         android:orderInCategory="100"
@@ -40,17 +15,6 @@
         android:title="Beállítások"
         app:showAsAction="never" />
 
-
-    <item
-        android:id="@+id/menu_help"
-        android:orderInCategory="100"
-        android:title="Használati útmutató"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/menu_about"
-        android:orderInCategory="100"
-        android:title="Felhasználói feltételek"
-        app:showAsAction="never" />
 
     <item
         android:id="@+id/menu_log_out"

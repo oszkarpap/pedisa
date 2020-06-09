@@ -23,8 +23,8 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     private List<MenuModel> listDataHeader;
     private HashMap<MenuModel, List<MenuModel>> listDataChild;
 
-    ExpandableListAdapter(Context context, List<MenuModel> listDataHeader,
-                          HashMap<MenuModel, List<MenuModel>> listChildData) {
+    public ExpandableListAdapter(Context context, List<MenuModel> listDataHeader,
+                                 HashMap<MenuModel, List<MenuModel>> listChildData) {
         this.context = context;
         this.listDataHeader = listDataHeader;
         this.listDataChild = listChildData;

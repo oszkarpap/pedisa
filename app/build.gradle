@@ -34,8 +34,8 @@ android {
         applicationId "hu.oszkarpap.dev.android.omsz.omszapp001"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
         // Specifies the application ID for the test APK.

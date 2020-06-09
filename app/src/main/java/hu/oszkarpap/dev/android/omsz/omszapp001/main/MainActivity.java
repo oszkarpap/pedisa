@@ -19,12 +19,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ExpandableListView;
+import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -63,17 +65,14 @@ public class MainActivity extends AppCompatActivity
     public static final String SAS = "SAS";
     public static final String KONZULENS_SZAMA = "konzulensSzama";
     public static final String KANY_SZAMA = "kanySzama";
-    ExpandableListAdapter expandableListAdapter;
-    ExpandableListView expandableListView;
+
     List<MenuModel> headerList = new ArrayList<>();
     HashMap<MenuModel, List<MenuModel>> childList = new HashMap<>();
     private Intent intent;
     private FirebaseAuth auth;
-
-    private TextView konzTv, kanyTv;
-    private Button konzBtn, kanyBtn;
-    private EditText konzEt, kanyEt;
-    private String kanySzama;
+    ExpandableListAdapter expandableListAdapter;
+    ExpandableListView expandableListView;
+    private TextView mainTv;
 
 
     /**
@@ -86,7 +85,10 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        mainTv = findViewById(R.id.main_TV);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+        mainTv.setText("Felhasználói email: "+user.getEmail());
         createMainActivity();
 
         try {
@@ -94,48 +96,7 @@ public class MainActivity extends AppCompatActivity
         } catch (RuntimeException e) {
             Toast.makeText(this, "A Firebase újratöltődik!", Toast.LENGTH_SHORT).show();
         }
-
-
-        Button toDev = findViewById(R.id.email_to_dev);
-
-        konzEt = findViewById(R.id.main_konz_ET);
-        konzBtn = findViewById(R.id.main_konz_BTN);
-        konzTv = findViewById(R.id.main_konz_TV);
-        //konzBtn.setEnabled(false);
-
-
-        kanyEt = findViewById(R.id.main_kany_ET);
-        kanyBtn = findViewById(R.id.main_kany_BTN);
-        kanyTv = findViewById(R.id.main_kany_TV);
-        //kanyBtn.setEnabled(false);
-
-        setPhoneNumbers();
-
-        setKonzToFirebase();
-
-        setKanyToFirebase();
-
         auth = FirebaseAuth.getInstance();
-
-        toDev.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(Intent.ACTION_SENDTO);
-                intent.putExtra(Intent.EXTRA_SUBJECT, "OMSZ APP");
-                intent.setData(Uri.parse("mailto:pap.oszkar.mt@gmail.com"));
-                startActivity(intent);
-            }
-        });
-
-        Button tutorial = findViewById(R.id.tutorial);
-        tutorial.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                userGuideMethod();
-
-            }
-        });
-
     }
 
     @Override
@@ -167,47 +128,17 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.menu_medication) {
-            Objects.requireNonNull(auth.getCurrentUser()).reload();
-            try {
-
-                intent = new Intent(MainActivity.this, MedActivity.class);
-
-                startActivity(intent);
-            } catch (Exception e) {
-                Toast.makeText(this, "Elnézést, próbálja újra!", Toast.LENGTH_LONG).show();
-            }
-        }
-
-        if (id == R.id.menu_parameters) {
-            ifDelUser();
-
-            intent = new Intent(MainActivity.this, ParametersActivity.class);
-            startActivity(intent);
-
-        }
 
         if (id == R.id.menu_settings) {
+            ifDelUser();
             Objects.requireNonNull(auth.getCurrentUser()).reload();
             intent = new Intent(MainActivity.this, LoginMainActivity.class);
             startActivity(intent);
         }
-        if (id == R.id.menu_kany) {
-            ifDelUser();
-            try {
-                intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:" + kanySzama));
-                startActivity(intent);
-            } catch (Exception e) {
-                Toast.makeText(this, "Nincs hívásindító az eszközén!", Toast.LENGTH_LONG).show();
-            }
-        }
-        if (id == R.id.menu_help) {
-            Objects.requireNonNull(auth.getCurrentUser()).reload();
-            userGuideMethod();
-        }
+
 
         if (id == R.id.menu_log_out) {
+            ifDelUser();
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setMessage("Biztos ki akar jelentkezni?");
             alertDialogBuilder.setPositiveButton("Igen",
@@ -232,37 +163,13 @@ public class MainActivity extends AppCompatActivity
         }
 
         if (id == R.id.menu_note) {
-            Objects.requireNonNull(auth.getCurrentUser()).reload();
-            intent = new Intent(MainActivity.this, MemoryActivity.class);
-            startActivity(intent);
-        }
-
-        if (id == R.id.menu_rsi) {
             ifDelUser();
-            intent = new Intent(MainActivity.this, RsiActivity.class);
-            intent.putExtra(SAS, "01");
+            Objects.requireNonNull(auth.getCurrentUser()).reload();
+            intent = new Intent(MainActivity.this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
 
-
-        if (id == R.id.menu_about) {
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-            alertDialogBuilder.setMessage("Az Applikáció használata nem helyettesíti a megfelelő előképzettséget ill. szakmai tudást.  " +
-                    "Esetleges elírásokért ill. nem naprakész információkért a készítő nem vállal felelősséget! " +
-                    "Mindenféle kritikát szívesen fogadok e-mailben (Főképernyő > Üzenet a fejlesztőnek)");
-            alertDialogBuilder.setPositiveButton("Megértettem",
-                    new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface arg0, int arg1) {
-
-                        }
-                    });
-
-
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.show();
-
-        }
 
 
         return super.onOptionsItemSelected(item);
@@ -285,11 +192,10 @@ public class MainActivity extends AppCompatActivity
         MenuModel menuModel = new MenuModel("Eljárásrendek", true, true, 1);
         headerList.add(menuModel);
         List<MenuModel> childModelsList = new ArrayList<>();
-        MenuModel childModel = new MenuModel("Prehospitális vizsgálat sorrendje", false, false, 11);
+        MenuModel childModel = new MenuModel("", false, false, 11);
+        childModel = new MenuModel("Rapid Sequence Intubation", false, false, 11);
         childModelsList.add(childModel);
-        childModel = new MenuModel("Vénabiztosítás", false, false, 12);
-        childModelsList.add(childModel);
-        childModel = new MenuModel("Giudeline", false, false, 14);
+        childModel = new MenuModel("Guideline", false, false, 12);
         childModelsList.add(childModel);
 
 
@@ -297,96 +203,17 @@ public class MainActivity extends AppCompatActivity
 
             childList.put(menuModel, childModelsList);
         }
-/*
-        menuModel = new MenuModel("Reanimáció", true, true, 2);
+
+        menuModel = new MenuModel("Gyógyszerek", true, true, 3);
         headerList.add(menuModel);
         childModelsList = new ArrayList<>();
-        childModel = new MenuModel("MRT ERC ALS", false, false, 0);
+        childModel = new MenuModel("Rendszeresített gyógyszerek", false, false, 31);
         childModelsList.add(childModel);
-
-
-        if (menuModel.hasChildren) {
-
-            childList.put(menuModel, childModelsList);
-        } */
-
-
-        menuModel = new MenuModel("Airway", true, true, 3);
-        headerList.add(menuModel);
-        childModelsList = new ArrayList<>();
-  //      childModel = new MenuModel("Egyszerű Légút", false, false, 0);
-    //    childModelsList.add(childModel);
-        childModel = new MenuModel("RSI", false, false, 32);
-        childModelsList.add(childModel);
- //       childModel = new MenuModel("Sürgősségi intubáció", false, false, 0);
- //       childModelsList.add(childModel);
-
         if (menuModel.hasChildren) {
 
             childList.put(menuModel, childModelsList);
         }
 
-     /*   childModelsList = new ArrayList<>();
-        menuModel = new MenuModel("Breathing", true, true, 4);
-        headerList.add(menuModel);
-        childModel = new MenuModel("Oxigén terápia", false, false, 0);
-        childModelsList.add(childModel);
-
-        childModel = new MenuModel("Akut asztmás roham", false, false, 0);
-        childModelsList.add(childModel);
-
-        childModel = new MenuModel("Noninvazív lélegeztetés", false, false, 0);
-        childModelsList.add(childModel);
-
-        childModel = new MenuModel("COPD", false, false, 0);
-        childModelsList.add(childModel);
-
-        childModel = new MenuModel("Kapnográfia, kapnometria", false, false, 0);
-        childModelsList.add(childModel);
-
-
-        if (menuModel.hasChildren) {
-            childList.put(menuModel, childModelsList);
-        }
-*/
-  //      childModelsList = new ArrayList<>();
-       // menuModel = new MenuModel("Circulation", true, true, 5);
-       // headerList.add(menuModel);
-       // childModel = new MenuModel("Akut Coronária Szindróma", false, false, 0);
-       // childModelsList.add(childModel);
-       // childModel = new MenuModel("Akut Balszívfél elégtelenség", false, false, 0);
-       // childModelsList.add(childModel);
-       // childModel = new MenuModel("Cardioverzió", false, false, 0);
-       // childModelsList.add(childModel);
-
-       // if (menuModel.hasChildren) {
-       //     childList.put(menuModel, childModelsList);
-       // }
-
-       // childModelsList = new ArrayList<>();
-       // menuModel = new MenuModel("Disability", true, true, 6);
-       // headerList.add(menuModel);
-       // childModel = new MenuModel("Görcsroham", false, false, 0);
-       // childModelsList.add(childModel);
-       // childModel = new MenuModel("Sepszis", false, false, 0);
-       // childModelsList.add(childModel);
-       // childModel = new MenuModel("Folyadékterápia és keringéstámogatás", false, false, 0);
-       // childModelsList.add(childModel);
-
-       // if (menuModel.hasChildren) {
-       //     childList.put(menuModel, childModelsList);
-       // }
-
-      /*  childModelsList = new ArrayList<>();
-        menuModel = new MenuModel("Environment", true, true, 7);
-        headerList.add(menuModel);
-        childModel = new MenuModel("Rögzítések", false, false, 0);
-        childModelsList.add(childModel);
-
-        if (menuModel.hasChildren) {
-            childList.put(menuModel, childModelsList);
-        }
-*/
 
     }
 
@@ -419,28 +246,31 @@ public class MainActivity extends AppCompatActivity
                     Intent intent;
                     switch (a) {
 
-                        case (12):
+                        case (11):
                             Objects.requireNonNull(auth.getCurrentUser()).reload();
-                            intent = new Intent(MainActivity.this, VeinActivity.class);
+                            intent = new Intent(MainActivity.this, RsiActivity.class);
                             startActivity(intent);
                             break;
 
                         case (32):
                             Objects.requireNonNull(auth.getCurrentUser()).reload();
+                            ifDelUser();
                             intent = new Intent(MainActivity.this, RsiActivity.class);
                             intent.putExtra(SAS, "02");
                             startActivity(intent);
                             break;
 
-                        case (11):
+                        case (31):
+                            ifDelUser();
                             Objects.requireNonNull(auth.getCurrentUser()).reload();
-                            intent = new Intent(MainActivity.this, AbcdeActivity.class);
+                            intent = new Intent(MainActivity.this, MedActivity.class);
                             startActivity(intent);
                             break;
                         case (0):
                             Objects.requireNonNull(auth.getCurrentUser()).reload();
                             Toast.makeText(MainActivity.this, "Sajnálom, nem implementáltam még a protokollt! Prehospitális vizsgálat sorrendje, Vénabiztosítás és az RSI működik!", Toast.LENGTH_LONG).show();
-                        case (14):
+                        case (12):
+                            ifDelUser();
                             Objects.requireNonNull(auth.getCurrentUser()).reload();
                             intent = new Intent(MainActivity.this, SOPActivity.class);
                             startActivity(intent);
@@ -487,34 +317,6 @@ public class MainActivity extends AppCompatActivity
      * This method checked the firebase RTDB for phone number
      */
 
-    public void setPhoneNumbers() {
-
-        FirebaseDatabase.getInstance().getReference().child(KONZULENS_SZAMA).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String t01 = "(" + Objects.requireNonNull(dataSnapshot.getValue()).toString() + ")";
-                konzTv.setText(t01);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        FirebaseDatabase.getInstance().getReference().child(KANY_SZAMA).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String t02 = "(" + Objects.requireNonNull(dataSnapshot.getValue()).toString() + ")";
-                kanyTv.setText(t02);
-                kanySzama = Objects.requireNonNull(dataSnapshot.getValue()).toString();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
 
     /**
      * This method check to profile, and sign out, if the admin del it
@@ -529,87 +331,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    /**
-     * This method change to konzulens phone number in firebase realtime database
-     */
-    public void setKonzToFirebase() {
-        konzBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (konzEt.getText().toString().length() < 8) {
-                    Toast.makeText(MainActivity.this, "Biztos telefonszámot adott meg?", Toast.LENGTH_SHORT).show();
-                } else {
-                    FirebaseDatabase.getInstance().getReference()
-                            .child(KONZULENS_SZAMA)
-                            .setValue(konzEt.getText().toString())
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    Toast.makeText(MainActivity.this, "Firebase felhőbe mentve!", Toast.LENGTH_SHORT).show();
-
-                                }
-                            });
-                }
-                FirebaseDatabase.getInstance().getReference().child(KONZULENS_SZAMA).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String t01 = "(" + Objects.requireNonNull(dataSnapshot.getValue()).toString() + ")";
-                        konzTv.setText(t01);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-            }
-        });
-    }
-
-    /**
-     * This method change Kany phone Number in Firebase realtime database
-     */
-    public void setKanyToFirebase() {
-
-        kanyBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (kanyEt.getText().toString().length() < 8) {
-                    Toast.makeText(MainActivity.this, "Biztos telefonszámot adott meg?", Toast.LENGTH_SHORT).show();
-                } else {
-                    FirebaseDatabase.getInstance().getReference()
-                            .child(KANY_SZAMA)
-                            .setValue(kanyEt.getText().toString())
-                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    Toast.makeText(MainActivity.this, "Firebase felhőbe mentve!", Toast.LENGTH_SHORT).show();
-
-                                }
-                            });
-                }
-                FirebaseDatabase.getInstance().getReference().child(KANY_SZAMA).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String t01 = "(" + Objects.requireNonNull(dataSnapshot.getValue()).toString() + ")";
-                        kanyTv.setText(t01);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
-            }
-        });
-    }
-
-    public void userGuideMethod() {
-        intent = new Intent(Intent.ACTION_VIEW, Uri.parse(
-                "https://drive.google.com/open?id=1cy4ZKJfVEPEKqVxnHAY8wx26nKWcFw4I"));
-        startActivity(intent);
-
-    }
 
 }
 

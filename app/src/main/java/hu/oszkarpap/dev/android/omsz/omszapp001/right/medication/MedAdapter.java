@@ -20,6 +20,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPAdapter;
 
 import static android.support.v7.app.AlertDialog.*;
+import static hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.MedActivity.Searching;
 
 /**
  * @author Oszkar Pap
@@ -70,13 +71,23 @@ public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ViewHolder>{
                 return false;
             }
         });
+        if(Searching==0){
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 oneClickListener.onItemClicked(position);
 
             }
-        });
+        });}else{
+            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    oneClickListener.onItemClicked(medication);
+
+
+                }
+            });
+        }
     }
 
     @Override
@@ -122,7 +133,10 @@ public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ViewHolder>{
 
     public interface OnItemClickListener{
         void onItemClicked(int position);
+
+        void onItemClicked(Medication medication);
     }
+
     
     public void SAS(){
         Builder builder = null;

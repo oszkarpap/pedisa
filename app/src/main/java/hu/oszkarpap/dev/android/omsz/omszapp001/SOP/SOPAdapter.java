@@ -18,6 +18,8 @@ import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 
+import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity.SOPSearching;
+
 /**
  * @author Oszkar Pap
  * @version 2.0
@@ -32,6 +34,7 @@ public class SOPAdapter extends RecyclerView.Adapter<SOPAdapter.ViewHolder>{
     private LayoutInflater inflater;
     private OnItemLongClickListener longListener;
     private OnItemClickListener oneClickListener;
+    private SOP sop;
 
     public SOPAdapter(Context context, List<SOP> sops) {
         this.context = context;
@@ -55,7 +58,7 @@ public class SOPAdapter extends RecyclerView.Adapter<SOPAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
-        SOP sop= sops.get(position);
+        sop= sops.get(position);
         holder.name.setText(sop.getName());
         holder.desc.setText(sop.getDesc());
         //holder.ini.setText(String.valueOf(sop.getName().charAt(0)));
@@ -67,12 +70,20 @@ public class SOPAdapter extends RecyclerView.Adapter<SOPAdapter.ViewHolder>{
                 return false;
             }
         });
+        if(SOPSearching == 0 ) {
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 oneClickListener.onItemClicked(position);
             }
-        });
+        });}else{
+            holder.linearLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    oneClickListener.onItemClicked(sop);
+                }
+            });
+        }
         //holder.setIsRecyclable(true);
          }
 
@@ -112,5 +123,7 @@ public class SOPAdapter extends RecyclerView.Adapter<SOPAdapter.ViewHolder>{
 
     public interface OnItemClickListener{
         void onItemClicked(int position);
+
+        void onItemClicked(SOP sop);
     }
 }

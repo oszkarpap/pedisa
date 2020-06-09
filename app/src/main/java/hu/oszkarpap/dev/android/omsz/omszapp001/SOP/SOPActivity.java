@@ -5,18 +5,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,12 +30,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.left.RsiActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.main.ExpandableListAdapter;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.main.MenuModel;
+import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.MedActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
+
+import static com.google.firebase.auth.FirebaseAuth.getInstance;
 
 /**
  * @author Oszkar Pap
@@ -39,10 +53,15 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener, SOPAdapter.OnItemClickListener {
 
     public static final int REQUEST_CODE = 999;
+    public static int SOPSearching =0;
     public static final String KEY_SOP_NAME_MODIFY = "NAME_MODIFY";
     public static final String KEY_SOP_DESC_MODIFY = "DESC_MODIFY";
     public static final String KEY_SOP_KEY_MODIFY = "KEY_MODIFY";
-
+    private FirebaseAuth auth;
+    ExpandableListAdapter expandableListAdapter;
+    ExpandableListView expandableListView;
+    List<MenuModel> headerList = new ArrayList<>();
+    HashMap<MenuModel, List<MenuModel>> childList = new HashMap<>();
     private List<SOP> sops;
     private SOPAdapter adapter;
     private SOP sopi;
@@ -53,7 +72,25 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         super.onCreate(savedInstanceState);
 
             setContentView(R.layout.activity_sop);
-            createMainActivity();
+        overridePendingTransition(R.anim.bounce, R.anim.fade_in);
+        auth = getInstance();
+
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
+        expandableListView = findViewById(R.id.expandableListView);
+        leftMenuData();
+        leftMenuIntent();
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         overridePendingTransition(0, 0);
         try {
@@ -175,19 +212,19 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_sop, menu);
-        MenuItem menuItem = menu.findItem(R.id.sop_search);
+        //MenuItem menuItem = menu.findItem(R.id.sop_search);
 
-        SearchView searchView = (SearchView) menuItem.getActionView();
-        searchView.setQueryHint("Keresés ");
-        searchView.setOnQueryTextListener(this);
-        searchView.setOnSearchClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(SOPActivity.this, "Ne módosítson adatokat keresés közben!!", Toast.LENGTH_SHORT).show();
+        //SearchView searchView = (SearchView) menuItem.getActionView();
+        //searchView.setQueryHint("Keresés ");
+        //searchView.setOnQueryTextListener(this);
+        //searchView.setOnSearchClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        Toast.makeText(SOPActivity.this, "Ne módosítson adatokat keresés közben!!", Toast.LENGTH_SHORT).show();
 
 
-            }
-        });
+          //  }
+        //});
 
         return true;
 
@@ -237,6 +274,17 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
     @Override
     public void onItemClicked(final int position) {
         sopi = sops.get(position);
+
+        Intent intent = new Intent(SOPActivity.this, GLActivity.class);
+        intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+        intent.putExtra(KEY_SOP_KEY_MODIFY, sopi.getKey());
+        intent.putExtra(KEY_SOP_NAME_MODIFY,sopi.getName());
+        startActivity(intent);
+    }
+
+    @Override
+    public void onItemClicked(SOP sop) {
+        sopi = sop;
 
         Intent intent = new Intent(SOPActivity.this, GLActivity.class);
         intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
@@ -302,7 +350,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
      */
     @Override
     public boolean onQueryTextChange(String s) {
-
+        SOPSearching = 1;
         String MedInput = s.toLowerCase();
         ArrayList<SOP> newList = new ArrayList<>();
 
@@ -324,7 +372,184 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
 
     @Override
     public void onBackPressed() {
+        SOPSearching=0;
         finish();
         super.onBackPressed();
+    }
+
+    private void leftMenuData() {
+
+        MenuModel menuModel = new MenuModel("Eljárásrendek", true, true, 1);
+        headerList.add(menuModel);
+        List<MenuModel> childModelsList = new ArrayList<>();
+        MenuModel childModel = new MenuModel("", false, false, 11);
+        childModel = new MenuModel("Rapid Sequence Intubation", false, false, 11);
+        childModelsList.add(childModel);
+        childModel = new MenuModel("Guideline", false, false, 12);
+        childModelsList.add(childModel);
+
+
+        if (!childList.containsValue(menuModel.hasChildren)) {
+
+            childList.put(menuModel, childModelsList);
+        }
+/*
+        menuModel = new MenuModel("Reanimáció", true, true, 2);
+        headerList.add(menuModel);
+        childModelsList = new ArrayList<>();
+        childModel = new MenuModel("MRT ERC ALS", false, false, 0);
+        childModelsList.add(childModel);
+
+
+        if (menuModel.hasChildren) {
+
+            childList.put(menuModel, childModelsList);
+        } */
+
+
+        menuModel = new MenuModel("Gyógyszerek", true, true, 3);
+        headerList.add(menuModel);
+        childModelsList = new ArrayList<>();
+        //      childModel = new MenuModel("Egyszerű Légút", false, false, 0);
+        //    childModelsList.add(childModel);
+        childModel = new MenuModel("Rendszeresített gyógyszerek", false, false, 31);
+        childModelsList.add(childModel);
+        //       childModel = new MenuModel("Sürgősségi intubáció", false, false, 0);
+        //       childModelsList.add(childModel);
+
+        if (menuModel.hasChildren) {
+
+            childList.put(menuModel, childModelsList);
+        }
+
+     /*   childModelsList = new ArrayList<>();
+        menuModel = new MenuModel("Breathing", true, true, 4);
+        headerList.add(menuModel);
+        childModel = new MenuModel("Oxigén terápia", false, false, 0);
+        childModelsList.add(childModel);
+
+        childModel = new MenuModel("Akut asztmás roham", false, false, 0);
+        childModelsList.add(childModel);
+
+        childModel = new MenuModel("Noninvazív lélegeztetés", false, false, 0);
+        childModelsList.add(childModel);
+
+        childModel = new MenuModel("COPD", false, false, 0);
+        childModelsList.add(childModel);
+
+        childModel = new MenuModel("Kapnográfia, kapnometria", false, false, 0);
+        childModelsList.add(childModel);
+
+
+        if (menuModel.hasChildren) {
+            childList.put(menuModel, childModelsList);
+        }
+*/
+        //      childModelsList = new ArrayList<>();
+        // menuModel = new MenuModel("Circulation", true, true, 5);
+        // headerList.add(menuModel);
+        // childModel = new MenuModel("Akut Coronária Szindróma", false, false, 0);
+        // childModelsList.add(childModel);
+        // childModel = new MenuModel("Akut Balszívfél elégtelenség", false, false, 0);
+        // childModelsList.add(childModel);
+        // childModel = new MenuModel("Cardioverzió", false, false, 0);
+        // childModelsList.add(childModel);
+
+        // if (menuModel.hasChildren) {
+        //     childList.put(menuModel, childModelsList);
+        // }
+
+        // childModelsList = new ArrayList<>();
+        // menuModel = new MenuModel("Disability", true, true, 6);
+        // headerList.add(menuModel);
+        // childModel = new MenuModel("Görcsroham", false, false, 0);
+        // childModelsList.add(childModel);
+        // childModel = new MenuModel("Sepszis", false, false, 0);
+        // childModelsList.add(childModel);
+        // childModel = new MenuModel("Folyadékterápia és keringéstámogatás", false, false, 0);
+        // childModelsList.add(childModel);
+
+        // if (menuModel.hasChildren) {
+        //     childList.put(menuModel, childModelsList);
+        // }
+
+      /*  childModelsList = new ArrayList<>();
+        menuModel = new MenuModel("Environment", true, true, 7);
+        headerList.add(menuModel);
+        childModel = new MenuModel("Rögzítések", false, false, 0);
+        childModelsList.add(childModel);
+
+        if (menuModel.hasChildren) {
+            childList.put(menuModel, childModelsList);
+        }
+*/
+
+    }
+
+    /**
+     * ckeck the navigation drawer menu - left menu - protokoll menu, which element start to which activity,
+     * and reload user parameters
+     */
+    private void leftMenuIntent() {
+
+        expandableListAdapter = new ExpandableListAdapter(this, headerList, childList);
+        expandableListView.setAdapter(expandableListAdapter);
+
+        expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+
+
+                return false;
+            }
+        });
+
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+
+
+                if (childList.get(headerList.get(groupPosition)) != null) {
+                    MenuModel model = childList.get(headerList.get(groupPosition)).get(childPosition);
+                    int a = model.modelId;
+                    Intent intent;
+                    switch (a) {
+
+                        case (11):
+                            Objects.requireNonNull(auth.getCurrentUser()).reload();
+                            intent = new Intent(SOPActivity.this, RsiActivity.class);
+                            startActivity(intent);
+                            break;
+
+                        case (32):
+                            Objects.requireNonNull(auth.getCurrentUser()).reload();
+                            intent = new Intent(SOPActivity.this, RsiActivity.class);
+                            intent.putExtra(SAS, "02");
+                            startActivity(intent);
+                            break;
+
+                        case (31):
+                            Objects.requireNonNull(auth.getCurrentUser()).reload();
+                            intent = new Intent(SOPActivity.this, MedActivity.class);
+                            startActivity(intent);
+                            break;
+                        case (0):
+                            Objects.requireNonNull(auth.getCurrentUser()).reload();
+                            Toast.makeText(SOPActivity.this, "Sajnálom, nem implementáltam még a protokollt! Prehospitális vizsgálat sorrendje, Vénabiztosítás és az RSI működik!", Toast.LENGTH_LONG).show();
+                        case (12):
+                            Objects.requireNonNull(auth.getCurrentUser()).reload();
+                            intent = new Intent(SOPActivity.this, SOPActivity.class);
+                            startActivity(intent);
+                            break;
+
+
+                    }
+
+                    onBackPressed();
+                }
+
+                return false;
+            }
+        });
     }
 }

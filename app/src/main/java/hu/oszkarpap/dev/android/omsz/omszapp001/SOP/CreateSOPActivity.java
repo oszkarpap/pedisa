@@ -11,6 +11,9 @@ import android.widget.TextView;
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
+import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity.SOPSearching;
+import static hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.MedActivity.Searching;
+
 /**
  * @author Oszkar Pap
  * @version 2.0
@@ -73,10 +76,19 @@ public class CreateSOPActivity extends AppCompatActivity {
                 intent.putExtra(KEY_DESC, desc);
 
                 setResult(RESULT_OK, intent);
+                SOPSearching =0;
                 finish();
 
             }
         });
 
+
+
+    }
+    @Override
+    public void onBackPressed() {
+        SOPSearching =0;
+        finish();
+        super.onBackPressed();
     }
 }

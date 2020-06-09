@@ -73,12 +73,9 @@ public class RsiActivity extends AbcdeActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getIntent().getStringExtra(MainActivity.SAS).equals("01")) {
-            setContentView(R.layout.activity_rsi_menu);
-        } else if (getIntent().getStringExtra(MainActivity.SAS).equals("02")) {
 
-            setContentView(R.layout.activity_rsi);
-        }
+            setContentView(R.layout.activity_rsi_menu);
+
 
 
         createActivity();
