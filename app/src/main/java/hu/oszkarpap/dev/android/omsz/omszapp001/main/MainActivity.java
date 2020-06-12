@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -73,6 +74,7 @@ public class MainActivity extends AppCompatActivity
     ExpandableListAdapter expandableListAdapter;
     ExpandableListView expandableListView;
     private TextView mainTv;
+    private Button tut, dev;
 
 
     /**
@@ -90,7 +92,20 @@ public class MainActivity extends AppCompatActivity
 
         mainTv.setText("Felhasználói email: "+user.getEmail());
         createMainActivity();
-
+        tut = findViewById(R.id.tutorial);
+        tut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Nincs feltöltve még fájl!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        dev = findViewById(R.id.email_to_dev);
+        dev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "Nem aktív funkció!", Toast.LENGTH_SHORT).show();
+            }
+        });
         try {
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         } catch (RuntimeException e) {
@@ -115,6 +130,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
+
 
         return true;
     }
@@ -162,13 +178,6 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        if (id == R.id.menu_note) {
-            ifDelUser();
-            Objects.requireNonNull(auth.getCurrentUser()).reload();
-            intent = new Intent(MainActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
 
 
 

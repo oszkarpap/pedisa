@@ -94,7 +94,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
         overridePendingTransition(R.anim.bounce, R.anim.fade_in);
         auth = getInstance();
-
+        setTitle("Rendszeresített gyógyszerek");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -323,7 +323,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
         medi = medications.get(position);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("Duplikálni vagy törölni szeretné az elemet?");
+        alertDialogBuilder.setMessage("Duplikálni vagy törölni szeretné az elemet? (Keresés után ne hsználja ezt a funkciót!)");
         alertDialogBuilder.setPositiveButton("Vissza",
                 new DialogInterface.OnClickListener() {
                     @Override

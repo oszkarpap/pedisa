@@ -70,7 +70,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setTitle("Szabványosított eljárásrendek");
             setContentView(R.layout.activity_sop);
         overridePendingTransition(R.anim.bounce, R.anim.fade_in);
         auth = getInstance();
@@ -305,7 +305,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
            sopi = sops.get(position);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("Duplikálni vagy törölni szeretné az elemet?");
+        alertDialogBuilder.setMessage("Duplikálni vagy törölni szeretné az elemet? ");
         alertDialogBuilder.setPositiveButton("Vissza",
                 new DialogInterface.OnClickListener() {
                     @Override

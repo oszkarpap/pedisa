@@ -325,7 +325,7 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
            gli = gls.get(position);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("Duplikálni vagy törölni szeretné az elemet?");
+        alertDialogBuilder.setMessage("Duplikálni vagy törölni szeretné az elemet? (Keresést követően ne használja ezt a funkciót!)");
         alertDialogBuilder.setPositiveButton("Vissza",
                 new DialogInterface.OnClickListener() {
                     @Override

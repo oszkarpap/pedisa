@@ -3,23 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_note"
-        android:orderInCategory="100"
-        android:title="Saját Gyógyszerek"
-        app:showAsAction="never" />
-
-
-    <item
         android:id="@+id/menu_settings"
+        android:iconTint="@color/colorPrimaryDark"
+        android:icon="@drawable/ic_menu_manage"
         android:orderInCategory="100"
         android:title="Beállítások"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 
 
     <item
         android:id="@+id/menu_log_out"
         android:orderInCategory="100"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"
+        android:iconTint="@color/colorPrimaryDark"
         android:title="@string/log_out"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
 
 </menu>
