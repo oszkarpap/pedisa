@@ -1,8 +1,13 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.View;
@@ -11,16 +16,28 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.skydoves.colorpickerpreference.ColorEnvelope;
 import com.skydoves.colorpickerpreference.ColorListener;
 import com.skydoves.colorpickerpreference.ColorPickerView;
 
+import java.io.IOException;
+
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
+
+import static com.google.firebase.auth.FirebaseAuth.getInstance;
 
 /**
  * @author Oszkar Pap
@@ -31,6 +48,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
 
 public class CreateGLActivity extends AppCompatActivity {
 
+    private FirebaseAuth auth;
     public static final String KEY_NAME = "NAME";
     public static final String KEY_DESC = "DESC";
     public static final String KEY_ASC = "ASC";
@@ -38,21 +56,35 @@ public class CreateGLActivity extends AppCompatActivity {
     public static final String KEY_ATTR = "ATTR";
     private EditText createName, createDesc;
     private CheckBox bold, italian, underline, colored, bold2, italian2, underline2, colored2;
-    private Button createMemoryBTN;
+    private Button createMemoryBTN, choeserBtn, uploadBtn;
     private String asc, title, color = "FFFFFF", color2 = "FFFFFF";
     private ColorPickerView colorPickerView, colorPickerView2;
     private String attr;
+    private ImageView imageView;
+    private Uri filePath;
+    FirebaseStorage storage;
+    StorageReference storageReference;
+
+    private final int PICK_IMAGE_REQUEST = 71;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
        super.onCreate(savedInstanceState);
+
+
+        auth = getInstance();
+          storage = FirebaseStorage.getInstance();
+         storageReference = storage.getReference();
             setContentView(R.layout.activity_create_gl);
          createName = findViewById(R.id.createNameGlET);
         createName.setError(getString(R.string.create_medication_name_alert), null);
         createDesc = findViewById(R.id.createDescGlET);
         createMemoryBTN = findViewById(R.id.createGlBTN);
-
-        bold = findViewById(R.id.CreateGlbold);
+        choeserBtn = findViewById(R.id.createGlChooseImage);
+        uploadBtn = findViewById(R.id.createGlUploadImage);
+        imageView = findViewById(R.id.createGlimage);
+           bold = findViewById(R.id.CreateGlbold);
         italian = findViewById(R.id.CreateGlitalic);
         underline = findViewById(R.id.CreateGlunderline);
         colored = findViewById(R.id.CreateGlColor);
@@ -66,6 +98,20 @@ public class CreateGLActivity extends AppCompatActivity {
         bold2.setChecked(false);
         italian.setChecked(false);
         underline2.setChecked(false);
+
+        choeserBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseImage();
+            }
+        });
+
+        uploadBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadImage();
+            }
+        });
 
        colorPickerView = findViewById(R.id.CreateGlcolorPickerView);
         colorPickerView.setColorListener(new ColorListener() {
@@ -99,6 +145,65 @@ public class CreateGLActivity extends AppCompatActivity {
 
         clickCreateButton();
 
+    }
+    private void chooseImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Kép kiválasztása"), PICK_IMAGE_REQUEST);
+    }
+
+    private void uploadImage() {
+
+        if(filePath != null)
+        {
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Kép feltöltése a Firebase-be ...");
+            progressDialog.show();
+
+            StorageReference ref = storageReference.child("images/"+ asc);
+            ref.putFile(filePath)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressDialog.dismiss();
+                            Toast.makeText(CreateGLActivity.this, "Feltöltve", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(CreateGLActivity.this, "Sikertelen "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Feltöltés... "+(int)progress+"%");
+                        }
+                    });
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null )
+        {
+            filePath = data.getData();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                imageView.setImageBitmap(bitmap);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+        }
     }
 
 

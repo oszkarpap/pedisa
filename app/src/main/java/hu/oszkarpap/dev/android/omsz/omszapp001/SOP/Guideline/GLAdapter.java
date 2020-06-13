@@ -5,6 +5,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,9 +14,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,13 +70,42 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
+    public void onBindViewHolder(final ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         GL gl = gls.get(position);
         holder.name.setText(gl.getName());
         holder.desc.setText(gl.getDesc());
         holder.attr.setText(gl.getAttr());
+ /**       StorageReference ref;
+try {
+    ref = FirebaseStorage.getInstance().getReferenceFromUrl("/images/balassi011591481493785");
+
+    Toast.makeText(context, "adat", Toast.LENGTH_SHORT).show();
+
+    ref.getDownloadUrl(Glide.with(context)
+            .load(uri)
+            .into(holder.imageView));
 
 
+} catch (Exception e){
+    Toast.makeText(context, "el lett baszva", Toast.LENGTH_SHORT).show();
+}
+
+
+
+        /**
+         * final StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("images/"+gl.getAttr());
+        storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                holder.imageView.setImageURI(uri);
+                Toast.makeText(context, "Sikeres!", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Toast.makeText(context, "Hiba!", Toast.LENGTH_SHORT).show();
+            }
+        }); */
 
         if (holder.attr.getText().toString().contains("f10")) {
             holder.name.setTypeface(null, Typeface.BOLD);
@@ -100,13 +139,13 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
 
         if (holder.attr.getText().toString().contains("X1")) {
             String color = holder.attr.getText().toString().substring(10, 16);
-           // Toast.makeText(context, ""+color, Toast.LENGTH_SHORT).show();
+            // Toast.makeText(context, ""+color, Toast.LENGTH_SHORT).show();
             holder.name.setTextColor(Color.parseColor("#" + color));
         }
 
         if (holder.attr.getText().toString().contains("Y1")) {
             String color2 = holder.attr.getText().toString().substring(18, 24);
-          //  Toast.makeText(context, ""+color2, Toast.LENGTH_SHORT).show();
+            //  Toast.makeText(context, ""+color2, Toast.LENGTH_SHORT).show();
             holder.desc.setTextColor(Color.parseColor("#" + color2));
         }
 
@@ -144,9 +183,10 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
 
-        public final TextView  name, desc, attr;
+        public final TextView name, desc, attr;
         public final LinearLayout linearLayout;
         public final Button arrowButton;
+        public final ImageView imageView;
         LinearLayout expandableView;
         Button arrowBtn;
         CardView cardView;
@@ -156,6 +196,7 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
             super(itemView);
             linearLayout = itemView.findViewById(R.id.row_gl_layout);
             //  ini = itemView.findViewById(R.id.txt_gl_iniciale);
+            imageView = itemView.findViewById(R.id.row_gl_image);
             name = itemView.findViewById(R.id.txt_gl_name);
             desc = itemView.findViewById(R.id.txt_gl_desc);
             attr = itemView.findViewById(R.id.txt_gl_attr);
