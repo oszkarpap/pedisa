@@ -13,6 +13,24 @@ public class GL {
     private String name;
     private String desc;
     private String asc;
+    private String attr;
+    private int count;
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public String getAttr() {
+        return attr;
+    }
+
+    public void setAttr(String attr) {
+        this.attr = attr;
+    }
 
     public String getAsc() {
         return asc;
@@ -32,6 +50,50 @@ public class GL {
         this.key = key;
         this.name = name;
         this.desc = desc;
+    }
+
+    public GL(Long id, String key, String name, String desc, String attr) {
+        this.id = id;
+        this.key = key;
+        this.name = name;
+        this.desc = desc;
+        this.attr = attr;
+    }
+
+    public GL(String key, String name, String desc, String asc, String attr, int count) {
+        this.key = key;
+        this.name = name;
+        this.desc = desc;
+        this.asc = asc;
+        this.attr = attr;
+        this.count = count;
+    }
+
+    public GL(Long id, String key, String name, String desc, String asc, String attr, int count) {
+        this.id = id;
+        this.key = key;
+        this.name = name;
+        this.desc = desc;
+        this.asc = asc;
+        this.attr = attr;
+        this.count = count;
+    }
+
+    public GL(Long id, String key, String name, String desc, String asc, String attr) {
+        this.id = id;
+        this.key = key;
+        this.name = name;
+        this.desc = desc;
+        this.asc = asc;
+        this.attr = attr;
+    }
+
+    public GL(String key, String name, String desc, String asc, String attr) {
+        this.key = key;
+        this.name = name;
+        this.desc = desc;
+        this.asc = asc;
+        this.attr = attr;
     }
 
     public GL(String key, String name, String desc, String asc) {

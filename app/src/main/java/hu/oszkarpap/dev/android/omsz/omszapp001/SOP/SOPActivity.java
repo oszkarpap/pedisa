@@ -41,7 +41,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.main.ExpandableListAdapter;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.MenuModel;
 import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.MedActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
+//import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
 
@@ -239,7 +239,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         if (item.getItemId() == R.id.createSOPMenu) {
            // Toast.makeText(this, "Új gyógyszer felvitele MASTER funkció", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, CreateSOPActivity.class);
-            intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+ //           intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
             startActivityForResult(intent, REQUEST_CODE);
         }
 
@@ -276,7 +276,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         sopi = sops.get(position);
 
         Intent intent = new Intent(SOPActivity.this, GLActivity.class);
-        intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+  //      intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
         intent.putExtra(KEY_SOP_KEY_MODIFY, sopi.getKey());
         intent.putExtra(KEY_SOP_NAME_MODIFY,sopi.getName());
         startActivity(intent);
@@ -287,7 +287,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         sopi = sop;
 
         Intent intent = new Intent(SOPActivity.this, GLActivity.class);
-        intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+ //       intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
         intent.putExtra(KEY_SOP_KEY_MODIFY, sopi.getKey());
         intent.putExtra(KEY_SOP_NAME_MODIFY,sopi.getName());
         startActivity(intent);
@@ -327,7 +327,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(SOPActivity.this, CreateSOPActivity.class);
-                intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+   //             intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
                 intent.putExtra(KEY_SOP_NAME_MODIFY, sopi.getName());
                 intent.putExtra(KEY_SOP_DESC_MODIFY, sopi.getDesc());
 

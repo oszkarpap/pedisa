@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:hint="@string/crmed02"
-            android:inputType="text" />
+            android:inputType="textMultiLine" />
 
         <EditText
             android:id="@+id/createAgentMedET"
@@ -34,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:hint="@string/hat_anyag"
-            android:inputType="text" />
+            android:inputType="textMultiLine" />
 
         <EditText
             android:id="@+id/createPackMedET"
@@ -42,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:hint="@string/kiszerel_s"
-            android:inputType="text" />
+            android:inputType="textMultiLine" />
 
         <EditText
             android:id="@+id/createIndMedET"
@@ -50,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:hint="@string/indik_ci"
-            android:inputType="text" />
+            android:inputType="textMultiLine" />
 
         <EditText
             android:id="@+id/createContraMedET"
@@ -58,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:hint="@string/kontraindik_ci"
-            android:inputType="text" />
+            android:inputType="textMultiLine" />
 
         <EditText
             android:id="@+id/createAdultMedET"
@@ -66,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:hint="@string/feln_tt_d_zis"
-            android:inputType="text" />
+            android:inputType="textMultiLine" />
 
         <EditText
             android:id="@+id/createChildMedET"
@@ -74,12 +73,30 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:hint="@string/gyermek_d_zis"
-            android:inputType="text" />
+            android:inputType="textMultiLine" />
 
-        <TextView
+
+        <EditText
+            android:id="@+id/createMaterMedET"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="Terhesség és szoptatás"
+            android:inputType="textMultiLine" />
+
+        <EditText
+            android:id="@+id/createStoreMedET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:hint="Különleges tárolási előírások"
+            android:inputType="textMultiLine" />
+
+        <TextView
             android:id="@+id/createMedActivityPrametersTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
             android:padding="@dimen/_4sdp"
             android:text="@string/az_al_bbi_param_terek_szint_n_a_felh_be_t_rol_dnak_azonban_a_param_terek_men_pont_alatti_rt_keket_ll_tj_k_be"
             android:textColor="@color/text_blue" />
@@ -114,7 +131,7 @@
                 android:layout_margin="4dp"
                 android:layout_weight="1"
                 android:hint="@string/gyermek_d_zis_m_e"
-                android:inputType="text" />
+                android:inputType="textMultiLine" />
         </LinearLayout>
 
         <LinearLayout
@@ -128,8 +145,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:inputType="numberDecimal"
-                android:hint="@string/gyermek_d_zis_max_01" />
+                android:hint="@string/gyermek_d_zis_max_01"
+                android:inputType="numberDecimal" />
 
             <EditText
                 android:id="@+id/createChildMedETDoseMax02"
@@ -137,8 +154,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:layout_weight="1"
-                android:inputType="numberDecimal"
-                android:hint="@string/gyermek_d_zis_max_02" />
+                android:hint="@string/gyermek_d_zis_max_02"
+                android:inputType="numberDecimal" />
 
         </LinearLayout>
 
@@ -148,7 +165,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:hint="@string/gyermek_d_zis_egy_b"
-            android:inputType="text" />
+            android:inputType="textMultiLine" />
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

@@ -7,7 +7,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
+/**import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,7 +28,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.repository.sqlite.S
  * @author Oszkar Pap
  * @version 1.0
  * This is the Medication Memory Activity, this is own Medications, there are only in own device! This do not connect the firebase
- */
+
 public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener {
 
     public static final int REQUEST_CODE = 111;
@@ -65,7 +65,6 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
 
     /**
      * load saved own medication
-     */
 
     private void loadMemoriesAsync() {
         Thread loadThread = new Thread(new Runnable() {
@@ -90,7 +89,7 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
 
     /**
      * save new own medication
-     */
+
 
     public void saveMemoriesAsync(final Medication memo) {
         Thread thread = new Thread(new Runnable() {
@@ -116,7 +115,7 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
 
     /**
      * delete selected own medication
-     */
+
     private void deleteMemoryAsync(final Medication memo) {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -139,7 +138,7 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
 
     /**
      * delete all own medication memory in own DB
-     */
+
     private void deleteAllAsync() {
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -163,7 +162,7 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
     /**
      * create right menu with serchView
      * search for medication name, agent, pack, ind, contraInd and doses
-     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -180,7 +179,7 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
 
     /**
      * set up other item in right menu
-     */
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.removeAllMemory) {
@@ -225,7 +224,7 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
 
     /**
      * this method get new medication memory parameters and save in own DB
-     */
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE) {
@@ -250,7 +249,7 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
 
     /**
      * if long clicked one medication memory, show new alert dialog, and can change duplicate or delete this medication
-     */
+
     @Override
     public void onItemLongClicked(int position) {
         memory = memories.get(position);
@@ -302,7 +301,7 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
 
     /**
      * this method set up the adapter via searchView parameters
-     */
+
     @Override
     public boolean onQueryTextChange(String s) {
 
@@ -328,3 +327,4 @@ public class MemoryActivity extends AppCompatActivity implements MedAdapter.OnIt
         super.onBackPressed();
     }
 }
+*/

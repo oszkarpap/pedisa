@@ -1,4 +1,4 @@
-package hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.repository.sqlite;
+/**package hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.repository.sqlite;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -15,7 +15,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.repository.Reposito
  * @author Oszkar Pap
  * @version 1.0
  * This is class the repo to SQLite DB
- */
+
 
 
 public class SQLiteRepository implements Repository {
@@ -25,7 +25,7 @@ public class SQLiteRepository implements Repository {
 
     /**
      * save new medication memory in own device DB
-     */
+
 
     @Override
     public void saveMemory(Medication memory) {
@@ -44,7 +44,7 @@ public class SQLiteRepository implements Repository {
 
     /**
      * load all medication memory from own deivce DB
-     */
+
     @Override
     public List<Medication> getAllMemory() {
 
@@ -71,7 +71,8 @@ public class SQLiteRepository implements Repository {
             String contra = cursor.getString(cursor.getColumnIndex(DBConstants.MEMORY_MODEL.CONTRA));
             String adult = cursor.getString(cursor.getColumnIndex(DBConstants.MEMORY_MODEL.ADULT));
             String child = cursor.getString(cursor.getColumnIndex(DBConstants.MEMORY_MODEL.CHILD));
-            Medication memory = new Medication(id, name, agent, pack, ind, contra, adult, child);
+
+            Medication memory = new Medication(id, name, agent, pack, ind, contra, adult, child,mater, store);
             memoriesLoaded.add(memory);
 
 
@@ -83,7 +84,7 @@ public class SQLiteRepository implements Repository {
 
     /**
      * delete selected medication memory in DB
-     */
+
 
     @Override
     public void deleteMemory(Medication memory) {
@@ -96,7 +97,7 @@ public class SQLiteRepository implements Repository {
 
     /**
      * delete DB table
-     */
+
     @Override
     public void deleteAllMemory() {
         db.execSQL(DBConstants.DROP_TABLE);
@@ -104,7 +105,7 @@ public class SQLiteRepository implements Repository {
 
     /**
      * create new SQLiteOpenHelper
-     */
+
     @Override
     public void open(Context context) {
         dbHelper = new DBHelper(context);
@@ -114,9 +115,10 @@ public class SQLiteRepository implements Repository {
 
     /**
      * close current SQLiteOpenHelper
-     */
+
     @Override
     public void close() {
         dbHelper.close();
     }
 }
+*/

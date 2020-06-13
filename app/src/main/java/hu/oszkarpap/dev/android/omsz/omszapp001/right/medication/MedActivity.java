@@ -48,7 +48,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.left.RsiActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.ExpandableListAdapter;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.MenuModel;
-import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
+//import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
 
@@ -76,7 +76,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
     public static final String KEY_CHILDDDESC_MODIFY = "CHILDDESC_MODIFY";
     private List<Medication> medications;
     private MedAdapter adapter;
-    private TextView name, agent, pack, ind, contra, adult, child;
+    private TextView name, agent, pack, ind, contra, adult, child, mater, store;
     private CardView cardView;
     private Medication medi;
     private FirebaseAuth auth;
@@ -144,6 +144,8 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
         contra = findViewById(R.id.med_cardview_contra);
         adult = findViewById(R.id.med_cardview_adult);
         child = findViewById(R.id.med_cardview_child);
+        mater = findViewById(R.id.med_cardview_mater);
+        store = findViewById(R.id.med_cardview_store);
         cardView = findViewById(R.id.activitiy_med_cardview);
     }
 
@@ -265,7 +267,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
         if (item.getItemId() == R.id.createMedMenu) {
             // Toast.makeText(this, "Új gyógyszer felvitele MASTER funkció", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, CreateMedActivity.class);
-            intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+       //     intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
             startActivityForResult(intent, REQUEST_CODE);
         }
 
@@ -342,7 +344,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(MedActivity.this, CreateMedActivity.class);
-                intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+      //          intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
                 intent.putExtra(KEY_NAME_MODIFY, medi.getName());
                 intent.putExtra(KEY_AGENT_MODIFY, medi.getAgent());
                 intent.putExtra(KEY_PACK_MODIFY, medi.getPack());

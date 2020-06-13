@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
-import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
+//import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
 import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity.SOPSearching;
 import static hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.MedActivity.Searching;

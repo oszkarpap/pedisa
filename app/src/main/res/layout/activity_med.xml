@@ -79,7 +79,7 @@
                                 android:id="@+id/med_cardview_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text=" gysz"
+                                android:text=" "
                                 android:layout_weight="1"
                                 android:textColor="@color/colorPrimaryDark" />
                         </LinearLayout>
@@ -102,7 +102,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text=" hat"
+                                android:text=" "
                                 android:textColor="@color/colorPrimary" />
                         </LinearLayout>
 
@@ -146,7 +146,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text=" ind"
+                                android:text=" "
                                 android:textColor="@color/colorPrimary" />
                         </LinearLayout>
 
@@ -166,9 +166,10 @@
                             <TextView
                                 android:id="@+id/med_cardview_contra"
                                 android:layout_width="match_parent"
+                                android:inputType="textMultiLine"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text=" kontra"
+                                android:text=" "
                                 android:textColor="@color/colorPrimaryDark" />
                         </LinearLayout>
 
@@ -190,7 +191,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text=" felnőtt"
+                                android:text=" "
                                 android:textColor="@color/colorPrimary" />
                         </LinearLayout>
 
@@ -213,6 +214,48 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text=" gyerek"
+                                android:textColor="@color/colorPrimaryDark" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Terhesség és szoptatás: "
+                                android:textColor="@color/colorPrimary" />
+
+                            <TextView
+                                android:id="@+id/med_cardview_mater"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text=" "
+                                android:textColor="@color/colorPrimary" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:gravity="right"
+                                android:text="Különleges tárolási előírások: "
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <TextView
+                                android:id="@+id/med_cardview_store"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text=" "
                                 android:textColor="@color/colorPrimaryDark" />
                         </LinearLayout>
 

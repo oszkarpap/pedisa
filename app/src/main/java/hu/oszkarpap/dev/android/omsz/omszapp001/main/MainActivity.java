@@ -5,6 +5,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.provider.Telephony;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
@@ -45,7 +47,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.left.RsiActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.left.VeinActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.MedActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
+
 import hu.oszkarpap.dev.android.omsz.omszapp001.right.parameters.ParametersActivity;
 
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
@@ -90,7 +92,8 @@ public class MainActivity extends AppCompatActivity
         mainTv = findViewById(R.id.main_TV);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        mainTv.setText("Felhasználói email: "+user.getEmail());
+        mainTv.setText("Felhasználói email:"+user.getEmail()+";\n Android ID:"+ Settings.Secure.getString(getContentResolver(),
+                Settings.Secure.ANDROID_ID));
         createMainActivity();
         tut = findViewById(R.id.tutorial);
         tut.setOnClickListener(new View.OnClickListener() {
@@ -301,7 +304,7 @@ public class MainActivity extends AppCompatActivity
      */
 
     public void createMainActivity() {
-        overridePendingTransition(R.anim.bounce, R.anim.fade_in);
+        //overridePendingTransition(R.anim.bounce, R.anim.fade_in);
         auth = getInstance();
 
 

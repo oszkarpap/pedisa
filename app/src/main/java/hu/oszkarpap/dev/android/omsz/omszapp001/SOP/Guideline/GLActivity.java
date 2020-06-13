@@ -38,7 +38,7 @@ import android.transition.AutoTransition;
 import android.transition.TransitionManager;
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
+//import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
 
@@ -56,7 +56,7 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
     public static final String KEY_GL_ASC_MODIFY = "KEY_MODIFY";
     public static final String KEY_GL_TITLE_MODIFY = "TITLE_MODIFY";
 
-    private String title;
+    private String title, attr;
     private List<GL> gls;
     private GLAdapter adapter;
     private GL gli;
@@ -137,6 +137,7 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
                 gls.add(gl);
                 //}
                 adapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -174,6 +175,7 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
             String key = gl.getKey();
             String x = key+System.currentTimeMillis();
             gl.setKey(key);
+
             gl.setAsc(x);
             FirebaseDatabase.getInstance().getReference()
                     .child("gl")
@@ -251,7 +253,7 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
         if (item.getItemId() == R.id.createglMenu) {
            // Toast.makeText(this, "Új gyógyszer felvitele MASTER funkció", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, CreateGLActivity.class);
-            intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+   //         intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
             intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
             intent.putExtra(KEY_GL_TITLE_MODIFY,title);
 
@@ -283,6 +285,8 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
                 String name = data.getStringExtra(CreateGLActivity.KEY_NAME);
                 String desc = data.getStringExtra(CreateGLActivity.KEY_DESC);
                 String asc = data.getStringExtra(CreateGLActivity.KEY_ASC);
+                attr = data.getStringExtra(CreateGLActivity.KEY_ATTR);
+                Toast.makeText(this, ""+attr, Toast.LENGTH_SHORT).show();
                 if(SOPKey == null) {
                     SOPKey = data.getStringExtra(CreateGLActivity.KEY_ASC);
                 }//Toast.makeText(this, ""+desc, Toast.LENGTH_SHORT).show();
@@ -290,6 +294,7 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
                 gl.setName(name);
                 gl.setDesc(desc);
                 gl.setKey(asc);
+                gl.setAttr(attr);
                 saveGL(gl);
 
 
@@ -344,7 +349,7 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(GLActivity.this, CreateGLActivity.class);
-                intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+  //              intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
                 intent.putExtra(KEY_GL_NAME_MODIFY, gli.getName());
                 intent.putExtra(KEY_GL_DESC_MODIFY, gli.getDesc());
                 intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);

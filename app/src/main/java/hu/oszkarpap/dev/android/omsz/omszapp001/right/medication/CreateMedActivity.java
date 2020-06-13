@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
-import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
+//import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
 /**
  * @author Oszkar Pap
@@ -71,7 +71,7 @@ public class CreateMedActivity extends AppCompatActivity {
      * this method set layout from omsz medication activity and from own medication activity
      */
     public void setDifferentLayout() {
-        if ((getIntent().getStringExtra(MemoryActivity.KEY_MEMORY).equals("YES"))) {
+     /**   if ((getIntent().getStringExtra(MemoryActivity.KEY_MEMORY).equals("YES"))) {
             createChD01.setVisibility(View.INVISIBLE);
             createChD02.setVisibility(View.INVISIBLE);
             createChU.setVisibility(View.INVISIBLE);
@@ -80,7 +80,7 @@ public class CreateMedActivity extends AppCompatActivity {
             createChDesciption.setVisibility(View.INVISIBLE);
             createChildParameters.setVisibility(View.INVISIBLE);
             setTitle("Saját Gyógyszerjegyzet");
-        } else {
+        } else {*/
             createChD01.setVisibility(View.VISIBLE);
             createChD02.setVisibility(View.VISIBLE);
             createChU.setVisibility(View.VISIBLE);
@@ -88,7 +88,7 @@ public class CreateMedActivity extends AppCompatActivity {
             createChMaxD02.setVisibility(View.VISIBLE);
             createChDesciption.setVisibility(View.VISIBLE);
             createChildParameters.setVisibility(View.VISIBLE);
-        }
+
     }
 
     /**

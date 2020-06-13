@@ -23,6 +23,24 @@ public class Medication {
     private String childDMax;
     private String childDMax02;
     private String childDDesc;
+    private String mater;
+    private String store;
+
+    public String getMater() {
+        return mater;
+    }
+
+    public void setMater(String mater) {
+        this.mater = mater;
+    }
+
+    public String getStore() {
+        return store;
+    }
+
+    public void setStore(String store) {
+        this.store = store;
+    }
 
     public String getUnit() {
         return unit;
@@ -73,9 +91,26 @@ public class Medication {
     }
 
 
+    public Medication(String name, String agent, String pack, String ind, String cont, String adult, String child, String child01, String child02, String unit, String childDMax, String childDMax02, String childDDesc, String mater, String store) {
+        this.name = name;
+        this.agent = agent;
+        this.pack = pack;
+        this.ind = ind;
+        this.cont = cont;
+        this.adult = adult;
+        this.child = child;
+        this.child01 = child01;
+        this.child02 = child02;
+        this.unit = unit;
+        this.childDMax = childDMax;
+        this.childDMax02 = childDMax02;
+        this.childDDesc = childDDesc;
+        this.mater = mater;
+        this.store = store;
+    }
 
     public Medication(String name, String agent, String pack, String ind, String cont, String adult, String child, String child01,
-                      String child02,String unit, String childDMax,String childDMax02, String childDDesc) {
+                      String child02, String unit, String childDMax, String childDMax02, String childDDesc) {
         this.name = name;
         this.agent = agent;
         this.pack = pack;
@@ -94,7 +129,7 @@ public class Medication {
     public Medication() {
     }
 
-    public Medication(Long id, String name, String agent, String pack, String ind, String cont, String adult, String child) {
+    public Medication(Long id, String name, String agent, String pack, String ind, String cont, String adult, String child, String mater, String store) {
         this.id = id;
         this.name = name;
         this.agent = agent;
@@ -103,9 +138,11 @@ public class Medication {
         this.cont = cont;
         this.adult = adult;
         this.child = child;
+        this.mater = mater;
+        this.store = store;
     }
 
-    public Medication(String name, String agent, String pack, String ind, String cont, String adult, String child) {
+    public Medication(String name, String agent, String pack, String ind, String cont, String adult, String child, String mater, String store) {
         this.name = name;
         this.agent = agent;
         this.pack = pack;
@@ -113,6 +150,8 @@ public class Medication {
         this.cont = cont;
         this.adult = adult;
         this.child = child;
+        this.mater = mater;
+        this.store = store;
     }
 
     public String getKey() {
