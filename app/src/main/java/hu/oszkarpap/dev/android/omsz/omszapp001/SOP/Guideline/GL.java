@@ -7,7 +7,7 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline;
  */
 
 
-public class GL {
+public class GL implements Comparable<GL> {
     private Long id;
     private String key;
     private String name;
@@ -155,6 +155,16 @@ public class GL {
     }
 
 
-
-
+    @Override
+    public int compareTo(GL gl) {
+        if (count > (int) gl.getCount()) {
+            return 1;
+        }
+        else if (count < (int) gl.getCount()) {
+            return -1;
+        }
+        else {
+            return 0;
+        }
+    }
 }

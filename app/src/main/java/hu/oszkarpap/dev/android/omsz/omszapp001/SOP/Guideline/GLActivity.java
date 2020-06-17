@@ -2,6 +2,7 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -19,10 +20,14 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -30,13 +35,22 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
 import android.transition.AutoTransition;
 import android.transition.TransitionManager;
+
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLineListItem;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLineListItemAdapter;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
 //import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
@@ -52,23 +66,29 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
     public static final int REQUEST_CODE = 998;
     public static final String KEY_GL_NAME_MODIFY = "NAME_MODIFY";
     public static final String KEY_GL_DESC_MODIFY = "DESC_MODIFY";
+    public static final String KEY_GL_COUNT_MODIFY = "COUNT_MODIFY";
     public static final String KEY_GL_KEY_MODIFY = "KEY_MODIFY";
     public static final String KEY_GL_ASC_MODIFY = "KEY_MODIFY";
     public static final String KEY_GL_TITLE_MODIFY = "TITLE_MODIFY";
+    RecyclerView recyclerView;
 
     private String title, attr;
     private List<GL> gls;
+
     private GLAdapter adapter;
+
     private GL gli;
     private String SOPKey;
-    private DatabaseReference databaseReference;
 
-    RecyclerView recyclerView;
+
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageRef = storage.getReference();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-            setContentView(R.layout.activity_gl);
+        setContentView(R.layout.activity_gl);
 
         overridePendingTransition(R.anim.bounce, R.anim.fade_in);
 
@@ -79,6 +99,7 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         } catch (RuntimeException e) {
             Toast.makeText(this, "A Firebase újratöltődik!", Toast.LENGTH_SHORT).show();
+
         }
 
         SOPKey = getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY);
@@ -89,6 +110,7 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
         gls = new ArrayList<>();
 
         recyclerView = findViewById(R.id.recycler_view_gl);
+
         //recyclerView.setLayoutManager(new GridLayoutManager(this,3));
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -97,10 +119,26 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
         recyclerView.setAdapter(adapter);
 
 
+
         loadGL();
         expandCW();
 
 
+/**
+
+        storageRef.child("images/1").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(GLActivity.this).load(uri).into(imageView);
+                Toast.makeText(GLActivity.this, "Sikeres letöltés", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).show();
+            }
+        });
+*/
     }
 
 
@@ -109,34 +147,38 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
      * set medication adapter
      */
     private void loadGL() {
-       /** databaseReference = FirebaseDatabase.getInstance().getReference().child("gl").child(SOPKey);
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                final GL gl = new GL();
-                gl.setName(dataSnapshot.child("name").getValue().toString());
-                gl.setKey(dataSnapshot.child("key").getValue().toString());
-                gl.setDesc(dataSnapshot.child("desc").getValue().toString());
-                gl.setAsc(dataSnapshot.child("asc").getValue().toString());
-                gls.add(gl);
-                adapter.notifyDataSetChanged();
+        /** databaseReference = FirebaseDatabase.getInstance().getReference().child("gl").child(SOPKey);
+         databaseReference.addValueEventListener(new ValueEventListener() {
+        @Override public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        final GL gl = new GL();
+        gl.setName(dataSnapshot.child("name").getValue().toString());
+        gl.setKey(dataSnapshot.child("key").getValue().toString());
+        gl.setDesc(dataSnapshot.child("desc").getValue().toString());
+        gl.setAsc(dataSnapshot.child("asc").getValue().toString());
+        gls.add(gl);
+        adapter.notifyDataSetChanged();
 
-            }
+        }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+        @Override public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
+        }
         }); */
 
-            FirebaseDatabase.getInstance().getReference().child("gl").child(SOPKey).addChildEventListener(new ChildEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("gl").child(SOPKey).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 GL gl = dataSnapshot.getValue(GL.class);
+
+
                 //if(gl.getAsc().equals(SOPKey)){
                 gls.add(gl);
+               Collections.sort(gls);
+
                 //}
                 adapter.notifyDataSetChanged();
+
+
 
             }
 
@@ -173,7 +215,7 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
 
         try {
             String key = gl.getKey();
-            String x = key+System.currentTimeMillis();
+            String x = key + System.currentTimeMillis();
             gl.setKey(key);
 
             gl.setAsc(x);
@@ -208,8 +250,8 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
                 Toast.makeText(GLActivity.this, "Törlés sikeres!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(GLActivity.this, GLActivity.class);
                 intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
-                intent.putExtra(KEY_GL_TITLE_MODIFY,title);
-                startActivityForResult(intent,REQUEST_CODE);
+                intent.putExtra(KEY_GL_TITLE_MODIFY, title);
+                startActivityForResult(intent, REQUEST_CODE);
                 finish();
 
             }
@@ -251,11 +293,11 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.createglMenu) {
-           // Toast.makeText(this, "Új gyógyszer felvitele MASTER funkció", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this, "Új gyógyszer felvitele MASTER funkció", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, CreateGLActivity.class);
-   //         intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+            //         intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
             intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
-            intent.putExtra(KEY_GL_TITLE_MODIFY,title);
+            intent.putExtra(KEY_GL_TITLE_MODIFY, title);
 
             //intent.putExtra(KEY_GL_ASC_MODIFY,getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY));
             startActivityForResult(intent, REQUEST_CODE);
@@ -263,9 +305,8 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
             finish();
             Intent intent = new Intent(GLActivity.this, GLActivity.class);
             intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
-            intent.putExtra(KEY_GL_TITLE_MODIFY,title);
-            startActivityForResult(intent,REQUEST_CODE);
-
+            intent.putExtra(KEY_GL_TITLE_MODIFY, title);
+            startActivityForResult(intent, REQUEST_CODE);
 
 
         }
@@ -286,8 +327,8 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
                 String desc = data.getStringExtra(CreateGLActivity.KEY_DESC);
                 String asc = data.getStringExtra(CreateGLActivity.KEY_ASC);
                 attr = data.getStringExtra(CreateGLActivity.KEY_ATTR);
-                Toast.makeText(this, ""+attr, Toast.LENGTH_SHORT).show();
-                if(SOPKey == null) {
+               // Toast.makeText(this, "" + attr, Toast.LENGTH_SHORT).show();
+                if (SOPKey == null) {
                     SOPKey = data.getStringExtra(CreateGLActivity.KEY_ASC);
                 }//Toast.makeText(this, ""+desc, Toast.LENGTH_SHORT).show();
                 GL gl = new GL();
@@ -295,7 +336,7 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
                 gl.setDesc(desc);
                 gl.setKey(asc);
                 gl.setAttr(attr);
-                saveGL(gl);
+                //  saveGL(gl);
 
 
             }
@@ -308,26 +349,24 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
      *
      *
 
-    @Override
-    public void onItemClicked(final int position) {
-        gli = gls.get(position);
+     @Override public void onItemClicked(final int position) {
+     gli = gls.get(position);
 
-        Intent intent = new Intent(GLActivity.this, GLActivity.class);
-        intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
-        intent.putExtra(KEY_GL_KEY_MODIFY, gli.getKey());
-        startActivity(intent);
-    } */
+     Intent intent = new Intent(GLActivity.this, GLActivity.class);
+     intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+     intent.putExtra(KEY_GL_KEY_MODIFY, gli.getKey());
+     startActivity(intent);
+     } */
 
     /**
      * if long click one medication show up alert dialog, and can change duplicate or delete this medication
      */
 
 
-
     @Override
     public void onItemLongClicked(final int position) {
-         // Toast.makeText(this, "Módosítási lehetőség csak MASTER funkció", Toast.LENGTH_SHORT).show();
-           gli = gls.get(position);
+        // Toast.makeText(this, "Módosítási lehetőség csak MASTER funkció", Toast.LENGTH_SHORT).show();
+        gli = gls.get(position);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("Duplikálni vagy törölni szeretné az elemet? (Keresést követően ne használja ezt a funkciót!)");
@@ -349,11 +388,12 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(GLActivity.this, CreateGLActivity.class);
-  //              intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+                //              intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
                 intent.putExtra(KEY_GL_NAME_MODIFY, gli.getName());
                 intent.putExtra(KEY_GL_DESC_MODIFY, gli.getDesc());
+                intent.putExtra(KEY_GL_COUNT_MODIFY, gli.getCount());
                 intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
-                intent.putExtra(KEY_GL_TITLE_MODIFY,title);
+                intent.putExtra(KEY_GL_TITLE_MODIFY, title);
                 //intent.putExtra(KEY_GL_ASC_MODIFY,getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY));
 
                 startActivityForResult(intent, REQUEST_CODE);
@@ -389,10 +429,7 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
         return true;
     }
 
-    public void expandCW(){
-
-
-
+    public void expandCW() {
 
 
     }

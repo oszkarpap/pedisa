@@ -26,14 +26,30 @@
                 android:text="@string/crmed01"
                 android:textColor="@color/white" />
 
-            <EditText
-                android:id="@+id/createNameGlET"
-
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:hint="Protokoll epizód neve"
-                android:inputType="textMultiLine" />
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/createNumberGlET"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:hint="No."
+                    android:inputType="numberDecimal" />
+
+
+                <EditText
+                    android:id="@+id/createNameGlET"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:hint="Protokoll epizód neve"
+                    android:inputType="textMultiLine" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -64,6 +80,47 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="szín beállítása" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioGroup
+                    android:id="@+id/radioGLTextSizeName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/radioGLTextSize12Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="kicsi " />
+
+                    <RadioButton
+                        android:id="@+id/radioGLTextSize10Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="normál " />
+
+
+                    <RadioButton
+                        android:id="@+id/radioGLTextSize14Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="nagy " />
+
+                    <RadioButton
+                        android:id="@+id/radioGLTextSize16Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="extra betűméret" />
+
+                </RadioGroup>
             </LinearLayout>
 
             <LinearLayout
@@ -124,6 +181,47 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioGroup
+                android:id="@+id/radioGLTextSizeLegend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioGLTextSize12Legend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="kicsi " />
+
+                <RadioButton
+                    android:id="@+id/radioGLTextSize10Legend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="normál " />
+
+
+                <RadioButton
+                    android:id="@+id/radioGLTextSize14Legend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="nagy " />
+
+                <RadioButton
+                    android:id="@+id/radioGLTextSize16Legend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="extra betűméret" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/LinearLayoutColorPickerView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -154,16 +252,7 @@
                 android:text="Kép kiválasztása"
                 android:textColor="@color/white" />
 
-            <Button
-                android:id="@+id/createGlUploadImage"
-                style="@style/Base.Widget.AppCompat.Button.Colored"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="4dp"
-                android:layout_weight="1"
-                android:text="Kép feltöltése"
-                android:textColor="@color/white" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -174,7 +263,7 @@
             <ImageView
                 android:id="@+id/createGlimage"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent" />
         </LinearLayout>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

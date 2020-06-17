@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,6 +19,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.bumptech.glide.Glide;
@@ -25,6 +32,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +48,8 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
 
 
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    StorageReference storageRef = storage.getReference();
     private Context context;
     private List<GL> gls;
     private LayoutInflater inflater;
@@ -75,37 +85,41 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
         holder.name.setText(gl.getName());
         holder.desc.setText(gl.getDesc());
         holder.attr.setText(gl.getAttr());
- /**       StorageReference ref;
-try {
-    ref = FirebaseStorage.getInstance().getReferenceFromUrl("/images/balassi011591481493785");
 
-    Toast.makeText(context, "adat", Toast.LENGTH_SHORT).show();
+        holder.numb.setText(String.valueOf(gl.getCount()));
 
-    ref.getDownloadUrl(Glide.with(context)
-            .load(uri)
-            .into(holder.imageView));
-
-
-} catch (Exception e){
-    Toast.makeText(context, "el lett baszva", Toast.LENGTH_SHORT).show();
-}
-
-
-
-        /**
-         * final StorageReference storageRef = FirebaseStorage.getInstance().getReference().child("images/"+gl.getAttr());
-        storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        storageRef.child("images/" + gl.getAsc()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
-                holder.imageView.setImageURI(uri);
-                Toast.makeText(context, "Sikeres!", Toast.LENGTH_SHORT).show();
+                Picasso.get().load(uri).resize(800, 800).centerInside().onlyScaleDown().into(holder.imageView);
+
+                // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                Toast.makeText(context, "Hiba!", Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(context, "Sikertelen "+exception.getMessage(), Toast.LENGTH_SHORT).show();
+
+
             }
-        }); */
+        });
+        if (holder.attr.getText().toString().contains("W12")) {
+            holder.name.setTextSize(16);
+        } else if (holder.attr.getText().toString().contains("W14")) {
+            holder.name.setTextSize(40);
+        } else if (holder.attr.getText().toString().contains("W16")){
+            holder.name.setTextSize(60);
+        }
+
+        if (holder.attr.getText().toString().contains("Z12")) {
+            holder.desc.setTextSize(16);
+        } else if (holder.attr.getText().toString().contains("Z14")) {
+            holder.desc.setTextSize(40);
+        } else if (holder.attr.getText().toString().contains("Z16")){
+            holder.desc.setTextSize(60);
+        }
+
 
         if (holder.attr.getText().toString().contains("f10")) {
             holder.name.setTypeface(null, Typeface.BOLD);
@@ -183,7 +197,7 @@ try {
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
 
-        public final TextView name, desc, attr;
+        public final TextView name, desc, attr, numb;
         public final LinearLayout linearLayout;
         public final Button arrowButton;
         public final ImageView imageView;
@@ -197,6 +211,7 @@ try {
             linearLayout = itemView.findViewById(R.id.row_gl_layout);
             //  ini = itemView.findViewById(R.id.txt_gl_iniciale);
             imageView = itemView.findViewById(R.id.row_gl_image);
+            numb = itemView.findViewById(R.id.txt_gl_number);
             name = itemView.findViewById(R.id.txt_gl_name);
             desc = itemView.findViewById(R.id.txt_gl_desc);
             attr = itemView.findViewById(R.id.txt_gl_attr);
@@ -205,6 +220,7 @@ try {
             expandableView = itemView.findViewById(R.id.expandableView);
             arrowBtn = itemView.findViewById(R.id.gl_row_button);
             cardView = itemView.findViewById(R.id.gl_cardView);
+
 
             // name.setTypeface(null, Typeface.BOLD_ITALIC);
             // name.setPaintFlags(name.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);
