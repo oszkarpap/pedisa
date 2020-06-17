@@ -261,7 +261,10 @@ public class CreateGLActivity extends AppCompatActivity {
                 }
                 saveGL(gl);
                 setResult(RESULT_OK, intent);
-                Toast.makeText(CreateGLActivity.this, ""+attr, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(CreateGLActivity.this, ""+attr, Toast.LENGTH_SHORT).show();
+                if (filePath==null){
+                    finish();
+                }
 
             }
         });

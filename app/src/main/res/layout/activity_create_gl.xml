@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="4dp"
                     android:hint="No."
-                    android:inputType="numberDecimal" />
+                    android:inputType="number" />
 
 
                 <EditText
