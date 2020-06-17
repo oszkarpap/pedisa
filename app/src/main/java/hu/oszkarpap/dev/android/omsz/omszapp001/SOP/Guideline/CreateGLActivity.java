@@ -230,6 +230,7 @@ public class CreateGLActivity extends AppCompatActivity {
             createName.setText(getIntent().getStringExtra(GLActivity.KEY_GL_NAME_MODIFY));
             createDesc.setText(getIntent().getStringExtra(GLActivity.KEY_GL_DESC_MODIFY));
             createNumber.setText(getIntent().getStringExtra(GLActivity.KEY_GL_COUNT_MODIFY));
+            //Toast.makeText(this, ""+getIntent().getStringExtra(GLActivity.KEY_GL_COUNT_MODIFY), Toast.LENGTH_SHORT).show();
         }
 
     }

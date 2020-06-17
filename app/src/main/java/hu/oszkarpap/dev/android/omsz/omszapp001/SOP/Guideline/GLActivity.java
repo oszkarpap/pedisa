@@ -70,19 +70,15 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
     public static final String KEY_GL_KEY_MODIFY = "KEY_MODIFY";
     public static final String KEY_GL_ASC_MODIFY = "KEY_MODIFY";
     public static final String KEY_GL_TITLE_MODIFY = "TITLE_MODIFY";
+    public static int TEXTSIZE = 20;
     RecyclerView recyclerView;
-
-    private String title, attr;
-    private List<GL> gls;
-
-    private GLAdapter adapter;
-
-    private GL gli;
-    private String SOPKey;
-
-
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageRef = storage.getReference();
+    private String title, attr;
+    private List<GL> gls;
+    private GLAdapter adapter;
+    private GL gli;
+    private String SOPKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,26 +115,23 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
         recyclerView.setAdapter(adapter);
 
 
-
         loadGL();
         expandCW();
 
 
 /**
 
-        storageRef.child("images/1").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Glide.with(GLActivity.this).load(uri).into(imageView);
-                Toast.makeText(GLActivity.this, "Sikeres letöltés", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).show();
-            }
-        });
-*/
+ storageRef.child("images/1").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+@Override public void onSuccess(Uri uri) {
+Glide.with(GLActivity.this).load(uri).into(imageView);
+Toast.makeText(GLActivity.this, "Sikeres letöltés", Toast.LENGTH_SHORT).show();
+}
+}).addOnFailureListener(new OnFailureListener() {
+@Override public void onFailure(@NonNull Exception exception) {
+Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).show();
+}
+});
+ */
     }
 
 
@@ -173,11 +166,10 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
 
                 //if(gl.getAsc().equals(SOPKey)){
                 gls.add(gl);
-               Collections.sort(gls);
+                Collections.sort(gls);
 
                 //}
                 adapter.notifyDataSetChanged();
-
 
 
             }
@@ -309,6 +301,20 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
             startActivityForResult(intent, REQUEST_CODE);
 
 
+        } else if (item.getItemId() == R.id.createglLow) {
+            TEXTSIZE += 3;
+            if (TEXTSIZE >= 40) {
+                TEXTSIZE = 40;
+            }
+           // Toast.makeText(this, ""+TEXTSIZE, Toast.LENGTH_SHORT).show();
+
+        } else if (item.getItemId() == R.id.createglHigh) {
+            TEXTSIZE -= 3;
+            if (TEXTSIZE <= 15) {
+                TEXTSIZE = 15;
+            }
+
+           // Toast.makeText(this, ""+TEXTSIZE, Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);
@@ -327,7 +333,7 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
                 String desc = data.getStringExtra(CreateGLActivity.KEY_DESC);
                 String asc = data.getStringExtra(CreateGLActivity.KEY_ASC);
                 attr = data.getStringExtra(CreateGLActivity.KEY_ATTR);
-               // Toast.makeText(this, "" + attr, Toast.LENGTH_SHORT).show();
+                // Toast.makeText(this, "" + attr, Toast.LENGTH_SHORT).show();
                 if (SOPKey == null) {
                     SOPKey = data.getStringExtra(CreateGLActivity.KEY_ASC);
                 }//Toast.makeText(this, ""+desc, Toast.LENGTH_SHORT).show();
@@ -391,7 +397,9 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
                 //              intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
                 intent.putExtra(KEY_GL_NAME_MODIFY, gli.getName());
                 intent.putExtra(KEY_GL_DESC_MODIFY, gli.getDesc());
-                intent.putExtra(KEY_GL_COUNT_MODIFY, gli.getCount());
+                String x = String.valueOf(gli.getCount());
+                intent.putExtra(KEY_GL_COUNT_MODIFY, x);
+               // Toast.makeText(GLActivity.this, "" + gli.getCount(), Toast.LENGTH_SHORT).show();
                 intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
                 intent.putExtra(KEY_GL_TITLE_MODIFY, title);
                 //intent.putExtra(KEY_GL_ASC_MODIFY,getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY));

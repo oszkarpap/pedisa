@@ -27,7 +27,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
 
-                android:src="@mipmap/ic_launcher_foreground"
+                android:src="@drawable/ambulance_vehicle"
                 android:contentDescription="@string/omsz_logo" />
 
             <LinearLayout

@@ -6,10 +6,13 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,8 +39,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+
+import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity.TEXTSIZE;
 
 /**
  * @author Oszkar Pap
@@ -55,6 +61,7 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
     private LayoutInflater inflater;
     private OnItemLongClickListener longListener;
     private View.OnClickListener onClickListener;
+
 
 
     public GLAdapter(Context context, List<GL> gls) {
@@ -104,7 +111,25 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
 
             }
         });
-        if (holder.attr.getText().toString().contains("W12")) {
+
+        new CountDownTimer(90000,1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+               // Toast.makeText(context, "RUN", Toast.LENGTH_SHORT).show();
+                holder.name.setTextSize(TEXTSIZE);
+                holder.desc.setTextSize(TEXTSIZE);
+            }
+            @Override
+            public void onFinish() {
+               // Toast.makeText(context, "FINISH", Toast.LENGTH_SHORT).show();
+                holder.name.setTextSize(TEXTSIZE);
+                holder.desc.setTextSize(TEXTSIZE);
+            }
+        }.start();
+        holder.name.setTextSize(TEXTSIZE);
+        holder.desc.setTextSize(TEXTSIZE);
+
+        /**if (holder.attr.getText().toString().contains("W12")) {
             holder.name.setTextSize(16);
         } else if (holder.attr.getText().toString().contains("W14")) {
             holder.name.setTextSize(40);
@@ -118,7 +143,7 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
             holder.desc.setTextSize(40);
         } else if (holder.attr.getText().toString().contains("Z16")){
             holder.desc.setTextSize(60);
-        }
+        } */
 
 
         if (holder.attr.getText().toString().contains("f10")) {
