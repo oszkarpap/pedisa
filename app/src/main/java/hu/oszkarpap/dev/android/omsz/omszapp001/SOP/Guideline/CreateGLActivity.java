@@ -69,7 +69,7 @@ public class CreateGLActivity extends AppCompatActivity {
     private ColorPickerView colorPickerView, colorPickerView2;
     private String attr;
     private ImageView imageView;
-    private RadioButton n10, n12, n14, n16, l10, l12, l14, l16;
+
     private Uri filePath;
 
     @Override
@@ -82,16 +82,6 @@ public class CreateGLActivity extends AppCompatActivity {
         storageReference = storage.getReference();
         setContentView(R.layout.activity_create_gl);
 
-        n10 = findViewById(R.id.radioGLTextSize10Name);
-        n12 = findViewById(R.id.radioGLTextSize12Name);
-        n14 = findViewById(R.id.radioGLTextSize14Name);
-        n16 = findViewById(R.id.radioGLTextSize16Name);
-        l10 = findViewById(R.id.radioGLTextSize10Legend);
-        l12 = findViewById(R.id.radioGLTextSize12Legend);
-        l14 = findViewById(R.id.radioGLTextSize14Legend);
-        l16 = findViewById(R.id.radioGLTextSize16Legend);
-        n10.setChecked(true);
-        l10.setChecked(true);
         createName = findViewById(R.id.createNameGlET);
         createName.setError(getString(R.string.create_medication_name_alert), null);
         createDesc = findViewById(R.id.createDescGlET);
@@ -323,31 +313,6 @@ public class CreateGLActivity extends AppCompatActivity {
 
         attr += color2;
         attr+="W";
-        if(n10.isChecked()) {
-        attr+="10";
-        }
-        if(n12.isChecked()) {
-            attr+="12";
-        }
-        if(n14.isChecked()) {
-            attr+="14";
-        }
-        if(n16.isChecked()) {
-            attr+="16";
-        }
-        attr+="Z";
-        if(l10.isChecked()) {
-            attr+="10";
-        }
-        if(l12.isChecked()) {
-            attr+="12";
-        }
-        if(l14.isChecked()) {
-            attr+="14";
-        }
-        if(l16.isChecked()) {
-            attr+="16";
-        }
 
 
     }

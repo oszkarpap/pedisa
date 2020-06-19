@@ -10,6 +10,7 @@ import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -38,10 +39,13 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Timer;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLineListItem;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLineListItemAdapter;
 
 import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity.TEXTSIZE;
 
@@ -58,10 +62,11 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
     StorageReference storageRef = storage.getReference();
     private Context context;
     private List<GL> gls;
+    private List<GuideLineListItem> guideLineListItems;
     private LayoutInflater inflater;
     private OnItemLongClickListener longListener;
     private View.OnClickListener onClickListener;
-
+    private GuideLineListItemAdapter guideLineListItemAdapter;
 
 
     public GLAdapter(Context context, List<GL> gls) {
@@ -89,9 +94,63 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         GL gl = gls.get(position);
+
         holder.name.setText(gl.getName());
         holder.desc.setText(gl.getDesc());
         holder.attr.setText(gl.getAttr());
+        guideLineListItems = new ArrayList<>();
+        //TODO:
+        guideLineListItemAdapter = new GuideLineListItemAdapter(context,guideLineListItems);
+       // holder.recyclerViewList.setHasFixedSize(true);
+        holder.recyclerViewList.setLayoutManager(new LinearLayoutManager(context));
+        holder.recyclerViewList.setAdapter(guideLineListItemAdapter);
+       // holder.recyclerViewList.setNestedScrollingEnabled(false);
+
+        //GuideLineListItem guideLineListItem = new GuideLineListItem("SAs", "SAS", "ASA", "ASA");
+
+        //guideLineListItems.add(guideLineListItem);
+       // Toast.makeText(context, "ADAPTER", Toast.LENGTH_SHORT).show();
+
+
+    /*    FirebaseDatabase.getInstance().getReference().child("glli").child(gl.getKey()).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                GuideLineListItem glli = dataSnapshot.getValue(GuideLineListItem.class);
+
+                guideLineListItems.add(glli);
+                //Collections.sort(gls);
+
+                //}
+                guideLineListItemAdapter.notifyDataSetChanged();
+
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                GuideLineListItem glli = dataSnapshot.getValue(GuideLineListItem.class);
+                guideLineListItems.remove(glli);
+                guideLineListItemAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        }); */
+
+        guideLineListItemAdapter.notifyDataSetChanged();
+
 
         holder.numb.setText(String.valueOf(gl.getCount()));
 
@@ -226,6 +285,8 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
         public final LinearLayout linearLayout;
         public final Button arrowButton;
         public final ImageView imageView;
+        public final RecyclerView recyclerViewList;
+        public Context context;
         LinearLayout expandableView;
         Button arrowBtn;
         CardView cardView;
@@ -236,6 +297,7 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
             linearLayout = itemView.findViewById(R.id.row_gl_layout);
             //  ini = itemView.findViewById(R.id.txt_gl_iniciale);
             imageView = itemView.findViewById(R.id.row_gl_image);
+            recyclerViewList = itemView.findViewById(R.id.recycler_view_gl_list);
             numb = itemView.findViewById(R.id.txt_gl_number);
             name = itemView.findViewById(R.id.txt_gl_name);
             desc = itemView.findViewById(R.id.txt_gl_desc);
@@ -245,7 +307,6 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
             expandableView = itemView.findViewById(R.id.expandableView);
             arrowBtn = itemView.findViewById(R.id.gl_row_button);
             cardView = itemView.findViewById(R.id.gl_cardView);
-
 
             // name.setTypeface(null, Typeface.BOLD_ITALIC);
             // name.setPaintFlags(name.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -22,6 +23,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -52,6 +54,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLineListItem;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLineListItemAdapter;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SingleChoiceDialogFragment;
 //import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
@@ -61,7 +64,7 @@ import static com.google.firebase.auth.FirebaseAuth.getInstance;
  * @version 2.0
  * This is the GL Activity, connect to Firebase Realtime Database
  */
-public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener {
+public class GLActivity extends AppCompatActivity implements SingleChoiceDialogFragment.SingleChoiceListener, GLAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener {
 
     public static final int REQUEST_CODE = 998;
     public static final String KEY_GL_NAME_MODIFY = "NAME_MODIFY";
@@ -71,6 +74,7 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
     public static final String KEY_GL_ASC_MODIFY = "KEY_MODIFY";
     public static final String KEY_GL_TITLE_MODIFY = "TITLE_MODIFY";
     public static int TEXTSIZE = 20;
+
     RecyclerView recyclerView;
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageRef = storage.getReference();
@@ -80,11 +84,13 @@ public class GLActivity extends AppCompatActivity implements GLAdapter.OnItemLon
     private GL gli;
     private String SOPKey;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_gl);
+
 
         overridePendingTransition(R.anim.bounce, R.anim.fade_in);
 
@@ -294,19 +300,19 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
             //intent.putExtra(KEY_GL_ASC_MODIFY,getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY));
             startActivityForResult(intent, REQUEST_CODE);
         } else if (item.getItemId() == R.id.gl_refresh) {
-            finish();
+
             Intent intent = new Intent(GLActivity.this, GLActivity.class);
             intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
             intent.putExtra(KEY_GL_TITLE_MODIFY, title);
             startActivityForResult(intent, REQUEST_CODE);
-
+            finish();
 
         } else if (item.getItemId() == R.id.createglLow) {
             TEXTSIZE += 3;
             if (TEXTSIZE >= 40) {
                 TEXTSIZE = 40;
             }
-           // Toast.makeText(this, ""+TEXTSIZE, Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this, ""+TEXTSIZE, Toast.LENGTH_SHORT).show();
 
         } else if (item.getItemId() == R.id.createglHigh) {
             TEXTSIZE -= 3;
@@ -314,7 +320,7 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
                 TEXTSIZE = 15;
             }
 
-           // Toast.makeText(this, ""+TEXTSIZE, Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this, ""+TEXTSIZE, Toast.LENGTH_SHORT).show();
         }
 
         return super.onOptionsItemSelected(item);
@@ -329,6 +335,7 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
         if (requestCode == REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 title = data.getStringExtra(CreateGLActivity.KEY_TITLE);
+                setTitle(title);
                 String name = data.getStringExtra(CreateGLActivity.KEY_NAME);
                 String desc = data.getStringExtra(CreateGLActivity.KEY_DESC);
                 String asc = data.getStringExtra(CreateGLActivity.KEY_ASC);
@@ -374,42 +381,10 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
         // Toast.makeText(this, "Módosítási lehetőség csak MASTER funkció", Toast.LENGTH_SHORT).show();
         gli = gls.get(position);
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("Duplikálni vagy törölni szeretné az elemet? (Keresést követően ne használja ezt a funkciót!)");
-        alertDialogBuilder.setPositiveButton("Vissza",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
+        DialogFragment singleChoiceDialog = new SingleChoiceDialogFragment();
+        singleChoiceDialog.setCancelable(false);
+        singleChoiceDialog.show(getSupportFragmentManager(), "Single Choice Dialog");
 
-
-                    }
-                });
-
-        alertDialogBuilder.setNegativeButton("Törlés", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                deleteGL(gli);
-            }
-        });
-        alertDialogBuilder.setNeutralButton("Duplikáció", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(GLActivity.this, CreateGLActivity.class);
-                //              intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
-                intent.putExtra(KEY_GL_NAME_MODIFY, gli.getName());
-                intent.putExtra(KEY_GL_DESC_MODIFY, gli.getDesc());
-                String x = String.valueOf(gli.getCount());
-                intent.putExtra(KEY_GL_COUNT_MODIFY, x);
-               // Toast.makeText(GLActivity.this, "" + gli.getCount(), Toast.LENGTH_SHORT).show();
-                intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
-                intent.putExtra(KEY_GL_TITLE_MODIFY, title);
-                //intent.putExtra(KEY_GL_ASC_MODIFY,getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY));
-
-                startActivityForResult(intent, REQUEST_CODE);
-            }
-        });
-
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
     }
 
     @Override
@@ -450,4 +425,52 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
     }
 
 
+    @Override
+    public void onPositiveButtonClicked(String[] list, int position) {
+        switch (position) {
+            case 0:
+
+                Intent intent = new Intent(GLActivity.this, CreateGLActivity.class);
+                //              intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+                intent.putExtra(KEY_GL_NAME_MODIFY, gli.getName());
+                intent.putExtra(KEY_GL_DESC_MODIFY, gli.getDesc());
+                String x = String.valueOf(gli.getCount());
+                intent.putExtra(KEY_GL_COUNT_MODIFY, x);
+                // Toast.makeText(GLActivity.this, "" + gli.getCount(), Toast.LENGTH_SHORT).show();
+                intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
+                intent.putExtra(KEY_GL_TITLE_MODIFY, title);
+                //intent.putExtra(KEY_GL_ASC_MODIFY,getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY));
+
+                startActivityForResult(intent, REQUEST_CODE);
+                break;
+            case 1:
+                Toast.makeText(GLActivity.this, "TODO", Toast.LENGTH_SHORT).show();
+                Intent intent2 = new Intent(GLActivity.this, CreateGLListItemActivity.class);
+                //              intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+                 intent2.putExtra(KEY_GL_NAME_MODIFY, gli.getName());
+                 intent2.putExtra(KEY_GL_DESC_MODIFY, gli.getDesc());
+                 String x2 = String.valueOf(gli.getCount());
+                 intent2.putExtra(KEY_GL_COUNT_MODIFY, x2);
+                 Toast.makeText(GLActivity.this, "" + gli.getCount(), Toast.LENGTH_SHORT).show();
+                 intent2.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
+                  intent2.putExtra(KEY_GL_TITLE_MODIFY, title);
+                //intent.putExtra(KEY_GL_ASC_MODIFY,getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY));
+
+                //  startActivityForResult(intent2, REQUEST_CODE);
+                startActivity(intent2);
+                break;
+
+            case 2:
+                deleteGL(gli);
+                break;
+
+        }
+
+    }
+
+
+    @Override
+    public void onNegativeButtonClicked() {
+
+    }
 }

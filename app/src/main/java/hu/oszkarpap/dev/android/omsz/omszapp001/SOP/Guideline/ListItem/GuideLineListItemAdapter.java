@@ -2,6 +2,7 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -27,7 +29,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.CreateGLActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GL;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity;
 
 /**
  * @author Oszkar Pap
@@ -55,7 +59,7 @@ public class GuideLineListItemAdapter extends RecyclerView.Adapter<GuideLineList
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.row_gl, parent, false);
+        View view = inflater.inflate(R.layout.row_gl_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -63,7 +67,13 @@ public class GuideLineListItemAdapter extends RecyclerView.Adapter<GuideLineList
     @Override
     public void onBindViewHolder(final ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         GuideLineListItem guideLineListItem = guideLineListItems.get(position);
+        //GuideLineListItem guideLineListItem = new GuideLineListItem("SAS", "SAS", "SAS", "SAS");
+        //guideLineListItems.add(guideLineListItem);
+        //guideLineListItemAdapter.notifyDataSetChanged();
+
         holder.item.setText(guideLineListItem.getItem());
+        holder.attr.setText(guideLineListItem.getAttributum());
+
 
 
         if (holder.attr.getText().toString().contains("f10")) {
@@ -137,11 +147,13 @@ public class GuideLineListItemAdapter extends RecyclerView.Adapter<GuideLineList
         public final LinearLayout linearLayout;
 
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(final View itemView) {
             super(itemView);
             linearLayout = itemView.findViewById(R.id.row_guideLineListItemLinearLayout);
             item = itemView.findViewById(R.id.txt_glli_item);
-            attr = item.findViewById(R.id.txt_glli_attr);
+            attr = itemView.findViewById(R.id.txt_glli_attr);
+
+
 
             // name.setTypeface(null, Typeface.BOLD_ITALIC);
             // name.setPaintFlags(name.getPaintFlags()| Paint.UNDERLINE_TEXT_FLAG);

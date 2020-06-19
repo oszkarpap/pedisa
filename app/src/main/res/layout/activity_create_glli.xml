@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/createGlliBTN"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:text="@string/crmed01"
+                android:textColor="@color/white" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/createNumberGlliET"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:hint="No."
+                    android:inputType="number" />
+
+
+                <EditText
+                    android:id="@+id/createNameGlliET"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:hint="Protokoll epizód neve"
+                    android:inputType="textMultiLine" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/CreateGllibold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="félkövér" />
+
+                <CheckBox
+                    android:id="@+id/CreateGlliitalic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="dőlt"
+                    android:textStyle="" />
+
+                <CheckBox
+                    android:id="@+id/CreateGlliunderline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="aláhúzott" />
+
+                <CheckBox
+                    android:id="@+id/CreateGlliColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="szín beállítása" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/LinearLayoutColorPickerViewli"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.skydoves.colorpickerpreference.ColorPickerView
+                    android:id="@+id/CreateGlcolorPickerViewli"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp"
+                    app:palette="@drawable/color_column"
+                    app:selector="@drawable/wheel" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>
