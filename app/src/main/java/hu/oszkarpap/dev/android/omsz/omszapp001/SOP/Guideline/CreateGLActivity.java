@@ -1,14 +1,17 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline;
 
+import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -36,7 +39,9 @@ import com.google.firebase.storage.UploadTask;
 import com.skydoves.colorpickerpreference.ColorEnvelope;
 import com.skydoves.colorpickerpreference.ColorListener;
 import com.skydoves.colorpickerpreference.ColorPickerView;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.io.IOException;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
@@ -69,6 +74,8 @@ public class CreateGLActivity extends AppCompatActivity {
     private ColorPickerView colorPickerView, colorPickerView2;
     private String attr;
     private ImageView imageView;
+
+    //StorageReference storageRef = storage.getReference();
 
     private Uri filePath;
 
@@ -149,6 +156,28 @@ public class CreateGLActivity extends AppCompatActivity {
         setEdittextModify();
 
         clickCreateButton();
+        //Toast.makeText(this, ""+getIntent().getStringExtra(GLActivity.KEY_GL_IMAGE_MODIFY), Toast.LENGTH_SHORT).show();
+        try {
+            storageReference.child("images/" + getIntent().getStringExtra(GLActivity.KEY_GL_IMAGE_MODIFY)).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+
+                public void onSuccess(Uri uri) {
+                    Picasso.get().load(uri).resize(800, 800).centerInside().onlyScaleDown().into(imageView);
+
+                    // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    //  Toast.makeText(context, "Sikertelen "+exception.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                }
+            });
+        } catch (Exception e) {
+            Toast.makeText(this, "X", Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -253,7 +282,7 @@ public class CreateGLActivity extends AppCompatActivity {
                 saveGL(gl);
                 setResult(RESULT_OK, intent);
                 //Toast.makeText(CreateGLActivity.this, ""+attr, Toast.LENGTH_SHORT).show();
-                if (filePath==null){
+                if (filePath == null) {
                     finish();
                 }
 
@@ -312,7 +341,7 @@ public class CreateGLActivity extends AppCompatActivity {
         }
 
         attr += color2;
-        attr+="W";
+        attr += "W";
 
 
     }
@@ -344,6 +373,8 @@ public class CreateGLActivity extends AppCompatActivity {
 
 
     }
+
+
 }
 
 

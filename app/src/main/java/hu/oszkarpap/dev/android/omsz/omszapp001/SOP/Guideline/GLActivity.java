@@ -1,9 +1,12 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline;
 
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -41,7 +44,9 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -58,6 +63,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.SingleChoiceDialogFragment;
 //import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
+import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLAdapter.savedImage;
 
 /**
  * @author Oszkar Pap
@@ -73,6 +79,7 @@ public class GLActivity extends AppCompatActivity implements SingleChoiceDialogF
     public static final String KEY_GL_KEY_MODIFY = "KEY_MODIFY";
     public static final String KEY_GL_ASC_MODIFY = "KEY_MODIFY";
     public static final String KEY_GL_TITLE_MODIFY = "TITLE_MODIFY";
+    public static final String KEY_GL_IMAGE_MODIFY = "IMAGE_MODIFY";
     public static int TEXTSIZE = 20;
 
     RecyclerView recyclerView;
@@ -103,6 +110,24 @@ public class GLActivity extends AppCompatActivity implements SingleChoiceDialogF
             Toast.makeText(this, "A Firebase újratöltődik!", Toast.LENGTH_SHORT).show();
 
         }
+
+        //TODO:
+        storageRef.child("images/" + savedImage).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).resize(800, 800).centerInside().onlyScaleDown();
+                    saveImage(uri);
+                // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                //  Toast.makeText(context, "Sikertelen "+exception.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
 
         SOPKey = getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY);
         //Toast.makeText(this, ""+ SOPKey, Toast.LENGTH_SHORT).show();
@@ -435,6 +460,7 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
                 intent.putExtra(KEY_GL_NAME_MODIFY, gli.getName());
                 intent.putExtra(KEY_GL_DESC_MODIFY, gli.getDesc());
                 String x = String.valueOf(gli.getCount());
+                intent.putExtra(KEY_GL_IMAGE_MODIFY, savedImage);
                 intent.putExtra(KEY_GL_COUNT_MODIFY, x);
                 // Toast.makeText(GLActivity.this, "" + gli.getCount(), Toast.LENGTH_SHORT).show();
                 intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
@@ -444,28 +470,59 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
                 startActivityForResult(intent, REQUEST_CODE);
                 break;
             case 1:
-                Toast.makeText(GLActivity.this, "TODO", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(GLActivity.this, "TODO", Toast.LENGTH_SHORT).show();
                 Intent intent2 = new Intent(GLActivity.this, CreateGLListItemActivity.class);
                 //              intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
-                 intent2.putExtra(KEY_GL_NAME_MODIFY, gli.getName());
-                 intent2.putExtra(KEY_GL_DESC_MODIFY, gli.getDesc());
-                 String x2 = String.valueOf(gli.getCount());
-                 intent2.putExtra(KEY_GL_COUNT_MODIFY, x2);
-                 Toast.makeText(GLActivity.this, "" + gli.getCount(), Toast.LENGTH_SHORT).show();
-                 intent2.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
-                  intent2.putExtra(KEY_GL_TITLE_MODIFY, title);
+                intent2.putExtra(KEY_GL_NAME_MODIFY, gli.getName());
+                intent2.putExtra(KEY_GL_DESC_MODIFY, gli.getDesc());
+                String x2 = String.valueOf(gli.getCount());
+                intent2.putExtra(KEY_GL_COUNT_MODIFY, x2);
+                //  Toast.makeText(GLActivity.this, "" + gli.getCount(), Toast.LENGTH_SHORT).show();
+                intent2.putExtra(KEY_GL_ASC_MODIFY, gli.getAsc());
+                intent2.putExtra(KEY_GL_TITLE_MODIFY, title);
                 //intent.putExtra(KEY_GL_ASC_MODIFY,getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY));
 
                 //  startActivityForResult(intent2, REQUEST_CODE);
                 startActivity(intent2);
                 break;
-
             case 2:
+                Toast.makeText(this, "Nem implementált funkció!", Toast.LENGTH_SHORT).show();
+                break;
+            case 3:
                 deleteGL(gli);
                 break;
 
         }
 
+    }
+
+
+    public void saveImage(Uri downloadUrlOfImage) {
+        String filename = "filename.jpg";
+        String DIR_NAME = "PEDISA";
+        File direct =
+                new File(Environment
+                        .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+                        .getAbsolutePath() + "/" + DIR_NAME + "/");
+
+
+        if (!direct.exists()) {
+            direct.mkdir();
+            Toast.makeText(this, "Mappa létrehozva!", Toast.LENGTH_SHORT).show();
+        }
+
+        DownloadManager dm = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+        //Uri downloadUri = Uri.parse(downloadUrlOfImage);
+        DownloadManager.Request request = new DownloadManager.Request(downloadUrlOfImage);
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE)
+                .setAllowedOverRoaming(false)
+                .setTitle(filename)
+                .setMimeType("image/jpeg")
+                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+                .setDestinationInExternalPublicDir(Environment.DIRECTORY_PICTURES,
+                        File.separator + DIR_NAME + File.separator + filename);
+
+        dm.enqueue(request);
     }
 
 

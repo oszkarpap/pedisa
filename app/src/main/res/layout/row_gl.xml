@@ -26,10 +26,11 @@
                 android:id="@+id/txt_gl_number"
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_4sdp"
                 android:gravity="left"
+                android:padding="@dimen/_4sdp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/_6sdp" />
+
             <TextView
                 android:id="@+id/txt_gl_name"
                 android:layout_width="wrap_content"
@@ -68,16 +69,44 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="@dimen/_10sdp" />
 
-            <TextView
-                android:id="@+id/txt_gl_attr"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="start"
-                android:inputType="textMultiLine"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/_1sdp"
-                android:textStyle="normal" />
-            <LinearLayout android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/txt_gl_attr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_1sdp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/txt_gl_key"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_1sdp"
+                    android:textStyle="normal" />
+                <TextView
+                    android:id="@+id/txt_gl_asc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_1sdp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fitsSystemWindows="true"
                 android:orientation="vertical">
@@ -90,15 +119,14 @@
                     android:scrollbars="vertical" />
 
 
-
             </LinearLayout>
 
             <ImageView
-                android:elevation="@dimen/_4sdp"
-                android:padding="@dimen/_6sdp"
                 android:id="@+id/row_gl_image"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:elevation="@dimen/_4sdp"
+                android:padding="@dimen/_6sdp" />
 
 
         </LinearLayout>

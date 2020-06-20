@@ -96,7 +96,15 @@
                     app:palette="@drawable/color_column"
                     app:selector="@drawable/wheel" />
             </LinearLayout>
-
+            <Button
+                android:id="@+id/deleteGlliBTN"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:text="Elem törlése"
+                android:textColor="@color/white" />
         </LinearLayout>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

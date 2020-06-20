@@ -160,6 +160,19 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_glli_list_in_create_gl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
 
             <Button
                 android:id="@+id/createGlChooseImage"

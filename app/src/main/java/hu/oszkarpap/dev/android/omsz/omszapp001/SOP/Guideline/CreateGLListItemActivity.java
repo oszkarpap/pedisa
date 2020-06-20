@@ -1,12 +1,15 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +24,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -33,9 +38,13 @@ import com.skydoves.colorpickerpreference.ColorPickerView;
 import java.io.IOException;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.CreateSOPActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLineListItem;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLineListItemAdapter;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
 
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
+import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity.KEY_GL_ASC_MODIFY;
 
 /**
  * @author Oszkar Pap
@@ -56,12 +65,14 @@ public class CreateGLListItemActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private EditText createName, createNumber;
     private CheckBox bold, italian, underline, colored;
-    private Button createMemoryBTN;
+    private Button createMemoryBTN, deleteBTN;
     private String asc, title, color = "FFFFFF", color2 = "FFFFFF";
     private ColorPickerView colorPickerView;
     private String attr;
+    private int update = 0;
+    private String second, x;
 
-     @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -70,7 +81,44 @@ public class CreateGLListItemActivity extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         setContentView(R.layout.activity_create_glli);
+        deleteBTN = findViewById(R.id.deleteGlliBTN);
+        deleteBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CreateGLListItemActivity.this);
+                alertDialogBuilder.setMessage("Biztos törölni szeretné az elemet? ");
+                alertDialogBuilder.setPositiveButton("Vissza",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
 
+
+                            }
+                        });
+
+                alertDialogBuilder.setNegativeButton("Törlés", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        try{FirebaseDatabase.getInstance().getReference().child("glli").child(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_PARENT))
+                        .child(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_SEC_KEY)).
+                                removeValue(new DatabaseReference.CompletionListener() {
+                            @Override
+                            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                                Toast.makeText(CreateGLListItemActivity.this, "Törlés sikeres!", Toast.LENGTH_SHORT).show();
+                                finish();
+                                //Intent intent = new Intent(CreateGLListItemActivity.this, GLActivity.class);
+                                //startActivity(intent);
+                            }
+                        }); }catch (Exception e){
+                            Toast.makeText(CreateGLListItemActivity.this, "Nincs választott elem!", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        });
         createName = findViewById(R.id.createNameGlliET);
         createName.setError(getString(R.string.create_medication_name_alert), null);
         createMemoryBTN = findViewById(R.id.createGlliBTN);
@@ -82,8 +130,6 @@ public class CreateGLListItemActivity extends AppCompatActivity {
         bold.setChecked(false);
         italian.setChecked(false);
         underline.setChecked(false);
-
-
 
 
         colorPickerView = findViewById(R.id.CreateGlcolorPickerViewli);
@@ -98,31 +144,31 @@ public class CreateGLListItemActivity extends AppCompatActivity {
         });
 
 
-        asc = getIntent().getStringExtra(GLActivity.KEY_GL_ASC_MODIFY);
+
+
+        asc = getIntent().getStringExtra(KEY_GL_ASC_MODIFY);
         title = getIntent().getStringExtra(GLActivity.KEY_GL_TITLE_MODIFY);
         //Toast.makeText(this, ""+asc, Toast.LENGTH_SHORT).show();
         setTitle(getTitle() + " - Protokoll Lista");
 
 
-        setEdittextModify();
+        if (!(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_NAME) == null)) {
+            update = 1;
+            createName.setText(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_NAME));
+            createNumber.setText(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_COUNT));
+            // Toast.makeText(this, "" + update, Toast.LENGTH_SHORT).show();
+        }
+
 
         clickCreateButton();
 
     }
 
 
-
     /**
      * this method set EditText, if i can modify Medication parameters
      */
-    public void setEdittextModify() {
-        if (!(getIntent().getStringExtra(GLActivity.KEY_GL_NAME_MODIFY) == null)) {
-            createName.setText(getIntent().getStringExtra(GLActivity.KEY_GL_NAME_MODIFY));
-            createNumber.setText(getIntent().getStringExtra(GLActivity.KEY_GL_COUNT_MODIFY));
-            //Toast.makeText(this, ""+getIntent().getStringExtra(GLActivity.KEY_GL_COUNT_MODIFY), Toast.LENGTH_SHORT).show();
-        }
 
-    }
 
     /**
      * this is the click create button method
@@ -150,12 +196,13 @@ public class CreateGLListItemActivity extends AppCompatActivity {
                 }
                 try {
                     guideLineListItem.setParent(asc);
-                }catch (Exception e){
+                } catch (Exception e) {
 
-                }saveGLLI(guideLineListItem);
+                }
+                saveGLLI(guideLineListItem);
                 setResult(RESULT_OK, intent);
                 //Toast.makeText(CreateGLActivity.this, ""+attr, Toast.LENGTH_SHORT).show();
-        finish();
+                finish();
             }
         });
 
@@ -191,7 +238,7 @@ public class CreateGLListItemActivity extends AppCompatActivity {
         attr += "Y";
 
         attr += color2;
-        attr+="W";
+        attr += "W";
 
 
     }
@@ -201,16 +248,24 @@ public class CreateGLListItemActivity extends AppCompatActivity {
 
         try {
             String key;
+             second = "unkonwn";
+            if (update == 0) {
+                second = getIntent().getStringExtra(GLActivity.KEY_GL_ASC_MODIFY);
+            } else if (update == 1) {
+                second = getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_PARENT);
+                guideLineListItem.setParent(second);
+                guideLineListItem.setKey(second);
+            }
 
             key = guideLineListItem.getKey();
-            String x = key + System.currentTimeMillis();
+             x = key + System.currentTimeMillis();
+             guideLineListItem.setSecondKey(x);
 
             guideLineListItem.setKey(key);
-
-           // guideLineListItem.setAsc(x);
+            // guideLineListItem.setAsc(x);
             FirebaseDatabase.getInstance().getReference()
                     .child("glli")
-                    .child(key).child(x)
+                    .child(second).child(x)
                     .setValue(guideLineListItem)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

@@ -2,6 +2,8 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
@@ -9,6 +11,8 @@ import android.net.Uri;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -44,8 +48,11 @@ import java.util.List;
 import java.util.Timer;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.CreateSOPActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLineListItem;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLineListItemAdapter;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SingleChoiceDialogFragment;
 
 import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity.TEXTSIZE;
 
@@ -55,14 +62,15 @@ import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity.
  * This is the GL Adapter
  */
 
-public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
+public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> implements GuideLineListItemAdapter.OnItemLongClickListener {
 
 
+    public static String savedImage;
     FirebaseStorage storage = FirebaseStorage.getInstance();
     StorageReference storageRef = storage.getReference();
     private Context context;
     private List<GL> gls;
-    private List<GuideLineListItem> guideLineListItems;
+    private GuideLineListItem guideLineListItem;
     private LayoutInflater inflater;
     private OnItemLongClickListener longListener;
     private View.OnClickListener onClickListener;
@@ -98,29 +106,35 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
         holder.name.setText(gl.getName());
         holder.desc.setText(gl.getDesc());
         holder.attr.setText(gl.getAttr());
-        guideLineListItems = new ArrayList<>();
+        holder.key.setText(gl.getAsc());
+
+        //Toast.makeText(context, ""+holder.key.getText().toString(), Toast.LENGTH_SHORT).show();
+        final List<GuideLineListItem> guideLineListItems = new ArrayList<>();
         //TODO:
-        guideLineListItemAdapter = new GuideLineListItemAdapter(context,guideLineListItems);
-       // holder.recyclerViewList.setHasFixedSize(true);
-        holder.recyclerViewList.setLayoutManager(new LinearLayoutManager(context));
+        guideLineListItemAdapter = new GuideLineListItemAdapter(context, guideLineListItems, this);
+        // holder.recyclerViewList.setHasFixedSize(true);
+        holder.recyclerViewList.setLayoutManager(new LinearLayoutManager(holder.context));
         holder.recyclerViewList.setAdapter(guideLineListItemAdapter);
-       // holder.recyclerViewList.setNestedScrollingEnabled(false);
+
+        // holder.recyclerViewList.setNestedScrollingEnabled(false);
 
         //GuideLineListItem guideLineListItem = new GuideLineListItem("SAs", "SAS", "ASA", "ASA");
 
         //guideLineListItems.add(guideLineListItem);
-       // Toast.makeText(context, "ADAPTER", Toast.LENGTH_SHORT).show();
+        // Toast.makeText(context, "ADAPTER", Toast.LENGTH_SHORT).show();
 
 
-    /*    FirebaseDatabase.getInstance().getReference().child("glli").child(gl.getKey()).addChildEventListener(new ChildEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("glli").child(holder.key.getText().toString()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
                 GuideLineListItem glli = dataSnapshot.getValue(GuideLineListItem.class);
 
                 guideLineListItems.add(glli);
-                //Collections.sort(gls);
+                Collections.sort(guideLineListItems);
 
                 //}
+                // guideLineListItemAdapter.updateList(guideLineListItems);
                 guideLineListItemAdapter.notifyDataSetChanged();
 
 
@@ -147,14 +161,15 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        }); */
+        });
 
-        guideLineListItemAdapter.notifyDataSetChanged();
+        //guideLineListItemAdapter.notifyDataSetChanged();
 
 
         holder.numb.setText(String.valueOf(gl.getCount()));
-
-        storageRef.child("images/" + gl.getAsc()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        savedImage = holder.key.getText().toString();
+        //Toast.makeText(context, "" + savedImage, Toast.LENGTH_SHORT).show();
+        storageRef.child("images/" + savedImage).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
                 Picasso.get().load(uri).resize(800, 800).centerInside().onlyScaleDown().into(holder.imageView);
@@ -171,16 +186,17 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
             }
         });
 
-        new CountDownTimer(90000,1000) {
+        new CountDownTimer(90000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-               // Toast.makeText(context, "RUN", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(context, "RUN", Toast.LENGTH_SHORT).show();
                 holder.name.setTextSize(TEXTSIZE);
                 holder.desc.setTextSize(TEXTSIZE);
             }
+
             @Override
             public void onFinish() {
-               // Toast.makeText(context, "FINISH", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(context, "FINISH", Toast.LENGTH_SHORT).show();
                 holder.name.setTextSize(TEXTSIZE);
                 holder.desc.setTextSize(TEXTSIZE);
             }
@@ -189,20 +205,20 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
         holder.desc.setTextSize(TEXTSIZE);
 
         /**if (holder.attr.getText().toString().contains("W12")) {
-            holder.name.setTextSize(16);
-        } else if (holder.attr.getText().toString().contains("W14")) {
-            holder.name.setTextSize(40);
-        } else if (holder.attr.getText().toString().contains("W16")){
-            holder.name.setTextSize(60);
-        }
+         holder.name.setTextSize(16);
+         } else if (holder.attr.getText().toString().contains("W14")) {
+         holder.name.setTextSize(40);
+         } else if (holder.attr.getText().toString().contains("W16")){
+         holder.name.setTextSize(60);
+         }
 
-        if (holder.attr.getText().toString().contains("Z12")) {
-            holder.desc.setTextSize(16);
-        } else if (holder.attr.getText().toString().contains("Z14")) {
-            holder.desc.setTextSize(40);
-        } else if (holder.attr.getText().toString().contains("Z16")){
-            holder.desc.setTextSize(60);
-        } */
+         if (holder.attr.getText().toString().contains("Z12")) {
+         holder.desc.setTextSize(16);
+         } else if (holder.attr.getText().toString().contains("Z14")) {
+         holder.desc.setTextSize(40);
+         } else if (holder.attr.getText().toString().contains("Z16")){
+         holder.desc.setTextSize(60);
+         } */
 
 
         if (holder.attr.getText().toString().contains("f10")) {
@@ -274,14 +290,19 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
 
     }
 
+    @Override
+    public void onItemLongClicked(int position) {
+
+    }
+
     public interface OnItemLongClickListener {
         void onItemLongClicked(int position);
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements GuideLineListItemAdapter.OnItemLongClickListener {
 
 
-        public final TextView name, desc, attr, numb;
+        public final TextView name, desc, attr, numb, key, asc;
         public final LinearLayout linearLayout;
         public final Button arrowButton;
         public final ImageView imageView;
@@ -297,12 +318,18 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
             linearLayout = itemView.findViewById(R.id.row_gl_layout);
             //  ini = itemView.findViewById(R.id.txt_gl_iniciale);
             imageView = itemView.findViewById(R.id.row_gl_image);
+
             recyclerViewList = itemView.findViewById(R.id.recycler_view_gl_list);
             numb = itemView.findViewById(R.id.txt_gl_number);
             name = itemView.findViewById(R.id.txt_gl_name);
             desc = itemView.findViewById(R.id.txt_gl_desc);
             attr = itemView.findViewById(R.id.txt_gl_attr);
+            key = itemView.findViewById(R.id.txt_gl_key);
+            asc = itemView.findViewById(R.id.txt_gl_asc);
+            asc.setVisibility(View.INVISIBLE);
+
             attr.setVisibility(View.INVISIBLE);
+            key.setVisibility(View.INVISIBLE);
             arrowButton = itemView.findViewById(R.id.gl_row_button);
             expandableView = itemView.findViewById(R.id.expandableView);
             arrowBtn = itemView.findViewById(R.id.gl_row_button);
@@ -325,6 +352,10 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> {
         }
 
 
+        @Override
+        public void onItemLongClicked(int position) {
+
+        }
     }
 
 
