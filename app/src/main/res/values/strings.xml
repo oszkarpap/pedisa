@@ -14,7 +14,7 @@
 
 
     <string-array name="guideline_chose_dialog">
-        <item>Duplikáció</item>
+        <item>Módosítás</item>
         <item>Új listaelem hozzáadása</item>
         <item>Kép letöltése</item>
         <item>Törlés</item>

@@ -3,8 +3,8 @@
     android:id="@+id/row_guideLineListItemLinearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginRight="@dimen/_20sdp"
     android:layout_marginLeft="@dimen/_20sdp"
+    android:layout_marginRight="@dimen/_20sdp"
     android:orientation="horizontal">
 
     <TextView
@@ -14,37 +14,38 @@
 
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/_7sdp" />
+
     <TextView
         android:id="@+id/txt_glli_item"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/_10sdp" />
 
     <TextView
         android:id="@+id/txt_glli_attr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/_1sdp" />
+
+        android:textSize="@dimen/_1sdp"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/txt_glli_parent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/_7sdp" />
+        android:textSize="@dimen/_7sdp"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/txt_glli_secKey"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="@dimen/_7sdp" />
+        android:textSize="@dimen/_7sdp"
+        android:visibility="invisible" />
 
 
 </LinearLayout>

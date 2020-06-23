@@ -53,15 +53,15 @@ import static com.google.firebase.auth.FirebaseAuth.getInstance;
 public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener, SOPAdapter.OnItemClickListener {
 
     public static final int REQUEST_CODE = 999;
-    public static int SOPSearching =0;
     public static final String KEY_SOP_NAME_MODIFY = "NAME_MODIFY";
     public static final String KEY_SOP_DESC_MODIFY = "DESC_MODIFY";
     public static final String KEY_SOP_KEY_MODIFY = "KEY_MODIFY";
-    private FirebaseAuth auth;
+    public static int SOPSearching = 0;
     ExpandableListAdapter expandableListAdapter;
     ExpandableListView expandableListView;
     List<MenuModel> headerList = new ArrayList<>();
     HashMap<MenuModel, List<MenuModel>> childList = new HashMap<>();
+    private FirebaseAuth auth;
     private List<SOP> sops;
     private SOPAdapter adapter;
     private SOP sopi;
@@ -71,7 +71,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Szabványosított eljárásrendek");
-            setContentView(R.layout.activity_sop);
+        setContentView(R.layout.activity_sop);
         overridePendingTransition(R.anim.bounce, R.anim.fade_in);
         auth = getInstance();
 
@@ -103,7 +103,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         sops = new ArrayList<>();
 
         recyclerView = findViewById(R.id.recycler_view_sop);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
         //LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         //recyclerView.setLayoutManager(layoutManager);
 
@@ -223,7 +223,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         //        Toast.makeText(SOPActivity.this, "Ne módosítson adatokat keresés közben!!", Toast.LENGTH_SHORT).show();
 
 
-          //  }
+        //  }
         //});
 
         return true;
@@ -237,10 +237,14 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.createSOPMenu) {
-           // Toast.makeText(this, "Új gyógyszer felvitele MASTER funkció", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this, "Új gyógyszer felvitele MASTER funkció", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, CreateSOPActivity.class);
- //           intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+            //           intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
             startActivityForResult(intent, REQUEST_CODE);
+        }
+        if (item.getItemId() == R.id.SOPRefresh) {
+            Intent intent = new Intent(this, SOPActivity.class);
+            startActivity(intent);
         }
 
         return super.onOptionsItemSelected(item);
@@ -266,19 +270,19 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
 
         super.onActivityResult(requestCode, resultCode, data);
     }
+
     /**
      * if short click one sop show up alert dialog, and can change duplicate or delete this medication
-     *
-     * */
+     */
 
     @Override
     public void onItemClicked(final int position) {
         sopi = sops.get(position);
 
         Intent intent = new Intent(SOPActivity.this, GLActivity.class);
-  //      intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+        //      intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
         intent.putExtra(KEY_SOP_KEY_MODIFY, sopi.getKey());
-        intent.putExtra(KEY_SOP_NAME_MODIFY,sopi.getName());
+        intent.putExtra(KEY_SOP_NAME_MODIFY, sopi.getName());
         startActivity(intent);
     }
 
@@ -287,9 +291,9 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         sopi = sop;
 
         Intent intent = new Intent(SOPActivity.this, GLActivity.class);
- //       intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+        //       intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
         intent.putExtra(KEY_SOP_KEY_MODIFY, sopi.getKey());
-        intent.putExtra(KEY_SOP_NAME_MODIFY,sopi.getName());
+        intent.putExtra(KEY_SOP_NAME_MODIFY, sopi.getName());
         startActivity(intent);
     }
 
@@ -298,11 +302,10 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
      */
 
 
-
     @Override
     public void onItemLongClicked(final int position) {
-         // Toast.makeText(this, "Módosítási lehetőség csak MASTER funkció", Toast.LENGTH_SHORT).show();
-           sopi = sops.get(position);
+        // Toast.makeText(this, "Módosítási lehetőség csak MASTER funkció", Toast.LENGTH_SHORT).show();
+        sopi = sops.get(position);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("Duplikálni vagy törölni szeretné az elemet? ");
@@ -323,14 +326,14 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
                 startActivity(intent);
             }
         });
-        alertDialogBuilder.setNeutralButton("Duplikáció", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setNeutralButton("Módosítás", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(SOPActivity.this, CreateSOPActivity.class);
-   //             intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+                //             intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
                 intent.putExtra(KEY_SOP_NAME_MODIFY, sopi.getName());
                 intent.putExtra(KEY_SOP_DESC_MODIFY, sopi.getDesc());
-
+                intent.putExtra(KEY_SOP_KEY_MODIFY, sopi.getKey());
                 startActivityForResult(intent, REQUEST_CODE);
             }
         });
@@ -372,7 +375,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
 
     @Override
     public void onBackPressed() {
-        SOPSearching=0;
+        SOPSearching = 0;
         finish();
         super.onBackPressed();
     }

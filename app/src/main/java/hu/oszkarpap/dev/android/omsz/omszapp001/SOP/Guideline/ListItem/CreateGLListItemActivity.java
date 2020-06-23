@@ -1,12 +1,8 @@
-package hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline;
+package hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem;
 
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -15,33 +11,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.skydoves.colorpickerpreference.ColorEnvelope;
 import com.skydoves.colorpickerpreference.ColorListener;
 import com.skydoves.colorpickerpreference.ColorPickerView;
 
-import java.io.IOException;
-
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
-import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.CreateSOPActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLineListItem;
-import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLineListItemAdapter;
-import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity;
 
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
 import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity.KEY_GL_ASC_MODIFY;
@@ -64,7 +50,7 @@ public class CreateGLListItemActivity extends AppCompatActivity {
     StorageReference storageReference;
     private FirebaseAuth auth;
     private EditText createName, createNumber;
-    private CheckBox bold, italian, underline, colored;
+    private CheckBox  underline, colored;
     private Button createMemoryBTN, deleteBTN;
     private String asc, title, color = "FFFFFF", color2 = "FFFFFF";
     private ColorPickerView colorPickerView;
@@ -123,12 +109,9 @@ public class CreateGLListItemActivity extends AppCompatActivity {
         createName.setError(getString(R.string.create_medication_name_alert), null);
         createMemoryBTN = findViewById(R.id.createGlliBTN);
         createNumber = findViewById(R.id.createNumberGlliET);
-        bold = findViewById(R.id.CreateGllibold);
-        italian = findViewById(R.id.CreateGlliitalic);
+
         underline = findViewById(R.id.CreateGlliunderline);
         colored = findViewById(R.id.CreateGlliColor);
-        bold.setChecked(false);
-        italian.setChecked(false);
         underline.setChecked(false);
 
 
@@ -149,7 +132,7 @@ public class CreateGLListItemActivity extends AppCompatActivity {
         asc = getIntent().getStringExtra(KEY_GL_ASC_MODIFY);
         title = getIntent().getStringExtra(GLActivity.KEY_GL_TITLE_MODIFY);
         //Toast.makeText(this, ""+asc, Toast.LENGTH_SHORT).show();
-        setTitle(getTitle() + " - Protokoll Lista");
+        setTitle("Protokoll részlet listája");
 
 
         if (!(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_NAME) == null)) {
@@ -211,16 +194,9 @@ public class CreateGLListItemActivity extends AppCompatActivity {
     public void generateAttr() {
         attr = "f";
 
-        if (bold.isChecked()) {
-            attr += "1";
-        } else {
             attr += "0";
-        }
-        if (italian.isChecked()) {
-            attr += "1";
-        } else {
+
             attr += "0";
-        }
         if (underline.isChecked()) {
             attr += "1";
         } else {

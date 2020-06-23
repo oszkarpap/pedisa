@@ -1,5 +1,7 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline;
 
+import android.content.Intent;
+
 /**
  * @author Oszkar Pap
  * @version 2.0
@@ -14,13 +16,13 @@ public class GL implements Comparable<GL> {
     private String desc;
     private String asc;
     private String attr;
-    private int count;
+    private String count;
 
-    public int getCount() {
+    public String getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(String count) {
         this.count = count;
     }
 
@@ -60,7 +62,7 @@ public class GL implements Comparable<GL> {
         this.attr = attr;
     }
 
-    public GL(String key, String name, String desc, String asc, String attr, int count) {
+    public GL(String key, String name, String desc, String asc, String attr, String count) {
         this.key = key;
         this.name = name;
         this.desc = desc;
@@ -69,7 +71,7 @@ public class GL implements Comparable<GL> {
         this.count = count;
     }
 
-    public GL(Long id, String key, String name, String desc, String asc, String attr, int count) {
+    public GL(Long id, String key, String name, String desc, String asc, String attr, String count) {
         this.id = id;
         this.key = key;
         this.name = name;
@@ -157,10 +159,10 @@ public class GL implements Comparable<GL> {
 
     @Override
     public int compareTo(GL gl) {
-        if (count > (int) gl.getCount()) {
+        if ( Integer.parseInt(count) > Integer.parseInt(gl.getCount())) {
             return 1;
         }
-        else if (count < (int) gl.getCount()) {
+        else if ( Integer.parseInt(count) < Integer.parseInt(gl.getCount())) {
             return -1;
         }
         else {

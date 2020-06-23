@@ -2,11 +2,18 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.SOP;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 //import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
@@ -37,8 +44,7 @@ public class CreateSOPActivity extends AppCompatActivity {
         createName.setError(getString(R.string.create_medication_name_alert), null);
         createDesc = findViewById(R.id.createDescSopET);
         createMemoryBTN = findViewById(R.id.createSopBTN);
-        setTitle(getTitle()+" - Protokoll név és leírás");
-
+        setTitle(getTitle() + " - Protokoll név és leírás");
 
 
         setEdittextModify();
@@ -55,7 +61,7 @@ public class CreateSOPActivity extends AppCompatActivity {
         if (!(getIntent().getStringExtra(SOPActivity.KEY_SOP_NAME_MODIFY) == null)) {
             createName.setText(getIntent().getStringExtra(SOPActivity.KEY_SOP_NAME_MODIFY));
             createDesc.setText(getIntent().getStringExtra(SOPActivity.KEY_SOP_DESC_MODIFY));
-             }
+        }
 
     }
 
@@ -67,27 +73,40 @@ public class CreateSOPActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String name = createName.getText().toString();
-                String desc = createDesc.getText().toString();
 
-                Intent intent = new Intent();
+                if (!(getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY) == null)) {
+                    FirebaseDatabase.getInstance().getReference().child("sop")
+                            .child(getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY))
+                            .child("name").setValue(createName.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("sop")
+                            .child(getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY))
+                            .child("desc").setValue(createDesc.getText().toString());
 
-                intent.putExtra(KEY_NAME, name);
-                intent.putExtra(KEY_DESC, desc);
+                } else {
+                    String name = createName.getText().toString();
+                    String desc = createDesc.getText().toString();
 
-                setResult(RESULT_OK, intent);
-                SOPSearching =0;
+                    Intent intent = new Intent();
+
+                    intent.putExtra(KEY_NAME, name);
+                    intent.putExtra(KEY_DESC, desc);
+                    setResult(RESULT_OK, intent);
+
+                }
+
+
+                SOPSearching = 0;
                 finish();
 
             }
         });
 
 
-
     }
+
     @Override
     public void onBackPressed() {
-        SOPSearching =0;
+        SOPSearching = 0;
         finish();
         super.onBackPressed();
     }

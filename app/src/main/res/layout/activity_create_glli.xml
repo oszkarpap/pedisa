@@ -56,26 +56,16 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <CheckBox
-                    android:id="@+id/CreateGllibold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="félkövér" />
 
                 <CheckBox
-                    android:id="@+id/CreateGlliitalic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="dőlt"
-                    android:textStyle="" />
-
-                <CheckBox
+                    android:layout_weight="1"
                     android:id="@+id/CreateGlliunderline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="aláhúzott" />
 
                 <CheckBox
+                    android:layout_weight="1"
                     android:id="@+id/CreateGlliColor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

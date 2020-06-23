@@ -2,19 +2,14 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline;
 
 import android.app.DownloadManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -23,13 +18,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -39,9 +29,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -49,15 +36,10 @@ import com.squareup.picasso.Picasso;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
-
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
-import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLineListItem;
-import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLineListItemAdapter;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.CreateGLListItemActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SingleChoiceDialogFragment;
 //import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
@@ -80,6 +62,11 @@ public class GLActivity extends AppCompatActivity implements SingleChoiceDialogF
     public static final String KEY_GL_ASC_MODIFY = "KEY_MODIFY";
     public static final String KEY_GL_TITLE_MODIFY = "TITLE_MODIFY";
     public static final String KEY_GL_IMAGE_MODIFY = "IMAGE_MODIFY";
+
+    public static final String KEY_GL_KEY = "KGK";
+    public static final String KEY_GL_ASC = "KGA";
+    public static final String KEY_GL_ATTR = "KGATTR";
+
     public static int TEXTSIZE = 20;
 
     RecyclerView recyclerView;
@@ -110,29 +97,32 @@ public class GLActivity extends AppCompatActivity implements SingleChoiceDialogF
             Toast.makeText(this, "A Firebase újratöltődik!", Toast.LENGTH_SHORT).show();
 
         }
-
-        //TODO:
-        storageRef.child("images/" + savedImage).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).resize(800, 800).centerInside().onlyScaleDown();
+        try {
+            //TODO:
+            storageRef.child("images/" + savedImage).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.get().load(uri).resize(800, 800).centerInside().onlyScaleDown();
                     saveImage(uri);
-                // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
 
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                //  Toast.makeText(context, "Sikertelen "+exception.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    //  Toast.makeText(context, "Sikertelen "+exception.getMessage(), Toast.LENGTH_SHORT).show();
 
 
-            }
-        });
+                }
+            });
+        } catch (Exception e) {
+        }
 
         SOPKey = getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY);
         //Toast.makeText(this, ""+ SOPKey, Toast.LENGTH_SHORT).show();
         title = getIntent().getStringExtra(SOPActivity.KEY_SOP_NAME_MODIFY);
         setTitle(title);
+
 
         gls = new ArrayList<>();
 
@@ -360,6 +350,7 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
         if (requestCode == REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 title = data.getStringExtra(CreateGLActivity.KEY_TITLE);
+
                 setTitle(title);
                 String name = data.getStringExtra(CreateGLActivity.KEY_NAME);
                 String desc = data.getStringExtra(CreateGLActivity.KEY_DESC);
@@ -466,7 +457,9 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
                 intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
                 intent.putExtra(KEY_GL_TITLE_MODIFY, title);
                 //intent.putExtra(KEY_GL_ASC_MODIFY,getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY));
-
+                intent.putExtra(KEY_GL_KEY, gli.getKey());
+                intent.putExtra(KEY_GL_ASC, gli.getAsc());
+                intent.putExtra(KEY_GL_ATTR, gli.getAttr());
                 startActivityForResult(intent, REQUEST_CODE);
                 break;
             case 1:

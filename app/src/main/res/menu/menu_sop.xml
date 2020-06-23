@@ -6,9 +6,13 @@
     <item
         android:id="@+id/createSOPMenu"
         android:icon="@drawable/ic__add_24"
-        app:showAsAction="always"
-        android:title="ADD" />
-
+        android:title="ADD"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/SOPRefresh"
+        android:icon="@drawable/ic_refresh_black_24dp"
+        android:title="Reload"
+        app:showAsAction="always" />
 
 
 </menu>

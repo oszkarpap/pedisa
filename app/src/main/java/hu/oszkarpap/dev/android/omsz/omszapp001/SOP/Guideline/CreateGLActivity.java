@@ -5,6 +5,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -70,7 +72,7 @@ public class CreateGLActivity extends AppCompatActivity {
     private EditText createName, createDesc, createNumber;
     private CheckBox bold, italian, underline, colored, bold2, italian2, underline2, colored2;
     private Button createMemoryBTN, choeserBtn, uploadBtn;
-    private String asc, title, color = "FFFFFF", color2 = "FFFFFF";
+    private String asc, title, color = "FFFFFF", color2 = "FFFFFF", getAttr;
     private ColorPickerView colorPickerView, colorPickerView2;
     private String attr;
     private ImageView imageView;
@@ -88,6 +90,7 @@ public class CreateGLActivity extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         setContentView(R.layout.activity_create_gl);
+        getAttr = getIntent().getStringExtra(GLActivity.KEY_GL_ATTR);
 
         createName = findViewById(R.id.createNameGlET);
         createName.setError(getString(R.string.create_medication_name_alert), null);
@@ -111,7 +114,7 @@ public class CreateGLActivity extends AppCompatActivity {
         bold2.setChecked(false);
         italian.setChecked(false);
         underline2.setChecked(false);
-
+        getAttrFunction();
         choeserBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,7 +153,7 @@ public class CreateGLActivity extends AppCompatActivity {
         asc = getIntent().getStringExtra(GLActivity.KEY_GL_ASC_MODIFY);
         title = getIntent().getStringExtra(GLActivity.KEY_GL_TITLE_MODIFY);
         //Toast.makeText(this, ""+asc, Toast.LENGTH_SHORT).show();
-        setTitle(getTitle() + " - Protokoll részlet név és kifejtés");
+        setTitle("Protokoll részlet név és kifejtés");
 
 
         setEdittextModify();
@@ -232,8 +235,8 @@ public class CreateGLActivity extends AppCompatActivity {
                 && data != null && data.getData() != null) {
             filePath = data.getData();
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                imageView.setImageBitmap(bitmap);
+               Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                Picasso.get().load(filePath).resize(800, 800).centerInside().onlyScaleDown().into(imageView);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -275,11 +278,36 @@ public class CreateGLActivity extends AppCompatActivity {
                 gl.setKey(asc);
                 gl.setAttr(attr);
                 try {
-                    gl.setCount(Integer.parseInt(createNumber.getText().toString()));
+                    gl.setCount(createNumber.getText().toString());
                 } catch (Exception e) {
 
                 }
-                saveGL(gl);
+                if (!(getIntent().getStringExtra(GLActivity.KEY_GL_KEY) == null)) {
+                    FirebaseDatabase.getInstance().getReference().child("gl")
+                            .child(getIntent().getStringExtra(GLActivity.KEY_GL_KEY))
+                            .child(getIntent().getStringExtra(GLActivity.KEY_GL_ASC)).
+                            child("name")
+                            .setValue(createName.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("gl")
+                            .child(getIntent().getStringExtra(GLActivity.KEY_GL_KEY))
+                            .child(getIntent().getStringExtra(GLActivity.KEY_GL_ASC)).
+                            child("desc")
+                            .setValue(createDesc.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("gl")
+                            .child(getIntent().getStringExtra(GLActivity.KEY_GL_KEY))
+                            .child(getIntent().getStringExtra(GLActivity.KEY_GL_ASC)).
+                            child("count")
+                            .setValue(createNumber.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("gl")
+                            .child(getIntent().getStringExtra(GLActivity.KEY_GL_KEY))
+                            .child(getIntent().getStringExtra(GLActivity.KEY_GL_ASC)).
+                            child("attr")
+                            .setValue(attr);
+                    uploadImage(getIntent().getStringExtra(GLActivity.KEY_GL_ASC));
+                } else {
+                    saveGL(gl);
+                }
+
                 setResult(RESULT_OK, intent);
                 //Toast.makeText(CreateGLActivity.this, ""+attr, Toast.LENGTH_SHORT).show();
                 if (filePath == null) {
@@ -372,6 +400,41 @@ public class CreateGLActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public void getAttrFunction() {
+        if(!(getAttr==null)) {
+            if (getAttr.contains("f10")) {
+                bold.setChecked(true);
+            } else if (getAttr.contains("f01")) {
+                italian.setChecked(true);
+            } else if (getAttr.contains("f11")) {
+                bold.setChecked(true);
+                italian.setChecked(true);
+            } else {
+
+            }
+
+
+            if (getAttr.contains("s10")) {
+                bold2.setChecked(true);
+            } else if (getAttr.contains("s01")) {
+                italian2.setChecked(true);
+            } else if (getAttr.contains("s11")) {
+                bold2.setChecked(true);
+                italian2.setChecked(true);
+            } else {
+
+            }
+
+            if (getAttr.contains("1s")) {
+                underline.setChecked(true);
+            }
+
+            if (getAttr.contains("1X")) {
+                underline2.setChecked(true);
+            }
+        }
     }
 
 

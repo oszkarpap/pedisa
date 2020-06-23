@@ -2,44 +2,26 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.net.Uri;
 import android.os.CountDownTimer;
-import android.provider.CalendarContract;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
-import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.CreateSOPActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.CreateGLActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.CreateGLListItemActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GL;
-import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLAdapter;
-import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
 
 import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity.TEXTSIZE;
 
@@ -86,6 +68,7 @@ public class GuideLineListItemAdapter extends RecyclerView.Adapter<GuideLineList
         //guideLineListItemAdapter.notifyDataSetChanged();
 
         holder.item.setText(" • " + guideLineListItem.getItem());
+
         holder.attr.setText(guideLineListItem.getAttributum());
         holder.count.setText("("+String.valueOf(guideLineListItem.getCount())+")");
         holder.parent.setText(guideLineListItem.getParent());
@@ -96,8 +79,9 @@ public class GuideLineListItemAdapter extends RecyclerView.Adapter<GuideLineList
                 //Toast.makeText(context, "BÖFF"+holder.item.getText()+"\n"+holder.attr.getText()+"\n"+holder.count.getText(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, CreateGLListItemActivity.class);
                 String temp = holder.item.getText().toString().replaceFirst(" • ", "");
+                String temp2 = holder.count.getText().toString().replace("(","").replace(")","");
                 intent.putExtra(LIST_ITEM_NAME, temp);
-                intent.putExtra(LIST_ITEM_COUNT, holder.count.getText());
+                intent.putExtra(LIST_ITEM_COUNT, temp2);
                 intent.putExtra(LIST_ITEM_PARENT, holder.parent.getText());
                 intent.putExtra(LIST_ITEM_SEC_KEY, holder.secKey.getText());
                 context.startActivity(intent);

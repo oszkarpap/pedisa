@@ -18,10 +18,11 @@
         <activity android:name=".right.medication.CheckMedActivity" />
         <activity
             android:name=".SOP.Guideline.GLActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:label="Protokoll kifejtése"/>
         <activity android:name=".SOP.CreateSOPActivity" />
         <activity android:name=".SOP.Guideline.CreateGLActivity" />
-        <activity android:name=".SOP.Guideline.CreateGLListItemActivity" />
+        <activity android:name=".SOP.Guideline.ListItem.CreateGLListItemActivity" />
         <activity
             android:name=".main.MainActivity"
             android:label="@string/app_name"
