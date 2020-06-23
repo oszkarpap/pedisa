@@ -3,6 +3,7 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline;
 import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
@@ -12,6 +13,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -47,6 +49,7 @@ import java.io.File;
 import java.io.IOException;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.CreateSOPActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
 
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
@@ -71,7 +74,7 @@ public class CreateGLActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private EditText createName, createDesc, createNumber;
     private CheckBox bold, italian, underline, colored, bold2, italian2, underline2, colored2;
-    private Button createMemoryBTN, choeserBtn, uploadBtn;
+    private Button createMemoryBTN, choeserBtn, deleteImageBtn;
     private String asc, title, color = "FFFFFF", color2 = "FFFFFF", getAttr;
     private ColorPickerView colorPickerView, colorPickerView2;
     private String attr;
@@ -98,7 +101,7 @@ public class CreateGLActivity extends AppCompatActivity {
         createMemoryBTN = findViewById(R.id.createGlBTN);
         createNumber = findViewById(R.id.createNumberGlET);
         choeserBtn = findViewById(R.id.createGlChooseImage);
-        //uploadBtn = findViewById(R.id.createGlUploadImage);
+        deleteImageBtn = findViewById(R.id.createGlDeleteImage);
         imageView = findViewById(R.id.createGlimage);
         bold = findViewById(R.id.CreateGlbold);
         italian = findViewById(R.id.CreateGlitalic);
@@ -127,7 +130,34 @@ public class CreateGLActivity extends AppCompatActivity {
         uploadImage();
         }
         });*/
+        deleteImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CreateGLActivity.this);
+                alertDialogBuilder.setMessage("Biztos, hogy törölni akarja a felhőből a képet?");
+                alertDialogBuilder.setPositiveButton("Vissza",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+
+
+                            }
+                        });
+
+                alertDialogBuilder.setNegativeButton("Törlés", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        StorageReference ref = storageReference.child("images/" + getIntent().getStringExtra(GLActivity.KEY_GL_ASC));
+                        ref.delete();
+                        Toast.makeText(CreateGLActivity.this, "Kép törölve a Firebase felhőből!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+
+            }
+        });
         colorPickerView = findViewById(R.id.CreateGlcolorPickerView);
         colorPickerView.setColorListener(new ColorListener() {
             @Override
@@ -235,7 +265,7 @@ public class CreateGLActivity extends AppCompatActivity {
                 && data != null && data.getData() != null) {
             filePath = data.getData();
             try {
-               Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 Picasso.get().load(filePath).resize(800, 800).centerInside().onlyScaleDown().into(imageView);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -403,7 +433,7 @@ public class CreateGLActivity extends AppCompatActivity {
     }
 
     public void getAttrFunction() {
-        if(!(getAttr==null)) {
+        if (!(getAttr == null)) {
             if (getAttr.contains("f10")) {
                 bold.setChecked(true);
             } else if (getAttr.contains("f01")) {

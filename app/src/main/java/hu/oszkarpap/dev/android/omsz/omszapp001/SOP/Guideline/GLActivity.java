@@ -103,7 +103,7 @@ public class GLActivity extends AppCompatActivity implements SingleChoiceDialogF
                 @Override
                 public void onSuccess(Uri uri) {
                     Picasso.get().load(uri).resize(800, 800).centerInside().onlyScaleDown();
-                    saveImage(uri);
+                    //saveImage(uri);
                     // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
 
                 }
@@ -490,7 +490,7 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
     }
 
 
-    public void saveImage(Uri downloadUrlOfImage) {
+/*    public void saveImage(Uri downloadUrlOfImage) {
         String filename = "filename.jpg";
         String DIR_NAME = "PEDISA";
         File direct =
@@ -516,7 +516,7 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
                         File.separator + DIR_NAME + File.separator + filename);
 
         dm.enqueue(request);
-    }
+    } */
 
 
     @Override
