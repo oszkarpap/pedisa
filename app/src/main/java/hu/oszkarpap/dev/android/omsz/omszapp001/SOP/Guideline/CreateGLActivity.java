@@ -161,7 +161,7 @@ public class CreateGLActivity extends AppCompatActivity {
         clickCreateButton();
         //Toast.makeText(this, ""+getIntent().getStringExtra(GLActivity.KEY_GL_IMAGE_MODIFY), Toast.LENGTH_SHORT).show();
         try {
-            storageReference.child("images/" + getIntent().getStringExtra(GLActivity.KEY_GL_IMAGE_MODIFY)).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            storageReference.child("images/" + getIntent().getStringExtra(GLActivity.KEY_GL_ASC)).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
 
                 public void onSuccess(Uri uri) {

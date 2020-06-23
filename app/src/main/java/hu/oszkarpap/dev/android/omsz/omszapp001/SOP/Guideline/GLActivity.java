@@ -451,7 +451,7 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
                 intent.putExtra(KEY_GL_NAME_MODIFY, gli.getName());
                 intent.putExtra(KEY_GL_DESC_MODIFY, gli.getDesc());
                 String x = String.valueOf(gli.getCount());
-                intent.putExtra(KEY_GL_IMAGE_MODIFY, savedImage);
+               // intent.putExtra(KEY_GL_IMAGE_MODIFY, savedImage);
                 intent.putExtra(KEY_GL_COUNT_MODIFY, x);
                 // Toast.makeText(GLActivity.this, "" + gli.getCount(), Toast.LENGTH_SHORT).show();
                 intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
