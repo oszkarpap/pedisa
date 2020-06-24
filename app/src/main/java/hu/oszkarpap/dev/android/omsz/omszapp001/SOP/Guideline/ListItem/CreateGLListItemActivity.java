@@ -51,7 +51,7 @@ public class CreateGLListItemActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private EditText createName, createNumber;
     private CheckBox  underline, colored;
-    private Button createMemoryBTN, deleteBTN;
+    private Button createBTN, deleteBTN;
     private String asc, title, color = "FFFFFF", color2 = "FFFFFF";
     private ColorPickerView colorPickerView;
     private String attr;
@@ -107,7 +107,8 @@ public class CreateGLListItemActivity extends AppCompatActivity {
         });
         createName = findViewById(R.id.createNameGlliET);
         createName.setError(getString(R.string.create_medication_name_alert), null);
-        createMemoryBTN = findViewById(R.id.createGlliBTN);
+        createBTN = findViewById(R.id.createGlliBTN);
+        createBTN.setText("Elem mentése");
         createNumber = findViewById(R.id.createNumberGlliET);
 
         underline = findViewById(R.id.CreateGlliunderline);
@@ -157,7 +158,7 @@ public class CreateGLListItemActivity extends AppCompatActivity {
      * this is the click create button method
      */
     public void clickCreateButton() {
-        createMemoryBTN.setOnClickListener(new View.OnClickListener() {
+        createBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -173,7 +174,7 @@ public class CreateGLListItemActivity extends AppCompatActivity {
                 guideLineListItem.setKey(asc);
                 guideLineListItem.setAttributum(attr);
                 try {
-                    guideLineListItem.setCount(Integer.parseInt(createNumber.getText().toString()));
+                    guideLineListItem.setCount(createNumber.getText().toString());
                 } catch (Exception e) {
 
                 }
@@ -224,20 +225,27 @@ public class CreateGLListItemActivity extends AppCompatActivity {
 
         try {
             String key;
+            key = guideLineListItem.getKey();
              second = "unkonwn";
             if (update == 0) {
                 second = getIntent().getStringExtra(GLActivity.KEY_GL_ASC_MODIFY);
+                x = key + System.currentTimeMillis();
+                guideLineListItem.setSecondKey(x);
+                guideLineListItem.setKey(key);
             } else if (update == 1) {
                 second = getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_PARENT);
                 guideLineListItem.setParent(second);
                 guideLineListItem.setKey(second);
+
+                guideLineListItem.setCount(createNumber.getText().toString());
+                x = getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_SEC_KEY);
+                guideLineListItem.setSecondKey(x);
             }
 
-            key = guideLineListItem.getKey();
-             x = key + System.currentTimeMillis();
-             guideLineListItem.setSecondKey(x);
 
-            guideLineListItem.setKey(key);
+
+
+
             // guideLineListItem.setAsc(x);
             FirebaseDatabase.getInstance().getReference()
                     .child("glli")

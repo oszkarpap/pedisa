@@ -10,7 +10,7 @@ import android.content.Intent;
 
 
 public class GL implements Comparable<GL> {
-    private Long id;
+   // private Long id;
     private String key;
     private String name;
     private String desc;
@@ -54,15 +54,12 @@ public class GL implements Comparable<GL> {
         this.desc = desc;
     }
 
-    public GL(Long id, String key, String name, String desc, String attr) {
-        this.id = id;
-        this.key = key;
-        this.name = name;
-        this.desc = desc;
-        this.attr = attr;
-    }
+
+
+
 
     public GL(String key, String name, String desc, String asc, String attr, String count) {
+
         this.key = key;
         this.name = name;
         this.desc = desc;
@@ -71,24 +68,7 @@ public class GL implements Comparable<GL> {
         this.count = count;
     }
 
-    public GL(Long id, String key, String name, String desc, String asc, String attr, String count) {
-        this.id = id;
-        this.key = key;
-        this.name = name;
-        this.desc = desc;
-        this.asc = asc;
-        this.attr = attr;
-        this.count = count;
-    }
 
-    public GL(Long id, String key, String name, String desc, String asc, String attr) {
-        this.id = id;
-        this.key = key;
-        this.name = name;
-        this.desc = desc;
-        this.asc = asc;
-        this.attr = attr;
-    }
 
     public GL(String key, String name, String desc, String asc, String attr) {
         this.key = key;
@@ -105,18 +85,9 @@ public class GL implements Comparable<GL> {
         this.asc = asc;
     }
 
-    public GL(Long id, String name, String desc, String asc) {
-        this.id = id;
-        this.name = name;
-        this.desc = desc;
-        this.asc = asc;
-    }
 
-    public GL(Long id, String name, String desc) {
-        this.id = id;
-        this.name = name;
-        this.desc = desc;
-    }
+
+
 
     public GL(String name, String desc) {
         this.name = name;
@@ -132,13 +103,7 @@ public class GL implements Comparable<GL> {
         this.key = key;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

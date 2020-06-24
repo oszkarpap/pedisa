@@ -3,6 +3,7 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline;
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -40,6 +41,7 @@ import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.CreateGLListItemActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOP;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SingleChoiceDialogFragment;
 //import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
@@ -68,6 +70,7 @@ public class GLActivity extends AppCompatActivity implements SingleChoiceDialogF
     public static final String KEY_GL_ATTR = "KGATTR";
 
     public static int TEXTSIZE = 20;
+    public static int ShowNumber = 1;
 
     RecyclerView recyclerView;
     FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -120,7 +123,11 @@ public class GLActivity extends AppCompatActivity implements SingleChoiceDialogF
 
         SOPKey = getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY);
         //Toast.makeText(this, ""+ SOPKey, Toast.LENGTH_SHORT).show();
-        title = getIntent().getStringExtra(SOPActivity.KEY_SOP_NAME_MODIFY);
+        title = "   Eljárásrend";
+        if (!(getIntent().getStringExtra(SOPActivity.KEY_SOP_NAME_MODIFY) == null)) {
+            title = getIntent().getStringExtra(SOPActivity.KEY_SOP_NAME_MODIFY);
+        }
+
         setTitle(title);
 
 
@@ -182,9 +189,14 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
         FirebaseDatabase.getInstance().getReference().child("gl").child(SOPKey).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                GL gl = dataSnapshot.getValue(GL.class);
-
-
+                GL gl = new GL();
+                gl.setKey(dataSnapshot.child("key").getValue().toString());
+                gl.setName(dataSnapshot.child("name").getValue().toString());
+                gl.setAsc(dataSnapshot.child("asc").getValue().toString());
+                gl.setDesc(dataSnapshot.child("desc").getValue().toString());
+                gl.setCount(dataSnapshot.child("count").getValue().toString());
+                gl.setAttr(dataSnapshot.child("attr").getValue().toString());
+                //Toast.makeText(GLActivity.this, ""+gl.getName(), Toast.LENGTH_SHORT).show();
                 //if(gl.getAsc().equals(SOPKey)){
                 gls.add(gl);
                 Collections.sort(gls);
@@ -202,7 +214,13 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                GL gl = dataSnapshot.getValue(GL.class);
+                GL gl = new GL();
+                gl.setKey(dataSnapshot.child("key").getValue().toString());
+                gl.setName(dataSnapshot.child("name").getValue().toString());
+                gl.setAsc(dataSnapshot.child("asc").getValue().toString());
+                gl.setDesc(dataSnapshot.child("desc").getValue().toString());
+                gl.setCount(dataSnapshot.child("count").getValue().toString());
+                gl.setAttr(dataSnapshot.child("attr").getValue().toString());
                 gls.remove(gl);
                 adapter.notifyDataSetChanged();
             }
@@ -336,6 +354,8 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
             }
 
             // Toast.makeText(this, ""+TEXTSIZE, Toast.LENGTH_SHORT).show();
+        } else if (item.getItemId() == R.id.ShowListNumberGlMenu) {
+            ShowNumber++;
         }
 
         return super.onOptionsItemSelected(item);
@@ -451,7 +471,7 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
                 intent.putExtra(KEY_GL_NAME_MODIFY, gli.getName());
                 intent.putExtra(KEY_GL_DESC_MODIFY, gli.getDesc());
                 String x = String.valueOf(gli.getCount());
-               // intent.putExtra(KEY_GL_IMAGE_MODIFY, savedImage);
+                // intent.putExtra(KEY_GL_IMAGE_MODIFY, savedImage);
                 intent.putExtra(KEY_GL_COUNT_MODIFY, x);
                 // Toast.makeText(GLActivity.this, "" + gli.getCount(), Toast.LENGTH_SHORT).show();
                 intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);

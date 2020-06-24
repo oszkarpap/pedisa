@@ -54,6 +54,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLine
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SingleChoiceDialogFragment;
 
+import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity.ShowNumber;
 import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity.TEXTSIZE;
 
 /**
@@ -128,9 +129,17 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> implem
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                GuideLineListItem glli = dataSnapshot.getValue(GuideLineListItem.class);
+                //GuideLineListItem glli = dataSnapshot.getValue(GuideLineListItem.class);
 
-                guideLineListItems.add(glli);
+                GuideLineListItem guideLineListItem = new GuideLineListItem();
+                guideLineListItem.setKey(dataSnapshot.child("key").getValue().toString());
+                guideLineListItem.setAttributum(dataSnapshot.child("attributum").getValue().toString());
+                guideLineListItem.setItem(dataSnapshot.child("item").getValue().toString());
+                guideLineListItem.setCount(dataSnapshot.child("count").getValue().toString());
+                guideLineListItem.setParent(dataSnapshot.child("parent").getValue().toString());
+                guideLineListItem.setSecondKey(dataSnapshot.child("secondKey").getValue().toString());
+                //Toast.makeText(context, ""+guideLineListItem.getItem(), Toast.LENGTH_SHORT).show();
+                guideLineListItems.add(guideLineListItem);
                 Collections.sort(guideLineListItems);
 
                 //}
@@ -147,8 +156,14 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> implem
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                GuideLineListItem glli = dataSnapshot.getValue(GuideLineListItem.class);
-                guideLineListItems.remove(glli);
+                GuideLineListItem guideLineListItem = new GuideLineListItem();
+                guideLineListItem.setKey(dataSnapshot.child("key").getValue().toString());
+                guideLineListItem.setAttributum(dataSnapshot.child("attributum").getValue().toString());
+                guideLineListItem.setItem(dataSnapshot.child("item").getValue().toString());
+                guideLineListItem.setCount(dataSnapshot.child("count").getValue().toString());
+                guideLineListItem.setParent(dataSnapshot.child("parent").getValue().toString());
+                guideLineListItem.setSecondKey(dataSnapshot.child("secondKey").getValue().toString());
+                guideLineListItems.remove(guideLineListItem);
                 guideLineListItemAdapter.notifyDataSetChanged();
             }
 
@@ -192,6 +207,10 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> implem
                 // Toast.makeText(context, "RUN", Toast.LENGTH_SHORT).show();
                 holder.name.setTextSize(TEXTSIZE);
                 holder.desc.setTextSize(TEXTSIZE);
+                if(ShowNumber%2 == 0){
+                holder.numb.setVisibility(View.INVISIBLE);}else{
+                    holder.numb.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -199,6 +218,10 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> implem
                 // Toast.makeText(context, "FINISH", Toast.LENGTH_SHORT).show();
                 holder.name.setTextSize(TEXTSIZE);
                 holder.desc.setTextSize(TEXTSIZE);
+                if(ShowNumber%2 == 0){
+                    holder.numb.setVisibility(View.INVISIBLE);}else{
+                    holder.numb.setVisibility(View.VISIBLE);
+                }
             }
         }.start();
         holder.name.setTextSize(TEXTSIZE);

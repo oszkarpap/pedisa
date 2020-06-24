@@ -23,6 +23,7 @@ import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 
+import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity.ShowNumber;
 import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity.TEXTSIZE;
 
 /**
@@ -99,12 +100,21 @@ public class GuideLineListItemAdapter extends RecyclerView.Adapter<GuideLineList
             public void onTick(long millisUntilFinished) {
                 // Toast.makeText(context, "RUN", Toast.LENGTH_SHORT).show();
                 holder.item.setTextSize(TEXTSIZE);
+
+                if(ShowNumber%2 == 0){
+                    holder.count.setVisibility(View.INVISIBLE);}else{
+                    holder.count.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
             public void onFinish() {
                 // Toast.makeText(context, "FINISH", Toast.LENGTH_SHORT).show();
                 holder.item.setTextSize(TEXTSIZE);
+                if(ShowNumber%2 == 0){
+                    holder.count.setVisibility(View.INVISIBLE);}else{
+                    holder.count.setVisibility(View.VISIBLE);
+                }
             }
         }.start();
         holder.item.setTextSize(TEXTSIZE);

@@ -4,13 +4,13 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GL;
 
 public class GuideLineListItem implements Comparable<GuideLineListItem>{
 
-    private Long id;
+
     private String key;
     private String item;
     private String parent;
     private String attributum;
     private String secondKey;
-    private int count;
+    private String count;
 
     public String getSecondKey() {
         return secondKey;
@@ -20,11 +20,11 @@ public class GuideLineListItem implements Comparable<GuideLineListItem>{
         this.secondKey = secondKey;
     }
 
-    public int getCount() {
+    public String getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(String count) {
         this.count = count;
     }
 
@@ -37,17 +37,9 @@ public class GuideLineListItem implements Comparable<GuideLineListItem>{
     }
     public GuideLineListItem(){}
 
-    public GuideLineListItem(String key, int count, String item, String parent, String attributum, String secondKey) {
-        this.item = item;
-        this.parent = parent;
-        this.attributum = attributum;
-        this.key = key;
-        this.count = count;
-        this.secondKey = secondKey;
-    }
 
-    public GuideLineListItem(Long id, String key, int count, String item, String parent, String attributum, String secondKey) {
-        this.id = id;
+    public GuideLineListItem(String key, String count, String item, String parent, String attributum, String secondKey) {
+
         this.item = item;
         this.parent = parent;
         this.attributum = attributum;
@@ -64,13 +56,7 @@ public class GuideLineListItem implements Comparable<GuideLineListItem>{
         this.attributum = attributum;
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getItem() {
         return item;
@@ -92,10 +78,10 @@ public class GuideLineListItem implements Comparable<GuideLineListItem>{
 
     @Override
     public int compareTo(GuideLineListItem o) {
-        if (count > (int) o.getCount()) {
+        if (Integer.parseInt(count) > Integer.parseInt( o.getCount())) {
             return 1;
         }
-        else if (count < (int) o.getCount()) {
+        else if (Integer.parseInt(count) < Integer.parseInt( o.getCount()))  {
             return -1;
         }
         else {

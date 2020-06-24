@@ -74,7 +74,7 @@ public class CreateGLActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private EditText createName, createDesc, createNumber;
     private CheckBox bold, italian, underline, colored, bold2, italian2, underline2, colored2;
-    private Button createMemoryBTN, choeserBtn, deleteImageBtn;
+    private Button createBTN, choeserBtn, deleteImageBtn;
     private String asc, title, color = "FFFFFF", color2 = "FFFFFF", getAttr;
     private ColorPickerView colorPickerView, colorPickerView2;
     private String attr;
@@ -98,7 +98,8 @@ public class CreateGLActivity extends AppCompatActivity {
         createName = findViewById(R.id.createNameGlET);
         createName.setError(getString(R.string.create_medication_name_alert), null);
         createDesc = findViewById(R.id.createDescGlET);
-        createMemoryBTN = findViewById(R.id.createGlBTN);
+        createBTN = findViewById(R.id.createGlBTN);
+        createBTN.setText("Elem mentése");
         createNumber = findViewById(R.id.createNumberGlET);
         choeserBtn = findViewById(R.id.createGlChooseImage);
         deleteImageBtn = findViewById(R.id.createGlDeleteImage);
@@ -291,7 +292,7 @@ public class CreateGLActivity extends AppCompatActivity {
      * this is the click create button method
      */
     public void clickCreateButton() {
-        createMemoryBTN.setOnClickListener(new View.OnClickListener() {
+        createBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

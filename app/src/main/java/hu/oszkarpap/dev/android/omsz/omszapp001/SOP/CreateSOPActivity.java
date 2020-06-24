@@ -44,6 +44,7 @@ public class CreateSOPActivity extends AppCompatActivity {
         createName.setError(getString(R.string.create_medication_name_alert), null);
         createDesc = findViewById(R.id.createDescSopET);
         createMemoryBTN = findViewById(R.id.createSopBTN);
+        createMemoryBTN.setText("Mentés");
         setTitle(getTitle() + " - Protokoll név és leírás");
 
 
