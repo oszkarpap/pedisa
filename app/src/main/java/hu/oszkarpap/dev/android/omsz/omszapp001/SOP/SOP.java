@@ -12,6 +12,7 @@ public class SOP {
     private String key;
     private String name;
     private String desc;
+    private String icon;
 
     public SOP(String name) {
     }
@@ -19,16 +20,30 @@ public class SOP {
     public SOP() {
     }
 
-    public SOP(Long id, String name, String desc) {
+    public SOP(Long id, String name, String desc, String icon) {
         this.id = id;
         this.name = name;
         this.desc = desc;
+        this.icon = icon;
     }
 
+    public SOP(String name, String desc, String icon) {
+        this.name = name;
+        this.desc = desc;
+        this.icon = icon;
+
+    }
     public SOP(String name, String desc) {
         this.name = name;
         this.desc = desc;
 
+    }
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
     public String getKey() {
@@ -62,8 +77,6 @@ public class SOP {
     public void setDesc(String desc) {
         this.desc = desc;
     }
-
-
 
 
 }

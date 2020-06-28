@@ -3,8 +3,8 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    card_view:cardCornerRadius="6dp"
     card_view:cardBackgroundColor="@color/glCardview"
+    card_view:cardCornerRadius="6dp"
     card_view:cardElevation="3dp"
     card_view:cardUseCompatPadding="true">
 
@@ -18,28 +18,33 @@
 
         <ImageView
             android:id="@+id/row_sop_icon"
-            android:layout_width="@dimen/_70sdp"
-            android:layout_height="@dimen/_70sdp"
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
             android:layout_gravity="center"
-            android:layout_margin="12dp"
-            android:background="@drawable/healthcare_and_medical" />
+            android:layout_margin="@dimen/_4sdp"
+            android:background="@drawable/icon_cross_six" />
 
 
         <TextView
             android:id="@+id/txt_sop_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/text_black"
             android:gravity="center"
-            android:textSize="@dimen/_18sdp" />
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/_16sdp" />
 
         <TextView
             android:id="@+id/txt_sop_desc"
             android:layout_width="match_parent"
-            android:gravity="center"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:textColor="@color/text_green"
             android:textSize="@dimen/_10sdp" />
+
+        <TextView
+            android:id="@+id/txt_sop_icon"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
 
 
     </LinearLayout>

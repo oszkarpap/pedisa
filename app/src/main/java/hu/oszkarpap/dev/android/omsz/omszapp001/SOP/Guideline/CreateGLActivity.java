@@ -296,55 +296,61 @@ public class CreateGLActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                generateAttr();
-
-                Intent intent = new Intent();
-                //Toast.makeText(CreateGLActivity.this, ""+attr, Toast.LENGTH_SHORT).show();
-                intent.putExtra(KEY_ASC, asc);
-                intent.putExtra(KEY_TITLE, title);
-                intent.putExtra(KEY_ATTR, attr);
-                GL gl = new GL();
-                gl.setName(createName.getText().toString());
-                gl.setDesc(createDesc.getText().toString());
-                gl.setKey(asc);
-                gl.setAttr(attr);
-                try {
-                    gl.setCount(createNumber.getText().toString());
-                } catch (Exception e) {
-
-                }
-                if (!(getIntent().getStringExtra(GLActivity.KEY_GL_KEY) == null)) {
-                    FirebaseDatabase.getInstance().getReference().child("gl")
-                            .child(getIntent().getStringExtra(GLActivity.KEY_GL_KEY))
-                            .child(getIntent().getStringExtra(GLActivity.KEY_GL_ASC)).
-                            child("name")
-                            .setValue(createName.getText().toString());
-                    FirebaseDatabase.getInstance().getReference().child("gl")
-                            .child(getIntent().getStringExtra(GLActivity.KEY_GL_KEY))
-                            .child(getIntent().getStringExtra(GLActivity.KEY_GL_ASC)).
-                            child("desc")
-                            .setValue(createDesc.getText().toString());
-                    FirebaseDatabase.getInstance().getReference().child("gl")
-                            .child(getIntent().getStringExtra(GLActivity.KEY_GL_KEY))
-                            .child(getIntent().getStringExtra(GLActivity.KEY_GL_ASC)).
-                            child("count")
-                            .setValue(createNumber.getText().toString());
-                    FirebaseDatabase.getInstance().getReference().child("gl")
-                            .child(getIntent().getStringExtra(GLActivity.KEY_GL_KEY))
-                            .child(getIntent().getStringExtra(GLActivity.KEY_GL_ASC)).
-                            child("attr")
-                            .setValue(attr);
-                    uploadImage(getIntent().getStringExtra(GLActivity.KEY_GL_ASC));
+                if (createDesc.getText().toString() == null || createDesc.getText().toString() == "" ||
+                        createName.getText().toString() == null || createName.getText().toString() == "" ||
+                        createNumber.getText().toString() == null || createNumber.getText().toString() == " ") {
+                    Toast.makeText(CreateGLActivity.this, "A mezők kitöltése kötelező!", Toast.LENGTH_SHORT).show();
                 } else {
-                    saveGL(gl);
-                }
 
-                setResult(RESULT_OK, intent);
-                //Toast.makeText(CreateGLActivity.this, ""+attr, Toast.LENGTH_SHORT).show();
-                if (filePath == null) {
-                    finish();
-                }
+                    generateAttr();
 
+                    Intent intent = new Intent();
+                    //Toast.makeText(CreateGLActivity.this, ""+attr, Toast.LENGTH_SHORT).show();
+                    intent.putExtra(KEY_ASC, asc);
+                    intent.putExtra(KEY_TITLE, title);
+                    intent.putExtra(KEY_ATTR, attr);
+                    GL gl = new GL();
+                    gl.setName(createName.getText().toString());
+                    gl.setDesc(createDesc.getText().toString());
+                    gl.setKey(asc);
+                    gl.setAttr(attr);
+                    try {
+                        gl.setCount(createNumber.getText().toString());
+                    } catch (Exception e) {
+
+                    }
+                    if (!(getIntent().getStringExtra(GLActivity.KEY_GL_KEY) == null)) {
+                        FirebaseDatabase.getInstance().getReference().child("gl")
+                                .child(getIntent().getStringExtra(GLActivity.KEY_GL_KEY))
+                                .child(getIntent().getStringExtra(GLActivity.KEY_GL_ASC)).
+                                child("name")
+                                .setValue(createName.getText().toString());
+                        FirebaseDatabase.getInstance().getReference().child("gl")
+                                .child(getIntent().getStringExtra(GLActivity.KEY_GL_KEY))
+                                .child(getIntent().getStringExtra(GLActivity.KEY_GL_ASC)).
+                                child("desc")
+                                .setValue(createDesc.getText().toString());
+                        FirebaseDatabase.getInstance().getReference().child("gl")
+                                .child(getIntent().getStringExtra(GLActivity.KEY_GL_KEY))
+                                .child(getIntent().getStringExtra(GLActivity.KEY_GL_ASC)).
+                                child("count")
+                                .setValue(createNumber.getText().toString());
+                        FirebaseDatabase.getInstance().getReference().child("gl")
+                                .child(getIntent().getStringExtra(GLActivity.KEY_GL_KEY))
+                                .child(getIntent().getStringExtra(GLActivity.KEY_GL_ASC)).
+                                child("attr")
+                                .setValue(attr);
+                        uploadImage(getIntent().getStringExtra(GLActivity.KEY_GL_ASC));
+                    } else {
+                        saveGL(gl);
+                    }
+
+                    setResult(RESULT_OK, intent);
+                    //Toast.makeText(CreateGLActivity.this, ""+attr, Toast.LENGTH_SHORT).show();
+                    if (filePath == null) {
+                        finish();
+                    }
+                }
             }
         });
 

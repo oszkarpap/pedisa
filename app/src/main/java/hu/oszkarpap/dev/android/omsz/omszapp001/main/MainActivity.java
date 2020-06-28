@@ -125,7 +125,7 @@ public class MainActivity extends AppCompatActivity
         } else {
 
 
-            overridePendingTransition(R.anim.fade_out, 0);
+            //overridePendingTransition(R.anim.fade_out, 0);
             super.onBackPressed();
         }
     }

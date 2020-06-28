@@ -22,6 +22,8 @@
             android:label="Protokoll kifejtése"/>
         <activity android:name=".SOP.CreateSOPActivity" />
         <activity android:name=".SOP.Guideline.CreateGLActivity" />
+        <activity android:name=".score.CreateScoreActivity" />
+        <activity android:name=".score.ScoreActivity" />
         <activity android:name=".SOP.Guideline.ListItem.CreateGLListItemActivity" />
         <activity
             android:name=".main.MainActivity"

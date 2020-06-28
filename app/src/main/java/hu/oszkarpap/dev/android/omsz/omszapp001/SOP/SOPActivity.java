@@ -72,7 +72,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         super.onCreate(savedInstanceState);
         setTitle("Szabványosított eljárásrendek");
         setContentView(R.layout.activity_sop);
-        overridePendingTransition(R.anim.bounce, R.anim.fade_in);
+        //overridePendingTransition(R.anim.bounce, R.anim.fade_in);
         auth = getInstance();
 
 
@@ -92,7 +92,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        overridePendingTransition(0, 0);
+
         try {
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         } catch (RuntimeException e) {
@@ -162,29 +162,31 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
      */
 
     public void saveSOP(final SOP sop) {
+        if (sop.getName() == null || sop.getDesc() == "" || sop.getName() == "" || sop.getDesc() == null) {
+            Toast.makeText(this, "Mezők kitültése kötelező!", Toast.LENGTH_SHORT).show();
+        } else {
+            try {
+                String key = sop.getName().replace(")", "0").replace("(", "0").replace("/", "0")
+                        .replace(".", "0").replace(",", "0").replace("+", "0").replace("-", "0")
+                        .replace("*", "0").replace("_", "0").replace("%", "0").replace("{", "0")
+                        .replace("}", "0").toLowerCase() + "01" + System.currentTimeMillis();
+                sop.setKey(key);
+                FirebaseDatabase.getInstance().getReference()
+                        .child("sop")
+                        .child(key)
+                        .setValue(sop)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(SOPActivity.this, "Firebase felhőbe mentve!", Toast.LENGTH_SHORT).show();
 
-        try {
-            String key = sop.getName().replace(")", "0").replace("(", "0").replace("/", "0")
-                    .replace(".", "0").replace(",", "0").replace("+", "0").replace("-", "0")
-                    .replace("*", "0").replace("_", "0").replace("%", "0").replace("{", "0")
-                    .replace("}", "0").toLowerCase() + "01" + System.currentTimeMillis();
-            sop.setKey(key);
-            FirebaseDatabase.getInstance().getReference()
-                    .child("sop")
-                    .child(key)
-                    .setValue(sop)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            Toast.makeText(SOPActivity.this, "Firebase felhőbe mentve!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            } catch (Exception e) {
+                Toast.makeText(this, R.string.create_medication_name_alert, Toast.LENGTH_LONG).show();
+            }
 
-                        }
-                    });
-        } catch (Exception e) {
-            Toast.makeText(this, R.string.create_medication_name_alert, Toast.LENGTH_LONG).show();
         }
-
-
     }
 
 
@@ -245,6 +247,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         if (item.getItemId() == R.id.SOPRefresh) {
             Intent intent = new Intent(this, SOPActivity.class);
             startActivity(intent);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -260,10 +263,15 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
             if (resultCode == RESULT_OK) {
                 String name = data.getStringExtra(CreateSOPActivity.KEY_NAME);
                 String desc = data.getStringExtra(CreateSOPActivity.KEY_DESC);
-
-                SOP sop = new SOP(name, desc);
-                saveSOP(sop);
-
+                String icon = data.getStringExtra(CreateSOPActivity.KEY_ICON);
+                Toast.makeText(this, ""+icon, Toast.LENGTH_SHORT).show();
+                if (name == null || name == "" || desc == null || desc == "") {
+                    Toast.makeText(this, "Mezők kitöltése kötelező!", Toast.LENGTH_SHORT).show();
+                } else {
+                  //  Toast.makeText(this, "" + name + desc, Toast.LENGTH_SHORT).show();
+                    SOP sop = new SOP(name, desc, icon);
+                    saveSOP(sop);
+                }
 
             }
         }

@@ -89,11 +89,11 @@ public class GLActivity extends AppCompatActivity implements SingleChoiceDialogF
         setContentView(R.layout.activity_gl);
 
 
-        overridePendingTransition(R.anim.bounce, R.anim.fade_in);
+       // overridePendingTransition(R.anim.bounce, R.anim.fade_in);
 
         Toolbar toolbar = findViewById(R.id.toolbar_gl);
         setSupportActionBar(toolbar);
-        overridePendingTransition(0, 0);
+
         try {
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         } catch (RuntimeException e) {

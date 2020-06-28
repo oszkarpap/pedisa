@@ -27,6 +27,7 @@ import com.skydoves.colorpickerpreference.ColorListener;
 import com.skydoves.colorpickerpreference.ColorPickerView;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.CreateSOPActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity;
 
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
@@ -50,7 +51,7 @@ public class CreateGLListItemActivity extends AppCompatActivity {
     StorageReference storageReference;
     private FirebaseAuth auth;
     private EditText createName, createNumber;
-    private CheckBox  underline, colored;
+    private CheckBox underline, colored;
     private Button createBTN, deleteBTN;
     private String asc, title, color = "FFFFFF", color2 = "FFFFFF";
     private ColorPickerView colorPickerView;
@@ -84,17 +85,19 @@ public class CreateGLListItemActivity extends AppCompatActivity {
 
                 alertDialogBuilder.setNegativeButton("Törlés", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        try{FirebaseDatabase.getInstance().getReference().child("glli").child(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_PARENT))
-                        .child(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_SEC_KEY)).
-                                removeValue(new DatabaseReference.CompletionListener() {
-                            @Override
-                            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                                Toast.makeText(CreateGLListItemActivity.this, "Törlés sikeres!", Toast.LENGTH_SHORT).show();
-                                finish();
-                                //Intent intent = new Intent(CreateGLListItemActivity.this, GLActivity.class);
-                                //startActivity(intent);
-                            }
-                        }); }catch (Exception e){
+                        try {
+                            FirebaseDatabase.getInstance().getReference().child("glli").child(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_PARENT))
+                                    .child(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_SEC_KEY)).
+                                    removeValue(new DatabaseReference.CompletionListener() {
+                                        @Override
+                                        public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                                            Toast.makeText(CreateGLListItemActivity.this, "Törlés sikeres!", Toast.LENGTH_SHORT).show();
+                                            finish();
+                                            //Intent intent = new Intent(CreateGLListItemActivity.this, GLActivity.class);
+                                            //startActivity(intent);
+                                        }
+                                    });
+                        } catch (Exception e) {
                             Toast.makeText(CreateGLListItemActivity.this, "Nincs választott elem!", Toast.LENGTH_SHORT).show();
                         }
 
@@ -128,8 +131,6 @@ public class CreateGLListItemActivity extends AppCompatActivity {
         });
 
 
-
-
         asc = getIntent().getStringExtra(KEY_GL_ASC_MODIFY);
         title = getIntent().getStringExtra(GLActivity.KEY_GL_TITLE_MODIFY);
         //Toast.makeText(this, ""+asc, Toast.LENGTH_SHORT).show();
@@ -161,32 +162,36 @@ public class CreateGLListItemActivity extends AppCompatActivity {
         createBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (createNumber.getText().toString() == null || createNumber.getText().toString() == "" ||
+                        createName.getText().toString() == null || createName.getText().toString() == "") {
+                    Toast.makeText(CreateGLListItemActivity.this, "A mezők kitöltése kötelező!", Toast.LENGTH_SHORT).show();
+                } else {
+                    generateAttr();
 
-                generateAttr();
+                    Intent intent = new Intent();
+                    //Toast.makeText(CreateGLActivity.this, ""+attr, Toast.LENGTH_SHORT).show();
+                    intent.putExtra(KEY_ASC, asc);
+                    intent.putExtra(KEY_TITLE, title);
+                    intent.putExtra(KEY_ATTR, attr);
+                    GuideLineListItem guideLineListItem = new GuideLineListItem();
+                    guideLineListItem.setItem(createName.getText().toString());
+                    guideLineListItem.setKey(asc);
+                    guideLineListItem.setAttributum(attr);
+                    try {
+                        guideLineListItem.setCount(createNumber.getText().toString());
+                    } catch (Exception e) {
 
-                Intent intent = new Intent();
-                //Toast.makeText(CreateGLActivity.this, ""+attr, Toast.LENGTH_SHORT).show();
-                intent.putExtra(KEY_ASC, asc);
-                intent.putExtra(KEY_TITLE, title);
-                intent.putExtra(KEY_ATTR, attr);
-                GuideLineListItem guideLineListItem = new GuideLineListItem();
-                guideLineListItem.setItem(createName.getText().toString());
-                guideLineListItem.setKey(asc);
-                guideLineListItem.setAttributum(attr);
-                try {
-                    guideLineListItem.setCount(createNumber.getText().toString());
-                } catch (Exception e) {
+                    }
+                    try {
+                        guideLineListItem.setParent(asc);
+                    } catch (Exception e) {
 
+                    }
+                    saveGLLI(guideLineListItem);
+                    setResult(RESULT_OK, intent);
+                    //Toast.makeText(CreateGLActivity.this, ""+attr, Toast.LENGTH_SHORT).show();
+                    finish();
                 }
-                try {
-                    guideLineListItem.setParent(asc);
-                } catch (Exception e) {
-
-                }
-                saveGLLI(guideLineListItem);
-                setResult(RESULT_OK, intent);
-                //Toast.makeText(CreateGLActivity.this, ""+attr, Toast.LENGTH_SHORT).show();
-                finish();
             }
         });
 
@@ -195,9 +200,9 @@ public class CreateGLListItemActivity extends AppCompatActivity {
     public void generateAttr() {
         attr = "f";
 
-            attr += "0";
+        attr += "0";
 
-            attr += "0";
+        attr += "0";
         if (underline.isChecked()) {
             attr += "1";
         } else {
@@ -226,7 +231,7 @@ public class CreateGLListItemActivity extends AppCompatActivity {
         try {
             String key;
             key = guideLineListItem.getKey();
-             second = "unkonwn";
+            second = "unkonwn";
             if (update == 0) {
                 second = getIntent().getStringExtra(GLActivity.KEY_GL_ASC_MODIFY);
                 x = key + System.currentTimeMillis();
@@ -241,9 +246,6 @@ public class CreateGLListItemActivity extends AppCompatActivity {
                 x = getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_SEC_KEY);
                 guideLineListItem.setSecondKey(x);
             }
-
-
-
 
 
             // guideLineListItem.setAsc(x);
