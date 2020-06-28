@@ -1,6 +1,5 @@
-package hu.oszkarpap.dev.android.omsz.omszapp001.right.medication;
+package hu.oszkarpap.dev.android.omsz.omszapp001.medication;
 
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,17 +11,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +38,6 @@ import java.util.Objects;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPAdapter;
 import hu.oszkarpap.dev.android.omsz.omszapp001.left.RsiActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.ExpandableListAdapter;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
@@ -479,6 +473,8 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
         //    childModelsList.add(childModel);
         childModel = new MenuModel("Rendszeresített gyógyszerek", false, false, 31);
         childModelsList.add(childModel);
+        childModel = new MenuModel("Gyógyszerpumpa", false, false, 32);
+        childModelsList.add(childModel);
         //       childModel = new MenuModel("Sürgősségi intubáció", false, false, 0);
         //       childModelsList.add(childModel);
 
@@ -588,7 +584,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
                         case (32):
                             Objects.requireNonNull(auth.getCurrentUser()).reload();
-                            intent = new Intent(MedActivity.this, RsiActivity.class);
+                            intent = new Intent(MedActivity.this, PerfusorActivity.class);
                             intent.putExtra(SAS, "02");
                             startActivity(intent);
                             break;

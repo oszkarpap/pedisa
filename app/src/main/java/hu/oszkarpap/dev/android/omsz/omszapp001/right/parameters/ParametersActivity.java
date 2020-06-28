@@ -27,7 +27,7 @@ import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.Medication;
+import hu.oszkarpap.dev.android.omsz.omszapp001.medication.Medication;
 
 /**
  * @author Oszkar Pap

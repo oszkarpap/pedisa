@@ -15,15 +15,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SOP.Guideline.GLEmptyActivity"></activity>
-        <activity android:name=".right.medication.CheckMedActivity" />
+        <activity android:name=".medication.CheckMedActivity" />
         <activity
             android:name=".SOP.Guideline.GLActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:label="Protokoll kifejtése"/>
         <activity android:name=".SOP.CreateSOPActivity" />
         <activity android:name=".SOP.Guideline.CreateGLActivity" />
-        <activity android:name=".score.CreateScoreActivity" />
-        <activity android:name=".score.ScoreActivity" />
+
+        <activity android:name=".medication.PerfusorActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".SOP.Guideline.ListItem.CreateGLListItemActivity" />
         <activity
             android:name=".main.MainActivity"
@@ -68,15 +69,13 @@
         <activity
             android:name=".left.VeinActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
-            android:name=".right.memory.MemoryActivity"
-            android:label="Saját gyógyszerek" />
-        <activity
-            android:name=".right.medication.MedActivity"
+            android:name=".medication.MedActivity"
             android:label="OMSZ gyógyszerek"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".right.medication.CreateMedActivity"
+            android:name=".medication.CreateMedActivity"
             android:label="Gyógyszer a Firebase-be" />
     </application>
 

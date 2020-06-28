@@ -1,26 +1,21 @@
-package hu.oszkarpap.dev.android.omsz.omszapp001.right.medication;
+package hu.oszkarpap.dev.android.omsz.omszapp001.medication;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
-import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPAdapter;
 
 import static android.support.v7.app.AlertDialog.*;
-import static hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.MedActivity.Searching;
 
 /**
  * @author Oszkar Pap
@@ -71,7 +66,7 @@ public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ViewHolder>{
                 return false;
             }
         });
-        if(Searching==0){
+        if(MedActivity.Searching==0){
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -40,7 +40,8 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.left.RsiActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.ExpandableListAdapter;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.MenuModel;
-import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.MedActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.medication.MedActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.medication.PerfusorActivity;
 //import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
@@ -264,11 +265,11 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
                 String name = data.getStringExtra(CreateSOPActivity.KEY_NAME);
                 String desc = data.getStringExtra(CreateSOPActivity.KEY_DESC);
                 String icon = data.getStringExtra(CreateSOPActivity.KEY_ICON);
-                Toast.makeText(this, ""+icon, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "" + icon, Toast.LENGTH_SHORT).show();
                 if (name == null || name == "" || desc == null || desc == "") {
                     Toast.makeText(this, "Mezők kitöltése kötelező!", Toast.LENGTH_SHORT).show();
                 } else {
-                  //  Toast.makeText(this, "" + name + desc, Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(this, "" + name + desc, Toast.LENGTH_SHORT).show();
                     SOP sop = new SOP(name, desc, icon);
                     saveSOP(sop);
                 }
@@ -425,6 +426,8 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         //    childModelsList.add(childModel);
         childModel = new MenuModel("Rendszeresített gyógyszerek", false, false, 31);
         childModelsList.add(childModel);
+        childModel = new MenuModel("Gyógyszerpumpa", false, false, 32);
+        childModelsList.add(childModel);
         //       childModel = new MenuModel("Sürgősségi intubáció", false, false, 0);
         //       childModelsList.add(childModel);
 
@@ -534,7 +537,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
 
                         case (32):
                             Objects.requireNonNull(auth.getCurrentUser()).reload();
-                            intent = new Intent(SOPActivity.this, RsiActivity.class);
+                            intent = new Intent(SOPActivity.this, PerfusorActivity.class);
                             intent.putExtra(SAS, "02");
                             startActivity(intent);
                             break;

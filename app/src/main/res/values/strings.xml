@@ -11,14 +11,24 @@
         <item>Cordarone</item>
 
     </string-array>
+    <string-array name="med_perf_spinner">
+        <item>Mg/Hr</item>
+        <item>Mg/min</item>
+        <item>Mcg/Min</item>
+        <item>Mcg/Hr</item>
+        <item>Mcg/Kg/Hr</item>
+        <item>Mcg/Kg/Min</item>
+        <item>Mg/Kg/Hr</item>
+        <item>Mg/Kg/Min</item>
 
+    </string-array>
 
     <string-array name="guideline_chose_dialog">
         <item>Módosítás</item>
         <item>Új listaelem hozzáadása</item>
         <item>Kép letöltése</item>
         <item>Törlés</item>
-        </string-array>
+    </string-array>
 
     <string-array name="guideline_chose_dialog_li">
         <item>Duplikáció</item>

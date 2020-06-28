@@ -63,11 +63,12 @@
         <Button
             android:id="@+id/tutorial"
             android:elevation="@dimen/_4sdp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryDark"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="0"
+
             android:shadowColor="@color/colorPrimaryDark"
             android:padding="@dimen/_8sdp"
             android:layout_gravity="center"
@@ -82,7 +83,7 @@
             android:id="@+id/email_to_dev"
             android:elevation="@dimen/_4sdp"
             android:padding="@dimen/_8sdp"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorPrimaryDark"
             style="@style/Base.Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

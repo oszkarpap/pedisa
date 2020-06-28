@@ -1,4 +1,4 @@
-package hu.oszkarpap.dev.android.omsz.omszapp001.right.medication;
+package hu.oszkarpap.dev.android.omsz.omszapp001.medication;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

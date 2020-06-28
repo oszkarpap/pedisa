@@ -3,13 +3,10 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.main;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.provider.Telephony;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,20 +17,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ExpandableListView;
-import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,13 +32,10 @@ import java.util.Objects;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.left.AbcdeActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.left.RsiActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.left.VeinActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
-import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.MedActivity;
-
-import hu.oszkarpap.dev.android.omsz.omszapp001.right.parameters.ParametersActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.medication.MedActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.medication.PerfusorActivity;
 
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
 
@@ -221,6 +208,8 @@ public class MainActivity extends AppCompatActivity
         childModelsList = new ArrayList<>();
         childModel = new MenuModel("Rendszeresített gyógyszerek", false, false, 31);
         childModelsList.add(childModel);
+        childModel = new MenuModel("Gyógyszerpumpa", false, false, 32);
+        childModelsList.add(childModel);
         if (menuModel.hasChildren) {
 
             childList.put(menuModel, childModelsList);
@@ -267,7 +256,7 @@ public class MainActivity extends AppCompatActivity
                         case (32):
                             Objects.requireNonNull(auth.getCurrentUser()).reload();
                             ifDelUser();
-                            intent = new Intent(MainActivity.this, RsiActivity.class);
+                            intent = new Intent(MainActivity.this, PerfusorActivity.class);
                             intent.putExtra(SAS, "02");
                             startActivity(intent);
                             break;

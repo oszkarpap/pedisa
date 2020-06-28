@@ -1,5 +1,6 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.right.parameters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
-import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.Medication;
+import hu.oszkarpap.dev.android.omsz.omszapp001.medication.Medication;
 
 /**
  * @author Oszkar Pap
@@ -49,7 +50,7 @@ public class ParametersAdapter extends RecyclerView.Adapter<ParametersAdapter.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         medication = medications.get(position);
         makeParametersStringMethod();
         String parameters = name + dose01 + dose02 + dose03 + doseMax + doseDesc;

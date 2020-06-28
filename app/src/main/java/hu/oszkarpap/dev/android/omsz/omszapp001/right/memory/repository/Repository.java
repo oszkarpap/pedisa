@@ -4,7 +4,7 @@ import android.content.Context;
 
 import java.util.List;
 
-import hu.oszkarpap.dev.android.omsz.omszapp001.right.medication.Medication;
+import hu.oszkarpap.dev.android.omsz.omszapp001.medication.Medication;
 
 /**
  * @author Oszkar Pap
