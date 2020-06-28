@@ -36,6 +36,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -202,6 +203,10 @@ public class PerfusorActivity extends MainActivity implements
                     //U/kg/min*
                     result.setText((doseN / perfusor) * 60 * weightN + " mL/Hr");
                 }
+
+                DecimalFormat df = new DecimalFormat("#.##");
+
+                result.setText(df.format(Double.parseDouble(result.getText().toString().replace(" mL/Hr","")))+" mL/Hr");
             }
         });
 
