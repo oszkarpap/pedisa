@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -46,6 +47,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SingleChoiceDialogFragment;
 //import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
+import static android.os.Environment.DIRECTORY_DOWNLOADS;
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
 import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLAdapter.savedImage;
 
@@ -89,7 +91,7 @@ public class GLActivity extends AppCompatActivity implements SingleChoiceDialogF
         setContentView(R.layout.activity_gl);
 
 
-       // overridePendingTransition(R.anim.bounce, R.anim.fade_in);
+        // overridePendingTransition(R.anim.bounce, R.anim.fade_in);
 
         Toolbar toolbar = findViewById(R.id.toolbar_gl);
         setSupportActionBar(toolbar);
@@ -499,7 +501,9 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
                 startActivity(intent2);
                 break;
             case 2:
-                Toast.makeText(this, "Nem implementált funkció!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Nem implementált funkció!", Toast.LENGTH_SHORT).show();
+
+                saveImage(gli.getAsc());
                 break;
             case 3:
                 deleteGL(gli);
@@ -510,34 +514,38 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
     }
 
 
-/*    public void saveImage(Uri downloadUrlOfImage) {
-        String filename = "filename.jpg";
-        String DIR_NAME = "PEDISA";
-        File direct =
-                new File(Environment
-                        .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
-                        .getAbsolutePath() + "/" + DIR_NAME + "/");
+    public void saveImage(final String image) {
+
+        StorageReference storageReference, ref;
+
+        storageReference = FirebaseStorage.getInstance().getReference();
+        ref = storageReference.child("images").child(image);
+        ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                String url = uri.toString();
+                downLoadFiles(GLActivity.this, image, ".jpg", DIRECTORY_DOWNLOADS,url);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(GLActivity.this, "Nincs hozzárendelve fájl! ( " + e.getMessage()+" )", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
-        if (!direct.exists()) {
-            direct.mkdir();
-            Toast.makeText(this, "Mappa létrehozva!", Toast.LENGTH_SHORT).show();
-        }
+    }
 
-        DownloadManager dm = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-        //Uri downloadUri = Uri.parse(downloadUrlOfImage);
-        DownloadManager.Request request = new DownloadManager.Request(downloadUrlOfImage);
-        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE)
-                .setAllowedOverRoaming(false)
-                .setTitle(filename)
-                .setMimeType("image/jpeg")
-                .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                .setDestinationInExternalPublicDir(Environment.DIRECTORY_PICTURES,
-                        File.separator + DIR_NAME + File.separator + filename);
+    public void downLoadFiles(Context context, String fileName, String fileExtension, String destinationDirectory, String url) {
 
-        dm.enqueue(request);
-    } */
+        DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+        Uri uri = Uri.parse(url);
+        DownloadManager.Request request = new DownloadManager.Request(uri);
+        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        request.setDestinationInExternalFilesDir(context, destinationDirectory, fileName+fileExtension);
+        downloadManager.enqueue(request);
 
+    }
 
     @Override
     public void onNegativeButtonClicked() {

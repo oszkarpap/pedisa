@@ -22,12 +22,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.chrisbanes.photoview.PhotoView;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -53,6 +55,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLine
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.GuideLineListItemAdapter;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SingleChoiceDialogFragment;
+import hu.oszkarpap.dev.android.omsz.omszapp001.medication.MedActivity;
 
 import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity.ShowNumber;
 import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity.TEXTSIZE;
@@ -207,8 +210,9 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> implem
                 // Toast.makeText(context, "RUN", Toast.LENGTH_SHORT).show();
                 holder.name.setTextSize(TEXTSIZE);
                 holder.desc.setTextSize(TEXTSIZE);
-                if(ShowNumber%2 == 0){
-                holder.numb.setVisibility(View.INVISIBLE);}else{
+                if (ShowNumber % 2 == 0) {
+                    holder.numb.setVisibility(View.INVISIBLE);
+                } else {
                     holder.numb.setVisibility(View.VISIBLE);
                 }
             }
@@ -218,8 +222,9 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> implem
                 // Toast.makeText(context, "FINISH", Toast.LENGTH_SHORT).show();
                 holder.name.setTextSize(TEXTSIZE);
                 holder.desc.setTextSize(TEXTSIZE);
-                if(ShowNumber%2 == 0){
-                    holder.numb.setVisibility(View.INVISIBLE);}else{
+                if (ShowNumber % 2 == 0) {
+                    holder.numb.setVisibility(View.INVISIBLE);
+                } else {
                     holder.numb.setVisibility(View.VISIBLE);
                 }
             }
@@ -328,7 +333,7 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> implem
         public final TextView name, desc, attr, numb, key, asc;
         public final LinearLayout linearLayout;
         public final Button arrowButton;
-        public final ImageView imageView;
+        public final PhotoView imageView;
         public final RecyclerView recyclerViewList;
         public Context context;
         LinearLayout expandableView;
@@ -341,6 +346,7 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> implem
             linearLayout = itemView.findViewById(R.id.row_gl_layout);
             //  ini = itemView.findViewById(R.id.txt_gl_iniciale);
             imageView = itemView.findViewById(R.id.row_gl_image);
+
 
             recyclerViewList = itemView.findViewById(R.id.recycler_view_gl_list);
             numb = itemView.findViewById(R.id.txt_gl_number);
@@ -379,6 +385,8 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> implem
         public void onItemLongClicked(int position) {
 
         }
+
+
     }
 
 

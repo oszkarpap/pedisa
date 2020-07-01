@@ -28,6 +28,7 @@
         <item>Új listaelem hozzáadása</item>
         <item>Kép letöltése</item>
         <item>Törlés</item>
+
     </string-array>
 
     <string-array name="guideline_chose_dialog_li">

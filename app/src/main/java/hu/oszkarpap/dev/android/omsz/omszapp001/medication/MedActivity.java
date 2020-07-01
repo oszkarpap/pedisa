@@ -55,6 +55,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
     public static final int REQUEST_CODE = 999;
     public static int Searching =0;
+    public static final String KEY_KEY_MODIFY = "KEY_MODIFY";
     public static final String KEY_NAME_MODIFY = "NAME_MODIFY";
     public static final String KEY_AGENT_MODIFY = "AGENT_MODIFY";
     public static final String KEY_PACK_MODIFY = "PACK_MODIFY";
@@ -334,11 +335,12 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
                 deleteMed(medi);
             }
         });
-        alertDialogBuilder.setNeutralButton("Duplikáció", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setNeutralButton("Módosítás", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(MedActivity.this, CreateMedActivity.class);
       //          intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+                intent.putExtra(KEY_KEY_MODIFY, medi.getKey());
                 intent.putExtra(KEY_NAME_MODIFY, medi.getName());
                 intent.putExtra(KEY_AGENT_MODIFY, medi.getAgent());
                 intent.putExtra(KEY_PACK_MODIFY, medi.getPack());

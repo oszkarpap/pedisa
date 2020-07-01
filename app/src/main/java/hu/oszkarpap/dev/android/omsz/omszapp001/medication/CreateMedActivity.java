@@ -8,7 +8,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
 //import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
 /**
@@ -71,23 +74,23 @@ public class CreateMedActivity extends AppCompatActivity {
      * this method set layout from omsz medication activity and from own medication activity
      */
     public void setDifferentLayout() {
-     /**   if ((getIntent().getStringExtra(MemoryActivity.KEY_MEMORY).equals("YES"))) {
-            createChD01.setVisibility(View.INVISIBLE);
-            createChD02.setVisibility(View.INVISIBLE);
-            createChU.setVisibility(View.INVISIBLE);
-            createChMaxD.setVisibility(View.INVISIBLE);
-            createChMaxD02.setVisibility(View.INVISIBLE);
-            createChDesciption.setVisibility(View.INVISIBLE);
-            createChildParameters.setVisibility(View.INVISIBLE);
-            setTitle("Saját Gyógyszerjegyzet");
-        } else {*/
-            createChD01.setVisibility(View.VISIBLE);
-            createChD02.setVisibility(View.VISIBLE);
-            createChU.setVisibility(View.VISIBLE);
-            createChMaxD.setVisibility(View.VISIBLE);
-            createChMaxD02.setVisibility(View.VISIBLE);
-            createChDesciption.setVisibility(View.VISIBLE);
-            createChildParameters.setVisibility(View.VISIBLE);
+        /**   if ((getIntent().getStringExtra(MemoryActivity.KEY_MEMORY).equals("YES"))) {
+         createChD01.setVisibility(View.INVISIBLE);
+         createChD02.setVisibility(View.INVISIBLE);
+         createChU.setVisibility(View.INVISIBLE);
+         createChMaxD.setVisibility(View.INVISIBLE);
+         createChMaxD02.setVisibility(View.INVISIBLE);
+         createChDesciption.setVisibility(View.INVISIBLE);
+         createChildParameters.setVisibility(View.INVISIBLE);
+         setTitle("Saját Gyógyszerjegyzet");
+         } else {*/
+        createChD01.setVisibility(View.VISIBLE);
+        createChD02.setVisibility(View.VISIBLE);
+        createChU.setVisibility(View.VISIBLE);
+        createChMaxD.setVisibility(View.VISIBLE);
+        createChMaxD02.setVisibility(View.VISIBLE);
+        createChDesciption.setVisibility(View.VISIBLE);
+        createChildParameters.setVisibility(View.VISIBLE);
 
     }
 
@@ -121,43 +124,84 @@ public class CreateMedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if (!(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY) == null)) {
+                    FirebaseDatabase.getInstance().getReference().child("med")
+                            .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
+                            .child("name").setValue(createName.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("med")
+                            .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
+                            .child("agent").setValue(createAgent.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("med")
+                            .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
+                            .child("adult").setValue(createAdult.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("med")
+                            .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
+                            .child("child").setValue(createChild.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("med")
+                            .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
+                            .child("child01").setValue(createChD01.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("med")
+                            .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
+                            .child("child02").setValue(createChD02.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("med")
+                            .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
+                            .child("childDDesc").setValue(createChDesciption.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("med")
+                            .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
+                            .child("childDMax").setValue(createChMaxD.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("med")
+                            .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
+                            .child("childDMax02").setValue(createChMaxD02.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("med")
+                            .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
+                            .child("cont").setValue(createContra.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("med")
+                            .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
+                            .child("int").setValue(createInd.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("med")
+                            .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
+                            .child("pack").setValue(createPack.getText().toString());
+                    FirebaseDatabase.getInstance().getReference().child("med")
+                            .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
+                            .child("unit").setValue(createChU.getText().toString());
+                }else {
+                    String name = createName.getText().toString();
+                    String agent = createAgent.getText().toString();
+                    String pack = createPack.getText().toString();
+                    String ind = createInd.getText().toString();
+                    String contra = createContra.getText().toString();
+                    String adult = createAdult.getText().toString();
+                    String child = createChild.getText().toString();
+                    String unit = createChU.getText().toString();
+                    String dose01 = createChD01.getText().toString();
+                    String dose02 = createChD02.getText().toString();
+                    String doseMax = createChMaxD.getText().toString();
+                    String doseMax02 = createChMaxD02.getText().toString();
+                    String doseDesc = createChDesciption.getText().toString();
 
-                String name = createName.getText().toString();
-                String agent = createAgent.getText().toString();
-                String pack = createPack.getText().toString();
-                String ind = createInd.getText().toString();
-                String contra = createContra.getText().toString();
-                String adult = createAdult.getText().toString();
-                String child = createChild.getText().toString();
-                String unit = createChU.getText().toString();
-                String dose01 = createChD01.getText().toString();
-                String dose02 = createChD02.getText().toString();
-                String doseMax = createChMaxD.getText().toString();
-                String doseMax02 = createChMaxD02.getText().toString();
-                String doseDesc = createChDesciption.getText().toString();
 
+                    Intent intent = new Intent();
 
-                Intent intent = new Intent();
+                    intent.putExtra(KEY_NAME, name);
+                    intent.putExtra(KEY_AGENT, agent);
+                    intent.putExtra(KEY_PACK, pack);
+                    intent.putExtra(KEY_IND, ind);
+                    intent.putExtra(KEY_CONTRA, contra);
+                    intent.putExtra(KEY_ADULT, adult);
+                    intent.putExtra(KEY_CHILD, child);
+                    intent.putExtra(KEY_CHILDUNIT, unit);
+                    intent.putExtra(KEY_CHILD01, dose01);
+                    intent.putExtra(KEY_CHILD02, dose02);
+                    intent.putExtra(KEY_CHILDMAX, doseMax);
+                    intent.putExtra(KEY_CHILDMAX02, doseMax02);
+                    intent.putExtra(KEY_CHILDDESC, doseDesc);
 
-                intent.putExtra(KEY_NAME, name);
-                intent.putExtra(KEY_AGENT, agent);
-                intent.putExtra(KEY_PACK, pack);
-                intent.putExtra(KEY_IND, ind);
-                intent.putExtra(KEY_CONTRA, contra);
-                intent.putExtra(KEY_ADULT, adult);
-                intent.putExtra(KEY_CHILD, child);
-                intent.putExtra(KEY_CHILDUNIT, unit);
-                intent.putExtra(KEY_CHILD01, dose01);
-                intent.putExtra(KEY_CHILD02, dose02);
-                intent.putExtra(KEY_CHILDMAX, doseMax);
-                intent.putExtra(KEY_CHILDMAX02, doseMax02);
-                intent.putExtra(KEY_CHILDDESC, doseDesc);
+                    setResult(RESULT_OK, intent);
 
-                setResult(RESULT_OK, intent);
+                }
                 finish();
+                }
+            });
 
-            }
-        });
-
+        }
     }
-}
