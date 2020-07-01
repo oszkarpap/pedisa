@@ -524,7 +524,7 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
             @Override
             public void onSuccess(Uri uri) {
                 String url = uri.toString();
-                downLoadFiles(GLActivity.this, image, ".jpg", DIRECTORY_DOWNLOADS,url);
+                downLoadFiles(GLActivity.this, gli.getName(), ".jpg", DIRECTORY_DOWNLOADS,url);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
