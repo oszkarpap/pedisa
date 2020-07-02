@@ -3,15 +3,20 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.main;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,17 +26,29 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.CreateSOPActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOP;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPAdapter;
 import hu.oszkarpap.dev.android.omsz.omszapp001.left.RsiActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.login.LoginMainActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.medication.MedActivity;
@@ -49,21 +66,25 @@ import static com.google.firebase.auth.FirebaseAuth.getInstance;
 
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, NewsAdapter.OnItemLongClickListener {
 
+    public static final String KEY_NEWS_NAME_MODIFY = "NEWS_NAME_MODIFY";
+    public static final String KEY_NEWS_TEXT_MODIFY = "NEWS_TEXT_MODIFY";
+    public static final String KEY_NEWS_KEY_MODIFY = "NEWS_KEY_MODIFY";
 
+    public static final int REQUEST_CODE = 111;
     public static final String SAS = "SAS";
-    public static final String KONZULENS_SZAMA = "konzulensSzama";
-    public static final String KANY_SZAMA = "kanySzama";
-
     List<MenuModel> headerList = new ArrayList<>();
     HashMap<MenuModel, List<MenuModel>> childList = new HashMap<>();
-    private Intent intent;
-    private FirebaseAuth auth;
     ExpandableListAdapter expandableListAdapter;
     ExpandableListView expandableListView;
-    private TextView mainTv;
+    private FirebaseAuth auth;
     private Button tut, dev;
+    private Intent intent;
+    private List<News> newsList;
+    private NewsAdapter adapter;
+    private News newsi;
+    private RecyclerView recyclerView;
 
 
     /**
@@ -76,11 +97,21 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        mainTv = findViewById(R.id.main_TV);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        mainTv.setText("Felhasználói email:"+user.getEmail()+";\n Android ID:"+ Settings.Secure.getString(getContentResolver(),
-                Settings.Secure.ANDROID_ID));
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        newsList = new ArrayList<>();
+
+        recyclerView = findViewById(R.id.recycler_view_news);
+        //recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        adapter = new NewsAdapter(this, newsList, this);
+        recyclerView.setAdapter(adapter);
+
+        loadNews();
+
         createMainActivity();
         tut = findViewById(R.id.tutorial);
         tut.setOnClickListener(new View.OnClickListener() {
@@ -93,15 +124,63 @@ public class MainActivity extends AppCompatActivity
         dev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Nem aktív funkció!", Toast.LENGTH_SHORT).show();
+                intent = new Intent(Intent.ACTION_SENDTO);
+                intent.putExtra(Intent.EXTRA_SUBJECT, "OMSZ_APP; " +
+                        user.getEmail() + ";\n" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID));
+
+                intent.setData(Uri.parse("mailto:pap.oszkar.mt@gmail.com"));
+                startActivity(intent);
             }
         });
         try {
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         } catch (RuntimeException e) {
-            Toast.makeText(this, "A Firebase újratöltődik!", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this, "A Firebase újratöltődik!", Toast.LENGTH_SHORT).show();
         }
         auth = FirebaseAuth.getInstance();
+    }
+
+    private void loadNews() {
+
+
+        FirebaseDatabase.getInstance().getReference().child("news").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                News news = dataSnapshot.getValue(News.class);
+                newsList.add(news);
+                Collections.sort(newsList);
+                adapter.notifyDataSetChanged();
+                //SOP sop = dataSnapshot.getValue(SOP.class);
+                //sops.add(sop);
+                //adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                News news = dataSnapshot.getValue(News.class);
+                newsList.remove(news);
+                Collections.sort(newsList);
+                adapter.notifyDataSetChanged();
+                //SOP med = dataSnapshot.getValue(SOP.class);
+                //sops.remove(med);
+                //adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -142,6 +221,12 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         }
 
+        if (id == R.id.menu_news_add) {
+            ifDelUser();
+            Objects.requireNonNull(auth.getCurrentUser()).reload();
+            intent = new Intent(MainActivity.this, CreateNewsActivity.class);
+            startActivity(intent);
+        }
 
         if (id == R.id.menu_log_out) {
             ifDelUser();
@@ -167,8 +252,6 @@ public class MainActivity extends AppCompatActivity
             alertDialog.show();
 
         }
-
-
 
 
         return super.onOptionsItemSelected(item);
@@ -332,7 +415,56 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private void deleteNews(final News news) {
 
+        FirebaseDatabase.getInstance().getReference().child("news").child(news.getKey()).removeValue(new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                Toast.makeText(MainActivity.this, "Törlés sikeres!", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+
+    @Override
+    public void onItemLongClicked(int position) {
+        newsi = newsList.get(position);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setMessage("Módosítani vagy törölni szeretné az elemet? ");
+        alertDialogBuilder.setPositiveButton("Vissza",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+
+                    }
+                });
+
+        alertDialogBuilder.setNegativeButton("Törlés", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                deleteNews(newsi);
+                finish();
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        alertDialogBuilder.setNeutralButton("Módosítás", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent intent = new Intent(MainActivity.this, CreateNewsActivity.class);
+                //             intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+                intent.putExtra(KEY_NEWS_KEY_MODIFY, newsi.getKey());
+                intent.putExtra(KEY_NEWS_NAME_MODIFY, newsi.getName());
+                intent.putExtra(KEY_NEWS_TEXT_MODIFY, newsi.getText());
+                startActivity(intent);
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+
+    }
 }
 
 

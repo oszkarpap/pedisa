@@ -47,6 +47,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SingleChoiceDialogFragment;
 //import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
+import static android.os.Environment.DIRECTORY_DCIM;
 import static android.os.Environment.DIRECTORY_DOWNLOADS;
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
 import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLAdapter.savedImage;
@@ -99,29 +100,10 @@ public class GLActivity extends AppCompatActivity implements SingleChoiceDialogF
         try {
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         } catch (RuntimeException e) {
-            Toast.makeText(this, "A Firebase újratöltődik!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "A Firebase újratöltődik!", Toast.LENGTH_SHORT).show();
 
         }
-        try {
-            //TODO:
-            storageRef.child("images/" + savedImage).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-                public void onSuccess(Uri uri) {
-                    Picasso.get().load(uri).resize(800, 800).centerInside().onlyScaleDown();
-                    //saveImage(uri);
-                    // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
 
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    //  Toast.makeText(context, "Sikertelen "+exception.getMessage(), Toast.LENGTH_SHORT).show();
-
-
-                }
-            });
-        } catch (Exception e) {
-        }
 
         SOPKey = getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY);
         //Toast.makeText(this, ""+ SOPKey, Toast.LENGTH_SHORT).show();
@@ -303,12 +285,12 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
         MenuItem menuItem = menu.findItem(R.id.gl_search);
 
         SearchView searchView = (SearchView) menuItem.getActionView();
-        searchView.setQueryHint("Keresés ");
+        searchView.setQueryHint("Keresés");
         searchView.setOnQueryTextListener(this);
         searchView.setOnSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(GLActivity.this, "Ne módosítson adatokat keresés közben!!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(GLActivity.this, "Ne módosítson adatokat keresés közben!!", Toast.LENGTH_SHORT).show();
 
 
             }

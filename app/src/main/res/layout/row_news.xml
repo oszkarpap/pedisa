@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardBackgroundColor="@color/glCardview"
+    card_view:cardCornerRadius="@dimen/_5sdp"
+    card_view:cardElevation="@dimen/_10sdp"
+    card_view:cardUseCompatPadding="true">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/row_news_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:layout_margin="5dp">
+
+
+        <TextView
+            android:layout_marginTop="@dimen/_4sdp"
+            android:id="@+id/row_news_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_4sdp"
+            android:gravity="center"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/_16sdp" />
+
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/row_news_image"
+                android:visibility="gone"
+                android:layout_margin="0dp"
+                android:padding="0dp"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="@dimen/_200sdp"
+                 />
+
+
+                <TextView
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:layout_marginTop="0dp"
+                    android:id="@+id/row_news_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="@dimen/_16sdp" />
+
+                <TextView
+                    android:id="@+id/row_news_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
+                    android:gravity="right"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/_10sdp" />
+
+
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

@@ -14,39 +14,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_margin="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_40sdp"
-        android:orientation="horizontal">
+        android:layout_margin="@dimen/_10sdp"
+
+        android:orientation="vertical">
 
 
-        <ImageView
-            android:layout_width="@dimen/_120sdp"
-            android:layout_height="@dimen/_120sdp"
-            android:src="@drawable/healthcare_and_medical" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_news"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical" />
 
         <TextView
-            android:padding="@dimen/_12sdp"
-            android:layout_marginTop="@dimen/_18sdp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/_10sdp"
-            android:text="Prehospitális sérült- és betegellátást támogató applikáció. Próbaverzió 2.0 "
-            android:textColor="@color/colorPrimaryDark" />
+            android:text=" "
+            android:textSize="@dimen/_20sdp" />
+
+
     </LinearLayout>
-
-
-
-    <TextView
-        android:id="@+id/main_TV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_above="@id/main_botton_grid"
-        android:layout_margin="@dimen/_8sdp"
-        android:text=" "
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="italic"
-        android:typeface="sans" />
 
 
     <GridLayout
@@ -54,44 +40,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_margin="@dimen/_10sdp"
 
         android:columnCount="2"
         android:rowCount="1">
 
         <Button
             android:id="@+id/tutorial"
-            android:elevation="@dimen/_4sdp"
-            android:background="@color/colorPrimaryDark"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_column="0"
 
-            android:shadowColor="@color/colorPrimaryDark"
-            android:padding="@dimen/_8sdp"
-            android:layout_gravity="center"
             android:layout_row="0"
+            android:layout_column="0"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/_4sdp"
             android:layout_marginBottom="@dimen/_15sdp"
+            android:background="@color/colorPrimaryDark"
+            android:elevation="@dimen/_4sdp"
             android:gravity="center"
+            android:padding="@dimen/_8sdp"
+            android:shadowColor="@color/colorPrimaryDark"
             android:text="Használati útmutató"
             android:textColor="@color/white" />
 
         <Button
-            android:shadowColor="@color/colorPrimaryDark"
             android:id="@+id/email_to_dev"
-            android:elevation="@dimen/_4sdp"
-            android:padding="@dimen/_8sdp"
-            android:background="@color/colorPrimaryDark"
             style="@style/Base.Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_row="0"
             android:layout_column="1"
             android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_4sdp"
             android:layout_marginBottom="@dimen/_15sdp"
-            android:layout_row="0"
+            android:background="@color/colorPrimaryDark"
+            android:elevation="@dimen/_4sdp"
             android:gravity="center"
+            android:padding="@dimen/_8sdp"
+            android:shadowColor="@color/colorPrimaryDark"
             android:text="Üzenet a fejlesztőnek"
             android:textColor="@color/white" />
     </GridLayout>

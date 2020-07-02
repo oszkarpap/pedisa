@@ -21,6 +21,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:label="Protokoll kifejtése"/>
         <activity android:name=".SOP.CreateSOPActivity" />
+        <activity android:name=".main.CreateNewsActivity" />
         <activity android:name=".SOP.Guideline.CreateGLActivity" />
 
         <activity android:name=".medication.PerfusorActivity"
@@ -50,7 +51,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".login.LoginMainActivity"
-            android:label="Rendszermenű"
+            android:label="Adatok"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".left.AbcdeActivity"

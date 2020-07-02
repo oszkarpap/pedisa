@@ -111,7 +111,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
         try {
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         } catch (RuntimeException e) {
-            Toast.makeText(this, "A Firebase újratöltődik!", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "A Firebase újratöltődik!", Toast.LENGTH_SHORT).show();
         }
 
 

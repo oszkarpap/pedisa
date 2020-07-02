@@ -3,6 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/menu_news_add"
+        android:iconTint="@color/colorPrimaryDark"
+        android:icon="@drawable/ic__add_primary"
+        android:orderInCategory="100"
+        android:title="Hír hozzáadása"
+        app:showAsAction="ifRoom" />
+
+    <item
         android:id="@+id/menu_settings"
         android:iconTint="@color/colorPrimaryDark"
         android:icon="@drawable/ic_menu_manage"

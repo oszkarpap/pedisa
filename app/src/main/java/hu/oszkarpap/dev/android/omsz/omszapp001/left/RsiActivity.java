@@ -24,7 +24,7 @@ import java.util.Objects;
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 
-import static hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity.KONZULENS_SZAMA;
+//import static hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity.KONZULENS_SZAMA;
 
 /**
  * @author Oszkar Pap
@@ -178,7 +178,7 @@ public class RsiActivity extends AbcdeActivity {
     public void setKonzulensNumber() {
 
 
-        FirebaseDatabase.getInstance().getReference().child(KONZULENS_SZAMA).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("KONZULENS_SZAMA").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 konzulensPhoneNumberS = Objects.requireNonNull(dataSnapshot.getValue()).toString();

@@ -99,11 +99,7 @@ public class PerfusorActivity extends MainActivity implements
         navigationView.setNavigationItemSelectedListener(this);
 
         overridePendingTransition(0, 0);
-        try {
-            FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        } catch (RuntimeException e) {
-            Toast.makeText(this, "A Firebase újratöltődik!", Toast.LENGTH_SHORT).show();
-        }
+
 
         spinner = findViewById(R.id.med_perf_spinner);
         dose = findViewById(R.id.med_perf_dose);
