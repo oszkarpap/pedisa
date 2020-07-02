@@ -7,9 +7,11 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -39,12 +41,14 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.CreateGLListItemActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOP;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SingleChoiceDialogFragment;
+import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 //import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
 import static android.os.Environment.DIRECTORY_DCIM;
@@ -57,7 +61,7 @@ import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLAdapter.s
  * @version 2.0
  * This is the GL Activity, connect to Firebase Realtime Database
  */
-public class GLActivity extends AppCompatActivity implements SingleChoiceDialogFragment.SingleChoiceListener, GLAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener {
+public class GLActivity extends AppCompatActivity implements SingleChoiceDialogFragment.SingleChoiceListener, GLAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener, SwipeRefreshLayout.OnRefreshListener {
 
     public static final int REQUEST_CODE = 998;
     public static final String KEY_GL_NAME_MODIFY = "NAME_MODIFY";
@@ -83,7 +87,7 @@ public class GLActivity extends AppCompatActivity implements SingleChoiceDialogF
     private GLAdapter adapter;
     private GL gli;
     private String SOPKey;
-
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +117,8 @@ public class GLActivity extends AppCompatActivity implements SingleChoiceDialogF
         }
 
         setTitle(title);
-
+        swipeRefreshLayout = findViewById(R.id.gl_swipe);
+        swipeRefreshLayout.setOnRefreshListener(this);
 
         gls = new ArrayList<>();
 
@@ -316,14 +321,6 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
 
             //intent.putExtra(KEY_GL_ASC_MODIFY,getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY));
             startActivityForResult(intent, REQUEST_CODE);
-        } else if (item.getItemId() == R.id.gl_refresh) {
-
-            Intent intent = new Intent(GLActivity.this, GLActivity.class);
-            intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
-            intent.putExtra(KEY_GL_TITLE_MODIFY, title);
-            startActivityForResult(intent, REQUEST_CODE);
-            finish();
-
         } else if (item.getItemId() == R.id.createglLow) {
             TEXTSIZE += 3;
             if (TEXTSIZE >= 40) {
@@ -532,5 +529,16 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
     @Override
     public void onNegativeButtonClicked() {
 
+    }
+    @Override public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                Intent intent = new Intent(GLActivity.this, GLActivity.class);
+                intent.putExtra(KEY_GL_ASC_MODIFY, SOPKey);
+                intent.putExtra(KEY_GL_TITLE_MODIFY, title);
+                startActivityForResult(intent, REQUEST_CODE);
+                finish();
+            }
+        }, 1000);
     }
 }

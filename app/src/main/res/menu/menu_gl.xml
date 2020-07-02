@@ -29,12 +29,7 @@
         android:icon="@drawable/ic_keyboard_arrow_up_white_24dp"
         app:showAsAction="always"
         android:title="ADD" />
-    <item
-        android:id="@+id/gl_refresh"
-        android:icon="@drawable/ic_refresh_black_24dp"
-        android:orderInCategory="100"
-        app:showAsAction="collapseActionView|always"
-        android:title="refresh" />
+
 
 
 </menu>

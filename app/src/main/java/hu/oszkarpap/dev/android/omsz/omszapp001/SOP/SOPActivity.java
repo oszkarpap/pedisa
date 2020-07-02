@@ -3,10 +3,12 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.SOP;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
@@ -51,7 +53,7 @@ import static com.google.firebase.auth.FirebaseAuth.getInstance;
  * @version 2.0
  * This is the SOP Activity, connect to Firebase Realtime Database
  */
-public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener, SOPAdapter.OnItemClickListener {
+public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener, SOPAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     public static final int REQUEST_CODE = 999;
     public static final String KEY_SOP_NAME_MODIFY = "NAME_MODIFY";
@@ -67,6 +69,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
     private SOPAdapter adapter;
     private SOP sopi;
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,8 +82,8 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
+        swipeRefreshLayout = findViewById(R.id.sop_swipe);
+        swipeRefreshLayout.setOnRefreshListener(this);
         expandableListView = findViewById(R.id.expandableListView);
         leftMenuData();
         leftMenuIntent();
@@ -97,7 +100,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         try {
             FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         } catch (RuntimeException e) {
-           // Toast.makeText(this, "A Firebase újratöltődik!", Toast.LENGTH_SHORT).show();
+            // Toast.makeText(this, "A Firebase újratöltődik!", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -244,11 +247,6 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
             Intent intent = new Intent(this, CreateSOPActivity.class);
             //           intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
             startActivityForResult(intent, REQUEST_CODE);
-        }
-        if (item.getItemId() == R.id.SOPRefresh) {
-            Intent intent = new Intent(this, SOPActivity.class);
-            startActivity(intent);
-            finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -565,5 +563,19 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
                 return false;
             }
         });
+    }
+
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                ifDelUser();
+                Objects.requireNonNull(auth.getCurrentUser()).reload();
+                Intent intent = new Intent(SOPActivity.this, SOPActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 1000);
     }
 }

@@ -3,10 +3,12 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.medication;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
@@ -51,10 +53,9 @@ import static com.google.firebase.auth.FirebaseAuth.getInstance;
  * @version 1.0
  * This is the Medication Activity, connect to Firebase Realtime Database
  */
-public class MedActivity extends MainActivity implements MedAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener, MedAdapter.OnItemClickListener {
+public class MedActivity extends MainActivity implements MedAdapter.OnItemLongClickListener, SearchView.OnQueryTextListener, MedAdapter.OnItemClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     public static final int REQUEST_CODE = 999;
-    public static int Searching =0;
     public static final String KEY_KEY_MODIFY = "KEY_MODIFY";
     public static final String KEY_NAME_MODIFY = "NAME_MODIFY";
     public static final String KEY_AGENT_MODIFY = "AGENT_MODIFY";
@@ -69,17 +70,18 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
     public static final String KEY_CHILDDMAX_MODIFY = "CHILDMAX_MODIFY";
     public static final String KEY_CHILDDMAX02_MODIFY = "CHILDMAX02_MODIFY";
     public static final String KEY_CHILDDDESC_MODIFY = "CHILDDESC_MODIFY";
+    public static int Searching = 0;
+    ExpandableListAdapter expandableListAdapter;
+    ExpandableListView expandableListView;
+    List<MenuModel> headerList = new ArrayList<>();
+    HashMap<MenuModel, List<MenuModel>> childList = new HashMap<>();
     private List<Medication> medications;
     private MedAdapter adapter;
     private TextView name, agent, pack, ind, contra, adult, child, mater, store;
     private CardView cardView;
     private Medication medi;
     private FirebaseAuth auth;
-    ExpandableListAdapter expandableListAdapter;
-    ExpandableListView expandableListView;
-    List<MenuModel> headerList = new ArrayList<>();
-    HashMap<MenuModel, List<MenuModel>> childList = new HashMap<>();
-
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,8 +95,8 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
+        swipeRefreshLayout = findViewById(R.id.med_swipe);
+        swipeRefreshLayout.setOnRefreshListener(this);
         expandableListView = findViewById(R.id.expandableListView);
         leftMenuData();
         leftMenuIntent();
@@ -119,17 +121,14 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view_med);
         recyclerView = findViewById(R.id.recycler_view_med);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
 
-
-
-        adapter = new MedAdapter(this, medications, this,this);
+        adapter = new MedAdapter(this, medications, this, this);
         recyclerView.setAdapter(adapter);
 
 
         loadMed();
-
 
 
         name = findViewById(R.id.med_cardview_name);
@@ -262,16 +261,10 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
         if (item.getItemId() == R.id.createMedMenu) {
             // Toast.makeText(this, "Új gyógyszer felvitele MASTER funkció", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, CreateMedActivity.class);
-       //     intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+            //     intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
             startActivityForResult(intent, REQUEST_CODE);
         }
 
-        if(item.getItemId() == R.id.createMedRefresh){
-            Searching=0;
-            Intent intent = new Intent(this, MedActivity.class);
-            startActivity(intent);
-            finish();
-        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -339,7 +332,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(MedActivity.this, CreateMedActivity.class);
-      //          intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+                //          intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
                 intent.putExtra(KEY_KEY_MODIFY, medi.getKey());
                 intent.putExtra(KEY_NAME_MODIFY, medi.getName());
                 intent.putExtra(KEY_AGENT_MODIFY, medi.getAgent());
@@ -375,7 +368,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
      */
     @Override
     public boolean onQueryTextChange(String s) {
-        Searching =1;
+        Searching = 1;
         String MedInput = s.toLowerCase();
         ArrayList<Medication> newList = new ArrayList<>();
 
@@ -392,19 +385,16 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
     }
 
 
-
-
-
     @Override
     public void onBackPressed() {
-        Searching =0;
+        Searching = 0;
         finish();
         super.onBackPressed();
     }
 
     @Override
     public void onItemClicked(int position) {
-        Searching=0;
+        Searching = 0;
         medi = medications.get(position);
         name.setText(medi.getName());
         agent.setText(medi.getAgent());
@@ -416,12 +406,11 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
         cardView.setVisibility(View.VISIBLE);
 
 
-
     }
 
     @Override
     public void onItemClicked(Medication medication) {
-        Searching=0;
+        Searching = 0;
         medi = medication;
         name.setText(medi.getName());
         agent.setText(medi.getAgent());
@@ -624,6 +613,18 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
     }
 
+    @Override
+    public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Searching = 0;
+                Intent intent = new Intent(MedActivity.this, MedActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 1000);
+    }
 
 }
 
