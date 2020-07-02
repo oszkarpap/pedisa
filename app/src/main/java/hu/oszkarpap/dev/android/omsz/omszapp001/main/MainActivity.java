@@ -352,7 +352,7 @@ public class MainActivity extends AppCompatActivity
                             Objects.requireNonNull(auth.getCurrentUser()).reload();
                             ifDelUser();
                             intent = new Intent(MainActivity.this, PerfusorActivity.class);
-                            intent.putExtra(SAS, "02");
+
                             startActivity(intent);
                             break;
 

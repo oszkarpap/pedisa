@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Objects;
+import java.util.concurrent.ExecutionException;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
@@ -177,8 +178,8 @@ public class RsiActivity extends AbcdeActivity {
 
     public void setKonzulensNumber() {
 
-
-        FirebaseDatabase.getInstance().getReference().child("KONZULENS_SZAMA").addValueEventListener(new ValueEventListener() {
+try{
+        FirebaseDatabase.getInstance().getReference().child("konzulensSzama").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 konzulensPhoneNumberS = Objects.requireNonNull(dataSnapshot.getValue()).toString();
@@ -188,7 +189,9 @@ public class RsiActivity extends AbcdeActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        }); }catch (Exception e) {
+    Toast.makeText(this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+}
     }
 
     /**
