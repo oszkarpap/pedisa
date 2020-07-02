@@ -69,22 +69,26 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.date.setText(news.getDate());
         holder.name.setText(news.getName());
         holder.text.setText(news.getText());
-        storageRef.child("images/" + news.getKey()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).resize(800, 800).centerInside().onlyScaleDown().into(holder.image);
-                holder.image.setVisibility(View.VISIBLE);
-                // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
+        try {
+            storageRef.child("images/" + news.getKey()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.get().load(uri).resize(800, 800).centerInside().onlyScaleDown().into(holder.image);
+                    holder.image.setVisibility(View.VISIBLE);
+                    // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
 
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                //  Toast.makeText(context, "Sikertelen "+exception.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    //  Toast.makeText(context, "Sikertelen "+exception.getMessage(), Toast.LENGTH_SHORT).show();
 
 
-            }
-        });
+                }
+            });
+        } catch (Exception e) {
+            holder.image.setVisibility(View.INVISIBLE);
+        }
         holder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -109,7 +113,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         notifyDataSetChanged();
 
     }
-
 
 
     public interface OnItemLongClickListener {

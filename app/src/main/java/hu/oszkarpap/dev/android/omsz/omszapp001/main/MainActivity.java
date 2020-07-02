@@ -120,6 +120,18 @@ public class MainActivity extends AppCompatActivity
                 Toast.makeText(MainActivity.this, "Nincs feltöltve még fájl!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        tut.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                ifDelUser();
+                Objects.requireNonNull(auth.getCurrentUser()).reload();
+                intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+                return false;
+            }
+        });
         dev = findViewById(R.id.email_to_dev);
         dev.setOnClickListener(new View.OnClickListener() {
             @Override

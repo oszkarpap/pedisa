@@ -10,60 +10,40 @@
     tools:context="hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity">
 
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_news"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/content_main_linear_layout" />
+
+
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_margin="@dimen/_10sdp"
-
-        android:orientation="vertical">
-
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view_news"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="vertical" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=" "
-            android:textSize="@dimen/_20sdp" />
-
-
-    </LinearLayout>
-
-
-    <GridLayout
-        android:id="@+id/main_botton_grid"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/content_main_linear_layout"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/_10sdp"
-
-        android:columnCount="2"
-        android:rowCount="1">
+        android:layout_width="match_parent"
+        android:padding="@dimen/_4sdp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/tutorial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:layout_row="0"
-            android:layout_column="0"
             android:layout_gravity="center"
-            android:layout_marginRight="@dimen/_4sdp"
-            android:layout_marginBottom="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_2sdp"
+            android:layout_marginBottom="@dimen/_4sdp"
+
+            android:layout_weight="1"
             android:background="@color/colorPrimaryDark"
             android:elevation="@dimen/_4sdp"
             android:gravity="center"
-            android:padding="@dimen/_8sdp"
+
             android:shadowColor="@color/colorPrimaryDark"
             android:text="Használati útmutató"
             android:textColor="@color/white" />
 
         <Button
+            android:layout_marginLeft="@dimen/_2sdp"
             android:id="@+id/email_to_dev"
             style="@style/Base.Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
@@ -71,16 +51,16 @@
             android:layout_row="0"
             android:layout_column="1"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/_4sdp"
-            android:layout_marginBottom="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_4sdp"
+
+            android:layout_weight="1"
             android:background="@color/colorPrimaryDark"
             android:elevation="@dimen/_4sdp"
             android:gravity="center"
-            android:padding="@dimen/_8sdp"
+
             android:shadowColor="@color/colorPrimaryDark"
             android:text="Üzenet a fejlesztőnek"
             android:textColor="@color/white" />
-    </GridLayout>
-
+    </LinearLayout>
 
 </RelativeLayout>
