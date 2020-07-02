@@ -27,7 +27,7 @@
             android:textColor="@color/text_black"
             android:textSize="@dimen/_16sdp" />
 
-            <ImageView
+            <com.github.chrisbanes.photoview.PhotoView
                 android:layout_gravity="center"
                 android:id="@+id/row_news_image"
                 android:visibility="gone"
