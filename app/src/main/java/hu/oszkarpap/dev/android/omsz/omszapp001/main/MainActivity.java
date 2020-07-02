@@ -5,12 +5,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -66,7 +68,7 @@ import static com.google.firebase.auth.FirebaseAuth.getInstance;
 
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, NewsAdapter.OnItemLongClickListener {
+        implements NavigationView.OnNavigationItemSelectedListener, NewsAdapter.OnItemLongClickListener, SwipeRefreshLayout.OnRefreshListener {
 
     public static final String KEY_NEWS_NAME_MODIFY = "NEWS_NAME_MODIFY";
     public static final String KEY_NEWS_TEXT_MODIFY = "NEWS_TEXT_MODIFY";
@@ -85,6 +87,7 @@ public class MainActivity extends AppCompatActivity
     private NewsAdapter adapter;
     private News newsi;
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeLayout;
 
 
     /**
@@ -99,7 +102,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
+        swipeLayout = (SwipeRefreshLayout) findViewById(R.id.news_swipe);
+        swipeLayout.setOnRefreshListener(this);
         newsList = new ArrayList<>();
 
         recyclerView = findViewById(R.id.recycler_view_news);
@@ -121,17 +125,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        tut.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                ifDelUser();
-                Objects.requireNonNull(auth.getCurrentUser()).reload();
-                intent = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-                return false;
-            }
-        });
         dev = findViewById(R.id.email_to_dev);
         dev.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -476,6 +469,17 @@ public class MainActivity extends AppCompatActivity
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
 
+    }
+    @Override public void onRefresh() {
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                ifDelUser();
+                Objects.requireNonNull(auth.getCurrentUser()).reload();
+                intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, 1000);
     }
 }
 
