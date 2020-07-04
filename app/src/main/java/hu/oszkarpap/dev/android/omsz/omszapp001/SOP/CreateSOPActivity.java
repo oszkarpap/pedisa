@@ -3,6 +3,8 @@ package hu.oszkarpap.dev.android.omsz.omszapp001.SOP;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,6 +12,9 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 //import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
@@ -23,14 +28,18 @@ import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity.SOPSearch
  * This Activity used by create SOP ... action, modify Med action, create own Med action, modify own Med action
  */
 
-public class CreateSOPActivity extends AppCompatActivity {
+public class CreateSOPActivity extends AppCompatActivity implements SOPIconAdapter.OnItemClickListener, SOPIconAdapter.OnItemLongClickListener {
 
     public static final String KEY_NAME = "NAME";
     public static final String KEY_DESC = "DESC";
     public static final String KEY_ICON = "ICON";
     private EditText createName, createDesc;
     private Button createMemoryBTN;
-    private RadioButton sr, brady, stemi, vt, bag, asthma, vent, vent02, tox, ballon, bed, cpr, cprHand, crossFour, crossSix, defi, drop, foni, foni02, heart, heart02, heart03, infusion, injection, injection02, lung, monitor, patch, pill, scalpel, temp, wound;
+    private List<SOPIcon> sopIcons;
+    private SOPIconAdapter sopIconAdapter;
+    private String sopIconTemp;
+    private RecyclerView recyclerView;
+    private SOPIcon sopIcon;
 
 
     @Override
@@ -42,38 +51,81 @@ public class CreateSOPActivity extends AppCompatActivity {
         createDesc = findViewById(R.id.createDescSopET);
         createMemoryBTN = findViewById(R.id.createSopBTN);
         createMemoryBTN.setText("Mentés");
-        sr = findViewById(R.id.icon_sinus);
-        stemi = findViewById(R.id.icon_stemi);
-        vt = findViewById(R.id.icon_vt);
-        brady = findViewById(R.id.icon_brady);
-        asthma = findViewById(R.id.icon_asthma);
-        vent = findViewById(R.id.icon_vent);
-        vent02 = findViewById(R.id.icon_vent02);
-        tox = findViewById(R.id.icon_tox);
-        bag = findViewById(R.id.icon_bag);
-        ballon = findViewById(R.id.icon_ballon);
-        bed = findViewById(R.id.icon_bed);
-        cpr = findViewById(R.id.icon_cpr);
-        cprHand = findViewById(R.id.icon_cpr_hand);
-        crossFour = findViewById(R.id.icon_cross_four);
-        crossSix = findViewById(R.id.icon_cross_six);
-        defi = findViewById(R.id.icon_defi);
-        drop = findViewById(R.id.icon_drop);
-        foni = findViewById(R.id.icon_foni_01);
-        foni02 = findViewById(R.id.icon_foni_02);
-        heart = findViewById(R.id.icon_heart_01);
-        heart02 = findViewById(R.id.icon_heart_02);
-        heart03 = findViewById(R.id.icon_heart_03);
-        infusion = findViewById(R.id.icon_infusion);
-        injection = findViewById(R.id.icon_inj_01);
-        injection02 = findViewById(R.id.icon_inj_02);
-        lung = findViewById(R.id.icon_lung);
-        monitor = findViewById(R.id.icon_monitor);
-        patch = findViewById(R.id.icon_patch);
-        pill = findViewById(R.id.icon_pill);
-        scalpel = findViewById(R.id.icon_scalpel);
-        temp = findViewById(R.id.icon_temp);
-        wound = findViewById(R.id.icon_wound);
+
+        sopIcons = new ArrayList<>();
+
+        recyclerView = findViewById(R.id.recycler_view_create_icon_sop);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
+        //LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        //recyclerView.setLayoutManager(layoutManager);
+
+        sopIconAdapter = new SOPIconAdapter(this, sopIcons, this, this, sopIcon);
+        recyclerView.setAdapter(sopIconAdapter);
+        SOPIcon sopIcon01 = new SOPIcon("sr", R.drawable.icon_sr);
+        sopIcons.add(sopIcon01);
+        SOPIcon sopIcon02 = new SOPIcon("stemi", R.drawable.icon_stemi);
+        sopIcons.add(sopIcon02);
+        SOPIcon sopIcon03 = new SOPIcon("vt", R.drawable.icon_vt);
+        sopIcons.add(sopIcon03);
+        SOPIcon sopIcon04 = new SOPIcon("brady", R.drawable.icon_brady);
+        sopIcons.add(sopIcon04);
+        SOPIcon sopIcon05 = new SOPIcon("asthma", R.drawable.icon_asthma);
+        sopIcons.add(sopIcon05);
+        SOPIcon sopIcon06 = new SOPIcon("vent", R.drawable.icon_ventolin);
+        sopIcons.add(sopIcon06);
+        SOPIcon sopIcon07 = new SOPIcon("vent02", R.drawable.icon_ventolin02);
+        sopIcons.add(sopIcon07);
+        SOPIcon sopIcon08 = new SOPIcon("tox", R.drawable.icon_tox);
+        sopIcons.add(sopIcon08);
+        SOPIcon sopIcon09 = new SOPIcon("bag", R.drawable.icon_bag);
+        sopIcons.add(sopIcon09);
+        SOPIcon sopIcon10 = new SOPIcon("ballon", R.drawable.icon_ballon);
+        sopIcons.add(sopIcon10);
+        SOPIcon sopIcon11 = new SOPIcon("bed", R.drawable.icon_bed);
+        sopIcons.add(sopIcon11);
+        SOPIcon sopIcon12 = new SOPIcon("cpr", R.drawable.icon_cpr);
+        sopIcons.add(sopIcon12);
+        SOPIcon sopIcon13 = new SOPIcon("cprHand", R.drawable.icon_cpr_hand);
+        sopIcons.add(sopIcon13);
+        SOPIcon sopIcon14 = new SOPIcon("crossFour", R.drawable.icon_cross_four);
+        sopIcons.add(sopIcon14);
+        SOPIcon sopIcon15 = new SOPIcon("crossSix", R.drawable.icon_cross_six);
+        sopIcons.add(sopIcon15);
+        SOPIcon sopIcon16 = new SOPIcon("defi", R.drawable.icon_defi);
+        sopIcons.add(sopIcon16);
+        SOPIcon sopIcon17 = new SOPIcon("foni", R.drawable.icon_fonendoscope);
+        sopIcons.add(sopIcon17);
+        SOPIcon sopIcon18 = new SOPIcon("foni02", R.drawable.icon_fonendoscope02);
+        sopIcons.add(sopIcon18);
+        SOPIcon sopIcon19 = new SOPIcon("heart", R.drawable.icon_heart);
+        sopIcons.add(sopIcon19);
+        SOPIcon sopIcon20 = new SOPIcon("heart02", R.drawable.icon_heart02);
+        sopIcons.add(sopIcon20);
+        SOPIcon sopIcon21 = new SOPIcon("heart03", R.drawable.icon_heart03);
+        sopIcons.add(sopIcon21);
+        SOPIcon sopIcon22 = new SOPIcon("infusion", R.drawable.icon_infusion);
+        sopIcons.add(sopIcon22);
+        SOPIcon sopIcon23 = new SOPIcon("injection", R.drawable.icon_injection);
+        sopIcons.add(sopIcon23);
+        SOPIcon sopIcon24 = new SOPIcon("injection02", R.drawable.icon_injection02);
+        sopIcons.add(sopIcon24);
+        SOPIcon sopIcon25 = new SOPIcon("lung", R.drawable.icon_lung);
+        sopIcons.add(sopIcon25);
+        SOPIcon sopIcon26 = new SOPIcon("monitor", R.drawable.icon_monitor);
+        sopIcons.add(sopIcon26);
+        SOPIcon sopIcon27 = new SOPIcon("patch", R.drawable.icon_patch);
+        sopIcons.add(sopIcon27);
+        SOPIcon sopIcon28 = new SOPIcon("pill", R.drawable.icon_pill);
+        sopIconAdapter.notifyDataSetChanged();
+        sopIcons.add(sopIcon28);
+        SOPIcon sopIcon29 = new SOPIcon("scalpel", R.drawable.icon_scalpel);
+        sopIcons.add(sopIcon29);
+        SOPIcon sopIcon30 = new SOPIcon("temp", R.drawable.icon_temp);
+        sopIcons.add(sopIcon30);
+        SOPIcon sopIcon31 = new SOPIcon("wound", R.drawable.icon_wound);
+        sopIcons.add(sopIcon31);
+       // Toast.makeText(this, ""+sopIcons.get(6).getName(), Toast.LENGTH_SHORT).show();
+
         setTitle("Protokoll név és leírás");
 
 
@@ -118,103 +170,7 @@ public class CreateSOPActivity extends AppCompatActivity {
                                 .child("desc").setValue(createDesc.getText().toString());
 
                         String icon = "";
-
-                        if (bag.isChecked()) {
-                            icon = "bag";
-                        }
-                        if (sr.isChecked()) {
-                            icon = "sinus";
-                        }
-                        if (stemi.isChecked()) {
-                            icon = "stemi";
-                        }
-                        if (vt.isChecked()) {
-                            icon = "vt";
-                        }
-                        if (brady.isChecked()) {
-                            icon = "brady";
-                        }
-                        if (asthma.isChecked()) {
-                            icon = "asthma";
-                        }
-                        if (ballon.isChecked()) {
-                            icon = "ballon";
-                        }
-                        if (tox.isChecked()) {
-                            icon = "tox";
-                        }
-                        if (vent.isChecked()) {
-                            icon = "vent";
-                        }
-                        if (vent02.isChecked()) {
-                            icon = "vent02";
-                        }
-                        if (bed.isChecked()) {
-                            icon = "bed";
-                        }
-                        if (cpr.isChecked()) {
-                            icon = "cpr";
-                        }
-                        if (cprHand.isChecked()) {
-                            icon = "cprhand";
-                        }
-                        if (crossFour.isChecked()) {
-                            icon = "crossfour";
-                        }
-                        if (crossSix.isChecked()) {
-                            icon = "crossix";
-                        }
-                        if (defi.isChecked()) {
-                            icon = "defi";
-                        }
-                        if (drop.isChecked()) {
-                            icon = "drop";
-                        }
-                        if (foni.isChecked()) {
-                            icon = "foni";
-                        }
-                        if (foni02.isChecked()) {
-                            icon = "foni02";
-                        }
-                        if (heart.isChecked()) {
-                            icon = "heart";
-                        }
-                        if (heart02.isChecked()) {
-                            icon = "heart02";
-                        }
-                        if (heart03.isChecked()) {
-                            icon = "heart03";
-                        }
-                        if (infusion.isChecked()) {
-                            icon = "inf";
-                        }
-                        if (injection.isChecked()) {
-                            icon = "inj";
-                        }
-                        if (injection02.isChecked()) {
-                            icon = "inj02";
-                        }
-                        if (lung.isChecked()) {
-                            icon = "lung";
-                        }
-                        if (monitor.isChecked()) {
-                            icon = "monitor";
-                        }
-                        if (patch.isChecked()) {
-                            icon = "patch";
-                        }
-                        if (pill.isChecked()) {
-                            icon = "pill";
-                        }
-                        if (scalpel.isChecked()) {
-                            icon = "scal";
-                        }
-                        if (temp.isChecked()) {
-                            icon = "temp";
-                        }
-                        if (wound.isChecked()) {
-                            icon = "wound";
-                        }
+                        icon = sopIconTemp;
 
                         FirebaseDatabase.getInstance().getReference().child("sop")
                                 .child(getIntent().getStringExtra(SOPActivity.KEY_SOP_KEY_MODIFY))
@@ -223,107 +179,7 @@ public class CreateSOPActivity extends AppCompatActivity {
                         String name = createName.getText().toString();
                         String desc = createDesc.getText().toString();
                         String icon = "";
-                        if (sr.isChecked()) {
-                            icon = "sinus";
-                        }
-                        if (stemi.isChecked()) {
-                            icon = "stemi";
-                        }
-                        if (vt.isChecked()) {
-                            icon = "vt";
-                        }
-                        if (brady.isChecked()) {
-                            icon = "brady";
-                        }
-
-                        if (bag.isChecked()) {
-                            icon = "bag";
-                        }
-                        if (asthma.isChecked()) {
-                            icon = "asthma";
-                        }
-                        if (ballon.isChecked()) {
-                            icon = "ballon";
-                        }
-                        if (tox.isChecked()) {
-                            icon = "tox";
-                        }
-                        if (vent.isChecked()) {
-                            icon = "vent";
-                        }
-                        if (vent02.isChecked()) {
-                            icon = "vent02";
-                        }
-                        if (ballon.isChecked()) {
-                            icon = "ballon";
-                        }
-                        if (bed.isChecked()) {
-                            icon = "bed";
-                        }
-                        if (cpr.isChecked()) {
-                            icon = "cpr";
-                        }
-                        if (cprHand.isChecked()) {
-                            icon = "cprhand";
-                        }
-                        if (crossFour.isChecked()) {
-                            icon = "crossfour";
-                        }
-                        if (crossSix.isChecked()) {
-                            icon = "crossix";
-                        }
-                        if (defi.isChecked()) {
-                            icon = "defi";
-                        }
-                        if (drop.isChecked()) {
-                            icon = "drop";
-                        }
-                        if (foni.isChecked()) {
-                            icon = "foni";
-                        }
-                        if (foni02.isChecked()) {
-                            icon = "foni02";
-                        }
-                        if (heart.isChecked()) {
-                            icon = "heart";
-                        }
-                        if (heart02.isChecked()) {
-                            icon = "heart02";
-                        }
-                        if (heart03.isChecked()) {
-                            icon = "heart03";
-                        }
-                        if (infusion.isChecked()) {
-                            icon = "inf";
-                        }
-                        if (injection.isChecked()) {
-                            icon = "inj";
-                        }
-                        if (injection02.isChecked()) {
-                            icon = "inj02";
-                        }
-                        if (lung.isChecked()) {
-                            icon = "lung";
-                        }
-                        if (monitor.isChecked()) {
-                            icon = "monitor";
-                        }
-                        if (patch.isChecked()) {
-                            icon = "patch";
-                        }
-                        if (pill.isChecked()) {
-                            icon = "pill";
-                        }
-                        if (scalpel.isChecked()) {
-                            icon = "scal";
-                        }
-                        if (temp.isChecked()) {
-                            icon = "temp";
-                        }
-                        if (wound.isChecked()) {
-                            icon = "wound";
-                        }
-
+                        icon = sopIconTemp;
                         Intent intent = new Intent();
 
                         intent.putExtra(KEY_NAME, name);
@@ -348,5 +204,18 @@ public class CreateSOPActivity extends AppCompatActivity {
         SOPSearching = 0;
         finish();
         super.onBackPressed();
+    }
+
+
+    @Override
+    public void onItemLongClicked(int position) {
+
+    }
+
+    @Override
+    public void onItemClicked(int position) {
+        Toast.makeText(this, "választott: "+sopIcons.get(position).getName(), Toast.LENGTH_SHORT).show();
+        sopIconTemp = sopIcons.get(position).getName();
+
     }
 }
