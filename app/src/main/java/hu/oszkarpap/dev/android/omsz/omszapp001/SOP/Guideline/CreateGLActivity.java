@@ -31,6 +31,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -83,7 +84,7 @@ public class CreateGLActivity extends AppCompatActivity {
     private String asc, title, color = "FFFFFF", color2 = "FFFFFF", getAttr;
     private ColorPickerView colorPickerView, colorPickerView2;
     private String attr;
-    private ImageView imageView;
+    private PhotoView imageView;
 
     //StorageReference storageRef = storage.getReference();
 
@@ -246,7 +247,7 @@ public class CreateGLActivity extends AppCompatActivity {
                 @Override
 
                 public void onSuccess(Uri uri) {
-                    Picasso.get().load(uri).resize(800, 800).centerInside().onlyScaleDown().into(imageView);
+                    Picasso.get().load(uri).resize(1000, 1000).centerInside().onlyScaleDown().into(imageView);
 
                     // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
 
@@ -262,6 +263,8 @@ public class CreateGLActivity extends AppCompatActivity {
         } catch (Exception e) {
             Toast.makeText(this, "X", Toast.LENGTH_SHORT).show();
         }
+
+
 
     }
 

@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -61,7 +62,7 @@ public class CreateNewsActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private EditText createName, createText;
     private Button createBTN, choeserBtn, deleteImageBtn;
-    private ImageView imageView;
+    private PhotoView imageView;
     private Uri filePath;
 
     @Override
@@ -198,7 +199,7 @@ public class CreateNewsActivity extends AppCompatActivity {
             filePath = data.getData();
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                Picasso.get().load(filePath).resize(800, 800).centerInside().onlyScaleDown().into(imageView);
+                Picasso.get().load(filePath).resize(1200, 1200).centerInside().onlyScaleDown().into(imageView);
             } catch (IOException e) {
                 e.printStackTrace();
             }
