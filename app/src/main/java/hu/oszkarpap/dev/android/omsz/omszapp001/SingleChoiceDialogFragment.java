@@ -41,7 +41,7 @@ public class SingleChoiceDialogFragment extends DialogFragment {
 
         final String[] list = getActivity().getResources().getStringArray(R.array.guideline_chose_dialog);
 
-        builder.setTitle("Duplikálni vagy törölni szeretné az elemet? (Keresést követően ne használja ezt a funkciót!)")
+        builder.setTitle("Kérem válasszon!")
                 .setSingleChoiceItems(list, position, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

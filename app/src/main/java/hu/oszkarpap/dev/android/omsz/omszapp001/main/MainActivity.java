@@ -131,7 +131,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 intent = new Intent(Intent.ACTION_SENDTO);
                 intent.putExtra(Intent.EXTRA_SUBJECT, "OMSZ_APP; " +
-                        user.getEmail() + ";\n" + Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID));
+                        user.getEmail());
 
                 intent.setData(Uri.parse("mailto:pap.oszkar.mt@gmail.com"));
                 startActivity(intent);

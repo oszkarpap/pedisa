@@ -1,16 +1,24 @@
 package hu.oszkarpap.dev.android.omsz.omszapp001.medication;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.CreateGLActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
 //import hu.oszkarpap.dev.android.omsz.omszapp001.right.memory.MemoryActivity;
 
@@ -39,13 +47,14 @@ public class CreateMedActivity extends AppCompatActivity {
     private EditText createName, createAgent, createPack, createInd, createContra, createAdult, createChild,
             createChD01, createChD02, createChU, createChMaxD, createChMaxD02, createChDesciption;
     private TextView createChildParameters;
-    private Button createMemoryBTN;
+    private Button createMemoryBTN, deleteBTN;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_medication);
         createName = findViewById(R.id.createNameMedET);
+        deleteBTN = findViewById(R.id.createMedDeleteBTN);
         createName.setError(getString(R.string.create_medication_name_alert), null);
         createAgent = findViewById(R.id.createAgentMedET);
         createPack = findViewById(R.id.createPackMedET);
@@ -67,6 +76,50 @@ public class CreateMedActivity extends AppCompatActivity {
         setEdittextModify();
 
         clickCreateButton();
+
+        deleteBTN.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CreateMedActivity.this);
+                alertDialogBuilder.setMessage("Biztos az elem törlésében?");
+                alertDialogBuilder.setPositiveButton("Vissza",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+
+
+                            }
+                        });
+
+                alertDialogBuilder.setNegativeButton("Törlés", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseDatabase.getInstance().getReference().child("med").
+                                child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY)).removeValue(new DatabaseReference.CompletionListener() {
+                            @Override
+                            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                                Toast.makeText(CreateMedActivity.this, "Törlés sikeres!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CreateMedActivity.this, "Kérem frissítse az oldalt!", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+                        finish();
+
+                    }
+                });
+
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+                return false;
+            }
+        });
+
+        deleteBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(CreateMedActivity.this, "Törléshez nyomja hosszan a gombot!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 
@@ -164,7 +217,7 @@ public class CreateMedActivity extends AppCompatActivity {
                     FirebaseDatabase.getInstance().getReference().child("med")
                             .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
                             .child("unit").setValue(createChU.getText().toString());
-                }else {
+                } else {
                     String name = createName.getText().toString();
                     String agent = createAgent.getText().toString();
                     String pack = createPack.getText().toString();
@@ -200,8 +253,8 @@ public class CreateMedActivity extends AppCompatActivity {
 
                 }
                 finish();
-                }
-            });
+            }
+        });
 
-        }
     }
+}

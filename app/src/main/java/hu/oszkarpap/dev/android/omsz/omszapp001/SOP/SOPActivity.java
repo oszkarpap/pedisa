@@ -315,7 +315,7 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         sopi = sops.get(position);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("Duplikálni vagy törölni szeretné az elemet? ");
+        alertDialogBuilder.setMessage("Módosítani vagy törölni szeretné az elemet? ");
         alertDialogBuilder.setPositiveButton("Vissza",
                 new DialogInterface.OnClickListener() {
                     @Override

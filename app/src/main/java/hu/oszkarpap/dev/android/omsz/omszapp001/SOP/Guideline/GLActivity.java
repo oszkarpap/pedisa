@@ -446,7 +446,6 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
     public void onPositiveButtonClicked(String[] list, int position) {
         switch (position) {
             case 0:
-
                 Intent intent = new Intent(GLActivity.this, CreateGLActivity.class);
                 //              intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
                 intent.putExtra(KEY_GL_NAME_MODIFY, gli.getName());
@@ -484,9 +483,9 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
 
                 saveImage(gli.getAsc());
                 break;
-            case 3:
-                deleteGL(gli);
-                break;
+
+
+
 
         }
 

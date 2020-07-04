@@ -303,6 +303,8 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> implem
         });
 
 
+
+
     }
 
     @Override

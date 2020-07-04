@@ -74,7 +74,7 @@ public class CreateSOPActivity extends AppCompatActivity {
         scalpel = findViewById(R.id.icon_scalpel);
         temp = findViewById(R.id.icon_temp);
         wound = findViewById(R.id.icon_wound);
-        setTitle(getTitle() + " - Protokoll név és leírás");
+        setTitle("Protokoll név és leírás");
 
 
         setEdittextModify();

@@ -91,7 +91,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
         overridePendingTransition(R.anim.bounce, R.anim.fade_in);
         auth = getInstance();
-        setTitle("Rendszeresített gyógyszerek");
+        setTitle("Gyógyszerkártyák");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -313,7 +313,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
         medi = medications.get(position);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setMessage("Duplikálni vagy törölni szeretné az elemet? (Keresés után ne hsználja ezt a funkciót!)");
+        alertDialogBuilder.setMessage("Módosítani vagy törölni szeretné az elemet?");
         alertDialogBuilder.setPositiveButton("Vissza",
                 new DialogInterface.OnClickListener() {
                     @Override
@@ -325,7 +325,25 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
         alertDialogBuilder.setNegativeButton("Törlés", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                deleteMed(medi);
+                Intent intent = new Intent(MedActivity.this, CreateMedActivity.class);
+                //          intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
+                intent.putExtra(KEY_KEY_MODIFY, medi.getKey());
+                intent.putExtra(KEY_NAME_MODIFY, medi.getName());
+                intent.putExtra(KEY_AGENT_MODIFY, medi.getAgent());
+                intent.putExtra(KEY_PACK_MODIFY, medi.getPack());
+                intent.putExtra(KEY_IND_MODIFY, medi.getInd());
+                intent.putExtra(KEY_CONTRA_MODIFY, medi.getCont());
+                intent.putExtra(KEY_ADULT_MODIFY, medi.getAdult());
+                intent.putExtra(KEY_CHILD_MODIFY, medi.getChild());
+                intent.putExtra(KEY_CHILDD01_MODIFY, medi.getChild01());
+                intent.putExtra(KEY_CHILDD02_MODIFY, medi.getChild02());
+                intent.putExtra(KEY_UNIT_MODIFY, medi.getUnit());
+                intent.putExtra(KEY_CHILDDMAX_MODIFY, medi.getChildDMax());
+                intent.putExtra(KEY_CHILDDMAX02_MODIFY, medi.getChildDMax02());
+                intent.putExtra(KEY_CHILDDDESC_MODIFY, medi.getChildDDesc());
+
+
+                startActivityForResult(intent, REQUEST_CODE);
             }
         });
         alertDialogBuilder.setNeutralButton("Módosítás", new DialogInterface.OnClickListener() {

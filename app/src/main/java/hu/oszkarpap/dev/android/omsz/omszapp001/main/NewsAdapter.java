@@ -74,7 +74,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             storageRef.child("images/" + news.getKey()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    Picasso.get().load(uri).resize(800, 800).centerInside().onlyScaleDown().into(holder.image);
+                    Picasso.get().load(uri).resize(1000, 800).centerInside().onlyScaleDown().into(holder.image);
                     holder.image.setVisibility(View.VISIBLE);
                     // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
 

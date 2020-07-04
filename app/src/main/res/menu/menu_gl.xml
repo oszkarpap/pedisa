@@ -21,12 +21,12 @@
         android:title="ADD" />
     <item
         android:id="@+id/createglHigh"
-        android:icon="@drawable/ic_keyboard_arrow_down_white_24dp"
+        android:icon="@drawable/ic_baseline_zoom_out_24"
         app:showAsAction="always"
         android:title="ADD" />
     <item
         android:id="@+id/createglLow"
-        android:icon="@drawable/ic_keyboard_arrow_up_white_24dp"
+        android:icon="@drawable/ic_baseline_zoom_in_24"
         app:showAsAction="always"
         android:title="ADD" />
 

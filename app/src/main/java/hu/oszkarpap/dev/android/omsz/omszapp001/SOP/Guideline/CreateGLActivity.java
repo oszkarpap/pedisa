@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -35,6 +36,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -51,6 +54,8 @@ import java.io.IOException;
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.CreateSOPActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.medication.CreateMedActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.medication.MedActivity;
 
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
 
@@ -74,7 +79,7 @@ public class CreateGLActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private EditText createName, createDesc, createNumber;
     private CheckBox bold, italian, underline, colored, bold2, italian2, underline2, colored2;
-    private Button createBTN, choeserBtn, deleteImageBtn;
+    private Button createBTN, choeserBtn, deleteImageBtn, deleteBtn;
     private String asc, title, color = "FFFFFF", color2 = "FFFFFF", getAttr;
     private ColorPickerView colorPickerView, colorPickerView2;
     private String attr;
@@ -94,6 +99,51 @@ public class CreateGLActivity extends AppCompatActivity {
         storageReference = storage.getReference();
         setContentView(R.layout.activity_create_gl);
         getAttr = getIntent().getStringExtra(GLActivity.KEY_GL_ATTR);
+        deleteBtn = findViewById(R.id.createGlDeleteBTN);
+
+        deleteBtn.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CreateGLActivity.this);
+                alertDialogBuilder.setMessage("Biztos az elem törlésében?");
+                alertDialogBuilder.setPositiveButton("Vissza",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+
+
+                            }
+                        });
+
+                alertDialogBuilder.setNegativeButton("Törlés", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseDatabase.getInstance().getReference().child("gl")
+                                .child(getIntent().getStringExtra(GLActivity.KEY_GL_ASC_MODIFY)).removeValue(new DatabaseReference.CompletionListener() {
+                            @Override
+                            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                                Toast.makeText(CreateGLActivity.this, "Törlés sikeres!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CreateGLActivity.this, "Kérem frissítse az oldalt!", Toast.LENGTH_SHORT).show();
+                                finish();
+
+                            }
+                        });
+
+                    }
+                });
+
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+                return false;
+            }
+        });
+
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(CreateGLActivity.this, "Törléshez nyomja hosszan a gombot!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         createName = findViewById(R.id.createNameGlET);
         createName.setError(getString(R.string.create_medication_name_alert), null);
