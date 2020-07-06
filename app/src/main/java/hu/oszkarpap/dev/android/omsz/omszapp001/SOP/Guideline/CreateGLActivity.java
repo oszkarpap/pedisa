@@ -119,15 +119,17 @@ public class CreateGLActivity extends AppCompatActivity {
                 alertDialogBuilder.setNegativeButton("Törlés", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         FirebaseDatabase.getInstance().getReference().child("gl")
-                                .child(getIntent().getStringExtra(GLActivity.KEY_GL_ASC_MODIFY)).removeValue(new DatabaseReference.CompletionListener() {
-                            @Override
-                            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                                Toast.makeText(CreateGLActivity.this, "Törlés sikeres!", Toast.LENGTH_SHORT).show();
-                                Toast.makeText(CreateGLActivity.this, "Kérem frissítse az oldalt!", Toast.LENGTH_SHORT).show();
-                                finish();
+                                .child(getIntent().getStringExtra(GLActivity.KEY_GL_KEY))
+                                .child(getIntent().getStringExtra(GLActivity.KEY_GL_ASC))
+                                .removeValue(new DatabaseReference.CompletionListener() {
+                                    @Override
+                                    public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                                        Toast.makeText(CreateGLActivity.this, "Törlés sikeres!", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(CreateGLActivity.this, "Kérem frissítse az oldalt!", Toast.LENGTH_SHORT).show();
+                                        finish();
 
-                            }
-                        });
+                                    }
+                                });
 
                     }
                 });
@@ -265,7 +267,6 @@ public class CreateGLActivity extends AppCompatActivity {
         }
 
 
-
     }
 
     private void chooseImage() {
@@ -351,7 +352,7 @@ public class CreateGLActivity extends AppCompatActivity {
 
                 if (createDesc.getText().toString() == null || createDesc.getText().toString() == "" ||
                         createName.getText().toString() == null || createName.getText().toString() == "" ||
-                        createNumber.getText().toString() == null || createNumber.getText().toString() == " ") {
+                        createNumber.getText().toString() == null || createNumber.getText().toString() == "") {
                     Toast.makeText(CreateGLActivity.this, "A mezők kitöltése kötelező!", Toast.LENGTH_SHORT).show();
                 } else {
 
@@ -363,12 +364,18 @@ public class CreateGLActivity extends AppCompatActivity {
                     intent.putExtra(KEY_TITLE, title);
                     intent.putExtra(KEY_ATTR, attr);
                     GL gl = new GL();
+                    String tempCount = "0";
                     gl.setName(createName.getText().toString());
                     gl.setDesc(createDesc.getText().toString());
+                    gl.setCount(tempCount);
                     gl.setKey(asc);
                     gl.setAttr(attr);
                     try {
-                        gl.setCount(createNumber.getText().toString());
+                        if(createNumber.getText().toString() == null || createNumber.getText().toString() == ""){
+                            tempCount = createNumber.getText().toString();
+                        }
+
+                        gl.setCount(tempCount);
                     } catch (Exception e) {
 
                     }
