@@ -191,7 +191,7 @@ public class CreateMedActivity extends AppCompatActivity {
                     Toast.makeText(CreateMedActivity.this, "Gyógyszernév megadása kitöltése kötelező!", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    if (!(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY) == null)) {
+                    if (!(getIntent().getStringExtra(MedActivity.KEY_NAME_MODIFY) == null)) {
                         FirebaseDatabase.getInstance().getReference().child("med")
                                 .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
                                 .child("name").setValue(createName.getText().toString());
@@ -201,7 +201,9 @@ public class CreateMedActivity extends AppCompatActivity {
                         FirebaseDatabase.getInstance().getReference().child("med")
                                 .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
                                 .child("store").setValue(createStore.getText().toString());
-
+                        FirebaseDatabase.getInstance().getReference().child("med")
+                                .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
+                                .child("ind").setValue(createInd.getText().toString());
 
                         FirebaseDatabase.getInstance().getReference().child("med")
                                 .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
@@ -239,6 +241,7 @@ public class CreateMedActivity extends AppCompatActivity {
                         FirebaseDatabase.getInstance().getReference().child("med")
                                 .child(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY))
                                 .child("unit").setValue(createChU.getText().toString());
+                        Toast.makeText(CreateMedActivity.this, "Frissítve!", Toast.LENGTH_SHORT).show();
                     } else {
                         String name = createName.getText().toString();
                         String mater = createMater.getText().toString();

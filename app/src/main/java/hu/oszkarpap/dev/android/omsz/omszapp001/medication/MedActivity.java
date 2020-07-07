@@ -451,6 +451,7 @@ try {
         childModel = new MenuModel("Guideline", false, false, 12);
         childModelsList.add(childModel);
 
+
         if (!childList.containsValue(menuModel.hasChildren)) {
 
             childList.put(menuModel, childModelsList);
