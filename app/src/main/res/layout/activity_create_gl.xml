@@ -66,24 +66,88 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <CheckBox
-                    android:id="@+id/CreateGlbold"
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/GlBTNBold1"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="félkövér" />
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Félkövér"
+                    android:textColor="@color/white" />
 
-                <CheckBox
-                    android:id="@+id/CreateGlitalic"
-                    android:layout_width="wrap_content"
+                <Button
+                    android:id="@+id/GlBTNItalic1"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="dőlt"
-                    android:textStyle="" />
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Dőlt"
+                    android:textColor="@color/white" />
 
-                <CheckBox
-                    android:id="@+id/CreateGlunderline"
-                    android:layout_width="wrap_content"
+
+                <Button
+                    android:id="@+id/GlBTNInserted1"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="aláhúzott" />
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Lista"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/GlBTNBig1"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Nagyobb"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/GlBTNSub1"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Alsó index"
+                    android:textColor="@color/white" />
+
+
+                <Button
+                    android:id="@+id/GlBTNSup1"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Felső index"
+                    android:textColor="@color/white" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/CreateGlColor"
@@ -121,27 +185,91 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:orientation="horizontal">
 
-            <CheckBox
-                android:id="@+id/CreateGlbold2"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/GlBTNBold2"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="félkövér" />
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:text="Félkövér"
+                android:textColor="@color/white" />
 
-            <CheckBox
-                android:id="@+id/CreateGlitalic2"
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/GlBTNItalic2"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="dőlt"
-                android:textStyle="" />
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:text="Dőlt"
+                android:textColor="@color/white" />
 
-            <CheckBox
-                android:id="@+id/CreateGlunderline2"
-                android:layout_width="wrap_content"
+
+            <Button
+                android:id="@+id/GlBTNInserted2"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="aláhúzott" />
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:text="Lista"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/GlBTNBig2"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:text="Nagyobb"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/GlBTNSub2"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:text="Alsó index"
+                android:textColor="@color/white" />
+
+
+            <Button
+                android:id="@+id/GlBTNSup2"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:text="Felső index"
+                android:textColor="@color/white" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
 
             <CheckBox
                 android:id="@+id/CreateGlColor2"
@@ -200,9 +328,9 @@
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_gravity="center"
-
             android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
             android:orientation="horizontal">
 
             <com.github.chrisbanes.photoview.PhotoView
@@ -211,6 +339,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

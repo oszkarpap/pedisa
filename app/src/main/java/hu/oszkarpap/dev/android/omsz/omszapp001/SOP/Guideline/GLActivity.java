@@ -17,6 +17,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -116,7 +117,7 @@ public class GLActivity extends AppCompatActivity implements SingleChoiceDialogF
             title = getIntent().getStringExtra(SOPActivity.KEY_SOP_NAME_MODIFY);
         }
 
-        setTitle(title);
+        setTitle("Szabványos eljárásrendek");
         swipeRefreshLayout = findViewById(R.id.gl_swipe);
         swipeRefreshLayout.setOnRefreshListener(this);
 
@@ -352,7 +353,7 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
             if (resultCode == RESULT_OK) {
                 title = data.getStringExtra(CreateGLActivity.KEY_TITLE);
 
-                setTitle(title);
+                setTitle("Szabványos eljárásrendek");
                 String name = data.getStringExtra(CreateGLActivity.KEY_NAME);
                 String desc = data.getStringExtra(CreateGLActivity.KEY_DESC);
                 String asc = data.getStringExtra(CreateGLActivity.KEY_ASC);
@@ -470,6 +471,7 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
                 intent2.putExtra(KEY_GL_DESC_MODIFY, gli.getDesc());
                 String x2 = String.valueOf(gli.getCount());
                 intent2.putExtra(KEY_GL_COUNT_MODIFY, x2);
+
                 //  Toast.makeText(GLActivity.this, "" + gli.getCount(), Toast.LENGTH_SHORT).show();
                 intent2.putExtra(KEY_GL_ASC_MODIFY, gli.getAsc());
                 intent2.putExtra(KEY_GL_TITLE_MODIFY, title);

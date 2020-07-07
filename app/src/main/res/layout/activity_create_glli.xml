@@ -17,6 +17,16 @@
             android:orientation="vertical">
 
             <Button
+                android:id="@+id/deleteGlliBTN"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:text="Elem törlése"
+                android:textColor="@color/white" />
+
+            <Button
                 android:id="@+id/createGlliBTN"
                 style="@style/Base.Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
@@ -51,6 +61,90 @@
 
             </LinearLayout>
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/GlliBTNBold"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Félkövér"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/GlliBTNItalic"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Dőlt"
+                    android:textColor="@color/white" />
+
+
+                <Button
+                    android:id="@+id/GlliBTNInserted"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Felsorol"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/GlliBTNBig"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Nagyobb"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/GlliBTNSub"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Alsó index"
+                    android:textColor="@color/white" />
+
+
+                <Button
+                    android:id="@+id/GlliBTNSup"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Felső index"
+                    android:textColor="@color/white" />
+
+
+            </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,20 +152,12 @@
 
 
                 <CheckBox
-                    android:layout_weight="1"
-                    android:id="@+id/CreateGlliunderline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="aláhúzott" />
-
-                <CheckBox
-                    android:layout_weight="1"
                     android:id="@+id/CreateGlliColor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="szín beállítása" />
             </LinearLayout>
-
 
             <LinearLayout
                 android:id="@+id/LinearLayoutColorPickerViewli"
@@ -86,15 +172,62 @@
                     app:palette="@drawable/color_column"
                     app:selector="@drawable/wheel" />
             </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
             <Button
-                android:id="@+id/deleteGlliBTN"
+                android:id="@+id/createGlliChooseImage"
                 style="@style/Base.Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="4dp"
-                android:text="Elem törlése"
+                android:layout_weight="1"
+                android:text="Kép kiválasztása"
                 android:textColor="@color/white" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <com.github.chrisbanes.photoview.PhotoView
+                android:id="@+id/createGlliimage"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/createGlliDeleteImage"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:text="Kép törlése"
+                android:textColor="@color/white" />
+
+
         </LinearLayout>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

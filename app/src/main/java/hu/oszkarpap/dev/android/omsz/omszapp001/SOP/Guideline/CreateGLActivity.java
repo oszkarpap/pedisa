@@ -79,8 +79,10 @@ public class CreateGLActivity extends AppCompatActivity {
     StorageReference storageReference;
     private FirebaseAuth auth;
     private EditText createName, createDesc, createNumber;
-    private CheckBox bold, italian, underline, colored, bold2, italian2, underline2, colored2;
-    private Button createBTN, choeserBtn, deleteImageBtn, deleteBtn;
+    private CheckBox  colored, colored2;
+    private Button createBTN, choeserBtn, deleteImageBtn, deleteBtn,
+    boldBtn1, italicBtn1, insertedBtn1, bigBtn1, superBtn1, subBtn1,
+    boldBtn2, italicBtn2, insertedBtn2, bigBtn2, superBtn2, subBtn2;
     private String asc, title, color = "FFFFFF", color2 = "FFFFFF", getAttr;
     private ColorPickerView colorPickerView, colorPickerView2;
     private String attr;
@@ -157,20 +159,11 @@ public class CreateGLActivity extends AppCompatActivity {
         choeserBtn = findViewById(R.id.createGlChooseImage);
         deleteImageBtn = findViewById(R.id.createGlDeleteImage);
         imageView = findViewById(R.id.createGlimage);
-        bold = findViewById(R.id.CreateGlbold);
-        italian = findViewById(R.id.CreateGlitalic);
-        underline = findViewById(R.id.CreateGlunderline);
+
         colored = findViewById(R.id.CreateGlColor);
-        bold2 = findViewById(R.id.CreateGlbold2);
-        italian2 = findViewById(R.id.CreateGlitalic2);
-        underline2 = findViewById(R.id.CreateGlunderline2);
+
         colored2 = findViewById(R.id.CreateGlColor2);
-        bold.setChecked(false);
-        italian.setChecked(false);
-        underline.setChecked(false);
-        bold2.setChecked(false);
-        italian.setChecked(false);
-        underline2.setChecked(false);
+
         getAttrFunction();
         choeserBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -266,6 +259,134 @@ public class CreateGLActivity extends AppCompatActivity {
             Toast.makeText(this, "X", Toast.LENGTH_SHORT).show();
         }
 
+        boldBtn1 = findViewById(R.id.GlBTNBold1);
+        italicBtn1 = findViewById(R.id.GlBTNItalic1);
+        insertedBtn1 = findViewById(R.id.GlBTNInserted1);
+        bigBtn1 = findViewById(R.id.GlBTNBig1);
+        superBtn1 = findViewById(R.id.GlBTNSup1);
+        subBtn1 = findViewById(R.id.GlBTNSub1);
+        boldBtn2 = findViewById(R.id.GlBTNBold2);
+        italicBtn2 = findViewById(R.id.GlBTNItalic2);
+        insertedBtn2 = findViewById(R.id.GlBTNInserted2);
+        bigBtn2 = findViewById(R.id.GlBTNBig2);
+        superBtn2 = findViewById(R.id.GlBTNSup2);
+        subBtn2 = findViewById(R.id.GlBTNSub2);
+        boldBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //createName.setText(createName.getText().toString() + "<b></b>");
+                int start = createName.getSelectionStart(); //this is to get the the cursor position
+                String s = "<b></b>";
+                createName.getText().insert(start, s);
+            }
+        });
+
+        italicBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //createName.setText(createName.getText().toString() + " ");
+                int start = createName.getSelectionStart(); //this is to get the the cursor position
+                String s = "<i></i>";
+                createName.getText().insert(start, s);
+            }
+        });
+
+        insertedBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //createName.setText(createName.getText().toString() + " ");
+                int start = createName.getSelectionStart(); //this is to get the the cursor position
+                String s = "<div></div>";
+                createName.getText().insert(start, s);
+            }
+        });
+
+        bigBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //createName.setText(createName.getText().toString() + " ");
+                int start = createName.getSelectionStart(); //this is to get the the cursor position
+                String s = "<big></big>";
+                createName.getText().insert(start, s);
+            }
+        });
+        superBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //createName.setText(createName.getText().toString() + " ");
+                int start = createName.getSelectionStart(); //this is to get the the cursor position
+                String s = "<sup></sup>";
+                createName.getText().insert(start, s);
+            }
+        });
+
+        subBtn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //createName.setText(createName.getText().toString() + " ");
+                int start = createName.getSelectionStart(); //this is to get the the cursor position
+                String s = "<sub></sub>";
+                createName.getText().insert(start, s);
+            }
+        });
+        boldBtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                int start = createDesc.getSelectionStart(); //this is to get the the cursor position
+                String s = "<b></b>";
+                createDesc.getText().insert(start, s);
+            }
+        });
+
+        italicBtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //createName.setText(createName.getText().toString() + " ");
+                int start = createDesc.getSelectionStart(); //this is to get the the cursor position
+                String s = "<i></i>";
+                createDesc.getText().insert(start, s);
+            }
+        });
+
+        insertedBtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //createName.setText(createName.getText().toString() + " ");
+                int start = createDesc.getSelectionStart(); //this is to get the the cursor position
+                String s = "<div></div>";
+                createDesc.getText().insert(start, s);
+            }
+        });
+
+        bigBtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //createName.setText(createName.getText().toString() + " ");
+                int start = createDesc.getSelectionStart(); //this is to get the the cursor position
+                String s = "<big></big>";
+                createDesc.getText().insert(start, s);
+            }
+        });
+        superBtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //createName.setText(createName.getText().toString() + " ");
+                int start = createDesc.getSelectionStart(); //this is to get the the cursor position
+                String s = "<sup></sup>";
+                createDesc.getText().insert(start, s);
+            }
+        });
+
+        subBtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //createName.setText(createName.getText().toString() + " ");
+                int start = createDesc.getSelectionStart(); //this is to get the the cursor position
+                String s = "<sub></sub>";
+                createDesc.getText().insert(start, s);
+            }
+        });
 
     }
 
@@ -349,10 +470,13 @@ public class CreateGLActivity extends AppCompatActivity {
         createBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (createDesc.getText().toString() == null || createDesc.getText().toString() == "" ||
-                        createName.getText().toString() == null || createName.getText().toString() == "" ||
-                        createNumber.getText().toString() == null || createNumber.getText().toString() == "") {
+                String t1, t2, t3;
+                t1 = createNumber.getText().toString();
+                t2 = createName.getText().toString();
+                t3 = createDesc.getText().toString();
+                if (t1.matches("")  ||
+                        t2.matches("") ||
+                        t3.matches("")) {
                     Toast.makeText(CreateGLActivity.this, "A mezők kitöltése kötelező!", Toast.LENGTH_SHORT).show();
                 } else {
 
@@ -419,37 +543,17 @@ public class CreateGLActivity extends AppCompatActivity {
     public void generateAttr() {
         attr = "f";
 
-        if (bold.isChecked()) {
-            attr += "1";
-        } else {
+
             attr += "0";
-        }
-        if (italian.isChecked()) {
-            attr += "1";
-        } else {
+
             attr += "0";
-        }
-        if (underline.isChecked()) {
-            attr += "1";
-        } else {
             attr += "0";
-        }
+
         attr += "s";
-        if (bold2.isChecked()) {
-            attr += "1";
-        } else {
             attr += "0";
-        }
-        if (italian2.isChecked()) {
-            attr += "1";
-        } else {
             attr += "0";
-        }
-        if (underline2.isChecked()) {
-            attr += "1";
-        } else {
+
             attr += "0";
-        }
 
         attr += "X";
         if (colored.isChecked()) {
@@ -500,7 +604,7 @@ public class CreateGLActivity extends AppCompatActivity {
     }
 
     public void getAttrFunction() {
-        if (!(getAttr == null)) {
+      /*  if (!(getAttr == null)) {
             if (getAttr.contains("f10")) {
                 bold.setChecked(true);
             } else if (getAttr.contains("f01")) {
@@ -531,7 +635,7 @@ public class CreateGLActivity extends AppCompatActivity {
             if (getAttr.contains("1X")) {
                 underline2.setChecked(true);
             }
-        }
+        } */
     }
 
 

@@ -393,8 +393,8 @@ public class SOPActivity extends MainActivity implements SOPAdapter.OnItemLongCl
         headerList.add(menuModel);
         List<MenuModel> childModelsList = new ArrayList<>();
         MenuModel childModel = new MenuModel("", false, false, 11);
-        childModel = new MenuModel("Rapid Sequence Intubation", false, false, 11);
-        childModelsList.add(childModel);
+        //   childModel = new MenuModel("Rapid Sequence Intubation", false, false, 11);
+        //childModelsList.add(childModel);
         childModel = new MenuModel("Guideline", false, false, 12);
         childModelsList.add(childModel);
 

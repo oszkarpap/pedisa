@@ -17,6 +17,7 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
+import android.text.Html;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -107,8 +108,8 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> implem
     public void onBindViewHolder(final ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         GL gl = gls.get(position);
 
-        holder.name.setText(gl.getName());
-        holder.desc.setText(gl.getDesc());
+        holder.name.setText(Html.fromHtml(gl.getName()));
+        holder.desc.setText(Html.fromHtml(gl.getDesc()));
         holder.attr.setText(gl.getAttr());
         holder.key.setText(gl.getAsc());
 
@@ -204,6 +205,8 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> implem
             }
         });
 
+        holder.numb.setVisibility(View.INVISIBLE);
+
         new CountDownTimer(90000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -249,7 +252,7 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> implem
          } */
 
 
-        if (holder.attr.getText().toString().contains("f10")) {
+/*        if (holder.attr.getText().toString().contains("f10")) {
             holder.name.setTypeface(null, Typeface.BOLD);
         } else if (holder.attr.getText().toString().contains("f01")) {
             holder.name.setTypeface(null, Typeface.ITALIC);
@@ -278,7 +281,7 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> implem
             holder.desc.setPaintFlags(holder.desc.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         }
 
-
+*/
         if (holder.attr.getText().toString().contains("X1")) {
             String color = holder.attr.getText().toString().substring(10, 16);
             // Toast.makeText(context, ""+color, Toast.LENGTH_SHORT).show();

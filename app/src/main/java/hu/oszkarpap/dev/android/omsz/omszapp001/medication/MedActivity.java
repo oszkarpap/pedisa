@@ -16,6 +16,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -32,6 +33,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.koushikdutta.async.http.server.AsyncHttpServerRequestImpl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,6 +59,8 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
 
     public static final int REQUEST_CODE = 999;
     public static final String KEY_KEY_MODIFY = "KEY_MODIFY";
+    public static final String KEY_MATER_MODIFY = "MATER_MODIFY";
+    public static final String KEY_STORE_MODIFY = "STORE_MODIFY";
     public static final String KEY_NAME_MODIFY = "NAME_MODIFY";
     public static final String KEY_AGENT_MODIFY = "AGENT_MODIFY";
     public static final String KEY_PACK_MODIFY = "PACK_MODIFY";
@@ -277,6 +281,8 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
         if (requestCode == REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
                 String name = data.getStringExtra(CreateMedActivity.KEY_NAME);
+                String mater = data.getStringExtra(CreateMedActivity.KEY_MATER);
+                String store = data.getStringExtra(CreateMedActivity.KEY_STORE);
                 String agent = data.getStringExtra(CreateMedActivity.KEY_AGENT);
                 String pack = data.getStringExtra(CreateMedActivity.KEY_PACK);
                 String ind = data.getStringExtra(CreateMedActivity.KEY_IND);
@@ -290,7 +296,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
                 String childDMax02 = data.getStringExtra(CreateMedActivity.KEY_CHILDMAX02);
                 String childDdesc = data.getStringExtra(CreateMedActivity.KEY_CHILDDESC);
                 Medication med = new Medication(name, agent, pack, ind, contra, adult,
-                        child, childD01, childD02, unit, childDMax, childDMax02, childDdesc);
+                        child, childD01, childD02, unit, childDMax, childDMax02, childDdesc, mater, store);
                 saveMed(med);
                 finish();
                 Intent intent = new Intent(MedActivity.this, MedActivity.class);
@@ -323,7 +329,7 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
                     }
                 });
 
-        alertDialogBuilder.setNegativeButton("Törlés", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setNegativeButton("Tovább", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(MedActivity.this, CreateMedActivity.class);
                 //          intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
@@ -341,30 +347,8 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
                 intent.putExtra(KEY_CHILDDMAX_MODIFY, medi.getChildDMax());
                 intent.putExtra(KEY_CHILDDMAX02_MODIFY, medi.getChildDMax02());
                 intent.putExtra(KEY_CHILDDDESC_MODIFY, medi.getChildDDesc());
-
-
-                startActivityForResult(intent, REQUEST_CODE);
-            }
-        });
-        alertDialogBuilder.setNeutralButton("Módosítás", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(MedActivity.this, CreateMedActivity.class);
-                //          intent.putExtra(MemoryActivity.KEY_MEMORY, "NO");
-                intent.putExtra(KEY_KEY_MODIFY, medi.getKey());
-                intent.putExtra(KEY_NAME_MODIFY, medi.getName());
-                intent.putExtra(KEY_AGENT_MODIFY, medi.getAgent());
-                intent.putExtra(KEY_PACK_MODIFY, medi.getPack());
-                intent.putExtra(KEY_IND_MODIFY, medi.getInd());
-                intent.putExtra(KEY_CONTRA_MODIFY, medi.getCont());
-                intent.putExtra(KEY_ADULT_MODIFY, medi.getAdult());
-                intent.putExtra(KEY_CHILD_MODIFY, medi.getChild());
-                intent.putExtra(KEY_CHILDD01_MODIFY, medi.getChild01());
-                intent.putExtra(KEY_CHILDD02_MODIFY, medi.getChild02());
-                intent.putExtra(KEY_UNIT_MODIFY, medi.getUnit());
-                intent.putExtra(KEY_CHILDDMAX_MODIFY, medi.getChildDMax());
-                intent.putExtra(KEY_CHILDDMAX02_MODIFY, medi.getChildDMax02());
-                intent.putExtra(KEY_CHILDDDESC_MODIFY, medi.getChildDDesc());
+                intent.putExtra(KEY_MATER_MODIFY, medi.getMater());
+                intent.putExtra(KEY_STORE_MODIFY, medi.getStore());
 
 
                 startActivityForResult(intent, REQUEST_CODE);
@@ -414,13 +398,22 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
     public void onItemClicked(int position) {
         Searching = 0;
         medi = medications.get(position);
-        name.setText(medi.getName());
-        agent.setText(medi.getAgent());
-        pack.setText(medi.getPack());
-        ind.setText(medi.getInd());
-        contra.setText(medi.getCont());
-        adult.setText(medi.getAdult());
-        child.setText(medi.getChild());
+        name.setText(Html.fromHtml(medi.getName()));
+        agent.setText(Html.fromHtml(medi.getAgent()));
+        pack.setText(Html.fromHtml(medi.getPack()));
+        ind.setText(Html.fromHtml(medi.getInd()));
+        contra.setText(Html.fromHtml(medi.getCont()));
+        adult.setText(Html.fromHtml(medi.getAdult()));
+        child.setText(Html.fromHtml(medi.getChild()));
+try {
+    mater.setText(Html.fromHtml(medi.getMater()));
+} catch (Exception e) {}
+
+        try {
+            store.setText(Html.fromHtml(medi.getStore()));
+        } catch (Exception e ){
+
+        }
         cardView.setVisibility(View.VISIBLE);
 
 
@@ -430,13 +423,15 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
     public void onItemClicked(Medication medication) {
         Searching = 0;
         medi = medication;
-        name.setText(medi.getName());
-        agent.setText(medi.getAgent());
-        pack.setText(medi.getPack());
-        ind.setText(medi.getInd());
-        contra.setText(medi.getCont());
-        adult.setText(medi.getAdult());
-        child.setText(medi.getChild());
+        name.setText(Html.fromHtml(medi.getName()));
+        agent.setText(Html.fromHtml(medi.getAgent()));
+        pack.setText(Html.fromHtml(medi.getPack()));
+        ind.setText(Html.fromHtml(medi.getInd()));
+        contra.setText(Html.fromHtml(medi.getCont()));
+        adult.setText(Html.fromHtml(medi.getAdult()));
+        child.setText(Html.fromHtml(medi.getChild()));
+        mater.setText(Html.fromHtml(medi.getMater()));
+        store.setText(Html.fromHtml(medi.getStore()));
         cardView.setVisibility(View.VISIBLE);
 
     }
@@ -451,11 +446,10 @@ public class MedActivity extends MainActivity implements MedAdapter.OnItemLongCl
         headerList.add(menuModel);
         List<MenuModel> childModelsList = new ArrayList<>();
         MenuModel childModel = new MenuModel("", false, false, 11);
-        childModel = new MenuModel("Rapid Sequence Intubation", false, false, 11);
-        childModelsList.add(childModel);
+        //   childModel = new MenuModel("Rapid Sequence Intubation", false, false, 11);
+        //childModelsList.add(childModel);
         childModel = new MenuModel("Guideline", false, false, 12);
         childModelsList.add(childModel);
-
 
         if (!childList.containsValue(menuModel.hasChildren)) {
 

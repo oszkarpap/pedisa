@@ -4,9 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStructure;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -51,9 +53,14 @@ public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         medication= medications.get(position);
-        holder.ini.setText(""+medication.getName().charAt(0)+medication.getName().charAt(1));
-        holder.name.setText(medication.getName());
-        holder.agent.setText(medication.getAgent());
+        try {
+            holder.ini.setText("" + medication.getName().toUpperCase().charAt(0) + medication.getName().toLowerCase().charAt(1));
+        }catch (Exception e)
+        {
+            holder.ini.setText("" + medication.getName().toUpperCase().charAt(0));
+        }
+        holder.name.setText(Html.fromHtml(medication.getName()));
+        holder.agent.setText(Html.fromHtml(medication.getAgent()));
         //holder.pack.setText(medication.getPack());
         //holder.ind.setText(medication.getInd());
         //holder.contra.setText(medication.getCont());

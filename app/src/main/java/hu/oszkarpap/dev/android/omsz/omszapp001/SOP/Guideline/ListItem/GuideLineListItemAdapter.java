@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.CountDownTimer;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +18,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.chrisbanes.photoview.PhotoView;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,27 +75,56 @@ public class GuideLineListItemAdapter extends RecyclerView.Adapter<GuideLineList
         //guideLineListItems.add(guideLineListItem);
         //guideLineListItemAdapter.notifyDataSetChanged();
 
-        holder.item.setText(" • " + guideLineListItem.getItem());
+        holder.item.setText(Html.fromHtml(guideLineListItem.getItem()));
 
         holder.attr.setText(guideLineListItem.getAttributum());
         holder.count.setText("("+String.valueOf(guideLineListItem.getCount())+")");
+        holder.count.setVisibility(View.INVISIBLE);
         holder.parent.setText(guideLineListItem.getParent());
         holder.secKey.setText(guideLineListItem.getSecondKey());
-        holder.item.setOnClickListener(new View.OnClickListener() {
+        holder.item.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onLongClick(View v) {
                 //Toast.makeText(context, "BÖFF"+holder.item.getText()+"\n"+holder.attr.getText()+"\n"+holder.count.getText(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, CreateGLListItemActivity.class);
-                String temp = holder.item.getText().toString().replaceFirst(" • ", "");
+                String temp = holder.item.getText().toString();
                 String temp2 = holder.count.getText().toString().replace("(","").replace(")","");
                 intent.putExtra(LIST_ITEM_NAME, temp);
                 intent.putExtra(LIST_ITEM_COUNT, temp2);
                 intent.putExtra(LIST_ITEM_PARENT, holder.parent.getText());
                 intent.putExtra(LIST_ITEM_SEC_KEY, holder.secKey.getText());
                 context.startActivity(intent);
+                return false;
+            }
+        });
+        holder.item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Módosításhoz kattintson hosszan!", Toast.LENGTH_SHORT).show();
 
             }
         });
+
+
+        String savedImage = holder.secKey.getText().toString();
+        //Toast.makeText(context, "" + savedImage, Toast.LENGTH_SHORT).show();
+        storageRef.child("images/" + savedImage).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).resize(800, 800).centerInside().onlyScaleDown().into(holder.photoView);
+
+                // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                //  Toast.makeText(context, "Sikertelen "+exception.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
 
 
         //holder.item.setText(guideLineListItem.getItem());
@@ -119,7 +155,7 @@ public class GuideLineListItemAdapter extends RecyclerView.Adapter<GuideLineList
         }.start();
         holder.item.setTextSize(TEXTSIZE);
 
-        if (holder.attr.getText().toString().contains("f10")) {
+       /* if (holder.attr.getText().toString().contains("f10")) {
             holder.item.setTypeface(null, Typeface.BOLD);
         } else if (holder.attr.getText().toString().contains("f01")) {
             holder.item.setTypeface(null, Typeface.ITALIC);
@@ -147,7 +183,7 @@ public class GuideLineListItemAdapter extends RecyclerView.Adapter<GuideLineList
         if (holder.attr.getText().toString().contains("1X")) {
             holder.item.setPaintFlags(holder.item.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         }
-
+*/
 
         if (holder.attr.getText().toString().contains("X1")) {
 
@@ -196,18 +232,20 @@ public class GuideLineListItemAdapter extends RecyclerView.Adapter<GuideLineList
         public final TextView parent, secKey;
         public final LinearLayout linearLayout;
         public Context context;
-
+        public PhotoView photoView;
 
         public ViewHolder(final View itemView) {
             super(itemView);
 
             linearLayout = itemView.findViewById(R.id.row_guideLineListItemLinearLayout);
             count = itemView.findViewById(R.id.txt_glli_count);
+
             item = itemView.findViewById(R.id.txt_glli_item);
             attr = itemView.findViewById(R.id.txt_glli_attr);
             parent = itemView.findViewById(R.id.txt_glli_parent);
             parent.setVisibility(View.INVISIBLE);
             attr.setVisibility(View.INVISIBLE);
+            photoView = itemView.findViewById(R.id.row_glli_image);
 
             secKey = itemView.findViewById(R.id.txt_glli_secKey);
             secKey.setVisibility(View.INVISIBLE);

@@ -68,12 +68,12 @@ public class PerfusorActivity extends MainActivity implements
     private FirebaseAuth auth;
     private Spinner spinner;
     private EditText dose, weight, totalDose, volumen;
-    private TextView mg_units, result;
+    private TextView mg_units, result, weightTV, kgTV;
     private Button calc, clear;
     private int number = 0;
     private double doseN, weightN, totalDoseN, volumenN;
-    private String[] listPerf = {"Mg/Hr", "Mg/min", "Mcg/Min", "Mcg/Hr", "Mcg/Kg/Hr", "Mcg/Kg/Min", "Mg/Kg/Hr",
-            "Mg/Kg/Min", "Units/Hr", "Units/Min", "Units/Kg/Hr", "Units/kg/min"};
+    private String[] listPerf = {"mg/óra", "mg/perc", "mcg/perc", "mcg/óra", "mcg/kg/óra", "mcg/Kg/perc", "mg/kg/óra",
+            "mg/kg/perc", "units/óra", "units/perc", "units/kg/óra", "units/kg/perc"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,11 +110,14 @@ public class PerfusorActivity extends MainActivity implements
         clear = findViewById(R.id.med_perf_clear);
         mg_units = findViewById(R.id.med_perf_mg_units);
         result = findViewById(R.id.med_perf_result);
+        weightTV = findViewById(R.id.med_perf_textview_weight);
+        kgTV = findViewById(R.id.med_perf_textview_kg);
         ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, listPerf);
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         //Setting the ArrayAdapter data on the Spinner
         spinner.setAdapter(aa);
         spinner.setOnItemSelectedListener(this);
+
 
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,10 +133,17 @@ public class PerfusorActivity extends MainActivity implements
             public void onClick(View v) {
                 //Toast.makeText(PerfusorActivity.this, ""+weight.getText().toString(), Toast.LENGTH_SHORT).show();
                 double perfusor = 1;
+                String t = "";
 
+                t = weight.getText().toString();
+                if (t.matches("")) {
+                    weightN = 1;
+                } else {
+                    weightN = Double.parseDouble(weight.getText().toString());
+                }
                 try {
                     doseN = Double.parseDouble(dose.getText().toString());
-                    weightN = Double.parseDouble(weight.getText().toString());
+
                     totalDoseN = Double.parseDouble(totalDose.getText().toString());
                     volumenN = Double.parseDouble(volumen.getText().toString());
                     perfusor = totalDoseN / volumenN;
@@ -202,7 +212,7 @@ public class PerfusorActivity extends MainActivity implements
 
                 DecimalFormat df = new DecimalFormat("#.##");
 
-                result.setText(df.format(Double.parseDouble(result.getText().toString().replace(" mL/Hr","")))+" mL/Hr");
+                result.setText(df.format(Double.parseDouble(result.getText().toString().replace(" mL/Hr", ""))) + " mL/Hr");
             }
         });
 
@@ -231,8 +241,8 @@ public class PerfusorActivity extends MainActivity implements
         headerList.add(menuModel);
         List<MenuModel> childModelsList = new ArrayList<>();
         MenuModel childModel = new MenuModel("", false, false, 11);
-        childModel = new MenuModel("Rapid Sequence Intubation", false, false, 11);
-        childModelsList.add(childModel);
+        //   childModel = new MenuModel("Rapid Sequence Intubation", false, false, 11);
+        //childModelsList.add(childModel);
         childModel = new MenuModel("Guideline", false, false, 12);
         childModelsList.add(childModel);
 
@@ -335,6 +345,15 @@ public class PerfusorActivity extends MainActivity implements
             mg_units.setText("mg");
         } else {
             mg_units.setText("Units");
+        }
+        if (position == 0 || position == 1 || position == 2 || position == 3 || position == 8 || position == 9) {
+            weight.setVisibility(View.INVISIBLE);
+            weightTV.setVisibility(View.INVISIBLE);
+            kgTV.setVisibility(View.INVISIBLE);
+        } else {
+            weight.setVisibility(View.VISIBLE);
+            weightTV.setVisibility(View.VISIBLE);
+            kgTV.setVisibility(View.VISIBLE);
         }
     }
 

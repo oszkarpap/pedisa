@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.TintTypedArray;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,8 +62,8 @@ public class SOPAdapter extends RecyclerView.Adapter<SOPAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         sop = sops.get(position);
-        holder.name.setText(sop.getName());
-        holder.desc.setText(sop.getDesc());
+        holder.name.setText(Html.fromHtml(sop.getName()));
+        holder.desc.setText(Html.fromHtml(sop.getDesc()));
         holder.iconText.setText(sop.getIcon());
 
         if (holder.iconText.getText().toString().contains("bag")) {

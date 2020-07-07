@@ -2,33 +2,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".SOP.Guideline.GuidelineActivity_template">
+
     <item
         android:id="@+id/gl_search"
         android:icon="@drawable/ic_search_white_24dp"
         android:orderInCategory="100"
-        app:showAsAction="collapseActionView|always"
+        app:showAsAction="collapseActionView|ifRoom"
         app:actionViewClass="android.support.v7.widget.SearchView"
-        android:title="med search" />
+        android:title="Keresés" />
     <item
         android:id="@+id/ShowListNumberGlMenu"
         android:icon="@drawable/ic_baseline_filter_1_24"
-        app:showAsAction="always"
-        android:title="ADD" />
+        app:showAsAction="ifRoom"
+        android:title="Számozás rejt/mutat" />
+
     <item
         android:id="@+id/createglMenu"
         android:icon="@drawable/ic__add_24"
-        app:showAsAction="always"
-        android:title="ADD" />
+        app:showAsAction="ifRoom"
+        android:title="Hozzáadás" />
     <item
         android:id="@+id/createglHigh"
         android:icon="@drawable/ic_baseline_zoom_out_24"
         app:showAsAction="always"
-        android:title="ADD" />
+        android:title="Zoom out" />
     <item
         android:id="@+id/createglLow"
         android:icon="@drawable/ic_baseline_zoom_in_24"
         app:showAsAction="always"
-        android:title="ADD" />
+        android:title="Zoom in" />
 
 
 

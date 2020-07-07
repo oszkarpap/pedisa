@@ -34,7 +34,7 @@ public class CreateSOPActivity extends AppCompatActivity implements SOPIconAdapt
     public static final String KEY_DESC = "DESC";
     public static final String KEY_ICON = "ICON";
     private EditText createName, createDesc;
-    private Button createMemoryBTN;
+    private Button createMemoryBTN, brBtn, brBtn2;
     private List<SOPIcon> sopIcons;
     private SOPIconAdapter sopIconAdapter;
     private String sopIconTemp;
@@ -51,7 +51,28 @@ public class CreateSOPActivity extends AppCompatActivity implements SOPIconAdapt
         createDesc = findViewById(R.id.createDescSopET);
         createMemoryBTN = findViewById(R.id.createSopBTN);
         createMemoryBTN.setText("Mentés");
+        brBtn = findViewById(R.id.createSopBrBTN);
+        brBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                //createName.setText(createName.getText().toString() + " ");
+                int start = createName.getSelectionStart(); //this is to get the the cursor position
+                String s = "<br/>";
+                createName.getText().insert(start, s);
+            }
+        });
+        brBtn2 = findViewById(R.id.createSopBrBTN2);
+        brBtn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //createName.setText(createName.getText().toString() + " ");
+                int start = createDesc.getSelectionStart(); //this is to get the the cursor position
+                String s = "<br/>";
+                createDesc.getText().insert(start, s);
+            }
+        });
         sopIcons = new ArrayList<>();
 
         recyclerView = findViewById(R.id.recycler_view_create_icon_sop);
@@ -124,7 +145,7 @@ public class CreateSOPActivity extends AppCompatActivity implements SOPIconAdapt
         sopIcons.add(sopIcon30);
         SOPIcon sopIcon31 = new SOPIcon("wound", R.drawable.icon_wound);
         sopIcons.add(sopIcon31);
-       // Toast.makeText(this, ""+sopIcons.get(6).getName(), Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, ""+sopIcons.get(6).getName(), Toast.LENGTH_SHORT).show();
 
         setTitle("Protokoll név és leírás");
 
@@ -154,9 +175,11 @@ public class CreateSOPActivity extends AppCompatActivity implements SOPIconAdapt
         createMemoryBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (createDesc.getText().toString() == null || createDesc.getText().toString() == " " ||
-                        createName.getText().toString() == null || createName.getText().toString() == " ") {
+                String t1, t2;
+                        t1 = createName.getText().toString();
+                t2 = createDesc.getText().toString();
+                if (t1.matches("") ||
+                        t2.matches("")) {
                     Toast.makeText(CreateSOPActivity.this, "A mezők kitöltése kötelező!", Toast.LENGTH_SHORT).show();
                 } else {
 
@@ -214,7 +237,7 @@ public class CreateSOPActivity extends AppCompatActivity implements SOPIconAdapt
 
     @Override
     public void onItemClicked(int position) {
-        Toast.makeText(this, "választott: "+sopIcons.get(position).getName(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "választott: " + sopIcons.get(position).getName(), Toast.LENGTH_SHORT).show();
         sopIconTemp = sopIcons.get(position).getName();
 
     }
