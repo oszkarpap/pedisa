@@ -87,7 +87,7 @@ public class GuideLineListItemAdapter extends RecyclerView.Adapter<GuideLineList
             public boolean onLongClick(View v) {
                 //Toast.makeText(context, "BÖFF"+holder.item.getText()+"\n"+holder.attr.getText()+"\n"+holder.count.getText(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, CreateGLListItemActivity.class);
-                String temp = holder.item.getText().toString();
+                String temp = guideLineListItem.getItem();
                 String temp2 = holder.count.getText().toString().replace("(","").replace(")","");
                 intent.putExtra(LIST_ITEM_NAME, temp);
                 intent.putExtra(LIST_ITEM_COUNT, temp2);
