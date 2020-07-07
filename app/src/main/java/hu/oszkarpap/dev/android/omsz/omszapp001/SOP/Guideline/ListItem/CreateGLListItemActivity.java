@@ -197,7 +197,7 @@ public class CreateGLListItemActivity extends AppCompatActivity {
 
         if (!(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_NAME) == null)) {
             update = 1;
-            createName.setText(Html.fromHtml(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_NAME)));
+            createName.setText((getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_NAME)));
             createNumber.setText(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_COUNT));
             // Toast.makeText(this, "" + update, Toast.LENGTH_SHORT).show();
         }
