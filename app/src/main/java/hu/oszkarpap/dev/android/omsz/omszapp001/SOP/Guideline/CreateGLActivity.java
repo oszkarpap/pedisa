@@ -54,11 +54,13 @@ import java.io.IOException;
 
 import hu.oszkarpap.dev.android.omsz.omszapp001.R;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.CreateSOPActivity;
+import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.ListItem.CreateGLListItemActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.SOP.SOPActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.medication.CreateMedActivity;
 import hu.oszkarpap.dev.android.omsz.omszapp001.medication.MedActivity;
 
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
+import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLActivity.KEY_GL_ASC_MODIFY;
 
 /**
  * @author Oszkar Pap
@@ -107,6 +109,9 @@ public class CreateGLActivity extends AppCompatActivity {
         deleteBtn.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                if (getIntent().getStringExtra(GLActivity.KEY_GL_NAME_MODIFY) == null) {
+                    Toast.makeText(CreateGLActivity.this, "Nincs törlendő elem!", Toast.LENGTH_SHORT).show();
+                } else {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CreateGLActivity.this);
                 alertDialogBuilder.setMessage("Biztos az elem törlésében?");
                 alertDialogBuilder.setPositiveButton("Vissza",
@@ -139,8 +144,10 @@ public class CreateGLActivity extends AppCompatActivity {
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
                 alertDialog.show();
-                return false;
             }
+                    return false;
+                }
+
         });
 
         deleteBtn.setOnClickListener(new View.OnClickListener() {

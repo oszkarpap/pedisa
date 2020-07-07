@@ -84,6 +84,9 @@ public class CreateMedActivity extends AppCompatActivity {
         deleteBTN.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                if(getIntent().getStringExtra(MedActivity.KEY_KEY_MODIFY)==null){
+                    Toast.makeText(CreateMedActivity.this, "Nincs kiválaszott elem!", Toast.LENGTH_SHORT).show();
+                }else{
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CreateMedActivity.this);
                 alertDialogBuilder.setMessage("Biztos az elem törlésében?");
                 alertDialogBuilder.setPositiveButton("Vissza",
@@ -113,7 +116,7 @@ public class CreateMedActivity extends AppCompatActivity {
 
 
                 AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
+                alertDialog.show();}
                 return false;
             }
         });
@@ -182,6 +185,7 @@ public class CreateMedActivity extends AppCompatActivity {
         createMemoryBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String temp = createName.getText().toString();
                 if (temp.matches("")) {
                     Toast.makeText(CreateMedActivity.this, "Gyógyszernév megadása kitöltése kötelező!", Toast.LENGTH_SHORT).show();

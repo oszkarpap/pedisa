@@ -90,40 +90,50 @@ public class CreateGLListItemActivity extends AppCompatActivity {
         deleteBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CreateGLListItemActivity.this);
-                alertDialogBuilder.setMessage("Biztos törölni szeretné az elemet? ");
-                alertDialogBuilder.setPositiveButton("Vissza",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface arg0, int arg1) {
+                Toast.makeText(CreateGLListItemActivity.this, "Törléshez nyomja hosszan a gombot!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        deleteBTN.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CreateGLListItemActivity.this);
+                    alertDialogBuilder.setMessage("Biztos törölni szeretné az elemet? ");
+                    alertDialogBuilder.setPositiveButton("Vissza",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface arg0, int arg1) {
 
 
+                                }
+                            });
+
+                    alertDialogBuilder.setNegativeButton("Törlés", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            try {
+                                FirebaseDatabase.getInstance().getReference().child("glli").child(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_PARENT))
+                                        .child(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_SEC_KEY)).
+                                        removeValue(new DatabaseReference.CompletionListener() {
+                                            @Override
+                                            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                                                Toast.makeText(CreateGLListItemActivity.this, "Törlés sikeres!", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(CreateGLListItemActivity.this, "Frissítse az oldalt!!", Toast.LENGTH_SHORT).show();
+                                                finish();
+                                                //Intent intent = new Intent(CreateGLListItemActivity.this, GLActivity.class);
+                                                //startActivity(intent);
+                                            }
+                                        });
+                            } catch (Exception e) {
+                                Toast.makeText(CreateGLListItemActivity.this, "Nincs választott elem!", Toast.LENGTH_SHORT).show();
                             }
-                        });
 
-                alertDialogBuilder.setNegativeButton("Törlés", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        try {
-                            FirebaseDatabase.getInstance().getReference().child("glli").child(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_PARENT))
-                                    .child(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_SEC_KEY)).
-                                    removeValue(new DatabaseReference.CompletionListener() {
-                                        @Override
-                                        public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                                            Toast.makeText(CreateGLListItemActivity.this, "Törlés sikeres!", Toast.LENGTH_SHORT).show();
-                                            finish();
-                                            //Intent intent = new Intent(CreateGLListItemActivity.this, GLActivity.class);
-                                            //startActivity(intent);
-                                        }
-                                    });
-                        } catch (Exception e) {
-                            Toast.makeText(CreateGLListItemActivity.this, "Nincs választott elem!", Toast.LENGTH_SHORT).show();
                         }
+                    });
 
-                    }
-                });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
 
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                alertDialog.show();
+                return false;
             }
         });
         createName = findViewById(R.id.createNameGlliET);
