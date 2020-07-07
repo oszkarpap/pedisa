@@ -79,11 +79,11 @@ public class CreateGLActivity extends AppCompatActivity {
     StorageReference storageReference;
     private FirebaseAuth auth;
     private EditText createName, createDesc, createNumber;
-    private CheckBox  colored, colored2;
+    private CheckBox colored, colored2;
     private Button createBTN, choeserBtn, deleteImageBtn, deleteBtn,
-    boldBtn1, italicBtn1, insertedBtn1, bigBtn1, superBtn1, subBtn1,
-    boldBtn2, italicBtn2, insertedBtn2, bigBtn2, superBtn2, subBtn2;
-    private String asc, title, color = "FFFFFF", color2 = "FFFFFF", getAttr;
+            boldBtn1, italicBtn1, insertedBtn1, bigBtn1, superBtn1, subBtn1,
+            boldBtn2, italicBtn2, insertedBtn2, bigBtn2, superBtn2, subBtn2;
+    private String asc, title, color = "34495E", color2 = "34495E", getAttr;
     private ColorPickerView colorPickerView, colorPickerView2;
     private String attr;
     private PhotoView imageView;
@@ -212,6 +212,7 @@ public class CreateGLActivity extends AppCompatActivity {
                 LinearLayout linearLayout = findViewById(R.id.LinearLayoutColorPickerView);
                 linearLayout.setBackgroundColor(colorEnvelope.getColor());
                 color = colorEnvelope.getColorHtml();
+
                 //Toast.makeText(CreateGLActivity.this, ""+colorEnvelope.getColorHtml(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -458,6 +459,7 @@ public class CreateGLActivity extends AppCompatActivity {
             createName.setText(getIntent().getStringExtra(GLActivity.KEY_GL_NAME_MODIFY));
             createDesc.setText(getIntent().getStringExtra(GLActivity.KEY_GL_DESC_MODIFY));
             createNumber.setText(getIntent().getStringExtra(GLActivity.KEY_GL_COUNT_MODIFY));
+
             //Toast.makeText(this, ""+getIntent().getStringExtra(GLActivity.KEY_GL_COUNT_MODIFY), Toast.LENGTH_SHORT).show();
         }
 
@@ -474,7 +476,7 @@ public class CreateGLActivity extends AppCompatActivity {
                 t1 = createNumber.getText().toString();
                 t2 = createName.getText().toString();
                 t3 = createDesc.getText().toString();
-                if (t1.matches("")  ||
+                if (t1.matches("") ||
                         t2.matches("") ||
                         t3.matches("")) {
                     Toast.makeText(CreateGLActivity.this, "A mezők kitöltése kötelező!", Toast.LENGTH_SHORT).show();
@@ -495,7 +497,7 @@ public class CreateGLActivity extends AppCompatActivity {
                     gl.setKey(asc);
                     gl.setAttr(attr);
                     try {
-                        if(createNumber.getText().toString() == null || createNumber.getText().toString() == ""){
+                        if (createNumber.getText().toString() == null || createNumber.getText().toString() == "") {
                             tempCount = createNumber.getText().toString();
                         }
 
@@ -544,33 +546,36 @@ public class CreateGLActivity extends AppCompatActivity {
         attr = "f";
 
 
-            attr += "0";
+        attr += "0";
 
-            attr += "0";
-            attr += "0";
+        attr += "0";
+        attr += "0";
 
         attr += "s";
-            attr += "0";
-            attr += "0";
+        attr += "0";
+        attr += "0";
 
-            attr += "0";
+        attr += "0";
 
         attr += "X";
         if (colored.isChecked()) {
             attr += 1;
         } else {
-            attr += 0;
+            attr += 1;
+            color = "34495E";
         }
         attr += color;
         attr += "Y";
         if (colored2.isChecked()) {
             attr += 1;
         } else {
-            attr += 0;
+            attr += 1;
+            color2 = "34495E";
         }
 
         attr += color2;
         attr += "W";
+
 
 
     }

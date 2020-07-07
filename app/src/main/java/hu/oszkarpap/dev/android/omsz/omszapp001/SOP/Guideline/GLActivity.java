@@ -54,6 +54,7 @@ import hu.oszkarpap.dev.android.omsz.omszapp001.main.MainActivity;
 
 import static android.os.Environment.DIRECTORY_DCIM;
 import static android.os.Environment.DIRECTORY_DOWNLOADS;
+import static android.os.Environment.DIRECTORY_PICTURES;
 import static com.google.firebase.auth.FirebaseAuth.getInstance;
 import static hu.oszkarpap.dev.android.omsz.omszapp001.SOP.Guideline.GLAdapter.savedImage;
 
@@ -504,7 +505,8 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
             @Override
             public void onSuccess(Uri uri) {
                 String url = uri.toString();
-                downLoadFiles(GLActivity.this, gli.getName(), ".jpg", DIRECTORY_DOWNLOADS,url);
+
+                downLoadFiles(GLActivity.this, String.valueOf(Html.fromHtml(gli.getName())), ".jpg", DIRECTORY_PICTURES,url);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -521,7 +523,7 @@ Toast.makeText(GLActivity.this, "Sikertelen letöltés", Toast.LENGTH_SHORT).sho
         DownloadManager downloadManager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
         Uri uri = Uri.parse(url);
         DownloadManager.Request request = new DownloadManager.Request(uri);
-        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+        //request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         request.setDestinationInExternalFilesDir(context, destinationDirectory, fileName+fileExtension);
         downloadManager.enqueue(request);
 

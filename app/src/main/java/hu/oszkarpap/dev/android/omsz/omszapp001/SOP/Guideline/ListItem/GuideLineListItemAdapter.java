@@ -185,7 +185,7 @@ public class GuideLineListItemAdapter extends RecyclerView.Adapter<GuideLineList
         }
 */
 
-        if (holder.attr.getText().toString().contains("X1")) {
+        if (holder.attr.getText().toString().contains("X")) {
 
             String color = holder.attr.getText().toString().substring(7, 13);
 //             Toast.makeText(context, ""+color, Toast.LENGTH_SHORT).show();
@@ -193,7 +193,7 @@ public class GuideLineListItemAdapter extends RecyclerView.Adapter<GuideLineList
             holder.count.setTextColor(Color.parseColor("#"+color));
         }
 
-        if (holder.attr.getText().toString().contains("Y1")) {
+        if (holder.attr.getText().toString().contains("Y")) {
             //String color2 = holder.attr.getText().toString().substring(18, 24);
             //  Toast.makeText(context, ""+color2, Toast.LENGTH_SHORT).show();
             //holder.item.setTextColor(Color.parseColor("#" + color2));

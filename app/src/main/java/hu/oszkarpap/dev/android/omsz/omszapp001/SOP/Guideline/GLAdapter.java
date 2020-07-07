@@ -282,13 +282,13 @@ public class GLAdapter extends RecyclerView.Adapter<GLAdapter.ViewHolder> implem
         }
 
 */
-        if (holder.attr.getText().toString().contains("X1")) {
+        if (holder.attr.getText().toString().contains("X")) {
             String color = holder.attr.getText().toString().substring(10, 16);
             // Toast.makeText(context, ""+color, Toast.LENGTH_SHORT).show();
             holder.name.setTextColor(Color.parseColor("#" + color));
         }
 
-        if (holder.attr.getText().toString().contains("Y1")) {
+        if (holder.attr.getText().toString().contains("Y")) {
             String color2 = holder.attr.getText().toString().substring(18, 24);
             //  Toast.makeText(context, ""+color2, Toast.LENGTH_SHORT).show();
             holder.desc.setTextColor(Color.parseColor("#" + color2));

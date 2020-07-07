@@ -68,7 +68,7 @@ public class CreateGLListItemActivity extends AppCompatActivity {
     private EditText createName, createNumber;
     private CheckBox colored;
     private Button createBTN, deleteBTN, boldBtn, italicBtn, insertedBtn, bigBtn, superBtn, subBtn, choeserBtn, deleteImageBtn;
-    private String asc, title, color = "FFFFFF", color2 = "FFFFFF";
+    private String asc, title, color = "34495E", color2 = "34495E";
     private ColorPickerView colorPickerView;
     private String attr;
     private int update = 0;
@@ -191,6 +191,7 @@ public class CreateGLListItemActivity extends AppCompatActivity {
 
         asc = getIntent().getStringExtra(KEY_GL_ASC_MODIFY);
         title = getIntent().getStringExtra(GLActivity.KEY_GL_TITLE_MODIFY);
+
         //Toast.makeText(this, ""+asc, Toast.LENGTH_SHORT).show();
         setTitle("Protokoll részlet listája");
 
@@ -423,13 +424,15 @@ public class CreateGLListItemActivity extends AppCompatActivity {
         if (colored.isChecked()) {
             attr += 1;
         } else {
-            attr += 0;
+            attr += 1;
+            color = "34495E";
         }
         attr += color;
         attr += "Y";
 
         attr += color2;
         attr += "W";
+
 
 
     }
