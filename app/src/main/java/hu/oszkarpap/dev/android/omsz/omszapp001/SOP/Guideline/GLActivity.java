@@ -118,7 +118,7 @@ public class GLActivity extends AppCompatActivity implements SingleChoiceDialogF
             title = getIntent().getStringExtra(SOPActivity.KEY_SOP_NAME_MODIFY);
         }
 
-        setTitle("Szabványos eljárásrendek");
+        setTitle("Szabványosított eljárásrend");
         swipeRefreshLayout = findViewById(R.id.gl_swipe);
         swipeRefreshLayout.setOnRefreshListener(this);
 

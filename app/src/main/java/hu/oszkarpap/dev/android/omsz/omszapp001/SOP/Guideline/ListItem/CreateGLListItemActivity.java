@@ -210,6 +210,27 @@ public class CreateGLListItemActivity extends AppCompatActivity {
             update = 1;
             createName.setText((getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_NAME)));
             createNumber.setText(getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_COUNT));
+            try {
+                storageReference.child("images/" + getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_SEC_KEY)).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).resize(1000, 1000).centerInside().onlyScaleDown().into(imageView);
+
+                        // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        //  Toast.makeText(context, "Sikertelen "+exception.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                    }
+                });
+            } catch (Exception e) {
+                Toast.makeText(this, "X", Toast.LENGTH_SHORT).show();
+            }
             // Toast.makeText(this, "" + update, Toast.LENGTH_SHORT).show();
         }
 
@@ -282,27 +303,7 @@ public class CreateGLListItemActivity extends AppCompatActivity {
             }
         });
 
-        try {
-            storageReference.child("images/" + getIntent().getStringExtra(GuideLineListItemAdapter.LIST_ITEM_SEC_KEY)).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
 
-                public void onSuccess(Uri uri) {
-                    Picasso.get().load(uri).resize(1000, 1000).centerInside().onlyScaleDown().into(imageView);
-
-                    // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
-
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    //  Toast.makeText(context, "Sikertelen "+exception.getMessage(), Toast.LENGTH_SHORT).show();
-
-
-                }
-            });
-        } catch (Exception e) {
-            Toast.makeText(this, "X", Toast.LENGTH_SHORT).show();
-        }
 
     }
 

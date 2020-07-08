@@ -72,8 +72,8 @@ public class PerfusorActivity extends MainActivity implements
     private Button calc, clear;
     private int number = 0;
     private double doseN, weightN, totalDoseN, volumenN;
-    private String[] listPerf = {"mg/óra", "mg/perc", "mcg/perc", "mcg/óra", "mcg/kg/óra", "mcg/Kg/perc", "mg/kg/óra",
-            "mg/kg/perc", "units/óra", "units/perc", "units/kg/óra", "units/kg/perc"};
+    private String[] listPerf = {"mg/óra", "mg/perc", "mcg/perc", "mcg/óra", "mcg/kg/óra", "mcg/kg/perc", "mg/kg/óra",
+            "mg/kg/perc", "N.E./óra", "N.E./perc", "N.E./kg/óra", "N.E./kg/perc"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,71 +148,75 @@ public class PerfusorActivity extends MainActivity implements
                     volumenN = Double.parseDouble(volumen.getText().toString());
                     perfusor = totalDoseN / volumenN;
                     //Toast.makeText(PerfusorActivity.this, ""+perfusor, Toast.LENGTH_SHORT).show();
+
+                    if (number == 0) {
+                        //Mg/Hr*
+                        result.setText((doseN / perfusor) + " mL/Hr");
+                    }
+
+                    if (number == 1) {
+                        //Mg/min*
+                        result.setText((doseN / perfusor) * 60 + " mL/Hr");
+                    }
+
+                    if (number == 2) {
+                        //Mcg/Min*
+                        result.setText((doseN / perfusor / 1000) * 60 + " mL/Hr");
+                    }
+
+                    if (number == 3) {
+                        //Mcg/Hr*
+                        double x = doseN / 1000;
+                        result.setText((x / perfusor) + " mL/Hr");
+                    }
+
+                    if (number == 4) {
+                        //Mcg/Kg/Hr*
+                        result.setText((doseN * weightN) / 1000 / perfusor + " mL/Hr");
+                    }
+
+                    if (number == 5) {
+                        //Mcg/kG/min*
+                        result.setText((doseN * weightN * 60) / 1000 / perfusor + " mL/Hr");
+                    }
+
+                    if (number == 6) {
+                        //Mg/Kg/Hr*
+                        result.setText((doseN / perfusor) * weightN + " mL/Hr");
+                    }
+
+                    if (number == 7) {
+                        //Mg/Kg/Min*
+                        result.setText((doseN / perfusor) * 60 * weightN + " mL/Hr");
+                    }
+                    if (number == 8) {
+                        //U/Hr*
+                        result.setText((doseN / perfusor) + " mL/Hr");
+                    }
+                    if (number == 9) {
+                        //U/min*
+                        result.setText((doseN / perfusor) * 60 + " mL/Hr");
+                    }
+                    if (number == 10) {
+                        //U/Kg/Hr
+                        result.setText((doseN / perfusor) * weightN + " mL/Hr");
+
+                    }
+                    if (number == 11) {
+                        //U/kg/min*
+                        result.setText((doseN / perfusor) * 60 * weightN + " mL/Hr");
+                    }
+
+                    DecimalFormat df = new DecimalFormat("#.##");
+
+                    result.setText(df.format(Double.parseDouble(result.getText().toString().replace(" mL/Hr", ""))) + " mL/Hr");
+
                 } catch (Exception e) {
                     Toast.makeText(PerfusorActivity.this, "A mezők kitöltése kötelező!", Toast.LENGTH_SHORT).show();
+                    result.setText("");
                 }
 
-                if (number == 0) {
-                    //Mg/Hr*
-                    result.setText((doseN / perfusor) + " mL/Hr");
-                }
 
-                if (number == 1) {
-                    //Mg/min*
-                    result.setText((doseN / perfusor) * 60 + " mL/Hr");
-                }
-
-                if (number == 2) {
-                    //Mcg/Min*
-                    result.setText((doseN / perfusor / 1000) * 60 + " mL/Hr");
-                }
-
-                if (number == 3) {
-                    //Mcg/Hr*
-                    double x = doseN / 1000;
-                    result.setText((x / perfusor) + " mL/Hr");
-                }
-
-                if (number == 4) {
-                    //Mcg/Kg/Hr*
-                    result.setText((doseN * weightN) / 1000 / perfusor + " mL/Hr");
-                }
-
-                if (number == 5) {
-                    //Mcg/kG/min*
-                    result.setText((doseN * weightN * 60) / 1000 / perfusor + " mL/Hr");
-                }
-
-                if (number == 6) {
-                    //Mg/Kg/Hr*
-                    result.setText((doseN / perfusor) * weightN + " mL/Hr");
-                }
-
-                if (number == 7) {
-                    //Mg/Kg/Min*
-                    result.setText((doseN / perfusor) * 60 * weightN + " mL/Hr");
-                }
-                if (number == 8) {
-                    //U/Hr*
-                    result.setText((doseN / perfusor) + " mL/Hr");
-                }
-                if (number == 9) {
-                    //U/min*
-                    result.setText((doseN / perfusor) * 60 + " mL/Hr");
-                }
-                if (number == 10) {
-                    //U/Kg/Hr
-                    result.setText((doseN / perfusor) * weightN + " mL/Hr");
-
-                }
-                if (number == 11) {
-                    //U/kg/min*
-                    result.setText((doseN / perfusor) * 60 * weightN + " mL/Hr");
-                }
-
-                DecimalFormat df = new DecimalFormat("#.##");
-
-                result.setText(df.format(Double.parseDouble(result.getText().toString().replace(" mL/Hr", ""))) + " mL/Hr");
             }
         });
 
@@ -344,12 +348,14 @@ public class PerfusorActivity extends MainActivity implements
         if (position == 0 || position == 1 || position == 2 || position == 3 | position == 4 || position == 5 || position == 6 || position == 7) {
             mg_units.setText("mg");
         } else {
-            mg_units.setText("Units");
+            mg_units.setText("N.E.");
         }
         if (position == 0 || position == 1 || position == 2 || position == 3 || position == 8 || position == 9) {
             weight.setVisibility(View.INVISIBLE);
             weightTV.setVisibility(View.INVISIBLE);
             kgTV.setVisibility(View.INVISIBLE);
+            weightN = 1;
+            weight.setText("");
         } else {
             weight.setVisibility(View.VISIBLE);
             weightTV.setVisibility(View.VISIBLE);

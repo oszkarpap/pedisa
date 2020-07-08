@@ -245,27 +245,7 @@ public class CreateGLActivity extends AppCompatActivity {
 
         clickCreateButton();
         //Toast.makeText(this, ""+getIntent().getStringExtra(GLActivity.KEY_GL_IMAGE_MODIFY), Toast.LENGTH_SHORT).show();
-        try {
-            storageReference.child("images/" + getIntent().getStringExtra(GLActivity.KEY_GL_ASC)).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
 
-                public void onSuccess(Uri uri) {
-                    Picasso.get().load(uri).resize(1000, 1000).centerInside().onlyScaleDown().into(imageView);
-
-                    // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
-
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    //  Toast.makeText(context, "Sikertelen "+exception.getMessage(), Toast.LENGTH_SHORT).show();
-
-
-                }
-            });
-        } catch (Exception e) {
-            Toast.makeText(this, "X", Toast.LENGTH_SHORT).show();
-        }
 
         boldBtn1 = findViewById(R.id.GlBTNBold1);
         italicBtn1 = findViewById(R.id.GlBTNItalic1);
@@ -466,6 +446,27 @@ public class CreateGLActivity extends AppCompatActivity {
             createName.setText(getIntent().getStringExtra(GLActivity.KEY_GL_NAME_MODIFY));
             createDesc.setText(getIntent().getStringExtra(GLActivity.KEY_GL_DESC_MODIFY));
             createNumber.setText(getIntent().getStringExtra(GLActivity.KEY_GL_COUNT_MODIFY));
+            try {
+                storageReference.child("images/" + getIntent().getStringExtra(GLActivity.KEY_GL_ASC)).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).resize(1000, 1000).centerInside().onlyScaleDown().into(imageView);
+
+                        // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        //  Toast.makeText(context, "Sikertelen "+exception.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                    }
+                });
+            } catch (Exception e) {
+                Toast.makeText(this, "X", Toast.LENGTH_SHORT).show();
+            }
 
             //Toast.makeText(this, ""+getIntent().getStringExtra(GLActivity.KEY_GL_COUNT_MODIFY), Toast.LENGTH_SHORT).show();
         }

@@ -123,27 +123,6 @@ public class CreateNewsActivity extends AppCompatActivity {
 
         clickCreateButton();
         //Toast.makeText(this, ""+getIntent().getStringExtra(GLActivity.KEY_GL_IMAGE_MODIFY), Toast.LENGTH_SHORT).show();
-        try {
-            storageReference.child("images/" + getIntent().getStringExtra(MainActivity.KEY_NEWS_KEY_MODIFY)).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-
-                public void onSuccess(Uri uri) {
-                    Picasso.get().load(uri).resize(800, 800).centerInside().onlyScaleDown().into(imageView);
-
-                    // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
-
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    //  Toast.makeText(context, "Sikertelen "+exception.getMessage(), Toast.LENGTH_SHORT).show();
-
-
-                }
-            });
-        } catch (Exception e) {
-            Toast.makeText(this, "X", Toast.LENGTH_SHORT).show();
-        }
 
     }
 
@@ -214,6 +193,28 @@ public class CreateNewsActivity extends AppCompatActivity {
         if (!(getIntent().getStringExtra(MainActivity.KEY_NEWS_KEY_MODIFY) == null)) {
             createName.setText(getIntent().getStringExtra(MainActivity.KEY_NEWS_NAME_MODIFY));
             createText.setText(getIntent().getStringExtra(MainActivity.KEY_NEWS_TEXT_MODIFY));
+            try {
+                storageReference.child("images/" + getIntent().getStringExtra(MainActivity.KEY_NEWS_KEY_MODIFY)).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).resize(800, 800).centerInside().onlyScaleDown().into(imageView);
+
+                        // Toast.makeText(context, "Sikeres "+uri, Toast.LENGTH_SHORT).show();
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        //  Toast.makeText(context, "Sikertelen "+exception.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                    }
+                });
+            } catch (Exception e) {
+                Toast.makeText(this, "X", Toast.LENGTH_SHORT).show();
+            }
+
 
         }
 
