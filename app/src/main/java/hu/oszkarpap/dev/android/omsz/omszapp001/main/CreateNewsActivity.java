@@ -10,6 +10,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -228,10 +229,8 @@ public class CreateNewsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (
-                        createName.getText().toString() == null || createName.getText().toString() == "" ||
-                                createText.getText().toString() == null || createText.getText().toString() == " ") {
-                    Toast.makeText(CreateNewsActivity.this, "A mezők kitöltése kötelező!", Toast.LENGTH_SHORT).show();
+                if (createName.toString().matches("") || createText.toString().matches("")) {
+                    Toast.makeText(CreateNewsActivity.this, "A legalább egy mezők kitöltése kötelező!", Toast.LENGTH_SHORT).show();
                 } else {
 
                     News news = new News();
@@ -273,7 +272,7 @@ public class CreateNewsActivity extends AppCompatActivity {
     public void saveNews(final News news) {
 
         try {
-            String x = news.getName() + System.currentTimeMillis();
+            String x = String.valueOf(Html.fromHtml(news.getName() + System.currentTimeMillis()));
             uploadImage(x);
             news.setKey(x);
             FirebaseDatabase.getInstance().getReference()

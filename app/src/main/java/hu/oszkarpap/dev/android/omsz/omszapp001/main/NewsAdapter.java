@@ -5,6 +5,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,9 +68,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(final ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         news = newsList.get(position);
-        holder.date.setText(news.getDate());
-        holder.name.setText(news.getName());
-        holder.text.setText(news.getText());
+        holder.date.setText(Html.fromHtml(news.getDate()));
+        holder.name.setText(Html.fromHtml(news.getName()));
+        holder.text.setText(Html.fromHtml(news.getText()));
         try {
             storageRef.child("images/" + news.getKey()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override

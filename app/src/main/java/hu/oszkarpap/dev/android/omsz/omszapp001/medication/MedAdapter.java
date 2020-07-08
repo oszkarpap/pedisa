@@ -53,11 +53,12 @@ public class MedAdapter extends RecyclerView.Adapter<MedAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         medication= medications.get(position);
+        String ini = String.valueOf(Html.fromHtml(medication.getName()));
         try {
-            holder.ini.setText("" + medication.getName().toUpperCase().charAt(0) + medication.getName().toLowerCase().charAt(1));
+            holder.ini.setText(""+ini.toUpperCase().charAt(0) + ini.toLowerCase().charAt(1));
         }catch (Exception e)
         {
-            holder.ini.setText("" + medication.getName().toUpperCase().charAt(0));
+            holder.ini.setText("" + ini.toUpperCase().charAt(0));
         }
         holder.name.setText(Html.fromHtml(medication.getName()));
         holder.agent.setText(Html.fromHtml(medication.getAgent()));
