@@ -220,6 +220,8 @@ public class PerfusorActivity extends MainActivity implements
             }
         });
 
+        spinner.setSelection(5);
+
     }
 
 
