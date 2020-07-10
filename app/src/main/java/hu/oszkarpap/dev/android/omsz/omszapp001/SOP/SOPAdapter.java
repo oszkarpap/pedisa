@@ -66,104 +66,104 @@ public class SOPAdapter extends RecyclerView.Adapter<SOPAdapter.ViewHolder> {
         holder.desc.setText(Html.fromHtml(sop.getDesc()));
         holder.iconText.setText(sop.getIcon());
 
-        if (holder.iconText.getText().toString().contains("bag")) {
+        if (holder.iconText.getText().toString().matches("bag")) {
             holder.icon.setBackgroundResource(R.drawable.icon_bag);
         }
-        if (holder.iconText.getText().toString().contains("ballon")) {
+        if (holder.iconText.getText().toString().matches("ballon")) {
             holder.icon.setBackgroundResource(R.drawable.icon_ballon);
 
         }
-        if (holder.iconText.getText().toString().contains("asthma")) {
+        if (holder.iconText.getText().toString().matches("asthma")) {
             holder.icon.setBackgroundResource(R.drawable.icon_asthma);
         }
-        if (holder.iconText.getText().toString().contains("vent")) {
+        if (holder.iconText.getText().toString().matches("vent")) {
             holder.icon.setBackgroundResource(R.drawable.icon_ventolin);
         }
-        if (holder.iconText.getText().toString().contains("vent02")) {
+        if (holder.iconText.getText().toString().matches("vent02")) {
             holder.icon.setBackgroundResource(R.drawable.icon_ventolin02);
         }
-        if (holder.iconText.getText().toString().contains("tox")) {
+        if (holder.iconText.getText().toString().matches("tox")) {
             holder.icon.setBackgroundResource(R.drawable.icon_tox);
         }
 
-        if (holder.iconText.getText().toString().contains("bed")) {
+        if (holder.iconText.getText().toString().matches("bed")) {
             holder.icon.setBackgroundResource(R.drawable.icon_bed);
         }
-        if (holder.iconText.getText().toString().contains("sinus")) {
+        if (holder.iconText.getText().toString().matches("sinus")) {
             holder.icon.setBackgroundResource(R.drawable.icon_sr);
         }
-        if (holder.iconText.getText().toString().contains("vt")) {
+        if (holder.iconText.getText().toString().matches("vt")) {
             holder.icon.setBackgroundResource(R.drawable.icon_vt);
         }
-        if (holder.iconText.getText().toString().contains("stemi")) {
+        if (holder.iconText.getText().toString().matches("stemi")) {
             holder.icon.setBackgroundResource(R.drawable.icon_stemi);
         }
-        if (holder.iconText.getText().toString().contains("brady")) {
+        if (holder.iconText.getText().toString().matches("brady")) {
             holder.icon.setBackgroundResource(R.drawable.icon_brady);
         }
-        if (holder.iconText.getText().toString().contains("cpr")) {
+        if (holder.iconText.getText().toString().matches("cpr")) {
             holder.icon.setBackgroundResource(R.drawable.icon_cpr);
         }
-        if (holder.iconText.getText().toString().contains("cprhand")) {
+        if (holder.iconText.getText().toString().matches("cprHand")) {
             holder.icon.setBackgroundResource(R.drawable.icon_cpr_hand);
         }
-        if (holder.iconText.getText().toString().contains("crossfour")) {
+        if (holder.iconText.getText().toString().matches("crossfour")) {
             holder.icon.setBackgroundResource(R.drawable.icon_cross_four);
         }
-        if (holder.iconText.getText().toString().contains("crosssix")) {
+        if (holder.iconText.getText().toString().matches("crosssix")) {
             holder.icon.setBackgroundResource(R.drawable.icon_cross_six);
         }
-        if (holder.iconText.getText().toString().contains("defi")) {
+        if (holder.iconText.getText().toString().matches("defi")) {
 
             holder.icon.setBackgroundResource(R.drawable.icon_defi);
         }
-        if (holder.iconText.getText().toString().contains("drop")) {
+        if (holder.iconText.getText().toString().matches("drop")) {
             holder.icon.setBackgroundResource(R.drawable.icon_drop);
         }
-        if (holder.iconText.getText().toString().contains("foni")) {
+        if (holder.iconText.getText().toString().matches("foni")) {
             holder.icon.setBackgroundResource(R.drawable.icon_fonendoscope);
         }
-        if (holder.iconText.getText().toString().contains("foni02")) {
+        if (holder.iconText.getText().toString().matches("foni02")) {
             holder.icon.setBackgroundResource(R.drawable.icon_fonendoscope02);
         }
-        if (holder.iconText.getText().toString().contains("heart")) {
+        if (holder.iconText.getText().toString().matches("heart")) {
             holder.icon.setBackgroundResource(R.drawable.icon_heart);
         }
-        if (holder.iconText.getText().toString().contains("heart02")) {
+        if (holder.iconText.getText().toString().matches("heart02")) {
             holder.icon.setBackgroundResource(R.drawable.icon_heart02);
         }
-        if (holder.iconText.getText().toString().contains("heart03")) {
+        if (holder.iconText.getText().toString().matches("heart03")) {
             holder.icon.setBackgroundResource(R.drawable.icon_heart03);
         }
 
-        if (holder.iconText.getText().toString().contains("inf")) {
+        if (holder.iconText.getText().toString().matches("inf")) {
             holder.icon.setBackgroundResource(R.drawable.icon_infusion);
         }
-        if (holder.iconText.getText().toString().contains("inj")) {
+        if (holder.iconText.getText().toString().matches("inj")) {
             holder.icon.setBackgroundResource(R.drawable.icon_injection);
         }
-        if (holder.iconText.getText().toString().contains("inj02")) {
+        if (holder.iconText.getText().toString().matches("inj02")) {
             holder.icon.setBackgroundResource(R.drawable.icon_injection02);
         }
-        if (holder.iconText.getText().toString().contains("lung")) {
+        if (holder.iconText.getText().toString().matches("lung")) {
             holder.icon.setBackgroundResource(R.drawable.icon_lung);
         }
-        if (holder.iconText.getText().toString().contains("monitor")) {
+        if (holder.iconText.getText().toString().matches("monitor")) {
             holder.icon.setBackgroundResource(R.drawable.icon_monitor);
         }
-        if (holder.iconText.getText().toString().contains("patch")) {
+        if (holder.iconText.getText().toString().matches("patch")) {
             holder.icon.setBackgroundResource(R.drawable.icon_patch);
         }
-        if (holder.iconText.getText().toString().contains("pill")) {
+        if (holder.iconText.getText().toString().matches("pill")) {
             holder.icon.setBackgroundResource(R.drawable.icon_pill);
         }
-        if (holder.iconText.getText().toString().contains("scal")) {
+        if (holder.iconText.getText().toString().matches("scal")) {
             holder.icon.setBackgroundResource(R.drawable.icon_scalpel);
         }
-        if (holder.iconText.getText().toString().contains("temp")) {
+        if (holder.iconText.getText().toString().matches("temp")) {
             holder.icon.setBackgroundResource(R.drawable.icon_temp);
         }
-        if (holder.iconText.getText().toString().contains("wound")) {
+        if (holder.iconText.getText().toString().matches("wound")) {
             holder.icon.setBackgroundResource(R.drawable.icon_wound);
         }
         //holder.ini.setText(String.valueOf(sop.getName().charAt(0)));
