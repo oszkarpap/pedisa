@@ -188,7 +188,7 @@ public class CreateMedActivity extends AppCompatActivity {
 
                 String temp = createName.getText().toString();
                 if (temp.matches("")) {
-                    Toast.makeText(CreateMedActivity.this, "Gyógyszernév megadása kitöltése kötelező!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreateMedActivity.this, "Gyógyszernév megadása kötelező!", Toast.LENGTH_SHORT).show();
                 } else {
 
                     if (!(getIntent().getStringExtra(MedActivity.KEY_NAME_MODIFY) == null)) {

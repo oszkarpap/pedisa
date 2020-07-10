@@ -203,7 +203,7 @@ public class CreateGLActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         StorageReference ref = storageReference.child("images/" + getIntent().getStringExtra(GLActivity.KEY_GL_ASC));
                         ref.delete();
-                        Toast.makeText(CreateGLActivity.this, "Kép törölve a Firebase felhőből!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateGLActivity.this, "Kép törölve a felhőből!", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -389,7 +389,7 @@ public class CreateGLActivity extends AppCompatActivity {
 
         if (filePath != null) {
             final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Kép feltöltése a Firebase-be ...");
+            progressDialog.setTitle("Kép feltöltése a felhőbe ...");
             progressDialog.show();
 
             //StorageReference ref = storageReference.child("images/"+ asc);
@@ -605,7 +605,7 @@ public class CreateGLActivity extends AppCompatActivity {
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            Toast.makeText(CreateGLActivity.this, "Firebase felhőbe mentve!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateGLActivity.this, "Felhőbe mentve!", Toast.LENGTH_SHORT).show();
 
                         }
                     });

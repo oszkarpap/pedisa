@@ -108,7 +108,7 @@ public class CreateNewsActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         StorageReference ref = storageReference.child("images/" + getIntent().getStringExtra(MainActivity.KEY_NEWS_KEY_MODIFY));
                         ref.delete();
-                        Toast.makeText(CreateNewsActivity.this, "Kép törölve a Firebase felhőből!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateNewsActivity.this, "Kép törölve a felhőből!", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -138,7 +138,7 @@ public class CreateNewsActivity extends AppCompatActivity {
 
         if (filePath != null) {
             final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Kép feltöltése a Firebase-be ...");
+            progressDialog.setTitle("Kép feltöltése a felhőbe...");
             progressDialog.show();
 
             //StorageReference ref = storageReference.child("images/"+ asc);
@@ -282,7 +282,7 @@ public class CreateNewsActivity extends AppCompatActivity {
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            Toast.makeText(CreateNewsActivity.this, "Firebase felhőbe mentve!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateNewsActivity.this, "Felhőbe mentve!", Toast.LENGTH_SHORT).show();
 
                         }
                     });
