@@ -163,12 +163,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.skydoves.colorpickerpreference.ColorPickerView
-                    android:id="@+id/CreateGlcolorPickerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_100sdp"
-                    app:palette="@drawable/color_column"
-                    app:selector="@drawable/wheel" />
             </LinearLayout>
 
             <EditText
@@ -285,12 +279,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.skydoves.colorpickerpreference.ColorPickerView
-                android:id="@+id/CreateGlcolorPickerView2"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_100sdp"
-                app:palette="@drawable/color_column"
-                app:selector="@drawable/wheel" />
         </LinearLayout>
 
         <LinearLayout

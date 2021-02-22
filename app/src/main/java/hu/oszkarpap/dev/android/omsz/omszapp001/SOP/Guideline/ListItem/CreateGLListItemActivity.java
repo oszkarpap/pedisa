@@ -33,9 +33,9 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.google.gson.internal.$Gson$Preconditions;
-import com.skydoves.colorpickerpreference.ColorEnvelope;
-import com.skydoves.colorpickerpreference.ColorListener;
-import com.skydoves.colorpickerpreference.ColorPickerView;
+//import com.skydoves.colorpickerpreference.ColorEnvelope;
+//import com.skydoves.colorpickerpreference.ColorListener;
+//import com.skydoves.colorpickerpreference.ColorPickerView;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
@@ -69,7 +69,7 @@ public class CreateGLListItemActivity extends AppCompatActivity {
     private CheckBox colored;
     private Button createBTN, deleteBTN, boldBtn, italicBtn, insertedBtn, bigBtn, superBtn, subBtn, choeserBtn, deleteImageBtn;
     private String asc, title, color = "34495E", color2 = "34495E";
-    private ColorPickerView colorPickerView;
+ //   private ColorPickerView colorPickerView;
     private String attr;
     private int update = 0;
     private String second, x;
@@ -187,16 +187,16 @@ public class CreateGLListItemActivity extends AppCompatActivity {
         colored = findViewById(R.id.CreateGlliColor);
 
 
-        colorPickerView = findViewById(R.id.CreateGlcolorPickerViewli);
-        colorPickerView.setColorListener(new ColorListener() {
-            @Override
-            public void onColorSelected(ColorEnvelope colorEnvelope) {
-                LinearLayout linearLayout = findViewById(R.id.LinearLayoutColorPickerViewli);
-                linearLayout.setBackgroundColor(colorEnvelope.getColor());
-                color = colorEnvelope.getColorHtml();
-                //Toast.makeText(CreateGLActivity.this, ""+colorEnvelope.getColorHtml(), Toast.LENGTH_SHORT).show();
-            }
-        });
+    //    colorPickerView = findViewById(R.id.CreateGlcolorPickerViewli);
+    //    colorPickerView.setColorListener(new ColorListener() {
+    //        @Override
+    //        public void onColorSelected(ColorEnvelope colorEnvelope) {
+    //            LinearLayout linearLayout = findViewById(R.id.LinearLayoutColorPickerViewli);
+    //            linearLayout.setBackgroundColor(colorEnvelope.getColor());
+    //            color = colorEnvelope.getColorHtml();
+    //            //Toast.makeText(CreateGLActivity.this, ""+colorEnvelope.getColorHtml(), Toast.LENGTH_SHORT).show();
+    //        }
+    //    });
 
 
         asc = getIntent().getStringExtra(KEY_GL_ASC_MODIFY);

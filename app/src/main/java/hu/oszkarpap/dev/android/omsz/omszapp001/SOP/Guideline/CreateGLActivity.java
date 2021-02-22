@@ -44,9 +44,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.skydoves.colorpickerpreference.ColorEnvelope;
-import com.skydoves.colorpickerpreference.ColorListener;
-import com.skydoves.colorpickerpreference.ColorPickerView;
+//import com.skydoves.colorpickerpreference.ColorEnvelope;
+//import com.skydoves.colorpickerpreference.ColorListener;
+//import com.skydoves.colorpickerpreference.ColorPickerView;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -86,7 +86,7 @@ public class CreateGLActivity extends AppCompatActivity {
             boldBtn1, italicBtn1, insertedBtn1, bigBtn1, superBtn1, subBtn1,
             boldBtn2, italicBtn2, insertedBtn2, bigBtn2, superBtn2, subBtn2;
     private String asc, title, color = "34495E", color2 = "34495E", getAttr;
-    private ColorPickerView colorPickerView, colorPickerView2;
+    //private ColorPickerView colorPickerView, colorPickerView2;
     private String attr;
     private PhotoView imageView;
 
@@ -212,29 +212,29 @@ public class CreateGLActivity extends AppCompatActivity {
 
             }
         });
-        colorPickerView = findViewById(R.id.CreateGlcolorPickerView);
-        colorPickerView.setColorListener(new ColorListener() {
-            @Override
-            public void onColorSelected(ColorEnvelope colorEnvelope) {
-                LinearLayout linearLayout = findViewById(R.id.LinearLayoutColorPickerView);
-                linearLayout.setBackgroundColor(colorEnvelope.getColor());
-                color = colorEnvelope.getColorHtml();
+    //    colorPickerView = findViewById(R.id.CreateGlcolorPickerView);
+    //    colorPickerView.setColorListener(new ColorListener() {
+    //        @Override
+    //        public void onColorSelected(ColorEnvelope colorEnvelope) {
+    //            LinearLayout linearLayout = findViewById(R.id.LinearLayoutColorPickerView);
+    //            linearLayout.setBackgroundColor(colorEnvelope.getColor());
+    //            color = colorEnvelope.getColorHtml();
 
                 //Toast.makeText(CreateGLActivity.this, ""+colorEnvelope.getColorHtml(), Toast.LENGTH_SHORT).show();
-            }
-        });
+    //        }
+    //    });
 
 
-        colorPickerView2 = findViewById(R.id.CreateGlcolorPickerView2);
-        colorPickerView2.setColorListener(new ColorListener() {
-            @Override
-            public void onColorSelected(ColorEnvelope colorEnvelope) {
-                LinearLayout linearLayout = findViewById(R.id.LinearLayoutColorPickerView2);
-                linearLayout.setBackgroundColor(colorEnvelope.getColor());
-                color2 = colorEnvelope.getColorHtml();
-                //Toast.makeText(CreateGLActivity.this, ""+colorEnvelope.getColorHtml(), Toast.LENGTH_SHORT).show();
-            }
-        });
+    //    colorPickerView2 = findViewById(R.id.CreateGlcolorPickerView2);
+    //    colorPickerView2.setColorListener(new ColorListener() {
+    //        @Override
+    //        public void onColorSelected(ColorEnvelope colorEnvelope) {
+    //            LinearLayout linearLayout = findViewById(R.id.LinearLayoutColorPickerView2);
+    //            linearLayout.setBackgroundColor(colorEnvelope.getColor());
+    //            color2 = colorEnvelope.getColorHtml();
+    //            //Toast.makeText(CreateGLActivity.this, ""+colorEnvelope.getColorHtml(), Toast.LENGTH_SHORT).show();
+    //        }
+    //    });
         asc = getIntent().getStringExtra(GLActivity.KEY_GL_ASC_MODIFY);
         title = getIntent().getStringExtra(GLActivity.KEY_GL_TITLE_MODIFY);
         //Toast.makeText(this, ""+asc, Toast.LENGTH_SHORT).show();

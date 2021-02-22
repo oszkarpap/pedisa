@@ -30,9 +30,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.skydoves.colorpickerpreference.ColorEnvelope;
-import com.skydoves.colorpickerpreference.ColorListener;
-import com.skydoves.colorpickerpreference.ColorPickerView;
+//import com.skydoves.colorpickerpreference.ColorEnvelope;
+//import com.skydoves.colorpickerpreference.ColorListener;
+//import com.skydoves.colorpickerpreference.ColorPickerView;
 import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
